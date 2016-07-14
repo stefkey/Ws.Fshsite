@@ -1,0 +1,36 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace media=TYPO3\Media\ViewHelpers}
+<div class="container sj-sponsorlogos">
+	<div class="sj-row">
+		<div class="col-sm-4 sj-col1">
+			<f:if condition="{image1}">
+				<f:then>
+					<a href="{link1}"><media:image image="{image1}" maximumWidth="315" alt="{beschreibung1}" /></a>
+				</f:then>
+				<f:else>
+					<img src="{f:uri.resource(path: 'Images/fsh_kachel-platzhalter_360x240@2x.png', package: 'Ws.Fshsite')}" width="360" height="240" alt="Platzhalter" />
+				</f:else>
+			</f:if>
+		</div>
+		<div class="col-sm-4 sj-col2">
+			<f:if condition="{image2}">
+				<f:then>
+					<a href="{link2}"><media:image image="{image2}" maximumWidth="315" alt="{beschreibung2}" /></a>
+				</f:then>
+				<f:else>
+					<img src="{f:uri.resource(path: 'Images/fsh_kachel-platzhalter_360x240@2x.png', package: 'Ws.Fshsite')}" width="360" height="240" alt="Platzhalter" />
+				</f:else>
+			</f:if>
+		</div>
+		<div class="col-sm-4 sj-col3">
+			<f:if condition="{image3}">
+				<f:then>
+					<a href="{link3}"><media:image image="{image3}" maximumWidth="315" alt="{beschreibung3}" /></a>
+				</f:then>
+				<f:else>
+					<img src="{f:uri.resource(path: 'Images/fsh_kachel-platzhalter_360x240@2x.png', package: 'Ws.Fshsite')}" width="360" height="240" alt="Platzhalter" />
+				</f:else>
+			</f:if>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,66 @@
+TYPO3:
+  Form:
+    yamlPersistenceManager:
+      savePath: 'resource://Ws.Fshsite/Private/Form/'
+    presets:
+      bootstrap:
+        title: 'Twitter bootstrap'
+        parentPreset: 'default'
+        formElementTypes:
+          'TYPO3.Form:Base':
+            renderingOptions:
+              layoutPathPattern: 'resource://Ws.Fshsite/Private/Templates/ContactForm/{@type}.html'
+          'TYPO3.Form:FormElement':
+            properties:
+              elementClassAttribute: 'form-control'
+          'TYPO3.Form:MultiLineText':
+            properties:
+              elementClassAttribute: 'form-control'
+  Neos:
+    userInterface:
+      editPreviewModes:
+        print:
+          isEditingMode: FALSE
+          isPreviewMode: TRUE
+          typoScriptRenderingPath: 'print'
+          title: 'Neos.Demo:Main:editPreviewModes.print'
+          position: 200
+      translation:
+        autoInclude:
+          'Ws.Fshsite': ['Main', 'NodeTypes/*']
+      inspector:
+        dataTypes:
+          'TYPO3\Media\Domain\Model\ImageInterface':
+            editorOptions:
+              features:
+                resize: TRUE
+      defaultLanguage: 'de'
+  Flow:
+    i18n:
+      defaultLocale: 'de'
+      fallbackRule:
+        order: [ 'de' ]
+
+
+Neos:
+  Demo:
+    flickr:
+      tagStreamUriPattern: 'http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags=%s'
+      userStreamUriPattern: 'http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&id=%s'
+
+
+TYPO3:
+  TYPO3CR:
+    contentTypes:
+      'Networkteam.Neos.Shariff:Shariff':
+        superTypes: ['TYPO3.Phoenix.ContentTypes:Plugin']
+        label: 'SocMed'
+        group: 'Plugins'
+Networkteam:
+  Neos:
+    Shariff:
+      options:
+        services:
+          - Twitter
+          - Facebook
+          - GooglePlus

@@ -1,0 +1,340 @@
+##
+# Create shorthand namespace for our site package name.
+# It is available in all included typoscript files.
+#
+namespace: Site=Ws.Fshsite
+
+include: NodeTypes/*
+
+/**
+ * Root TypoScript template for the Neos demo website
+ */
+page = Page {
+	head {
+		stylesheets {
+			site = TYPO3.TypoScript:Template {
+				templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Default.html'
+				sectionName = 'stylesheets'
+				node = ${node}
+			}
+		}
+
+		metadata = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Default.html'
+			sectionName = 'metadata'
+		}
+	}
+
+	// This query checks if the second level menu has items and sets an additional class for the body
+	bodyTag.attributes.class = ${q(node).parents().count() >= 1 && q(node).children('[instanceof TYPO3.Neos:Document]').filter('[_hiddenInIndex=false]').count() > 0 ? 'has-subpages' : ''}
+
+	body {
+		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Default.html'
+		sectionName = 'body'
+		imageUri = TYPO3.Neos:ImageUri {
+			asset = ${q(node).property('image')}
+			maximumWidth = 2560
+			maximumHeight = 1280
+			@if.image = ${q(node).property('image')}
+		}
+		imageTitleText = ${q(node).property('imageTitleText')}
+
+		parts {
+			mainMenu = Menu {
+				entryLevel = 1
+				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/MainMenu.html'
+				maximumLevels = 4
+			}
+			
+			footerMenu = Menu {
+				entryLevel = 1
+				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/FooterMenu.html'
+				maximumLevels = 3
+			}
+
+			FourthLevelMenu = Menu {
+				entryLevel = 3
+				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/FourthLevelMenu.html'
+				maximumLevels = 2
+			}
+			
+			headerMenu = Menu {
+				entryLevel = 2
+				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/HeaderMenu.html'
+				maximumLevels = 1
+				startingPoint = ${q(site).children('node-5738cfbe10051').get(0)}
+			}
+
+			secondLevelMenu = Menu {
+				entryLevel = 2
+				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/SecondLevelMenu.html'
+				maximumLevels = 1
+			}
+
+			metaMenu = Menu {
+				entryLevel = 2
+				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/MetaMenu.html'
+				maximumLevels = 1
+				startingPoint = ${q(site).children('[uriPathSegment="metamenu"]').get(0)}
+			}
+			breadcrumb = BreadcrumbMenu
+		
+		}
+
+		content {
+			topslider = ContentCollection {
+				nodePath = 'topslider'
+			}
+
+
+			// Default content section
+			main = PrimaryContent {
+				nodePath = 'main'
+			}
+		}
+
+		// A shared footer which can be edited from all pages
+		footer = ContentCollection {
+			nodePath = ${q(site).children('footer').property('_path')}
+			collection = ${q(site).children('footer').children()}
+		}
+		// A sharedContent
+		sharedContent = ContentCollection {
+			nodePath = ${q(site).children('sharedContent').property('_path')}
+			collection = ${q(site).children('sharedContent').children()}
+		}	
+		javascripts.site = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Default.html'
+			sectionName = 'bodyScripts'
+		}
+	}
+}
+
+default < page
+
+// Special page layout with less navigation components
+landingPage < page
+landingPage.body {
+	// Hide breadcrumb on landing pages
+	parts.breadcrumb >
+	landingPage = ${true}
+}
+
+// SJ With Sidebar
+sidebar < page
+sidebar {
+	bodyTag.attributes.class = 'sidebar'
+	body {
+		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Sidebar.html'
+		title = ${q(node).property('title')}
+		title.@process.convertUris = ConvertUris
+	}
+}
+
+// Special layout for chapter nodes
+chapter < page
+chapter {
+	bodyTag.attributes.class = 'chapter'
+	body {
+		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Chapter.html'
+		title = ${q(node).property('title')}
+		title.@process.convertUris = ConvertUris
+
+		// Get the previous chapter by traversing to the node which preceds the current one.
+		// We need to specify the nodetype because there could be other node types like content collections on the same level.
+		previousChapter = ${q(documentNode).prev('[instanceof TYPO3.Neos:Document]').get(0)}
+		nextChapter = ${q(documentNode).next('[instanceof TYPO3.Neos:Document]').get(0)}
+	}
+}
+
+print < page
+print {
+	head {
+		stylesheets.printCss = TYPO3.TypoScript:Tag {
+			@position = 'end 10'
+			tagName = 'link'
+			attributes {
+				media = 'all'
+				rel = 'stylesheet'
+				href = TYPO3.TypoScript:ResourceUri {
+					path = 'resource://Ws.Fshsite/Public/Styles/Print.css'
+				}
+			}
+		}
+	}
+}
+
+
+##
+# SJ HomeGrid
+#
+prototype(Ws.Fshsite:HomeGrid) < prototype(TYPO3.Neos:Content) {
+	attributes.class = 'container sj-homegrid'
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/NodeTypes/HomeGrid.html'
+	columns.iterationName = 'multiColumnIteration'
+    headline1 = ${q(node).property('headline1')}
+	headline2 = ${q(node).property('headline2')}
+	headline3 = ${q(node).property('headline3')}
+    headline4 = ${q(node).property('headline4')}
+	headline5 = ${q(node).property('headline5')}
+	headline6 = ${q(node).property('headline6')}
+	headline7 = ${q(node).property('headline7')}
+	headline8 = ${q(node).property('headline8')}
+	link = ${q(node).property('link')}
+	link2 = ${q(node).property('link2')}
+	link3 = ${q(node).property('link3')}
+	link4 = ${q(node).property('link4')}
+	link5 = ${q(node).property('link5')}
+	link6 = ${q(node).property('link6')}
+	link7 = ${q(node).property('link7')}
+    text = ${q(node).property('text')}
+	text2 = ${q(node).property('text2')}
+	text3 = ${q(node).property('text3')}
+	text4 = ${q(node).property('text4')}
+}
+
+##
+# SJ Yellow Box
+#
+prototype(Ws.Fshsite:Quote) < prototype(TYPO3.Neos:Content) {
+        attributes.class = 'sj-quote'
+        templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/Quote.html'
+        quote = ${q(node).property('quote')}
+        author = ${q(node).property('author')}
+}
+
+##
+# SJ Adjust "MultiColumn" element to Zurb Foundation CSS classes
+#
+#prototype(TYPO3.Neos.NodeTypes:MultiColumn) {
+#	attributes.class = 'row'
+#	columns.iterationName = 'multiColumnIteration'
+#}
+
+##
+# SJ Adjust "MultiColumnItem" element to Zurb Foundation CSS classes
+#
+#prototype(TYPO3.Neos.NodeTypes:MultiColumnItem) {
+#	attributes.class = ${'col-' + q(node).parent().property('screen') + '-' + #String.split(q(node).parent().property('layout'), '-')[multiColumnIteration.index] + ' #columns'}
+#
+#}
+
+##
+# SJ Shariff Buttons von Networkteam
+#
+prototype(Ws.Fshsite:socialButtons) {
+    socialButtons = Networkteam.Neos.Shariff:Shariff
+}
+
+prototype(Networkteam.Neos.Shariff:Shariff) {
+    attributes {
+        // Put additional attributes here, see https://github.com/heiseonline/shariff#options-data-attributes
+         data-theme = 'white'
+	 data-backend-url = 'null'
+    }
+}
+
+prototype(TYPO3.Neos.NodeTypes:Text) {
+	attributes.class = 'container'
+}
+prototype(TYPO3.Neos.NodeTypes:Headline) {
+	attributes.class = 'container'
+}
+prototype(TYPO3.Neos.NodeTypes:Image) {
+	attributes.class = 'container'
+}
+prototype(TYPO3.Neos.NodeTypes:MultiColumn) {
+	attributes.class = 'container'
+}
+prototype(Flowpack.SearchPlugin:Search) {
+	attributes.class = 'container'
+}
+prototype(TYPO3.Neos.NodeTypes:Form) {
+	attributes.class = 'container'
+}
+
+##
+# SJ FullWidth Area
+#
+prototype(Ws.Fshsite:FullWidth) < prototype(TYPO3.Neos:Content) {
+        templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/FullWidth.html'
+
+        headline = ${q(node).property('headline')}
+        subheadline = ${q(node).property('subheadline')}
+        text = ${q(node).property('text')}
+        image = ${q(node).property('image')}
+}
+
+##
+# SJ LogoArea
+#
+prototype(Ws.Fshsite:LogoArea) < prototype(TYPO3.Neos:Content) {
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/LogoArea.html'
+	columns.iterationName = 'multiColumnIteration'
+    image1 = ${q(node).property('image1')}
+    image2 = ${q(node).property('image2')}
+    image3 = ${q(node).property('image3')}
+    beschreibung1 = ${q(node).property('beschreibung1')}
+    beschreibung2 = ${q(node).property('beschreibung2')}
+    beschreibung3 = ${q(node).property('beschreibung3')}
+	link1 = ${q(node).property('link1')}
+	link2 = ${q(node).property('link2')}
+	link3 = ${q(node).property('link3')}
+}
+
+##
+# SJ 3-Col Quicklinks
+#
+prototype(Ws.Fshsite:QuickLinks) < prototype(TYPO3.Neos:Content) {
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/QuickLinks.html'
+	columns.iterationName = 'multiColumnIteration'
+    headline1 = ${q(node).property('headline1')}
+    headline2 = ${q(node).property('headline2')}
+    headline3 = ${q(node).property('headline3')}
+    text1 = ${q(node).property('text1')}
+	text2 = ${q(node).property('text2')}
+	text3 = ${q(node).property('text3')}
+    image1 = ${q(node).property('image1')}
+    image2 = ${q(node).property('image2')}
+    image3 = ${q(node).property('image3')}
+	link1 = ${q(node).property('link1')}
+	link2 = ${q(node).property('link2')}
+	link3 = ${q(node).property('link3')}
+}
+
+##
+# SJ ElasticSearch
+#
+#prototype(TYPO3.Neos:DocumentSearchResult)  {
+#    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/CustomDocumentSearchResult.html'
+#}
+
+prototype(JohannesSteu.Neos.NodeTypes:Accordeon) {
+	attributes.class = 'container sj-accordeon accordeon'
+}
+
+##
+# SJ Button
+#
+prototype(Ws.Fshsite:Button) < prototype(TYPO3.Neos:Content) {
+        templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/Button.html'
+        text = ${q(node).property('text')}
+}
+
+
+##
+# SJ JohannesSteu Code for search page
+#
+prototype(Flowpack.SearchPlugin:Search) {
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/Search.html'
+
+    searchResultRenderer.@process.wrap >
+    prototype(Flowpack.SearchPlugin:SingleResult).@process.wrap >
+}
+
+prototype(TYPO3.Neos:DocumentSearchResult) < prototype(TYPO3.TypoScript:Template) {
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/DocumentSearchResult.html'
+    teaserImage = ${q(node).property('image')}
+    title = ${q(node).property('title')}
+    headline = ${q(node).property('headline')}
+}

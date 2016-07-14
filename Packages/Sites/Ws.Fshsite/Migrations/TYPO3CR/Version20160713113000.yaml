@@ -1,0 +1,149 @@
+up:
+  comments: 'Change some Nodetypes from WS.fshsite: to Ws.Fshsite:'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'WS.fshsite:Homepage'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Ws.Fshsite:Homepage'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'WS.fshsite:Chapter'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Ws.Fshsite:Chapter'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'WS.fshsite:ChapterMenu'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Ws.Fshsite:ChapterMenu'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'WS.fshsite:Registration'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Ws.Fshsite:Registration'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'WS.fshsite:Flickr'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Ws.Fshsite:Flickr'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'WS.fshsite:YouTube'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Ws.Fshsite:YouTube'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'WS.fshsite:Carousel'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Ws.Fshsite:Carousel'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'WS.fshsite:Quote'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Ws.Fshsite:Quote'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'WS.fshsite:FullWidth'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Ws.Fshsite:FullWidth'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'WS.fshsite:LogoBanner'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Ws.Fshsite:LogoArea'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'WS.fshsite:QuickLinks'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Ws.Fshsite:QuickLinks'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'WS.fshsite:Button'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Ws.Fshsite:Button'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'WS.fshsite:HomeGrid'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Ws.Fshsite:HomeGrid'
+
+down:
+  comments: 'No down migration available'
