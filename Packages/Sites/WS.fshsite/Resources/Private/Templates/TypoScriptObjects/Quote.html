@@ -1,0 +1,7 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<div {attributes -> f:format.raw()}>
+	<div class="container">
+        {neos:contentElement.editable(property: 'quote', tag: 'blockquote')}
+        {neos:contentElement.editable(property: 'author', tag: 'i')}
+	</div>
+</div>

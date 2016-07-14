@@ -1,0 +1,35 @@
+/Build/
+/Configuration/
+/Data/
+/Packages/Application/*
+/Packages/Framework/
+/Packages/Inactive/
+/Packages/Neos/
+/Packages/Plugins/
+/Packages/Libraries/
+/Web/
+/Web/_Resources/
+/Web/index.php
+/Web/.htaccess
+/bin/
+/Readme.txt
+/Upgrading.txt
+/flow
+/flow.bat
+/Readme.rst
+/Upgrading.rst
+/composer.lock
+/beard.lock
+/uploads
+/composer.phar
+/auth.json
+
+
+# Various temporary files
+*.DS_Store
+
+# ignore the downloaded selenium server, config and the selenium
+# temporary directory (which starts with a quote, do not ask why...)
+/Tests/Selenium/settings.xml
+Build/Resources/Java/selenium-server-standalone*
+/"

@@ -1,0 +1,84 @@
+type: 'TYPO3.Form:Form'
+identifier: contact-form
+label: 'Contact form'
+renderingOptions:
+    submitButtonLabel: 'Nachricht senden'
+finishers:
+    -
+        identifier: 'TYPO3.Form:Email'
+        options:
+            templatePathAndFilename: 'resource://WS.fshsite/Private/Templates/ContactForm/Email.txt'
+            format: plaintext
+            subject: 'Contact from example.net'
+            recipientAddress: stefan.johaenntgen@webservus.de
+            recipientName: 'Office of Company'
+            senderAddress: no-reply@webservus.de
+            senderName: 'Neos Demo Site'
+            replyToAddress: stefan.johaenntgen@webservus.de
+    -
+        identifier: 'TYPO3.Form:Confirmation'
+        options:
+            message: "<h3>Vielen Dank für Ihre Nachricht!</h3> <p>Wir werden uns ggf. in Kürze bei Ihnen melden.</p>\n"
+renderables:
+    -
+        type: 'TYPO3.Form:Page'
+        renderables:
+            -
+                type: 'TYPO3.Form:SingleSelectRadiobuttons'
+                identifier: anrede
+                label: Anrede
+                validators:
+                    -
+                        identifier: 'TYPO3.Flow:NotEmpty'
+                properties:
+                    options:
+                        -
+                            _value: Frau
+                            _key: '1'
+                        -
+                            _value: Herr
+                            _key: '2'
+            -
+                type: 'TYPO3.Form:SingleLineText'
+                identifier: name
+                label: 'Vor- und Nachname'
+                validators:
+                    -
+                        identifier: 'TYPO3.Flow:NotEmpty'
+                properties:
+                    placeholder: 'Ihr vollständiger Name'
+                defaultValue: ''
+            -
+                type: 'TYPO3.Form:SingleLineText'
+                identifier: telnummer
+                label: 'Ihre Telefonnummer'
+                validators:
+                    -
+                        identifier: 'TYPO3.Flow:NotEmpty'
+                properties:
+                    placeholder: 'Ihre Telefonnummer'
+                defaultValue: ''
+            -
+                type: 'TYPO3.Form:SingleLineText'
+                identifier: email
+                label: E-mail
+                validators:
+                    -
+                        identifier: 'TYPO3.Flow:NotEmpty'
+                    -
+                        identifier: 'TYPO3.Flow:EmailAddress'
+                properties:
+                    placeholder: E-Mail
+                defaultValue: ''
+            -
+                type: 'TYPO3.Form:MultiLineText'
+                identifier: nachricht
+                label: Nachricht
+                validators:
+                    -
+                        identifier: 'TYPO3.Flow:NotEmpty'
+                properties:
+                    placeholder: 'Schreiben Sie hier Ihre Mitteilung.'
+                defaultValue: ''
+        identifier: page-one
+        label: 'Persönliche Angaben:'
