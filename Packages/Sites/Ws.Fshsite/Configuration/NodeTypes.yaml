@@ -10,7 +10,7 @@
 ##
 # Allo Shortcut node to contain menu content, since they are also used at top level
 #
-'TYPO3.Neos:Shortcut': true
+'TYPO3.Neos:Shortcut':
   childNodes:
     menu:
       type: 'TYPO3.Neos:ContentCollection'
