@@ -1,5 +1,18 @@
 ##
-# Special homepage nodetype that declares a footer child node for usage as shared footer. 
+# Top level page type for menu. It inherits from Shortcut and has a 'menu' childnode,
+# content from which would be rendered in the bottom secion of the main menu
+#
+'Ws.Fshsite:TopLevelPage':
+  superTypes:
+    'TYPO3.Neos:Shortcut': true
+  childNodes:
+    menu:
+      type: 'TYPO3.Neos:ContentCollection'
+  ui:
+    label: 'Top level page'
+
+##
+# Special homepage nodetype that declares a footer child node for usage as shared footer.
 # SJ: And additional Content in the Megamenu, and shared content for Logos and Social-Media-Buttons
 #
 'Ws.Fshsite:Homepage':
@@ -860,7 +873,7 @@
           label: 'Rechte Spalte'
           icon: 'icon-image'
           position: 4
-  properties:  
+  properties:
     headline:
       type: string
       defaultValue: 'Das könnte Sie auch noch interessieren'

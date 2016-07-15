@@ -44,8 +44,11 @@ page = Page {
 				entryLevel = 1
 				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/MainMenu.html'
 				maximumLevels = 4
+				menuContent = ContentCollection {
+					@context.node = ${q(node).children('menu').get(0)}
+				}
 			}
-			
+
 			footerMenu = Menu {
 				entryLevel = 1
 				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/FooterMenu.html'
@@ -57,7 +60,7 @@ page = Page {
 				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/FourthLevelMenu.html'
 				maximumLevels = 2
 			}
-			
+
 			headerMenu = Menu {
 				entryLevel = 2
 				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/HeaderMenu.html'
@@ -78,7 +81,7 @@ page = Page {
 				startingPoint = ${q(site).children('[uriPathSegment="metamenu"]').get(0)}
 			}
 			breadcrumb = BreadcrumbMenu
-		
+
 		}
 
 		content {
@@ -102,7 +105,7 @@ page = Page {
 		sharedContent = ContentCollection {
 			nodePath = ${q(site).children('sharedContent').property('_path')}
 			collection = ${q(site).children('sharedContent').children()}
-		}	
+		}
 		javascripts.site = TYPO3.TypoScript:Template {
 			templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Default.html'
 			sectionName = 'bodyScripts'
