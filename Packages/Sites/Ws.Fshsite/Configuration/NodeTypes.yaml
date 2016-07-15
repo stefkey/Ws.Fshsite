@@ -1,3 +1,12 @@
+# FIXME: these nodetypes are diabled in johannessteu/neos-nodetypes package, but are used on the site!
+'TYPO3.Neos.NodeTypes:Page':
+  abstract: ~
+'TYPO3.Neos.NodeTypes:Form':
+  abstract: ~
+'TYPO3.Neos.NodeTypes:TwoColumn':
+  abstract: ~
+
+
 ##
 # Top level page type for menu. It inherits from Shortcut and has a 'menu' childnode,
 # content from which would be rendered in the bottom secion of the main menu

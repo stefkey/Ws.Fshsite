@@ -3,7 +3,8 @@
     "type": "typo3-flow-site",
     "require": {
         "typo3/neos": "*",
-        "typo3/neos-nodetypes": "*"
+        "typo3/neos-nodetypes": "*",
+        "johannessteu/neos-nodetypes": "*"
     },
     "suggest": {
         "typo3/neos-seo": "*"
