@@ -1,12 +1,3 @@
-# FIXME: these nodetypes are diabled in johannessteu/neos-nodetypes package, but are used on the site!
-'TYPO3.Neos.NodeTypes:Page':
-  abstract: ~
-'TYPO3.Neos.NodeTypes:Form':
-  abstract: ~
-'TYPO3.Neos.NodeTypes:TwoColumn':
-  abstract: ~
-
-
 ##
 # Allo Shortcut node to contain menu content, since they are also used at top level
 #
@@ -14,11 +5,15 @@
   childNodes:
     menu:
       type: 'TYPO3.Neos:ContentCollection'
-
+    'topslider':
+      type: 'TYPO3.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': TRUE
 
 ##
 # Special homepage nodetype that declares a footer child node for usage as shared footer.
-# SJ: And additional Content in the Megamenu, and shared content for Logos and Social-Media-Buttons
+# SJ: Add a shared content for logos and social-media-buttons
 #
 'Ws.Fshsite:Homepage':
   ui:
@@ -29,22 +24,12 @@
   superTypes:
     'TYPO3.Neos.NodeTypes:Page': TRUE
   childNodes:
-    'footer':
-      position: 'end'
-      type: 'TYPO3.Neos:ContentCollection'
-      constraints:
-        nodeTypes:
-          '*': FALSE
-          'TYPO3.Neos.NodeTypes:Headline': TRUE
-          'TYPO3.Neos.NodeTypes:Text': TRUE
-          'TYPO3.Neos.NodeTypes:Image': TRUE
     'sharedContent':
       type: 'TYPO3.Neos:ContentCollection'
       constraints:
         nodeTypes:
           '*': TRUE
-    'menuContent':
-      position: 'start'
+    'footer':
       type: 'TYPO3.Neos:ContentCollection'
       constraints:
         nodeTypes:
@@ -52,7 +37,7 @@
           'TYPO3.Neos.NodeTypes:Headline': TRUE
           'TYPO3.Neos.NodeTypes:Text': TRUE
           'TYPO3.Neos.NodeTypes:Image': TRUE
-          'TYPO3.Neos.NodeTypes:ThreeColumn': TRUE
+      position: 'end'
   constraints:
     nodeTypes:
       'Ws.Fshsite:Homepage': FALSE
@@ -63,14 +48,22 @@
 #
 'TYPO3.Neos.NodeTypes:Page':
   childNodes:
-    menu:
+    'menu':
       type: 'TYPO3.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': FALSE
+          'TYPO3.Neos.NodeTypes:ThreeColumn': TRUE
+          'TYPO3.Neos.NodeTypes:Menu': TRUE
+          'TYPO3.Neos.NodeTypes:Text': TRUE
+          'TYPO3.Neos.NodeTypes:Image': TRUE
+          'TYPO3.Neos.NodeTypes:TextWithImage': TRUE
     'topslider':
       type: 'TYPO3.Neos:ContentCollection'
       constraints:
         nodeTypes:
-          '*': TRUE
-      position : 'after menucontent'
+          '*': FALSE
+          'Ws.Fshsite:Carousel': TRUE     
   ui:
     inspector:
       groups:
@@ -1008,3 +1001,11 @@
         inspector:
           group: button
           editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
+
+# FIXME: these nodetypes are diabled in johannessteu/neos-nodetypes package, but are used on the site!
+'TYPO3.Neos.NodeTypes:Page':
+  abstract: ~
+'TYPO3.Neos.NodeTypes:Form':
+  abstract: ~
+'TYPO3.Neos.NodeTypes:TwoColumn':
+  abstract: ~
