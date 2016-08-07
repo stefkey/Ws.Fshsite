@@ -2,6 +2,7 @@
 /Configuration/
 /Data/
 /Packages/Application/*
+!/Packages/Application/Ws.FshImport
 /Packages/Framework/
 /Packages/Inactive/
 /Packages/Neos/
