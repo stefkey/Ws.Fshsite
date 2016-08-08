@@ -17,3 +17,9 @@ Ttree:
           importerOptions:
             targetNode: 'node-57a789fac7f87'
             siteNodePath: '/sites/fshsite'
+        'groupContent':
+          label: 'Import Groups'
+          dataProviderClassName: 'Ws\FshImport\DataProvider\GroupContentDataProvider'
+          importerClassName: 'Ws\FshImport\GroupContentImporter'
+          importerOptions:
+            siteNodePath: '/sites/fshsite'
