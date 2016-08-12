@@ -40,7 +40,8 @@
         "flowpack/searchplugin": "^2.0",
         "johannessteu/neos-nodetypes": "dev-master",
 	      "typo3/formbuilder": "dev-master",
-        "simplyadmire/neos-form-builder-bundle": "^1.0"
+        "simplyadmire/neos-form-builder-bundle": "^1.0",
+        "ttree/contentrepositoryimporter": "*"
     },
     "require-dev": {
         "typo3/buildessentials": "3.2.x-dev",

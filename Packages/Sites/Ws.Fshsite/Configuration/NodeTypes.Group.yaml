@@ -1,0 +1,23 @@
+'Ws.Fshsite:Group':
+  superTypes:
+    'TYPO3.Neos:Document': true
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+  ui:
+    label: 'Group'
+    inspector:
+      groups:
+        'group':
+          label: 'Group'
+  properties:
+    title:
+      type: 'string'
+    zip:
+      type: 'string'
+      ui:
+        label: 'ZIP-code'
+        inspector:
+          group: 'group'
+    originalIdentifier:
+      type: 'string'

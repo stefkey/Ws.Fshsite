@@ -1,0 +1,25 @@
+Ttree:
+  ContentRepositoryImporter:
+    sources:
+      default:
+        host: db
+        driver: pdo_mysql
+        dbname: db
+        user: admin
+        password: pass
+        charset: UTF8
+    presets:
+      'base':
+        'groups':
+          label: 'Import Groups'
+          dataProviderClassName: 'Ws\FshImport\DataProvider\GroupDataProvider'
+          importerClassName: 'Ws\FshImport\GroupImporter'
+          importerOptions:
+            targetNode: 'node-57a789fac7f87'
+            siteNodePath: '/sites/fshsite'
+        'groupContent':
+          label: 'Import Groups'
+          dataProviderClassName: 'Ws\FshImport\DataProvider\GroupContentDataProvider'
+          importerClassName: 'Ws\FshImport\GroupContentImporter'
+          importerOptions:
+            siteNodePath: '/sites/fshsite'
