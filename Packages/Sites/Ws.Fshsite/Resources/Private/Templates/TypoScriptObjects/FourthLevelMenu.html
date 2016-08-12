@@ -1,16 +1,47 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
 <f:render section="itemList" arguments="{items: items}" />
-
+    
 <f:section name="itemList">
-	<f:if condition="{items}">
-		<nav class="navbar fourth-level-navigation" role="navigation">
-			<ul class="nav nav-pills">
-				<f:for each="{items}" as="item">
-					<li class="{item.state}">
-						<neos:link.node node="{item.node}">{item.label}</neos:link.node>
-					</li>
-				</f:for>
-			</ul>
-		</nav>
-	</f:if>
+<nav class="navbar fourth-level-navigation" role="navigation">
+    <ul class="nav">
+        <f:for each="{items}" as="item">
+            <f:if condition='{item.state} == "current"'>
+                <li class="{item.state}" id="m{item.node.identifier}">
+                    <f:if condition="{item.subItems}">
+                        <f:then>
+                            <neos:link.node node="{item.node}">{item.label}</neos:link.node>
+                            <f:render section="subList" arguments="{items: item.subItems}"/>
+                        </f:then>
+                        <f:else>
+                            <neos:link.node node="{item.node}">{item.label}</neos:link.node>
+                        </f:else>
+                    </f:if>
+                </li>
+            </f:if>
+            <f:if condition='{item.state} == "active"'>
+                <li class="{item.state}" id="m{item.node.identifier}">
+                    <f:if condition="{item.subItems}">
+                        <f:then>
+                            <neos:link.node node="{item.node}">{item.label}</neos:link.node>
+                            <f:render section="subList" arguments="{items: item.subItems}"/>
+                        </f:then>
+                        <f:else>
+                            <neos:link.node node="{item.node}">{item.label}</neos:link.node>
+                        </f:else>
+                    </f:if>
+                </li>
+            </f:if>
+        </f:for>
+    </ul>
+</nav>
+</f:section>
+
+<f:section name="subList">
+    <ul class="third-level-sub-navigation nav ">
+        <f:for each="{items}" as="item">
+            <li class="{item.state}" id="m{item.node.identifier}">
+                <neos:link.node node="{item.node}">{item.label}</neos:link.node>
+            </li>
+        </f:for>
+    </ul>
 </f:section>

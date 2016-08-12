@@ -9,7 +9,7 @@
 		<f:section name="stylesheets">
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300%7CSource+Sans+Pro:400%7CLato:100,300,regular,700,900%7COpen+Sans:300%7CIndie+Flower:regular%7COswald:300,regular,700%7COswald%3A400%2C300%7COpen+Sans%3A400%2C300&subset=latin%2Clatin-ext" />
 			<link rel="stylesheet" href="{f:uri.resource(path: '3/css/bootstrap.min.css', package: 'TYPO3.Twitter.Bootstrap')}" media="all" />
-            <link rel="stylesheet" href="{f:uri.resource(path: 'Styles/styles.css', package: 'Ws.Fshsite')}" media="all" />
+
 			<link rel="stylesheet" href="{f:uri.resource(path: 'Styles/Print.css', package: 'Ws.Fshsite')}" media="print" />
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 			<f:if condition="{node.context.workspace.name} != 'live'">
@@ -44,23 +44,11 @@
 					</div>
 				</div>
 			</f:if>
-			<div class="container sj-small-container">
+			<div class="container">
 					{parts.breadcrumb -> f:format.raw()}
 			</div>
 			<div class="main">
 				{content.main -> f:format.raw()}
-				<f:if condition="{node.properties.showLastModificationDate}">
-                    <div class="container sj-lastModDate sj-small-container">Zuletzt aktualisiert am: 
-						<f:if condition="{node.properties.lastModificationDate}">
-							<f:then>
-								<f:format.date format="d. F Y">{node.properties.lastModificationDate}</f:format.date>
-							</f:then>
-							<f:else>
-								<f:format.date format="d. F Y">{node.lastPublicationDateTime}</f:format.date>
-							</f:else>
-						</f:if>
-                    </div>
-				</f:if>
 			</div>
             {sharedContent -> f:format.raw()}
 			<footer role="navigation" class="footer">
@@ -89,6 +77,7 @@
 			<script src="{f:uri.resource(path: '3/js/bootstrap.min.js', package: 'TYPO3.Twitter.Bootstrap')}"></script>
 			<script src="{f:uri.resource(path: 'JavaScript/main.min.js', package: 'Ws.Fshsite')}"></script>
 					<script src="{f:uri.resource(path: 'JavaScript/site.js', package: 'Ws.Fshsite')}"></script>
+            <link rel="stylesheet" href="{f:uri.resource(path: 'Styles/styles.css', package: 'Ws.Fshsite')}" media="all" />
 		</f:section>
 	</body>
 </html>

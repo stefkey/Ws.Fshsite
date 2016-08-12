@@ -55,12 +55,16 @@ page = Page {
 				maximumLevels = 3
 			}
 
-			FourthLevelMenu = Menu {
-				entryLevel = 3
+			fourthLevelMenu = Menu {
+				entryLevel = 4
 				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/FourthLevelMenu.html'
 				maximumLevels = 2
 			}
-
+			thirdLevelMenu = Menu {
+				entryLevel = 3
+				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/ThirdLevelMenu.html'
+				maximumLevels = 3
+			}
 			headerMenu = Menu {
 				entryLevel = 2
 				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/HeaderMenu.html'
@@ -129,6 +133,17 @@ sidebar {
 	bodyTag.attributes.class = 'sidebar'
 	body {
 		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Sidebar.html'
+		title = ${q(node).property('title')}
+		title.@process.convertUris = ConvertUris
+	}
+}
+
+// SJ Homepage
+homepage < page
+homepage {
+	bodyTag.attributes.class = 'homepage'
+	body {
+		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Homepage.html'
 		title = ${q(node).property('title')}
 		title.@process.convertUris = ConvertUris
 	}
@@ -238,22 +253,32 @@ prototype(Networkteam.Neos.Shariff:Shariff) {
 }
 
 prototype(TYPO3.Neos.NodeTypes:Text) {
-	attributes.class = 'container'
+	attributes.class = 'container sj-small-container'
 }
 prototype(TYPO3.Neos.NodeTypes:Headline) {
-	attributes.class = 'container'
+	attributes.class = 'container sj-small-container'
 }
 prototype(TYPO3.Neos.NodeTypes:Image) {
-	attributes.class = 'container'
+	attributes.class = 'container sj-small-container'
 }
 prototype(TYPO3.Neos.NodeTypes:MultiColumn) {
-	attributes.class = 'container'
+	attributes.class = 'container sj-small-container'
 }
 prototype(Flowpack.SearchPlugin:Search) {
-	attributes.class = 'container'
+	attributes.class = 'container sj-small-container'
 }
 prototype(TYPO3.Neos.NodeTypes:Form) {
 	attributes.class = 'container'
+}
+prototype(Flowpack.Neos.FrontendLogin:LoginForm) {
+	attributes.class = 'container sj-small-container'
+}
+# Menu TS Object - extends TYPO3.Neos:Menu and is rendering menus inserted as content elements
+prototype(TYPO3.Neos.NodeTypes:Menu) {
+	attributes.class = 'container sj-small-container'
+}
+prototype(TYPO3.Neos.NodeTypes:AssetList)  {
+	attributes.class = 'container sj-small-container'
 }
 
 ##
@@ -313,17 +338,72 @@ prototype(Ws.Fshsite:QuickLinks) < prototype(TYPO3.Neos:Content) {
 #}
 
 prototype(JohannesSteu.Neos.NodeTypes:Accordeon) {
-	attributes.class = 'container sj-accordeon accordeon'
+	attributes.class = 'container sj-accordeon accordeon sj-small-container'
 }
 
 ##
 # SJ Button
 #
 prototype(Ws.Fshsite:Button) < prototype(TYPO3.Neos:Content) {
-        templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/Button.html'
-        text = ${q(node).property('text')}
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/Button.html'
+    text = ${q(node).property('text')}
+    link = ${q(node).property('link')}
+    buttonClassName = ${q(node).property('alignment') ? ('sj-button-' + q(node).property('alignment')) : ''}
 }
 
+##
+# SJ MenuLink for Node menuContent
+#
+prototype(Ws.Fshsite:MenuLink) < prototype(TYPO3.Neos:Content) {
+        templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/MenuLink.html'
+        text = ${q(node).property('text')}
+        image = ${q(node).property('image')}
+        beschreibung = ${q(node).property('beschreibung')}
+        link = ${q(node).property('link')}
+}
+
+##
+# SJ ColorArea
+#
+prototype(Ws.Fshsite:ColorArea) < prototype(TYPO3.Neos:Content) {
+    @context.classname = 'colorarea'
+
+    classname = ${classname}
+
+    attributes.class = ${classname}
+    attributes.data-accordeon = ""
+    attributes.class.@process.nodeType >
+
+    content = TYPO3.Neos:ContentCollection {
+        attributes.class = ${classname + "__content-collection"}
+        nodePath = ${q(node).children('content').property('_path')}
+        collection = ${q(node).children('content').children()}
+    }
+}
+
+##
+# SJ VideoFrame
+#
+prototype(Ws.Fshsite:Video) < prototype(TYPO3.Neos:Content) {
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/VideoFrame.html'
+    video = ${q(node).property('video')}
+}
+
+##
+# SJ Order
+#
+prototype(TYPO3.Neos.NodeTypes:Form) {
+    attributes.class = 'container sj-small-container'
+}
+
+##
+# SJ JohannesSteu Accordeon
+#
+prototype(TYPO3.Neos:Page) {
+    head.stylesheets.accordeon = TYPO3.TypoScript:Tag {
+        @position = 'start'
+    }
+}
 
 ##
 # SJ JohannesSteu Code for search page
@@ -336,8 +416,10 @@ prototype(Flowpack.SearchPlugin:Search) {
 }
 
 prototype(TYPO3.Neos:DocumentSearchResult) < prototype(TYPO3.TypoScript:Template) {
-    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/DocumentSearchResult.html'
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/NodeTypes/DocumentSearchResult.html'
     teaserImage = ${q(node).property('image')}
     title = ${q(node).property('title')}
     headline = ${q(node).property('headline')}
 }
+
+

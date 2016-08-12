@@ -10,7 +10,7 @@
 
             <div class="row">
                 <div class="col-sm-12 relative" >
-                    <div class="bg-image" style="height:507px;;background-image:url({f:uri.resource(path: 'Images/bg1Rect.jpg', package: 'Ws.Fshsite')})">
+                    <div class="bg-image" <f:if condition="{image1}"><f:then>style="background-image: url({media:uri.image(image: image1)}); height: 507px;"></f:then><f:else>style="background-image: url({f:uri.resource(path: 'Images/bg1Rect.jpg', package: 'Ws.Fshsite')}); height: 507px; "></f:else></f:if>
 
                         <div class="contentRight">
                             <div class="contentText">
@@ -35,7 +35,7 @@
             <div class="row" style="margin-bottom: 0px;">
 
                 <div class="col-sm-6">
-                    <div class="bg-image" style="height:260px;;background-image:url({f:uri.resource(path: 'Images/bgAktuelles.jpg', package: 'Ws.Fshsite')})">
+                    <div class="bg-image" <f:if condition="{image3}"><f:then>style="background-image: url({media:uri.image(image: image3)}); height: 260px;"></f:then><f:else>style="background-image: url({f:uri.resource(path: 'Images/bgAktuelles.jpg', package: 'Ws.Fshsite')}); height: 260px; "></f:else></f:if>
                         <div class="content">
                             <div class="contentText">
                                 {neos:contentElement.editable(property: 'headline2', tag: 'h2')}
@@ -56,7 +56,7 @@
                 </div><!—- end col-sm-6 —->
 
                 <div class="col-sm-6">
-                    <div class="bg-image" style="height:260px;;background-image:url({f:uri.resource(path: 'Images/bgGruppe.jpg', package: 'Ws.Fshsite')})">
+                    <div class="bg-image" <f:if condition="{image4}"><f:then>style="background-image: url({media:uri.image(image: image4)}); height: 260px;"></f:then><f:else>style="background-image: url({f:uri.resource(path: 'Images/bgGruppe.jpg', package: 'Ws.Fshsite')}); height: 260px; "></f:else></f:if>
                         <div class="content">
                             <div class="contentText">
                                 {neos:contentElement.editable(property: 'headline3', tag: 'h2')}
@@ -80,10 +80,52 @@
         </div><!—- end col-sm-8 -—>
 
         <div class="col-sm-4">
-            <div class="bg-image" style="height: 801px ! important;background-image:url({f:uri.resource(path: 'Images/bgLongRectRight.jpg', package: 'Ws.Fshsite')})">
+            <div class="bg-image" <f:if condition="{image2}"><f:then>style="background-image: url({media:uri.image(image: image2)}); height: 801px;"></f:then><f:else>style="background-image: url({f:uri.resource(path: 'Images/bgForum.jpg', package: 'Ws.Fshsite')}); height: 801px; "></f:else></f:if>
                 <div class="contentOrange90">
                     <div class="contentText">
                         {neos:contentElement.editable(property: 'headline4', tag: 'h2')}
+<div class="teaser_text">
+<h3>Krankenkasse will Verzichtserklärung</h3>
+<p>Ich möchte eine Reha über die Krankenkasse beantragen und zwar an de Ostsee &quot;gemeinsam gesund werden&quot;<br />Ich habe mal gelesen, dass man bei Brustkrebs mehr Anspruch auf Reha hat,... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3633" title="Link zu 'Krankenkasse will Verzichtserklärung'" target="_blank">weiterlesen</a></p>
+<hr class="noshade"/>
+
+<h3>Brustangleichung/brustverkleinerung</h3>
+<p>Hallo Mädels, Meine brustkrebserkrankung liegt jetzt 8 jahre zurück. Bei mir würde die rechte brust brusterhaltend operiert. Mir geht's gut und ich bin auch gesund . Mein Problem ist nur das die... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3632" title="Link zu 'Brustangleichung/brustverkleinerung'" target="_blank">weiterlesen</a></p>
+<hr class="noshade"/>
+
+<h3>Tumorregressionsgrad nach Sinn, kennt sich jemand aus?</h3>
+<p>Hallo,<br />weiss jemand was Tumorregressiongrad nach Sinn bedeutet? Meiner ist nämlich null. Heisst das, dass die Chemo garnix gebracht hat?<br />Ich mein er ist ja zumindest angeblich kleiner... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3630" title="Link zu 'Tumorregressionsgrad nach Sinn, kennt sich jemand aus?'" target="_blank">weiterlesen</a></p>
+<hr class="noshade"/>
+
+<h3>Bin auch neu hier</h3>
+<p>Ihr Lieben,<br />kurz zu mir: Bei mir wurde kurz nach meinen 61. Geburtstag im Mai ein Mamma Ca re. festgestellt (bzw. ich habe den Knoten selber getastet), operiert und jetzt befinde ich mich... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3629" title="Link zu 'Bin auch neu hier'" target="_blank">weiterlesen</a></p>
+<hr class="noshade"/>
+
+<h3>doch nur G1 Tumor und was jetzt?????</h3>
+<p>Hallo Ihr lieben,<br />so wie es aussieht hatte ich keinen G2 Tumor sondern nur G1. Her2 neu negativ.<br />Man hat mir heute gesagt, dass man mir unter diesen Vorraussetzung nicht zu einer Chemo... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3625" title="Link zu 'doch nur G1 Tumor und was jetzt?????'" target="_blank">weiterlesen</a></p>
+<hr class="noshade"/>
+
+<h3>Nebenwirkung Aromatasehemmer</h3>
+<p>Hallo,<br />habe noch einmal eine Frage zu den NW ATH.  <br />Im Packzettel Anastrozol steht nichts zu... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3622" title="Link zu 'Nebenwirkung Aromatasehemmer'" target="_blank">weiterlesen</a></p>
+<hr class="noshade"/>
+
+<h3>Immer wieder diese Unsicherheit</h3>
+<p>Hallo ihr Lieben,<br />ich fürchte ich bin ein exotischer Einzelfall mit meiner Geschichte, aber vielleicht habt ihr ja trotzdem ein paar Tipps oder einfach nur ein paar gute Worte für... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3621" title="Link zu 'Immer wieder diese Unsicherheit'" target="_blank">weiterlesen</a></p>
+<hr class="noshade"/>
+
+<h3>und noch ne Neue</h3>
+<p>Ich möchte mich erst mal kurz vorstellen. Ich bin 50 Jahre alt, bin verheiratet und habe 2 Kinder, die leider nicht in der Nähe wohnen. Gleich beim ersten Mal Mammographie wurde mein Tumor entdeckt.... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3620" title="Link zu 'und noch ne Neue'" target="_blank">weiterlesen</a></p>
+<hr class="noshade"/>
+
+<h3>Chemosensibilitäts-Test</h3>
+<p>Hallo zusammen, <br />ich wollte mal fragen, ob jemand von Euch Erfahrungen mit einem Chemo-Sensibilitäts-Test hat. <br />Ich hatte neoadjuvante Chemo, der erste Teil schlug gut an, der zweite... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3619" title="Link zu 'Chemosensibilitäts-Test'" target="_blank">weiterlesen</a></p>
+<hr class="noshade"/>
+
+<h3>Ich bin etwas verunsichert....</h3>
+<p>Hallo Ihr Lieben,<br />je näher der Tag der Chemo kommt umso verunsicherter werde ich.....ob der Weg der richtige ist.<br />Der große aggressive Tumor ist ja in der linken Brust und man geht auch... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3618" title="Link zu 'Ich bin etwas verunsichert....'" target="_blank">weiterlesen</a></p>
+<hr class="noshade"/>
+
+</div>
                     </div>
                 </div>
             </div>
@@ -94,8 +136,7 @@
     <div class="row">
 
         <div class="col-sm-6">
-
-            <div class="bg-image" style="height: 380px ! important;background-image:url({f:uri.resource(path: 'Images/bgKontakt.jpg', package: 'Ws.Fshsite')})">
+            <div class="bg-image" <f:if condition="{image5}"><f:then>style="background-image: url({media:uri.image(image: image5)}); height: 380px;"></f:then><f:else>style="background-image: url({f:uri.resource(path: 'Images/bgKontakt.jpg', package: 'Ws.Fshsite')}); height: 380px; "></f:else></f:if>
                 <div class="contentLeftOrange65">	       
                     <div class="contentText">
                         {neos:contentElement.editable(property: 'headline5', tag: 'h2')}
@@ -117,8 +158,7 @@
         </div><!—- end col-sm-6 -—>
 
         <div class="col-sm-6">
-
-            <div class="bg-image" style="height: 380px ! important;background-image:url({f:uri.resource(path: 'Images/bgBeratung.jpg', package: 'Ws.Fshsite')})">
+            <div class="bg-image" <f:if condition="{image6}"><f:then>style="background-image: url({media:uri.image(image: image6)}); height: 380px;"></f:then><f:else>style="background-image: url({f:uri.resource(path: 'Images/bgBeratung.jpg', package: 'Ws.Fshsite')}); height: 380px; "></f:else></f:if>
                 <div class="contentRight65">		        
                     <div class="contentText">
                         {neos:contentElement.editable(property: 'headline6', tag: 'h2')}
@@ -144,7 +184,7 @@
     <div class="row">
 
         <div class="col-sm-8">
-            <div class="bg-image" style="height:260px ! important;background-image:url({f:uri.resource(path: 'Images/bgInfothek.jpg', package: 'Ws.Fshsite')})">
+            <div class="bg-image" <f:if condition="{image7}"><f:then>style="background-image: url({media:uri.image(image: image7)}); height: 260px;"></f:then><f:else>style="background-image: url({f:uri.resource(path: 'Images/bgInfothek.jpg', package: 'Ws.Fshsite')}); height: 260px; "></f:else></f:if>
                 <div class="contentRight">
                     <div class="contentText">
                         {neos:contentElement.editable(property: 'headline7', tag: 'h2')}
@@ -165,7 +205,7 @@
         </div><!—- end col-sm-8 -—>
 
         <div class="col-sm-4" >
-            <div class="bg-image" style="height:260px ! important;background-image:url({f:uri.resource(path: 'Images/bgMember.jpg', package: 'Ws.Fshsite')})">
+            <div class="bg-image" <f:if condition="{image8}"><f:then>style="background-image: url({media:uri.image(image: image8)}); height: 260px;"></f:then><f:else>style="background-image: url({f:uri.resource(path: 'Images/bgMember.jpg', package: 'Ws.Fshsite')}); height: 260px; "></f:else></f:if>
                 <div class="content">
                     <div class="contentText">
                         {neos:contentElement.editable(property: 'headline8', tag: 'h2')}

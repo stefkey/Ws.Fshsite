@@ -1,7 +1,11 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
 {namespace media=TYPO3\Media\ViewHelpers}
-    <div class="container">
-        <a href="{link}" class="sj-button">
-            {neos:contentElement.editable(property: 'text', tag: 'span')}
-        </a>
+<div class="container sj-small-container">
+    <div{f:if(condition: buttonClassName, then: ' class="{buttonClassName}"')}>
+        <f:if condition="{link}">
+            <a href="{link}" class="sj-button">
+                {neos:contentElement.editable(property: 'text', tag: 'span')}
+            </a>
+        </f:if>
     </div>
+</div>

@@ -15,17 +15,18 @@
             </button>
 
             <a href="{neos:uri.node(node: '~')}">
-                <img src="{f:uri.resource(path: 'Images/logo-fsh_350x105@2x.png', package: 'Ws.Fshsite')}" width="350" alt="Logo der Frauenselbsthilfe nach Krebs"/>
+                <img src="{f:uri.resource(path: 'Images/Logo-FSH-40_352x105.png', package: 'Ws.Fshsite')}" alt="Logo der Frauenselbsthilfe nach Krebs"/>
             </a>
         </div>
         <div class="collapse navbar-collapse navbar-main-collapse">
             <ul class="nav nav-pills mainNav">
                 <f:for each="{items}" as="item" iteration="menuItemIterator">
-                    <li class="firstLevel {item.state} m{item.node.identifier}" id="{item.node.identifier}">
+                    <li class="firstLevel {item.state} m{item.node.identifier}" id="m{item.node.identifier}">
 
                         <f:if condition="{item.subItems}">
                             <f:then>
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{item.label}</a>
+                                <neos:link.node node="{item.node}">{item.label}</neos:link.node>
+                                
                                 <f:render section="subList" arguments="{items: item.subItems, node: item.node}"/>
                             </f:then>
                             <f:else>
@@ -43,14 +44,22 @@
 </f:section>
 
 <f:section name="subList">
-    <div class="sj-menu-wrapper">
+    <div class="sj-menu-wrapper sj-fade">
     <ul class="second-level-sub-navigation nav">
         <f:for each="{items}" as="item">
-            <li class="{item.state}" id="{item.node.identifier}">
-
+            <li class="{item.state}" id="m{item.node.identifier}">
                 <f:if condition="{item.subItems}">
                     <f:then>
-                        <neos:link.node node="{item.node}">{item.label}</neos:link.node>
+
+						<f:if condition='{item.node.nodeType.name} ==  "TYPO3.Neos.NodeTypes:Page"'>
+							<f:then>
+								<neos:link.node node="{item.node}">{item.label}</neos:link.node> 
+							</f:then>
+							<f:else>
+                                <a>{item.label}</a>
+							</f:else>
+						</f:if>
+                        
                         <f:render section="subSubList" arguments="{items: item.subItems}"/>
                     </f:then>
                     <f:else>
@@ -63,9 +72,9 @@
 
     </ul>
     <div class="sj-additionalContent">
-      <div>
-          <ts:render path="menuContent" context="{node: node}" />
-      </div>
+        <div>
+            <ts:render path="menuContent" context="{node: node}" />
+        </div>
     </div>
     </div>
 </f:section>
@@ -73,7 +82,7 @@
 <f:section name="subSubList">
     <ul class="third-level-sub-navigation nav ">
         <f:for each="{items}" as="item">
-            <li class="{item.state}" id="{item.node.identifier}">
+            <li class="{item.state}" id="m{item.node.identifier}">
                 <neos:link.node node="{item.node}">{item.label}</neos:link.node>
             </li>
         </f:for>
