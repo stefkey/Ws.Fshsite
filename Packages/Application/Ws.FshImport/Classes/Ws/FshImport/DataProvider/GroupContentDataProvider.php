@@ -21,7 +21,7 @@ class GroupContentDataProvider extends DataProvider {
 			if ($record['idtype'] == 1) {
 				$entry = [];
 				$entry['_type'] = 'TYPO3.Neos.NodeTypes:Headline';
-				$entry['title'] = strip_tags($value);
+				$entry['title'] = '<h2>' . strip_tags($value) . '</h2>';
 				$nodes = [$entry];
 			} else if ($record['idtype'] == 2) {
 				$nodes = $this->parseHtml($value);
@@ -38,17 +38,24 @@ class GroupContentDataProvider extends DataProvider {
 		return $result;
 	}
 
-	private function DomElementToHtml($element) {
+	protected function domElementToHtml($element) {
 		$tempDom = new \DOMDocument();
 		$clonedNode = $element->cloneNode(true);
 		$tempDom->appendChild($tempDom->importNode($clonedNode, true));
 		return html_entity_decode(trim($tempDom->saveHTML()));
 	}
 
-	private function parseHtml($html) {
+	protected function parseHtml($html) {
 		if (!$html) {
 			return null;
 		}
+
+		// Replace b and i tags
+		$html = str_replace('<b>', '<strong>', $html);
+		$html = str_replace('</b>', '</strong>', $html);
+		$html = str_replace('<i>', '<em>', $html);
+		$html = str_replace('</i>', '</em>', $html);
+
 		$dom = new \DOMDocument;
 		// Ignore warnings
 		libxml_use_internal_errors(true);
@@ -63,24 +70,22 @@ class GroupContentDataProvider extends DataProvider {
 			$item->removeAttribute("style");
 		}
 
-		// TODO:
-		// B->strong, em->i
-		// edgecases!
+		// p.headlin -> h3
+		$headings = $xpath->query("//p[contains(@class, 'headline')]");
+		foreach($headings as $item) {
+			$newNode = $dom->createElement('h3', $item->nodeValue);
+			$item->parentNode->replaceChild($newNode, $item);
+			$item->removeAttribute("style");
+		}
 
+		// Iterate over all top-level nodes, and split them into Image nodes and Text nodes
 		$pointer = 0;
 		$nodes = [];
 
 		// Iterate over all top-level nodes
 		foreach ($dom->getElementsByTagName('body')->item(0)->childNodes as $element) {
-			// TODO: handel multiple assets in one paragraph
-			if ($asset = $xpath->query(".//a[starts-with(@href, 'upload/')]", $element)->item(0)) {
-				$pointer++;
-				$nodes[$pointer] = array(
-					'_type' => 'TYPO3.Neos.NodeTypes:Asset',
-					'asset' => $asset->getAttribute('href'),
-					'description' => $asset->nodeValue
-				);
-			} else if ($img = $xpath->query(".//img[starts-with(@src, 'upload/')]", $element)->item(0)) {
+			// Find all images
+			foreach($xpath->query(".//img[starts-with(@src, 'upload/')]", $element) as $img) {
 				$pointer++;
 				$nodes[$pointer] = array(
 					'_type' => 'TYPO3.Neos.NodeTypes:Image',
@@ -88,22 +93,29 @@ class GroupContentDataProvider extends DataProvider {
 					'alt' => $img->getAttribute('alt'),
 					'floated' => $img->getAttribute('class') === 'bild_links'
 				);
-			} else {
-				$text = $this->DomElementToHtml($element);
-				if ($text) {
-					$prevValue = '';
-					if (isset($nodes[$pointer])) {
-						if ($nodes[$pointer]['_type'] === 'TYPO3.Neos.NodeTypes:Text') {
-							$prevValue = $nodes[$pointer]['text'];
-						} else {
-							$pointer++;
-						}
-					}
-					$nodes[$pointer] = array(
-						'_type' => 'TYPO3.Neos.NodeTypes:Text',
-						'text' => $prevValue . $text
-					);
+				// Remove image tag of newly added image
+				$img->parentNode->removeChild($img);
+			}
+			// Remove empty tags
+			while (($nodeList = $xpath->query('//*[not(*) and not(@*) and not(text()[normalize-space()])]')) && $nodeList->length) {
+				foreach ($nodeList as $node) {
+					$node->parentNode->removeChild($node);
 				}
+			}
+			$text = $this->domElementToHtml($element);
+			if ($text) {
+				$prevValue = '';
+				if (isset($nodes[$pointer])) {
+					if ($nodes[$pointer]['_type'] === 'TYPO3.Neos.NodeTypes:Text') {
+						$prevValue = $nodes[$pointer]['text'];
+					} else {
+						$pointer++;
+					}
+				}
+				$nodes[$pointer] = array(
+					'_type' => 'TYPO3.Neos.NodeTypes:Text',
+					'text' => $prevValue . $text
+				);
 			}
 		}
 		return $nodes;

@@ -63,7 +63,7 @@
       constraints:
         nodeTypes:
           '*': FALSE
-          'Ws.Fshsite:Carousel': TRUE     
+          'Ws.Fshsite:Carousel': TRUE
   ui:
     inspector:
       groups:
@@ -244,6 +244,16 @@
               '': ~
               'contact-form':
                 label: 'Neos.Demo:NodeTypes.Form:properties.formIdentifier.selectBoxEditor.value.contact-form'
+
+'TYPO3.Neos.NodeTypes:Image':
+  properties:
+    floated:
+      type: boolean
+      ui:
+        label: 'Is image floated?'
+        inspector:
+          group: image
+
 
 ##
 # A new Document NodeType "Chapter"

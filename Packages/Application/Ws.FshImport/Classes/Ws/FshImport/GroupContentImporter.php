@@ -11,6 +11,8 @@ use TYPO3\Flow\Object\ObjectManagerInterface;
 use TYPO3\Flow\Resource\ResourceManager;
 use TYPO3\Media\Domain\Model\Image;
 use TYPO3\Media\Domain\Model\ImageVariant;
+use TYPO3\Media\Domain\Model\Asset;
+use TYPO3\Media\Domain\Repository\AssetRepository;
 use TYPO3\Media\Domain\Repository\ImageRepository;
 use TYPO3\Flow\Persistence\PersistenceManagerInterface;
 
@@ -34,6 +36,12 @@ class GroupContentImporter extends Importer
 	 */
 	protected $imageRepository;
 
+	/**
+	 * @Flow\Inject
+	 * @var AssetRepository
+	 */
+	protected $assetRepository;
+
 	public function process()
 	{
 		$nodeTemplate = new NodeTemplate();
@@ -46,14 +54,11 @@ class GroupContentImporter extends Importer
 	 */
 	public function processRecord(NodeTemplate $nodeTemplate, array $data)
 	{
-		// $this->log(print_r($data, 1));
-
+		$this->log(print_r($data, 1));
+		//return;
 		$this->unsetAllNodeTemplateProperties($nodeTemplate);
 
 		$externalIdentifier = $data['__externalIdentifier'];
-		if ($this->skipNodeProcessing($externalIdentifier, '123', $this->siteNode, false)) {
-			return null;
-		}
 
 		$groupRecordMapping = $this->processedNodeService->get('Ws\FshImport\GroupImporter', $data['__parentIdentifier']);
 		if ($groupRecordMapping === null) {
@@ -77,36 +82,71 @@ class GroupContentImporter extends Importer
 		$nodeTemplate = new NodeTemplate();
 		$nodeTemplate->setNodeType($this->nodeTypeManager->getNodeType($contentItem['_type']));
 		switch ($contentItem['_type']) {
+			case 'TYPO3.Neos.NodeTypes:Image':
+				$asset = $this->downloadAndImportImage($contentItem['image']);
+				$nodeTemplate->setProperty('image', $asset);
+				$nodeTemplate->setProperty('alternativeText', $contentItem['alt']);
+				$nodeTemplate->setProperty('floated', $contentItem['floated']);
+				break;
 			case 'TYPO3.Neos.NodeTypes:Headline':
 				$nodeTemplate->setProperty('title', $contentItem['title']);
 				break;
 			case 'TYPO3.Neos.NodeTypes:Text':
-				$nodeTemplate->setProperty('text', $contentItem['text']);
+				$html = $this->replaceResourceLinks($contentItem['text']);
+				$nodeTemplate->setProperty('text', $html);
 				break;
 		}
 		return $nodeTemplate;
 	}
 
-	protected function getFilePath($fileName) {
-		if (in_array(pathinfo(strtolower($fileName), PATHINFO_EXTENSION), ["jpg", "jpeg", "gif", "png"])) {
-			$filePath = FLOW_PATH_ROOT . 'uploads/' . $fileName;
-			if (!file_exists($filePath)) {
-				$this->log("Missing file: " . $filePath);
-			} else {
-				return $filePath;
-			}
-		} else {
-			$this->log("Illegal mediaItem file extension of file: " . $fileName);
-			return null;
+	protected function replaceResourceLinks($html) {
+		$dom = new \DOMDocument;
+		// Ignore warnings
+		libxml_use_internal_errors(true);
+		// Fix encoding issues
+		$dom->loadHTML('<?xml encoding="utf-8" ?>' . $html);
+		libxml_use_internal_errors(false);
+		$xpath = new \DomXPath($dom);
+
+		// Remove style from span tags
+		$items = $xpath->query("//a[starts-with(@href, 'upload/')]");
+		foreach($items as $item) {
+			$fileUrl = $item->getAttribute('href');
+			$asset = $this->downloadAndImportFile($fileUrl);
+			$item->setAttribute('href', 'asset://' . $asset->getIdentifier());
 		}
+		return $dom->saveHTML();
 	}
 
-	protected function importImage($filename) {
-		$resource = $this->resourceManager->importResource($filename);
+	protected function importResource($url) {
+		$filePath = FLOW_PATH_ROOT . 'assetsCache/' . $url;
+		// Cache file in local folder
+		if (!file_exists($filePath)) {
+			if (!file_exists(dirname($filePath))) {
+				mkdir(dirname($filePath), 0777, true);
+			}
+			$fullUrl = "http://www.frauenselbsthilfe.de/" . $url;
+			file_put_contents($filePath, fopen($fullUrl, 'r'));
+		}
+		$resource = $this->resourceManager->importResource($filePath);
+		return $resource;
+	}
 
+	protected function downloadAndImportFile($url) {
+		$resource = $this->importResource($url);
+		$asset = new Asset($resource);
+		$this->assetRepository->add($asset);
+		return $asset;
+	}
+
+	protected function downloadAndImportImage($url) {
+		if (!in_array(pathinfo(strtolower($url), PATHINFO_EXTENSION), ["jpg", "jpeg", "gif", "png"])) {
+			$this->log("Illegal image extenstion: " . $url, LOG_ERR);
+			return null;
+		}
+		$resource = $this->importResource($url);
 		$image = new Image($resource);
 		$this->imageRepository->add($image);
-
 		$processingInstructions = [];
 		return $this->objectManager->get('TYPO3\Media\Domain\Model\ImageVariant', $image, $processingInstructions);
 	}
