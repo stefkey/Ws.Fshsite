@@ -15,7 +15,7 @@ Ttree:
           dataProviderClassName: 'Ws\FshImport\DataProvider\GroupDataProvider'
           importerClassName: 'Ws\FshImport\GroupImporter'
           importerOptions:
-            targetNode: 'node-57a789fac7f87'
+            targetNode: 'g'
             siteNodePath: '/sites/fshsite'
         'groupContent':
           label: 'Import Groups'

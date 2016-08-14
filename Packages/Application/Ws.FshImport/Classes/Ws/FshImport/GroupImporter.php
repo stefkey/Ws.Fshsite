@@ -18,6 +18,16 @@ class GroupImporter extends Importer
 	{
 		$targetNodeName = $this->options['targetNode'];
 		$this->storageNode = $this->siteNode->getNode($targetNodeName);
+		if ($this->storageNode === null) {
+			$storageNodeTemplate = new NodeTemplate();
+			$storageNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('TYPO3.Neos:Shortcut'));
+			$storageNodeTemplate->setProperty('title', $targetNodeName);
+			$storageNodeTemplate->setProperty('uriPathSegment', $targetNodeName);
+			$storageNodeTemplate->setName($targetNodeName);
+			$this->storageNode = $this->siteNode->createNodeFromTemplate($storageNodeTemplate);
+		}
+
+
 
 		$nodeTemplate = new NodeTemplate();
 		$nodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Ws.Fshsite:Group'));
