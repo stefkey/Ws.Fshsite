@@ -13,8 +13,8 @@ privilegeTargets:
   'TYPO3\TYPO3CR\Security\Authorization\Privilege\Node\ReadNodePrivilege':
 
     'Ws.Fshsite:MembersArea':
-      # 639a033c-005b-4414-a9b7-3308efe0808e is the node identifier of the "member-area" node, by default located at "/sites/neosdemo/member-area"
-      matcher: isDescendantNodeOf("639a033c-005b-4414-a9b7-3308efe0808e")
+      # 99e259c0-37ce-4856-8174-ff349f0cbdee is the node identifier of the "member-area" node, by default located at "/sites/neosdemo/member-area"
+      matcher: isDescendantNodeOf("99e259c0-37ce-4856-8174-ff349f0cbdee")
       
     'Ws.Fshsite:MembersAreaLV':
       # e5871fb2-caa5-4ec8-8579-03d7504534c5 is the node identifier of the special child node, there show only for a special usergroup "FSH-LV", by default located at "/sites/Ws.Fshsite/member-area"

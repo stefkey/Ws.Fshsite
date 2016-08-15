@@ -41,7 +41,6 @@ TYPO3:
       fallbackRule:
         order: [ 'de' ]
 
-
 Neos:
   Demo:
     flickr:

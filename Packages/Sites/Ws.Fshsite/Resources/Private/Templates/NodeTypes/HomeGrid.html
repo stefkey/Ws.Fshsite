@@ -10,6 +10,9 @@
 
             <div class="row">
                 <div class="col-sm-12 relative" >
+                <f:if condition="{link}">
+                    <a href="{link}">
+                </f:if>
                     <div class="bg-image" <f:if condition="{image1}"><f:then>style="background-image: url({media:uri.image(image: image1)}); height: 507px;"></f:then><f:else>style="background-image: url({f:uri.resource(path: 'Images/bg1Rect.jpg', package: 'Ws.Fshsite')}); height: 507px; "></f:else></f:if>
 
                         <div class="contentRight">
@@ -19,22 +22,23 @@
                             </div>
                             <f:if condition="{link}">
                                 <div class="circleLink">
-
                                     <img src="{f:uri.resource(path: 'Images/circle.png', package: 'Ws.Fshsite')}" />
-
                                 </div>
                             </f:if>
                         </div>
-                        <f:if condition="{link}">
-                            <a href="{link}" class="circle"></a>
-                        </f:if>
                     </div>
+                <f:if condition="{link3}">
+                    </a>
+                </f:if>
                 </div>
             </div><!—- end row -—>
 
             <div class="row" style="margin-bottom: 0px;">
 
                 <div class="col-sm-6">
+                <f:if condition="{link2}">
+                    <a href="{link2}">
+                </f:if>
                     <div class="bg-image" <f:if condition="{image3}"><f:then>style="background-image: url({media:uri.image(image: image3)}); height: 260px;"></f:then><f:else>style="background-image: url({f:uri.resource(path: 'Images/bgAktuelles.jpg', package: 'Ws.Fshsite')}); height: 260px; "></f:else></f:if>
                         <div class="content">
                             <div class="contentText">
@@ -42,20 +46,20 @@
                             </div>
                             <f:if condition="{link2}">
                                 <div class="circleLink">
-
                                     <img src="{f:uri.resource(path: 'Images/circle.png', package: 'Ws.Fshsite')}" />
-
                                 </div>
                             </f:if>
                         </div>
-
-                        <f:if condition="{link2}">
-                            <a href="{link2}" class="circle"></a>
-                        </f:if>
                     </div>
+                    <f:if condition="{link2}">
+                        </a>
+                    </f:if>
                 </div><!—- end col-sm-6 —->
 
                 <div class="col-sm-6">
+                <f:if condition="{link3}">
+                    <a href="{link3}">
+                </f:if>
                     <div class="bg-image" <f:if condition="{image4}"><f:then>style="background-image: url({media:uri.image(image: image4)}); height: 260px;"></f:then><f:else>style="background-image: url({f:uri.resource(path: 'Images/bgGruppe.jpg', package: 'Ws.Fshsite')}); height: 260px; "></f:else></f:if>
                         <div class="content">
                             <div class="contentText">
@@ -63,16 +67,14 @@
                             </div>
                             <f:if condition="{link3}">
                                 <div class="circleLink">
-
                                     <img src="{f:uri.resource(path: 'Images/circle.png', package: 'Ws.Fshsite')}" />
-                                    </a>
                                 </div>
                             </f:if>
                         </div>
-                        <f:if condition="{link3}">
-                            <a href="{link3}" class="circle"></a>
-                        </f:if>
                     </div>
+                <f:if condition="{link3}">
+                    </a>
+                </f:if>
                 </div><!—- end col-sm-6 —->
 
             </div><!—- end row —->
@@ -84,7 +86,19 @@
                 <div class="contentOrange90">
                     <div class="contentText">
                         {neos:contentElement.editable(property: 'headline4', tag: 'h2')}
-<div class="teaser_text">
+      <div class="teaser_text">
+<h3>Unklarer Befund nach Lungenröntgen? Was tun?</h3>
+<p>Hallo ihr Lieben,<br />ich bin mit der Bestrahlung fertig, endlich. Ich hatte ja schon geschrieben, dass ich eine Sttrahlenpneumoie  hatte. Nun hatte ich das Gefühl, dass ich mir noch n Infekt... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3636" title="Link zu 'Unklarer Befund nach Lungenröntgen? Was tun?'" target="_blank">weiterlesen</a></p>
+<hr class="noshade"/>
+
+<h3>Hallo Mädels, ich sitze jetzt auch in eurem Boot.</h3>
+<p>Ich bin am 28.06.16 operiert worden.Es war ein invasives duktales Mammakarzinom 5%DCIS,G2;ER 12/12,PR 6/12, HER2-neu+, KI67 16%. Seit 3 Wochen nehme ich Tamoxifen ein. Bis jetzt verstehen wir uns... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3635" title="Link zu 'Hallo Mädels, ich sitze jetzt auch in eurem Boot.'" target="_blank">weiterlesen</a></p>
+<hr class="noshade"/>
+
+<h3>Riesige Angst</h3>
+<p>Ihr Lieben,<br />wie ich schon in der Virstellungsrunde schrieb: Ich war so positiv davor. Mein Mamma Ca. ist weg, kleine Narbe, nur Bestrahlung, in der ich mich befinde, 7 habe ich grade hinter... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3634" title="Link zu 'Riesige Angst'" target="_blank">weiterlesen</a></p>
+<hr class="noshade"/>
+
 <h3>Krankenkasse will Verzichtserklärung</h3>
 <p>Ich möchte eine Reha über die Krankenkasse beantragen und zwar an de Ostsee &quot;gemeinsam gesund werden&quot;<br />Ich habe mal gelesen, dass man bei Brustkrebs mehr Anspruch auf Reha hat,... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3633" title="Link zu 'Krankenkasse will Verzichtserklärung'" target="_blank">weiterlesen</a></p>
 <hr class="noshade"/>
@@ -113,18 +127,6 @@
 <p>Hallo ihr Lieben,<br />ich fürchte ich bin ein exotischer Einzelfall mit meiner Geschichte, aber vielleicht habt ihr ja trotzdem ein paar Tipps oder einfach nur ein paar gute Worte für... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3621" title="Link zu 'Immer wieder diese Unsicherheit'" target="_blank">weiterlesen</a></p>
 <hr class="noshade"/>
 
-<h3>und noch ne Neue</h3>
-<p>Ich möchte mich erst mal kurz vorstellen. Ich bin 50 Jahre alt, bin verheiratet und habe 2 Kinder, die leider nicht in der Nähe wohnen. Gleich beim ersten Mal Mammographie wurde mein Tumor entdeckt.... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3620" title="Link zu 'und noch ne Neue'" target="_blank">weiterlesen</a></p>
-<hr class="noshade"/>
-
-<h3>Chemosensibilitäts-Test</h3>
-<p>Hallo zusammen, <br />ich wollte mal fragen, ob jemand von Euch Erfahrungen mit einem Chemo-Sensibilitäts-Test hat. <br />Ich hatte neoadjuvante Chemo, der erste Teil schlug gut an, der zweite... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3619" title="Link zu 'Chemosensibilitäts-Test'" target="_blank">weiterlesen</a></p>
-<hr class="noshade"/>
-
-<h3>Ich bin etwas verunsichert....</h3>
-<p>Hallo Ihr Lieben,<br />je näher der Tag der Chemo kommt umso verunsicherter werde ich.....ob der Weg der richtige ist.<br />Der große aggressive Tumor ist ja in der linken Brust und man geht auch... <a href="https://forum.frauenselbsthilfe.de/index.php?page=Thread&threadID=3618" title="Link zu 'Ich bin etwas verunsichert....'" target="_blank">weiterlesen</a></p>
-<hr class="noshade"/>
-
 </div>
                     </div>
                 </div>
@@ -136,6 +138,9 @@
     <div class="row">
 
         <div class="col-sm-6">
+            <f:if condition="{link4}">
+                <a href="{link4}">
+            </f:if>
             <div class="bg-image" <f:if condition="{image5}"><f:then>style="background-image: url({media:uri.image(image: image5)}); height: 380px;"></f:then><f:else>style="background-image: url({f:uri.resource(path: 'Images/bgKontakt.jpg', package: 'Ws.Fshsite')}); height: 380px; "></f:else></f:if>
                 <div class="contentLeftOrange65">	       
                     <div class="contentText">
@@ -144,20 +149,20 @@
                     </div>
                     <f:if condition="{link4}">
                         <div class="circleLink">
-
                             <img src="{f:uri.resource(path: 'Images/circle.png', package: 'Ws.Fshsite')}" />
-
                         </div>
                     </f:if>
                 </div>
-                <f:if condition="{link4}">
-                    <a href="{link4}" class="circle" ></a>
-                </f:if>
             </div>
-
+            <f:if condition="{link4}">
+                </a>
+            </f:if>
         </div><!—- end col-sm-6 -—>
 
         <div class="col-sm-6">
+            <f:if condition="{link5}">
+                <a href="{link5}">
+            </f:if>
             <div class="bg-image" <f:if condition="{image6}"><f:then>style="background-image: url({media:uri.image(image: image6)}); height: 380px;"></f:then><f:else>style="background-image: url({f:uri.resource(path: 'Images/bgBeratung.jpg', package: 'Ws.Fshsite')}); height: 380px; "></f:else></f:if>
                 <div class="contentRight65">		        
                     <div class="contentText">
@@ -166,17 +171,14 @@
                     </div>
                     <f:if condition="{link5}">
                         <div class="circleLink">
-
                             <img src="{f:uri.resource(path: 'Images/circle.png', package: 'Ws.Fshsite')}" />
-
                         </div>
                     </f:if>
                 </div>
-                <f:if condition="{link5}">
-                    <a href="{link5}" class="circle"></a>
-                </f:if>
             </div>
-
+            <f:if condition="{link5}">
+                </a>
+            </f:if>
         </div><!—- end col-sm-6 -—>
 
     </div><!—- end row —->
@@ -184,6 +186,9 @@
     <div class="row">
 
         <div class="col-sm-8">
+            <f:if condition="{link6}">
+                <a href="{link6}">
+            </f:if>
             <div class="bg-image" <f:if condition="{image7}"><f:then>style="background-image: url({media:uri.image(image: image7)}); height: 260px;"></f:then><f:else>style="background-image: url({f:uri.resource(path: 'Images/bgInfothek.jpg', package: 'Ws.Fshsite')}); height: 260px; "></f:else></f:if>
                 <div class="contentRight">
                     <div class="contentText">
@@ -192,19 +197,20 @@
                     </div>
                     <f:if condition="{link6}">
                         <div class="circleLink">
-
                             <img src="{f:uri.resource(path: 'Images/circle.png', package: 'Ws.Fshsite')}" />
-
                         </div>
                     </f:if>
                 </div>
-                <f:if condition="{link6}">
-                    <a href="{link6}" class="circle"></a>
-                </f:if>
             </div>
+            <f:if condition="{link6}">
+                </a>
+            </f:if>
         </div><!—- end col-sm-8 -—>
 
         <div class="col-sm-4" >
+            <f:if condition="{link7}">
+                <a href="{link7}">
+            </f:if>
             <div class="bg-image" <f:if condition="{image8}"><f:then>style="background-image: url({media:uri.image(image: image8)}); height: 260px;"></f:then><f:else>style="background-image: url({f:uri.resource(path: 'Images/bgMember.jpg', package: 'Ws.Fshsite')}); height: 260px; "></f:else></f:if>
                 <div class="content">
                     <div class="contentText">
@@ -212,16 +218,14 @@
                     </div>
                     <f:if condition="{link7}">
                         <div class="circleLink">
-
                             <img src="{f:uri.resource(path: 'Images/circle.png', package: 'Ws.Fshsite')}" />
-
                         </div>
                     </f:if>
                 </div>
-                <f:if condition="{link7}">
-                    <a href="{link7}" class="circle"></a>
-                </f:if>
             </div>
+            <f:if condition="{link7}">
+                </a>
+            </f:if>
         </div><!—- end col-sm-4 -—>
 
     </div><!—- end row —->

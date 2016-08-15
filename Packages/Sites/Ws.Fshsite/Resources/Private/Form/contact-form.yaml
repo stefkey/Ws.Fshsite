@@ -41,12 +41,12 @@ renderables:
             -
                 type: 'TYPO3.Form:SingleLineText'
                 identifier: name
-                label: 'Vor- und Nachname'
+                label: 'Ihr vollständiger Name'
                 validators:
                     -
                         identifier: 'TYPO3.Flow:NotEmpty'
                 properties:
-                    placeholder: 'Ihr vollständiger Name'
+                    placeholder: ''
                 defaultValue: ''
             -
                 type: 'TYPO3.Form:SingleLineText'
@@ -56,7 +56,7 @@ renderables:
                     -
                         identifier: 'TYPO3.Flow:NotEmpty'
                 properties:
-                    placeholder: 'Ihre Telefonnummer'
+                    placeholder: ''
                 defaultValue: ''
             -
                 type: 'TYPO3.Form:SingleLineText'
@@ -68,7 +68,7 @@ renderables:
                     -
                         identifier: 'TYPO3.Flow:EmailAddress'
                 properties:
-                    placeholder: E-Mail
+                    placeholder: ''
                 defaultValue: ''
             -
                 type: 'TYPO3.Form:MultiLineText'

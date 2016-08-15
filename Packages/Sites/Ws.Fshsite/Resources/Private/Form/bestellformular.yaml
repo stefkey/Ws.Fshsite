@@ -331,13 +331,6 @@ renderables:
                         defaultValue: ''
                     -
                         type: 'TYPO3.Form:SingleLineText'
-                        identifier: plakat_erdmaennchen
-                        label: 'Plakat: Motiv Erdmännchen '
-                        properties:
-                            placeholder: ''
-                        defaultValue: ''
-                    -
-                        type: 'TYPO3.Form:SingleLineText'
                         identifier: pk_nwk_pink
                         label: 'Postkarte der NetzwerkStatt Krebs: Wir lassen uns nicht hängen! (Mindestbestellmenge 20 Stück)'
                         validators:

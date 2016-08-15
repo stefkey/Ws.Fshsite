@@ -390,6 +390,25 @@ prototype(Ws.Fshsite:Video) < prototype(TYPO3.Neos:Content) {
 }
 
 ##
+# SJ Space
+#
+prototype(Ws.Fshsite:Space) < prototype(TYPO3.Neos:Content) {
+    @context.classname = 'space'
+
+    classname = ${classname}
+
+    attributes.class = 'space container sj-small-container'
+    attributes.data-accordeon = ""
+    attributes.class.@process.nodeType >
+
+    content = TYPO3.Neos:ContentCollection {
+        attributes.class = ${classname + "__content-collection"}
+        nodePath = ${q(node).children('content').property('_path')}
+        collection = ${q(node).children('content').children()}
+    }
+}
+
+##
 # SJ Order
 #
 prototype(TYPO3.Neos.NodeTypes:Form) {
