@@ -12,6 +12,8 @@ use TYPO3\Flow\Resource\ResourceManager;
 use TYPO3\Media\Domain\Model\Image;
 use TYPO3\Media\Domain\Model\ImageVariant;
 use TYPO3\Media\Domain\Model\Asset;
+use TYPO3\Media\Domain\Model\Tag;
+use TYPO3\Media\Domain\Repository\TagRepository;
 use TYPO3\Media\Domain\Repository\AssetRepository;
 use TYPO3\Media\Domain\Repository\ImageRepository;
 use TYPO3\Flow\Persistence\PersistenceManagerInterface;
@@ -38,6 +40,12 @@ class GroupContentImporter extends Importer
 
 	/**
 	 * @Flow\Inject
+	 * @var TagRepository
+	 */
+	protected $tagRepository;
+
+	/**
+	 * @Flow\Inject
 	 * @var AssetRepository
 	 */
 	protected $assetRepository;
@@ -54,7 +62,9 @@ class GroupContentImporter extends Importer
 	 */
 	public function processRecord(NodeTemplate $nodeTemplate, array $data)
 	{
-		$this->log(print_r($data, 1));
+		if ($data['__parentIdentifier'] == 113) {
+			//$this->log(print_r($data, 1));
+		}
 		//return;
 		$this->unsetAllNodeTemplateProperties($nodeTemplate);
 
@@ -135,6 +145,12 @@ class GroupContentImporter extends Importer
 	protected function downloadAndImportFile($url) {
 		$resource = $this->importResource($url);
 		$asset = new Asset($resource);
+
+		$tagLabel = $this->options['assetTag'];
+		/** @var Tag $tag */
+		$tag = $this->tagRepository->findOneByLabel($tagLabel);
+
+		$asset->addTag($tag);
 		$this->assetRepository->add($asset);
 		return $asset;
 	}
@@ -144,8 +160,14 @@ class GroupContentImporter extends Importer
 			$this->log("Illegal image extenstion: " . $url, LOG_ERR);
 			return null;
 		}
+
+		$tagLabel = $this->options['imageTag'];
+		/** @var Tag $tag */
+		$tag = $this->tagRepository->findOneByLabel($tagLabel);
+
 		$resource = $this->importResource($url);
 		$image = new Image($resource);
+		$image->addTag($tag);
 		$this->imageRepository->add($image);
 		$processingInstructions = [];
 		return $this->objectManager->get('TYPO3\Media\Domain\Model\ImageVariant', $image, $processingInstructions);
