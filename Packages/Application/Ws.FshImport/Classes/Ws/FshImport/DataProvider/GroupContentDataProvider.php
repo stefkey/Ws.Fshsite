@@ -13,10 +13,12 @@ class GroupContentDataProvider extends DataProvider {
 
 		$query = $this->createQuery()
 		->select('*')
-		->from('con_content', 'n');
+		->from('con_content', 'n')
+		->orderBy('n.idtype');
 		$statement = $query->execute();
 
 		while ($record = $statement->fetch()) {
+			// Decode weirdly-encoded content
 			$value = html_entity_decode(urldecode($record['value']));
 			if ($record['idtype'] == 1) {
 				$entry = [];
@@ -31,7 +33,8 @@ class GroupContentDataProvider extends DataProvider {
 				'__externalIdentifier' => (int)$record['idcontent'],
 				'__parentIdentifier' => (int)$record['idartlang'],
 				'type' => (int)$record['idtype'],
-				'main' => $nodes
+				'main' => $nodes,
+				'source' => $value
 			];
 		}
 		$this->count = count($result);
@@ -70,7 +73,7 @@ class GroupContentDataProvider extends DataProvider {
 			$item->removeAttribute("style");
 		}
 
-		// p.headlin -> h3
+		// p.headline -> h3
 		$headings = $xpath->query("//p[contains(@class, 'headline')]");
 		foreach($headings as $item) {
 			$newNode = $dom->createElement('h3', $item->nodeValue);
@@ -96,16 +99,19 @@ class GroupContentDataProvider extends DataProvider {
 				// Remove image tag of newly added image
 				$img->parentNode->removeChild($img);
 			}
-			// Remove empty tags
-			while (($nodeList = $xpath->query('//*[not(*) and not(@*) and not(text()[normalize-space()])]')) && $nodeList->length) {
-				foreach ($nodeList as $node) {
-					$node->parentNode->removeChild($node);
-				}
-			}
-			$text = $this->domElementToHtml($element);
+
+			$text = trim($this->domElementToHtml($element));
+
+			// Hardcoded regexp to remove empty tags, will do for now
+			$text = preg_replace('/<span[^>]*>[\s\xC2\xA0]*<\/span>/siu', '', $text);
+			$text = preg_replace('/<p[^>]*>[\s\xC2\xA0]*<\/p>/i', '', $text);
+			$text = preg_replace('/<h3[^>]*>[\s\xC2\xA0]*<\/h3>/i', '', $text);
+
+			// If there's any text left, append it as a Text node
 			if ($text) {
 				$prevValue = '';
 				if (isset($nodes[$pointer])) {
+					// If previous element is of type Text, then merge with it, if not increment the pointer
 					if ($nodes[$pointer]['_type'] === 'TYPO3.Neos.NodeTypes:Text') {
 						$prevValue = $nodes[$pointer]['text'];
 					} else {
