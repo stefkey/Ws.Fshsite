@@ -11,15 +11,17 @@ Ttree:
     presets:
       'base':
         'groups':
-          label: 'Import Groups'
+          label: 'Import Groups Pages'
           dataProviderClassName: 'Ws\FshImport\DataProvider\GroupDataProvider'
           importerClassName: 'Ws\FshImport\GroupImporter'
           importerOptions:
-            targetNode: 'node-57a789fac7f87'
+            targetNode: 'g'
             siteNodePath: '/sites/fshsite'
         'groupContent':
-          label: 'Import Groups'
+          label: 'Import Groups Content'
           dataProviderClassName: 'Ws\FshImport\DataProvider\GroupContentDataProvider'
           importerClassName: 'Ws\FshImport\GroupContentImporter'
           importerOptions:
             siteNodePath: '/sites/fshsite'
+            imageTag: 'Gruppen Fotos'
+            assetTag: 'pdfs'

@@ -13,15 +13,17 @@ class GroupContentDataProvider extends DataProvider {
 
 		$query = $this->createQuery()
 		->select('*')
-		->from('con_content', 'n');
+		->from('con_content', 'n')
+		->orderBy('n.idtype');
 		$statement = $query->execute();
 
 		while ($record = $statement->fetch()) {
+			// Decode weirdly-encoded content
 			$value = html_entity_decode(urldecode($record['value']));
 			if ($record['idtype'] == 1) {
 				$entry = [];
 				$entry['_type'] = 'TYPO3.Neos.NodeTypes:Headline';
-				$entry['title'] = strip_tags($value);
+				$entry['title'] = '<h2>' . strip_tags($value) . '</h2>';
 				$nodes = [$entry];
 			} else if ($record['idtype'] == 2) {
 				$nodes = $this->parseHtml($value);
@@ -31,24 +33,32 @@ class GroupContentDataProvider extends DataProvider {
 				'__externalIdentifier' => (int)$record['idcontent'],
 				'__parentIdentifier' => (int)$record['idartlang'],
 				'type' => (int)$record['idtype'],
-				'main' => $nodes
+				'main' => $nodes,
+				'source' => $value
 			];
 		}
 		$this->count = count($result);
 		return $result;
 	}
 
-	private function DomElementToHtml($element) {
+	protected function domElementToHtml($element) {
 		$tempDom = new \DOMDocument();
 		$clonedNode = $element->cloneNode(true);
 		$tempDom->appendChild($tempDom->importNode($clonedNode, true));
 		return html_entity_decode(trim($tempDom->saveHTML()));
 	}
 
-	private function parseHtml($html) {
+	protected function parseHtml($html) {
 		if (!$html) {
 			return null;
 		}
+
+		// Replace b and i tags
+		$html = str_replace('<b>', '<strong>', $html);
+		$html = str_replace('</b>', '</strong>', $html);
+		$html = str_replace('<i>', '<em>', $html);
+		$html = str_replace('</i>', '</em>', $html);
+
 		$dom = new \DOMDocument;
 		// Ignore warnings
 		libxml_use_internal_errors(true);
@@ -63,24 +73,22 @@ class GroupContentDataProvider extends DataProvider {
 			$item->removeAttribute("style");
 		}
 
-		// TODO:
-		// B->strong, em->i
-		// edgecases!
+		// p.headline -> h3
+		$headings = $xpath->query("//p[contains(@class, 'headline')]");
+		foreach($headings as $item) {
+			$newNode = $dom->createElement('h3', $item->nodeValue);
+			$item->parentNode->replaceChild($newNode, $item);
+			$item->removeAttribute("style");
+		}
 
+		// Iterate over all top-level nodes, and split them into Image nodes and Text nodes
 		$pointer = 0;
 		$nodes = [];
 
 		// Iterate over all top-level nodes
 		foreach ($dom->getElementsByTagName('body')->item(0)->childNodes as $element) {
-			// TODO: handel multiple assets in one paragraph
-			if ($asset = $xpath->query(".//a[starts-with(@href, 'upload/')]", $element)->item(0)) {
-				$pointer++;
-				$nodes[$pointer] = array(
-					'_type' => 'TYPO3.Neos.NodeTypes:Asset',
-					'asset' => $asset->getAttribute('href'),
-					'description' => $asset->nodeValue
-				);
-			} else if ($img = $xpath->query(".//img[starts-with(@src, 'upload/')]", $element)->item(0)) {
+			// Find all images
+			foreach($xpath->query(".//img[starts-with(@src, 'upload/')]", $element) as $img) {
 				$pointer++;
 				$nodes[$pointer] = array(
 					'_type' => 'TYPO3.Neos.NodeTypes:Image',
@@ -88,22 +96,32 @@ class GroupContentDataProvider extends DataProvider {
 					'alt' => $img->getAttribute('alt'),
 					'floated' => $img->getAttribute('class') === 'bild_links'
 				);
-			} else {
-				$text = $this->DomElementToHtml($element);
-				if ($text) {
-					$prevValue = '';
-					if (isset($nodes[$pointer])) {
-						if ($nodes[$pointer]['_type'] === 'TYPO3.Neos.NodeTypes:Text') {
-							$prevValue = $nodes[$pointer]['text'];
-						} else {
-							$pointer++;
-						}
+				// Remove image tag of newly added image
+				$img->parentNode->removeChild($img);
+			}
+
+			$text = trim($this->domElementToHtml($element));
+
+			// Hardcoded regexp to remove empty tags, will do for now
+			$text = preg_replace('/<span[^>]*>[\s\xC2\xA0]*<\/span>/siu', '', $text);
+			$text = preg_replace('/<p[^>]*>[\s\xC2\xA0]*<\/p>/i', '', $text);
+			$text = preg_replace('/<h3[^>]*>[\s\xC2\xA0]*<\/h3>/i', '', $text);
+
+			// If there's any text left, append it as a Text node
+			if ($text) {
+				$prevValue = '';
+				if (isset($nodes[$pointer])) {
+					// If previous element is of type Text, then merge with it, if not increment the pointer
+					if ($nodes[$pointer]['_type'] === 'TYPO3.Neos.NodeTypes:Text') {
+						$prevValue = $nodes[$pointer]['text'];
+					} else {
+						$pointer++;
 					}
-					$nodes[$pointer] = array(
-						'_type' => 'TYPO3.Neos.NodeTypes:Text',
-						'text' => $prevValue . $text
-					);
 				}
+				$nodes[$pointer] = array(
+					'_type' => 'TYPO3.Neos.NodeTypes:Text',
+					'text' => $prevValue . $text
+				);
 			}
 		}
 		return $nodes;
