@@ -1,6 +1,6 @@
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 	<head>
 		<f:section name="metadata">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,7 +47,7 @@
 			<div class="container">
 					{parts.breadcrumb -> f:format.raw()}
 			</div>
-			<div class="main">
+			<div lang="de" class="main">
 				{content.main -> f:format.raw()}
 			</div>
             {sharedContent -> f:format.raw()}
@@ -76,6 +76,7 @@
 			<script src="{f:uri.resource(path: 'Libraries/jQuery/jquery-1.10.1.min.js', package: 'TYPO3.Twitter.Bootstrap')}"></script>
 			<script src="{f:uri.resource(path: '3/js/bootstrap.min.js', package: 'TYPO3.Twitter.Bootstrap')}"></script>
 			<script src="{f:uri.resource(path: 'JavaScript/main.min.js', package: 'Ws.Fshsite')}"></script>
+            <script src="{f:uri.resource(path: 'JavaScript/scrollup-button.js', package: 'Ws.Fshsite')}"></script>
 					<script src="{f:uri.resource(path: 'JavaScript/site.js', package: 'Ws.Fshsite')}"></script>
             <link rel="stylesheet" href="{f:uri.resource(path: 'Styles/styles.css', package: 'Ws.Fshsite')}" media="all" />
 		</f:section>

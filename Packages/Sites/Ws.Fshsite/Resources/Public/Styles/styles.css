@@ -33,6 +33,10 @@ html,body
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 20px;
 	line-height: 1.5em;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
 }
 
 .main {
@@ -68,7 +72,7 @@ h1,h2,h3,h4,h5,h6
 }
 h1 { font-size: 42px; line-height: 48px; }
 h2 { font-size: 30px; line-height: 36px; color: #999; margin-top: 50px; }
-.colorarea h2 { color: #000; }
+.colorarea h2 { color: #555; }
 h1+h2 {  }
 h2+h3 { margin-top: 0px; margin-bottom: 30px; }
 .typo3-neos-nodetypes-twocolumn h3 { margin-top: 0; }
@@ -147,6 +151,7 @@ code {
 }
 .footerNav .nav>li>a {
     color: #fff;
+    font-size: 17px;
 }
 .footerNav .nav>li>a:hover {
     font-weight: 400;
@@ -185,6 +190,24 @@ code {
 .nav>li>a {
 	padding: 13px 10px;
 	color: #818181;
+}
+
+.mainNav .firstLevel>a {
+    cursor: default;
+}
+.nav {
+    /* -webkit-hyphens: none; */
+    list-style: none;
+    -ms-hyphenate-limit-after: 5;
+    -moz-hyphenate-limit-after: 5;
+    -webkit-hyphenate-limit-after: 5;
+    hyphenate-limit-after: 5;
+    -moz-hyphenate-limit-chars: 5;
+    hyphenate-limit-chars: 5;
+}
+
+.mainNav li#md13762d4-2b55-4089-a5da-ddc9610bb23f a{
+       cursor: pointer;
 }
 
 .mainNav .firstLevel:hover>a{
@@ -360,6 +383,20 @@ code {
     padding-bottom: 10px;
 }
 
+
+#md63c8f85-56ed-4b1a-a3f7-b579f5c2a05f .sj-additionalContent {
+    display:none;
+}
+
+
+
+
+
+
+
+
+
+
 .second-level-sub-navigation li a {
     color:#056131; font-family: inherit !important;
     font-size:22px!important;
@@ -474,7 +511,7 @@ code {
         -moz-column-rule: 1px solid #fff;
 /*        -moz-column-gap: 20px; */ 
         column-count: 3;
-        -column-rule: 1px solid #fff;
+        column-rule: 1px solid #fff;
  /*       column-gap: 20px; */
     }
     
@@ -937,6 +974,10 @@ blockquote::after {
 	line-height: 36px;
     color: #017d41;
     font-weight: 400;
+}
+.col-sm-9 .sj-3col-quicklinks h3 {
+	font-size: 24px;
+	line-height: 28px;
 }
 
 .sj-3col-quicklinks p {
@@ -1555,8 +1596,8 @@ ul {
 /*	-moz-column-rule: 1px solid #fff;
 /*	-moz-column-gap: 0px; */
 /*	column-count: 3;
-/*	-column-rule: 1px solid #fff;
-/*	-column-gap: 0px; */
+/*	column-rule: 1px solid #fff;
+/*	column-gap: 0px; */
 /*	margin-bottom: 2em;
 }
 */
@@ -1747,6 +1788,33 @@ p>a[href*="Mailto"]:before {
     padding-left: 3px;
     font-size: 20px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+p>a[href*="Mailto:"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
+p>a[href*="tel:"]:before {
+    content: "\f095";
+    font-family: FontAwesome;
+    padding-right: 7px;
+    padding-left: 8px;
+    color: #333;
+    font-size: 24px;
+    display: inline-block;
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+p>a[href*="tel:"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
+p>a[href*="fax:"]:before {
+    content: "\f1ac";
+    font-family: FontAwesome;
+    padding-right: 7px;
+    color: #333;
+    font-size: 24px;
+    display: inline-block;
 }
 
 p>a[href^="http://"]:before {
@@ -1756,6 +1824,10 @@ p>a[href^="http://"]:before {
     padding-left: 5px;
     font-size: 17px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+p>a[href^="http://"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
 }
 
 p>a[href$=".pdf"]:before {
@@ -1764,6 +1836,25 @@ p>a[href$=".pdf"]:before {
     padding-right: 7px;
     color: red;
     font-size: 24px;
+    display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+p>a[href$=".pdf"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
+p>a[href$=".epub"]:before {
+    content: "\f10a";
+    font-family: FontAwesome;
+    padding-right: 7px;
+    padding-left: 2px;
+    color: #333;
+    font-size: 27px;
+    display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+p>a[href$=".epub"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
 }
 
 p>a[href$=".doc"]:before {
@@ -1772,6 +1863,7 @@ p>a[href$=".doc"]:before {
     padding-right: 7px;
     color: blue;
     font-size: 24px;
+    display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
 }
 
 p>a[href$=".xls"]:before {
@@ -1780,15 +1872,9 @@ p>a[href$=".xls"]:before {
     padding-right: 7px;
     color: green;
     font-size: 24px;
+    display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
 }
-p>a[href*="tel:"]:before {
-    content: "\f095";
-    font-family: FontAwesome;
-    padding-right: 7px;
-    color: #333;
-    font-size: 24px;
-    display: inline-block;
-}
+
 
 
 
@@ -1864,8 +1950,8 @@ tr:nth-child(odd) {
     -moz-column-rule: 1px solid #fff;
 /*    -moz-column-gap: 20px; */
     column-count: 2;
-    -column-rule: 1px solid #fff;
-/*    -column-gap: 20px; */
+    column-rule: 1px solid #fff;
+/*    column-gap: 20px; */
     width: 66%;
     float: left;
 }
@@ -1969,8 +2055,8 @@ tr:nth-child(odd) {
     -moz-column-rule: 1px solid #fff;
 /*    -moz-column-gap: 20px; */
     column-count: 1;
-    -column-rule: 1px solid #fff;
-/*    -column-gap: 20px; */
+    column-rule: 1px solid #fff;
+/*    column-gap: 20px; */
     width: 48%;
     float: left;
 }
@@ -2168,15 +2254,26 @@ tr:nth-child(odd) {
     padding-right: 12px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="lyer.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="FSH.pdf"]:before {
     content: "\f0f6";
     font-family: FontAwesome;
-    padding-right: 12px;
+    padding-right: 15px;
+    padding-left: 2px;
     font-size: 42px;
     color: #333;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="FSH.pdf"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="stellen.html"]:before {
     content: "\f0e5";
     font-family: FontAwesome;
@@ -2184,28 +2281,48 @@ tr:nth-child(odd) {
     padding-left: 0px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="stellen.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href*="Mailto"]:before {
     content: "\f003";
     font-family: FontAwesome;
     padding-right: 12px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href*="Mailto"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="stelle.html"]:before {
     content: "\f0a1";
     font-family: FontAwesome;
     padding-right: 12px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="stelle.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="spenden.html"]:before {
     content: "\f08a";
     font-family: FontAwesome;
     padding-right: 12px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="spenden.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="medizinische-informationen.html"]:before {
     content: "\f0eb";
     font-family: FontAwesome;
@@ -2214,7 +2331,12 @@ tr:nth-child(odd) {
     font-size: 42px;
     color: #333;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="medizinische-informationen.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="bericht-2014.pdf"]:before {
     content: "\f0f6";
     font-family: FontAwesome;
@@ -2222,28 +2344,48 @@ tr:nth-child(odd) {
     font-size: 42px;
     color: #333;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="bericht-2014.pdf"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href^="https://www.facebook"]:before {
     content: "\f09a";
     font-family: FontAwesome;
     padding-right: 12px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href^="https://www.facebook"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="feedback.html"]:before {
     content: "\f0e5";
     font-family: FontAwesome;
     padding-right: 12px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="feedback.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="hilfen.html"]:before {
     content: "\f0e5";
     font-family: FontAwesome;
     padding-right: 12px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="hilfen.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="linien.html"]:before {
     content: "\f02d";
     font-family: FontAwesome;
@@ -2251,28 +2393,48 @@ tr:nth-child(odd) {
     padding-left: 4px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="linien.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="geld.html"]:before {
     content: "\f1ec";
     font-family: FontAwesome;
     padding-right: 12px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="geld.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="mittel.html"]:before {
     content: "\f0e9";
     font-family: FontAwesome;
     padding-right: 12px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="mittel.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="suche.html"]:before {
     content: "\f19c";
     font-family: FontAwesome;
     padding-right: 12px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="suche.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="gesetz.html"]:before {
     content: "\f24e";
     font-family: FontAwesome;
@@ -2280,14 +2442,24 @@ tr:nth-child(odd) {
     margin-left:-4px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="gesetz.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="pflege.html"]:before {
     content: "\f256";
     font-family: FontAwesome;
     padding-right: 12px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="pflege.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="onkologen.html"]:before {
     content: "\f007";
     font-family: FontAwesome;
@@ -2295,26 +2467,186 @@ tr:nth-child(odd) {
     padding-left: 3px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
-.colorarea a[href$="rehabilitation.html"]:before {
+.colorarea a[href$="onkologen.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
+.colorarea a[href$="rehabilitation/allgemeines.html"]:before {
     content: "\f241";
     font-family: FontAwesome;
     padding-left: 0px;
     padding-right: 12px;
     font-size: 38px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
-.colorarea a[href$="ausweis.html"]:before {
+.colorarea a[href$="rehabilitation/allgemeines.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
+.colorarea a[href$="ausweis/ueberblick.html"]:before {
     content: "\f0f6";
     font-family: FontAwesome;
     padding-right: 18px;
     font-size: 42px;
     display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
 }
+.colorarea a[href$="ausweis/ueberblick.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
 .colorarea a[href$="ausweis.html"] {
     white-space: pre;
 }
 
+
+/* Wir über uns Icons */
+.colorarea a[href$="aufbau-der-fsh.html"]:before {
+    content: "\f140";
+    font-family: FontAwesome;
+    padding-left: 6px;
+    padding-right: 15px;
+    font-size: 38px;
+    display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+.colorarea a[href$="aufbau-der-fsh.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
+.colorarea a[href$="mitgliedschaft.html"]:before {
+    content: "\f1ae";
+    font-family: FontAwesome;
+    padding-left: 10px;
+    padding-right: 25px;
+    font-size: 38px;
+    display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+.colorarea a[href$="mitgliedschaft.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
+.colorarea a[href$="programm.html"]:before {
+    content: "\f03a";
+    font-family: FontAwesome;
+    padding-left: 0px;
+    padding-right: 15px;
+    font-size: 38px;
+    display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+.colorarea a[href$="programm.html"]:before { 
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
+.colorarea a[href$="finanzierung.html"]:before {
+    content: "\f18c";
+    font-family: FontAwesome;
+    padding-left: 6px;
+    padding-right: 18px;
+    font-size: 38px;
+    display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+.colorarea a[href$="finanzierung.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
+.colorarea a[href$="geschichte-der-frauenselbsthilfe.html"]:before {
+    content: "\f19c";
+    font-family: FontAwesome;
+    padding-left: 0px;
+    padding-right: 9px;
+    font-size: 38px;
+    display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+.colorarea a[href$="geschichte-der-frauenselbsthilfe.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
+.colorarea a[href$="ehrenmitglieder.html"]:before {
+    content: "\f19d";
+    font-family: FontAwesome;
+    padding-left: 0px;
+    padding-right: 12px;
+    font-size: 38px;
+    display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+.colorarea a[href$="ehrenmitglieder.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
+.colorarea a[href$="kooperationen.html"]:before {
+    content: "\f185";
+    font-family: FontAwesome;
+    padding-left: 0px;
+    padding-right: 14px;
+    font-size: 38px;
+    display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+.colorarea a[href$="kooperationen.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
+.colorarea a[href$="patientenvertretung.html"]:before {
+    content: "\f24e";
+    font-family: FontAwesome;
+    padding-left: 0px;
+    padding-right: 12px;
+    font-size: 38px;
+    display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+.colorarea a[href$="patientenvertretung.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
+.colorarea a[href$="aufgaben-und-ziele.html"]:before {
+    content: "\f11e";
+    font-family: FontAwesome;
+    padding-left: 0px;
+    padding-right: 16px;
+    font-size: 38px;
+    display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+.colorarea a[href$="aufgaben-und-ziele.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
+.colorarea a[href$="bundestagungen.html"]:before {
+    content: "\f130";
+    font-family: FontAwesome;
+    padding-left: 10px;
+    padding-right: 18px;
+    font-size: 38px;
+    display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+.colorarea a[href$="bundestagungen.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+
+.colorarea a[href$="berichte.html"]:before {
+    content: "\f0c5";
+    font-family: FontAwesome;
+    padding-left: 0px;
+    padding-right: 21px;
+    font-size: 38px;
+    display: inline-block; /* Damit wird das Icon nicht unterstrichen mit text-decoration underline */
+    text-decoration: underline; /* Step 1 for IE to hidden the underline */
+}
+.colorarea a[href$="berichte.html"]:before {
+    text-decoration: none; /* Step 2 for IE to hidden the underline */
+}
+    
 .typo3-neos-nodetypes-assetlist li {
     width: 33%;
     float: left;
@@ -2499,6 +2831,17 @@ m611ab969-705d-43da-8b25-e5fa97a3bdbb
     display: none;
 }
 
+.footermenu-level-sub-navigation #md13762d4-2b55-4089-a5da-ddc9610bb23f {
+    display: none;
+}
+.footermenu-level-navigation #md13762d4-2b55-4089-a5da-ddc9610bb23f {
+    display: none;
+}
+.footermenu-level-navigation #m11d5c490-6fce-4f16-92f2-11b1c4685489 {
+    display: none;
+}
+
+
 .ws-fshsite-sjcarousel {
 
 }
@@ -2533,6 +2876,36 @@ div .sj-accordeon:last-child {   /* hidden Link to Orderform */
 
 div .sj-accordeon:first-child {   /* hidden Link to Orderform */
     margin-top:50px;
+}
+
+
+/* Scroll Up Button
+********************************/
+#back-top span {
+    background: url("../Images/up-arrow.png") no-repeat scroll center center #aaacff !important;
+    border-radius: 15px 15px 15px 15px;
+    height: 108px;
+    display:block;
+    margin-bottom:7px;
+    width:108px;
+    transition:background-color 2s ease 0s;
+}
+.goTotop {
+    float:right;
+    margin-right:30px;
+}
+#back-top {
+    bottom:20px;
+    margin-left:50px;
+    position:fixed;
+}
+#back-top a {
+    display : block;
+    text-align:center;
+    text-decoration:none;
+    text-transform:uppercase;
+    transition:background-color 2s ease 0s;
+    width:108px;
 }
 
 

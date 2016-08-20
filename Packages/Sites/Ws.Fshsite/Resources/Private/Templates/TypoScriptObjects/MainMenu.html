@@ -25,16 +25,12 @@
 
                         <f:if condition="{item.subItems}">
                             <f:then>
-                                <neos:link.node node="{item.node}">{item.label}</neos:link.node>
-                                
+                                <a href="#">{item.label}</a>
                                 <f:render section="subList" arguments="{items: item.subItems, node: item.node}"/>
                             </f:then>
                             <f:else>
                                 <neos:link.node node="{item.node}">{item.label}</neos:link.node>
                             </f:else>
-
-
-
                         </f:if>
                     </li>
                 </f:for>

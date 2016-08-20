@@ -1,6 +1,6 @@
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 	<head>
 		<f:section name="metadata">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,10 +53,10 @@
                     <div class="container sj-lastModDate sj-small-container">Zuletzt aktualisiert am: 
 						<f:if condition="{node.properties.lastModificationDate}">
 							<f:then>
-								<f:format.date format="d. F Y">{node.properties.lastModificationDate}</f:format.date>
+                                <f:format.date  forceLocale="{true}" cldrFormat="dd. MMMM yyyy">{node.properties.lastModificationDate}</f:format.date>
 							</f:then>
 							<f:else>
-								<f:format.date format="d. F Y">{node.lastPublicationDateTime}</f:format.date>
+                                <f:format.date forceLocale="{true}" cldrFormat="dd. MMMM yyyy">{node.lastPublicationDateTime}</f:format.date>
 							</f:else>
 						</f:if>
                     </div>
@@ -88,6 +88,7 @@
 			<script src="{f:uri.resource(path: 'Libraries/jQuery/jquery-1.10.1.min.js', package: 'TYPO3.Twitter.Bootstrap')}"></script>
 			<script src="{f:uri.resource(path: '3/js/bootstrap.min.js', package: 'TYPO3.Twitter.Bootstrap')}"></script>
 			<script src="{f:uri.resource(path: 'JavaScript/main.min.js', package: 'Ws.Fshsite')}"></script>
+            <script src="{f:uri.resource(path: 'JavaScript/scrollup-button.js', package: 'Ws.Fshsite')}"></script>
 					<script src="{f:uri.resource(path: 'JavaScript/site.js', package: 'Ws.Fshsite')}"></script>
 		</f:section>
 	</body>
