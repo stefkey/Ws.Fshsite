@@ -62,10 +62,6 @@ class GroupContentImporter extends Importer
 	 */
 	public function processRecord(NodeTemplate $nodeTemplate, array $data)
 	{
-		if ($data['__parentIdentifier'] == 113) {
-			//$this->log(print_r($data, 1));
-		}
-		//return;
 		$this->unsetAllNodeTemplateProperties($nodeTemplate);
 
 		$externalIdentifier = $data['__externalIdentifier'];
@@ -79,10 +75,14 @@ class GroupContentImporter extends Importer
 
 		if (is_array($data['main'])) {
 			// Create Legacy node within main collection to hold legacy content
-			$legacyContentNodeTemplate = new NodeTemplate();
-			$legacyContentNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Ws.Fshsite:Legacy'));
-			$legacyContentNodeTemplate->setName('legacy');
-			$legacyContentNode = $groupNode->getNode('main')->createNodeFromTemplate($legacyContentNodeTemplate);
+			$mainContent = $groupNode->getNode('main');
+			$legacyContentNode = $mainContent->getNode('legacy');
+			if ($legacyContentNode === null) {
+				$legacyContentNodeTemplate = new NodeTemplate();
+				$legacyContentNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Ws.Fshsite:Legacy'));
+				$legacyContentNodeTemplate->setName('legacy');
+				$legacyContentNode = $mainContent->createNodeFromTemplate($legacyContentNodeTemplate);
+			}
 
 			foreach ($data['main'] as $contentItem) {
 				$nodeTemplate = $this->processContentItem($contentItem);
