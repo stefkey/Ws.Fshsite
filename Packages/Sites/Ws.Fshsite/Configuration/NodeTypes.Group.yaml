@@ -5,19 +5,61 @@
     main:
       type: 'TYPO3.Neos:ContentCollection'
   ui:
-    label: 'Group'
+    label: 'Gruppenseite'
     inspector:
       groups:
-        'group':
-          label: 'Group'
+        'image':
+          label: 'Header Bild'
+          position: 100
+          icon: 'icon-image'
+        'date':
+          label: 'Artikeldatum anzeigen'
+          position: 200
+          icon: 'icon-calendar'
   properties:
-    title:
+    'title':
       type: 'string'
-    zip:
+    'zip':
       type: 'string'
       ui:
-        label: 'ZIP-code'
+        label: 'PLZ der Gruppentreffen'
         inspector:
-          group: 'group'
-    originalIdentifier:
+          group: 'document'
+    'originalIdentifier':
       type: 'string'
+    'image':
+      type: 'TYPO3\Media\Domain\Model\ImageInterface'
+      ui:
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'image'
+          position: 50
+          editorOptions:
+            features:
+              resize: FALSE
+            crop:
+              aspectRatio:
+                locked:
+                  width: 4
+                  height: 1
+    'imageTitleText':
+      type: string
+      ui:
+        label: 'Bild Titel'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'image'
+          position: 100
+    'showLastModificationDate':
+      type: boolean
+      ui:
+        label: 'Datum für letzte Änderung anzeigen?'
+        inspector:
+          group: 'date'
+    'lastModificationDate':
+      type: DateTime
+      ui:
+        label: 'Datum überschreiben auf:'
+        reloadIfChanged: true
+        inspector:
+          group: 'date'

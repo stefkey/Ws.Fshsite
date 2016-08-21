@@ -122,7 +122,7 @@
     'image':
       type: 'TYPO3\Media\Domain\Model\ImageInterface'
       ui:
-        label: 'Ws.Fshsite:NodeTypes.Page:properties.image'
+        label: 'Ws.Fshsite:NodeTypes.Page:Header Bild'
         reloadIfChanged: TRUE
         inspector:
           group: 'image'
@@ -139,7 +139,7 @@
     'imageTitleText':
       type: string
       ui:
-        label: 'Ws.Fshsite:NodeTypes.Page:properties.imageTitleText'
+        label: 'Ws.Fshsite:NodeTypes.Page:Headerbild Titel'
         reloadIfChanged: TRUE
         inspector:
           group: 'image'
@@ -184,6 +184,12 @@
           editorOptions:
             features:
               resize: FALSE
+    'floated':
+      type: boolean
+      ui:
+        label: 'Text rechts vom Bild?'
+        inspector:
+          group: image
 
 ##
 # Adjust the "TwoColumn" node type:
@@ -290,7 +296,7 @@
     'main':
       type: 'TYPO3.Neos:ContentCollection'
   ui:
-    label: i18n
+    label: Kapitel
     icon: 'icon-book'
     help:
       message: 'The Chapter node will work with all other chapter nodes on the same level to form a browsable book.'
@@ -358,7 +364,7 @@
   superTypes:
     'TYPO3.Neos.NodeTypes:Menu': TRUE
   ui:
-    label: i18n
+    label: 'Kapitel Menü'
     help:
       message: |
         The ChapterMenu renders an overview of all chapters below the current document.
@@ -713,7 +719,7 @@
   superTypes:
     'TYPO3.Neos:Plugin': TRUE
   ui:
-    label: i18n
+    label: 'Registration Form'
     icon: 'icon-user'
     help:
       message: |
@@ -729,7 +735,7 @@
   superTypes:
     'TYPO3.Neos:Plugin': TRUE
   ui:
-    label: i18n
+    label: Galerie
     icon: 'icon-flickr'
     inspector:
       groups:
@@ -741,7 +747,7 @@
   options:
     'pluginViews':
       'UserFeed':
-        label: 'Ws.Fshsite:NodeTypes.Flickr:options.pluginViews.userFeed'
+        label: i18n
         controllerActions:
           'Neos\Demo\Controller\FlickrController': ['userStream']
   properties:
@@ -839,8 +845,7 @@
         * HTML
         * YouTube
         * References
-        
-        
+
 ##
 # A "Carousel" Test
 #
@@ -873,8 +878,6 @@
         * HTML
         * YouTube
         * References
-
-
 
 ##
 # SJ: Quote Block
@@ -1337,7 +1340,7 @@
   ui:
     label: 'Farbiger Hintergrund'
     inlineEditable: TRUE
-    icon: 'icon-chevron-down'
+    icon: 'icon-tint'
     inspector:
       groups:
         colorblock:
@@ -1405,7 +1408,7 @@
   ui:
     label: 'Abstand'
     inlineEditable: TRUE
-    icon: 'icon-chevron-down'
+    icon: 'icon-resize-vertical'
     inspector:
       groups:
         colorblock:
