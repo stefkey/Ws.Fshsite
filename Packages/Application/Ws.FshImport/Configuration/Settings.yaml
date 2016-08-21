@@ -23,5 +23,5 @@ Ttree:
           importerClassName: 'Ws\FshImport\GroupContentImporter'
           importerOptions:
             siteNodePath: '/sites/fshsite'
-            imageTag: 'Gruppen Fotos'
-            assetTag: 'pdfs'
+            imageTags: 'Gruppen Fotos'
+            assetTags: 'pdfs, Gruppen'

@@ -146,11 +146,11 @@ class GroupContentImporter extends Importer
 		$resource = $this->importResource($url);
 		$asset = new Asset($resource);
 
-		$tagLabel = $this->options['assetTag'];
-		/** @var Tag $tag */
-		$tag = $this->tagRepository->findOneByLabel($tagLabel);
-
-		$asset->addTag($tag);
+		foreach(explode(",", $this->options['assetTags']) as $tagLabel) {
+			/** @var Tag $tag */
+			$tag = $this->tagRepository->findOneByLabel(trim($tagLabel));
+			$asset->addTag($tag);
+		}
 		$this->assetRepository->add($asset);
 		return $asset;
 	}
@@ -161,13 +161,14 @@ class GroupContentImporter extends Importer
 			return null;
 		}
 
-		$tagLabel = $this->options['imageTag'];
-		/** @var Tag $tag */
-		$tag = $this->tagRepository->findOneByLabel($tagLabel);
-
 		$resource = $this->importResource($url);
 		$image = new Image($resource);
-		$image->addTag($tag);
+
+		foreach(explode(",", $this->options['imageTags']) as $tagLabel) {
+			/** @var Tag $tag */
+			$tag = $this->tagRepository->findOneByLabel(trim($tagLabel));
+			$image->addTag($tag);
+		}
 		$this->imageRepository->add($image);
 		$processingInstructions = [];
 		return $this->objectManager->get('TYPO3\Media\Domain\Model\ImageVariant', $image, $processingInstructions);
