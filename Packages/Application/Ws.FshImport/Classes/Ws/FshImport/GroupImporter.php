@@ -44,15 +44,13 @@ class GroupImporter extends Importer
 
 		$externalIdentifier = $data['__externalIdentifier'];
 		$desiredNodeName = Slug::create($data['uriPathSegment'])->getValue();
-		// if ($this->skipNodeProcessing($externalIdentifier, '123', $this->siteNode, false)) {
-		// 	return null;
-		// }
 		$nodeTemplate->setProperty('title', $data['title']);
 		$nodeTemplate->setProperty('zip', $data['zip']);
 		$nodeTemplate->setProperty('originalIdentifier', $externalIdentifier);
 		$nodeTemplate->setHidden($data['_hidden']);
 
 		$node = $this->createUniqueNode($this->storageNode, $nodeTemplate, $desiredNodeName);
+		$node->setLastPublicationDateTime($data['_lastModificationDateTime']);
 
 		$this->registerNodeProcessing($node, $externalIdentifier);
 	}
