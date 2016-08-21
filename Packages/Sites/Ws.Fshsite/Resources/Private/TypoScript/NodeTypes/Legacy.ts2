@@ -1,0 +1,10 @@
+prototype(Ws.Fshsite:Legacy) < prototype(TYPO3.TypoScript:Tag) {
+	attributes.class = 'container sj-small-container legacy'
+	content = ContentCollectionRenderer {
+		@process.contentElementWrapping = ContentElementWrapping
+	}
+
+	prototype(TYPO3.Neos.NodeTypes:Text).attributes.class>
+	prototype(TYPO3.Neos.NodeTypes:Headline).attributes.class>
+	prototype(TYPO3.Neos.NodeTypes:Image).attributes.class>
+}
