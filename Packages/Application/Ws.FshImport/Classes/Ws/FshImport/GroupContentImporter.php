@@ -78,13 +78,11 @@ class GroupContentImporter extends Importer
 		$groupNode = $this->siteNode->getNode($groupRecordMapping->getNodePath());
 
 		if (is_array($data['main'])) {
-			$mainCollection = $groupNode->getNode('main');
-
 			// Create Legacy node within main collection to hold legacy content
 			$legacyContentNodeTemplate = new NodeTemplate();
 			$legacyContentNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Ws.Fshsite:Legacy'));
 			$legacyContentNodeTemplate->setName('legacy');
-			$legacyContentNode = $this->siteNode->createNodeFromTemplate($legacyContentNodeTemplate);
+			$legacyContentNode = $groupNode->getNode('main')->createNodeFromTemplate($legacyContentNodeTemplate);
 
 			foreach ($data['main'] as $contentItem) {
 				$nodeTemplate = $this->processContentItem($contentItem);
