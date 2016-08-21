@@ -34,9 +34,6 @@
           icon: 'icon-paint-brush'
           position: 150
 
-
-
-
 ##
 # Special homepage nodetype that declares a footer child node for usage as shared footer.
 # SJ: Add a shared content for logos and social-media-buttons
@@ -174,7 +171,6 @@
             'h4': TRUE
             'h5': TRUE
             'code': TRUE
-
 
 ##
 # Adjust the "Image" node type:
