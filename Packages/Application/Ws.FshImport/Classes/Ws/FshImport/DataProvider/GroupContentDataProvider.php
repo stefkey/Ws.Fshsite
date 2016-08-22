@@ -109,7 +109,8 @@ class GroupContentDataProvider extends DataProvider {
 					'_type' => 'TYPO3.Neos.NodeTypes:Image',
 					'image' => $img->getAttribute('src'),
 					'alt' => $img->getAttribute('alt'),
-					'floated' => $img->getAttribute('class') === 'bild_links'
+					'floated' => $img->getAttribute('class') === 'bild_links',
+                                        'showLastModificationDate' => 'TRUE'
 				);
 				// Remove image tag of newly added image
 				$img->parentNode->removeChild($img);
