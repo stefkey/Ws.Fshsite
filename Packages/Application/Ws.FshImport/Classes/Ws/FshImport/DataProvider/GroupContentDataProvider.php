@@ -23,7 +23,7 @@ class GroupContentDataProvider extends DataProvider {
 			if ($record['idtype'] == 1) {
 				$entry = [];
 				$entry['_type'] = 'TYPO3.Neos.NodeTypes:Headline';
-				$entry['title'] = '<h2>' . strip_tags($value) . '</h2>';
+				$entry['title'] = '<h1>' . strip_tags($value) . '</h1>';
 				$nodes = [$entry];
 			} else if ($record['idtype'] == 2) {
 				$nodes = $this->parseHtml($value);
@@ -73,8 +73,23 @@ class GroupContentDataProvider extends DataProvider {
 			$item->removeAttribute("style");
 		}
 
+        	// SJ Remove class from a tags
+		$items = $xpath->query("//a[@class]");
+		foreach($items as $item) {
+			$item->removeAttribute("class");
+		}
+
 		// p.headline -> h3
 		$headings = $xpath->query("//p[contains(@class, 'headline')]");
+		foreach($headings as $item) {
+			$newNode = $dom->createElement('h3', $item->nodeValue);
+			$item->parentNode->replaceChild($newNode, $item);
+			$item->removeAttribute("style");
+		}
+
+
+		// SJ span.headline -> h3
+		$headings = $xpath->query("//span[contains(@class, 'headline')]");
 		foreach($headings as $item) {
 			$newNode = $dom->createElement('h3', $item->nodeValue);
 			$item->parentNode->replaceChild($newNode, $item);
