@@ -18,8 +18,11 @@ abstract class Importer extends BaseImporter
 	protected $nodeService;
 
 	protected function createUniqueNode($parentNode, $nodeTemplate, $proposedNodeName) {
-		$nodeName = $this->nodeService->generateUniqueNodeName($parentNode->getPath(), $proposedNodeName);
+		/* set nodename */
+		$nodeName = $this->nodeService->generateUniqueNodeName($parentNode->getPath());
 		$nodeTemplate->setName($nodeName);
+	        /* set uriPathSegment */
+		$nodeName = $this->nodeService->generateUniqueNodeName($parentNode->getPath(), $proposedNodeName);
 		$nodeTemplate->setProperty('uriPathSegment', $nodeName);
 		return $parentNode->createNodeFromTemplate($nodeTemplate);
 	}
