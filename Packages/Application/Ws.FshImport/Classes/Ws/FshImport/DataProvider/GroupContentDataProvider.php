@@ -73,8 +73,14 @@ class GroupContentDataProvider extends DataProvider {
 			$item->removeAttribute("style");
 		}
 
-        	// SJ Remove class from a tags
+		// SJ Remove class from a tags
 		$items = $xpath->query("//a[@class]");
+		foreach($items as $item) {
+			$item->removeAttribute("class");
+		}
+
+		// Remove "pdf" class
+		$items = $xpath->query("//*[@class, 'pdf']");
 		foreach($items as $item) {
 			$item->removeAttribute("class");
 		}
@@ -96,6 +102,12 @@ class GroupContentDataProvider extends DataProvider {
 			$item->removeAttribute("style");
 		}
 
+		// Remove br tags following h3
+		$items = $xpath->query("//h3/following-sibling::*[1][name()='br']");
+		foreach($items as $item) {
+			$item->parentNode->removeChild($item);
+		}
+
 		// Iterate over all top-level nodes, and split them into Image nodes and Text nodes
 		$pointer = 0;
 		$nodes = [];
@@ -109,8 +121,7 @@ class GroupContentDataProvider extends DataProvider {
 					'_type' => 'TYPO3.Neos.NodeTypes:Image',
 					'image' => $img->getAttribute('src'),
 					'alt' => $img->getAttribute('alt'),
-					'floated' => $img->getAttribute('class') === 'bild_links',
-                                        'showLastModificationDate' => 'TRUE'
+					'floated' => $img->getAttribute('class') === 'bild_links'
 				);
 				// Remove image tag of newly added image
 				$img->parentNode->removeChild($img);
