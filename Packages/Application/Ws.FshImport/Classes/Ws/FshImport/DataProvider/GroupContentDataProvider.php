@@ -80,7 +80,7 @@ class GroupContentDataProvider extends DataProvider {
 		}
 
 		// Remove "pdf" class
-		$items = $xpath->query("//*[@class, 'pdf']");
+		$items = $xpath->query("//*[contains(@class, 'pdf')]");
 		foreach($items as $item) {
 			$item->removeAttribute("class");
 		}
