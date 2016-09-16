@@ -20,6 +20,8 @@ class GroupContentDataProvider extends DataProvider {
 		while ($record = $statement->fetch()) {
 			// Decode weirdly-encoded content
 			$value = html_entity_decode(urldecode($record['value']));
+            // SJ Remove String from title
+            $value = str_replace('Frauenselbsthilfe nach Krebs: ', '', $value);
 			if ($record['idtype'] == 1) {
 				$entry = [];
 				$entry['_type'] = 'TYPO3.Neos.NodeTypes:Headline';
