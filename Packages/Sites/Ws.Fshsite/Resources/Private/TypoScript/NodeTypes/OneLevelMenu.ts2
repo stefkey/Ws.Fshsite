@@ -1,0 +1,8 @@
+##
+# One-Level-Menu
+#
+prototype(Site:OneLevelMenu) < prototype(TYPO3.Neos.NodeTypes:Menu) {
+	attributes.class = 'container sj-small-container'
+    maximumLevels = 1
+    startingPoint = ${q(site).children('gruppen').get(0)}
+}			
