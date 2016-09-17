@@ -12,9 +12,11 @@ use TYPO3\Flow\Resource\ResourceManager;
 use TYPO3\Media\Domain\Model\Image;
 use TYPO3\Media\Domain\Model\ImageVariant;
 use TYPO3\Media\Domain\Model\Asset;
+use TYPO3\Media\Domain\Model\AssetCollection;
 use TYPO3\Media\Domain\Model\Tag;
-use TYPO3\Media\Domain\Repository\TagRepository;
+use TYPO3\Media\Domain\Repository\AssetCollectionRepository;
 use TYPO3\Media\Domain\Repository\AssetRepository;
+use TYPO3\Media\Domain\Repository\TagRepository;
 use TYPO3\Media\Domain\Repository\ImageRepository;
 use TYPO3\Flow\Persistence\PersistenceManagerInterface;
 
@@ -46,6 +48,12 @@ class GroupContentImporter extends Importer
 
 	/**
 	 * @Flow\Inject
+	 * @var AssetCollectionRepository
+	 */
+	protected $assetCollectionRepository;
+
+	/**
+	 * @Flow\Inject
 	 * @var AssetRepository
 	 */
 	protected $assetRepository;
@@ -55,6 +63,7 @@ class GroupContentImporter extends Importer
 		$nodeTemplate = new NodeTemplate();
 		$this->processBatch($nodeTemplate);
 	}
+
 	/**
 	 * @param NodeTemplate $nodeTemplate
 	 * @param array $data
@@ -157,6 +166,7 @@ class GroupContentImporter extends Importer
 			$asset->addTag($tag);
 		}
 		$this->assetRepository->add($asset);
+		$this->addToCollections($asset);
 		return $asset;
 	}
 
@@ -175,7 +185,24 @@ class GroupContentImporter extends Importer
 			$image->addTag($tag);
 		}
 		$this->imageRepository->add($image);
+		$this->log('RRRRRRRRRR');
+		$this->addToCollections($image);
 		$processingInstructions = [];
 		return $this->objectManager->get('TYPO3\Media\Domain\Model\ImageVariant', $image, $processingInstructions);
+	}
+
+	/**
+	 * @param Asset $asset
+	 * @return NodeInterface
+	 */
+	protected function addToCollections(Asset $asset) {
+		foreach(explode(",", $this->options['assetCollections']) as $assetCollectionTitle) {
+			/** @var AssetCollection $assetCollection */
+			$assetCollection = $this->assetCollectionRepository->findOneByTitle(trim($assetCollectionTitle));
+			$this->log(json_encode($assetCollection));
+			if ($assetCollection->addAsset($asset)) {
+				$this->assetCollectionRepository->update($assetCollection);
+			}
+		}
 	}
 }
