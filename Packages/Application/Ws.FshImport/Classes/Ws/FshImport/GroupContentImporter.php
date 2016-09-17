@@ -58,6 +58,12 @@ class GroupContentImporter extends Importer
 	 */
 	protected $assetRepository;
 
+	/**
+	 * @Flow\Inject
+	 * @var \TYPO3\Flow\Persistence\PersistenceManagerInterface
+	 */
+	protected $persistenceManager;
+
 	public function process()
 	{
 		$nodeTemplate = new NodeTemplate();
@@ -199,10 +205,10 @@ class GroupContentImporter extends Importer
 		foreach(explode(",", $this->options['assetCollections']) as $assetCollectionTitle) {
 			/** @var AssetCollection $assetCollection */
 			$assetCollection = $this->assetCollectionRepository->findOneByTitle(trim($assetCollectionTitle));
-			$this->log(json_encode($assetCollection));
 			if ($assetCollection->addAsset($asset)) {
 				$this->assetCollectionRepository->update($assetCollection);
 			}
 		}
+		$this->persistenceManager->persistAll();
 	}
 }
