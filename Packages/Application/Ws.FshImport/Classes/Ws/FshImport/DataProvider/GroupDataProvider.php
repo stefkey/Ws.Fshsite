@@ -11,7 +11,7 @@ class GroupDataProvider extends DataProvider {
 	public function fetch() {
 		$result = [];
 
-		$sql = "SELECT a.* FROM con_art_lang as a JOIN con_cat_art as c ON a.idart=c.idart WHERE c.idcat=69;";
+		$sql = "SELECT a.* FROM con_art_lang as a JOIN con_cat_art as c ON a.idart=c.idart WHERE c.idcat=69 ORDER BY a.title;";
 		$statement = $this->getDatabaseConnection()->prepare($sql);
 		$statement->execute();
 
