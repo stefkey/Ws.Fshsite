@@ -22,9 +22,9 @@
         }
     ],
     "require": {
-        "typo3/neos": "~2.2.0",
-        "typo3/neos-nodetypes": "~2.2.0",
-        "typo3/neos-kickstarter": "~2.2.0",
+        "typo3/neos": "~2.3.0",
+        "typo3/neos-nodetypes": "~2.3.0",
+        "typo3/neos-kickstarter": "~2.3.0",
         "typo3/neos-seo": "^1.0",
         "typo3/setup": "~2.0",
         "flowpack/neos-frontendlogin": "~2.0",
@@ -41,10 +41,12 @@
         "johannessteu/neos-nodetypes": "dev-master",
 	      "typo3/formbuilder": "dev-master",
         "simplyadmire/neos-form-builder-bundle": "^1.0",
-        "ttree/contentrepositoryimporter": "*"
+        "ttree/contentrepositoryimporter": "*",
+        "sandstorm/usermanagement": "^1.1",
+        "dl/gallery": "^0.3.0"
     },
     "require-dev": {
-        "typo3/buildessentials": "3.2.x-dev",
+        "typo3/buildessentials": "3.3.x-dev",
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~4.8 || ~5.2.0",
         "symfony/css-selector": "~2.0",
