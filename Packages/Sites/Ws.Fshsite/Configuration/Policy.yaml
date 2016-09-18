@@ -39,6 +39,13 @@ roles:
         privilegeTarget: 'Ws.Fshsite:MembersArea'
         permission: GRANT
 
+  'Flowpack.Neos.FrontendLogin:FSH_Mitglied':
+    privileges:
+      -
+          # Grant "frontend users" to access the "Member area"
+        privilegeTarget: 'Ws.Fshsite:MembersArea'
+        permission: GRANT
+
   'Flowpack.Neos.FrontendLogin:FSH_Landesvorstand':
     privileges:
       -

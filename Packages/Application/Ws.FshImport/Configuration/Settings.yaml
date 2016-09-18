@@ -25,3 +25,4 @@ Ttree:
             siteNodePath: '/sites/fshsite'
             imageTags: 'Gruppen Fotos'
             assetTags: 'pdfs, Gruppen'
+            assetCollections: 'Gruppen'

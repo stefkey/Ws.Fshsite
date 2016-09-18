@@ -48,6 +48,7 @@ class GroupImporter extends Importer
 		$nodeTemplate->setProperty('zip', $data['zip']);
 		$nodeTemplate->setProperty('originalIdentifier', $externalIdentifier);
 		$nodeTemplate->setHidden($data['_hidden']);
+        $nodeTemplate->setProperty('showLastModificationDate', true);
 
 		$node = $this->createUniqueNode($this->storageNode, $nodeTemplate, $desiredNodeName);
 		$node->setLastPublicationDateTime($data['_lastModificationDateTime']);

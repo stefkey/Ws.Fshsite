@@ -20,6 +20,8 @@ class GroupContentDataProvider extends DataProvider {
 		while ($record = $statement->fetch()) {
 			// Decode weirdly-encoded content
 			$value = html_entity_decode(urldecode($record['value']));
+            // SJ Remove String from title
+            $value = str_replace('Frauenselbsthilfe nach Krebs: ', '', $value);
 			if ($record['idtype'] == 1) {
 				$entry = [];
 				$entry['_type'] = 'TYPO3.Neos.NodeTypes:Headline';
@@ -73,8 +75,14 @@ class GroupContentDataProvider extends DataProvider {
 			$item->removeAttribute("style");
 		}
 
-        	// SJ Remove class from a tags
+		// SJ Remove class from a tags
 		$items = $xpath->query("//a[@class]");
+		foreach($items as $item) {
+			$item->removeAttribute("class");
+		}
+
+		// Remove "pdf" class
+		$items = $xpath->query("//*[contains(@class, 'pdf')]");
 		foreach($items as $item) {
 			$item->removeAttribute("class");
 		}
@@ -96,6 +104,12 @@ class GroupContentDataProvider extends DataProvider {
 			$item->removeAttribute("style");
 		}
 
+		// SJ Remove br tags previous and following of h3
+		$items = $xpath->query("//h3/preceding-sibling::node()[position() < 10][self::br] | //h3/following-sibling::node()[position() < 10][self::br]");
+		foreach($items as $item) {
+			$item->parentNode->removeChild($item);
+		}
+
 		// Iterate over all top-level nodes, and split them into Image nodes and Text nodes
 		$pointer = 0;
 		$nodes = [];
@@ -109,8 +123,7 @@ class GroupContentDataProvider extends DataProvider {
 					'_type' => 'TYPO3.Neos.NodeTypes:Image',
 					'image' => $img->getAttribute('src'),
 					'alt' => $img->getAttribute('alt'),
-					'floated' => $img->getAttribute('class') === 'bild_links',
-                                        'showLastModificationDate' => 'TRUE'
+					'floated' => $img->getAttribute('class') === 'bild_links'
 				);
 				// Remove image tag of newly added image
 				$img->parentNode->removeChild($img);

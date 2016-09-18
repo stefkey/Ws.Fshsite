@@ -4,7 +4,8 @@
     "require": {
         "typo3/neos": "*",
         "typo3/neos-nodetypes": "*",
-        "johannessteu/neos-nodetypes": "*"
+        "johannessteu/neos-nodetypes": "*",
+        "sandstorm/usermanagement": "*"
     },
     "suggest": {
         "typo3/neos-seo": "*"
