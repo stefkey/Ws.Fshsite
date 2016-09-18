@@ -776,6 +776,20 @@ figcaption p em {
 	bottom: 0px;
 	background-color: rgba(228,179,2,0.85);
 }
+.contentOrange90 h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 21px;
+    text-shadow: 0.05em 0.05em 0.1em #777;
+}
+
+.contentOrange90 p {
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 32px;
+    text-shadow: 0.05em 0.05em 0.1em #777;
+}
 
 .contentLeftOrange65 {
 	position: absolute;
@@ -783,6 +797,9 @@ figcaption p em {
 	height: 100%;
 	left: 0px;
 	background-color: rgba(228,179,2,0.85);
+}
+.contentLeftOrange65 h2, .contentLeftOrange65 p {
+    text-shadow: 0.05em 0.05em 0.1em #777;
 }
 
 .contentLeftOrange {
@@ -858,19 +875,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 	padding-right: 0px;
 }
 
-.contentOrange90 h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-weight: 600;
-    font-size: 21px;
-}
-
-.contentOrange90 p {
-    margin-bottom: 0;
-    font-weight: 400;
-    line-height: 32px;
-}
-
 .bg-image { 
     background-size: cover;
 }
@@ -900,6 +904,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
     font-size: 36px;
     margin-top: 4px;
     margin-bottom: 16px;
+    text-shadow: 0.05em 0.05em 0.1em #999;
 }
 .sj-homegrid p {
     font-size: 21px;
