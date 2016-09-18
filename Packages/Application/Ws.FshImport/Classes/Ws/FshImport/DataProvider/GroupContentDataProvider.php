@@ -104,8 +104,8 @@ class GroupContentDataProvider extends DataProvider {
 			$item->removeAttribute("style");
 		}
 
-		// Remove br tags following h3
-		$items = $xpath->query("//h3/following-sibling::*[1][name()='br']");
+		// SJ Remove br tags previous and following of h3
+		$items = $xpath->query("//h3/preceding-sibling::node()[position() < 10][self::br] | //h3/following-sibling::node()[position() < 10][self::br]");
 		foreach($items as $item) {
 			$item->parentNode->removeChild($item);
 		}
