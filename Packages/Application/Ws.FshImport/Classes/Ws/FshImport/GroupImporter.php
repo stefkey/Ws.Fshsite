@@ -1,6 +1,7 @@
 <?php
 namespace Ws\FshImport;
 
+use Neos\RedirectHandler\Storage\RedirectStorageInterface;
 use TYPO3\Eel\FlowQuery\FlowQuery;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
@@ -9,6 +10,12 @@ use Ttree\ContentRepositoryImporter\DataType\Slug;
 
 class GroupImporter extends Importer
 {
+	/**
+	 * @Flow\Inject
+	 * @var RedirectStorageInterface
+	 */
+	protected $redirectStorage;
+
 	/**
 	 * Import data from the given data provider
 	 *
@@ -52,6 +59,9 @@ class GroupImporter extends Importer
 
 		$node = $this->createUniqueNode($this->storageNode, $nodeTemplate, $desiredNodeName);
 		$node->setLastPublicationDateTime($data['_lastModificationDateTime']);
+
+		$nodePathSegment = $node->getProperty('uriPathSegment') . '.html';
+		$this->redirectStorage->addRedirect($nodePathSegment, '/g/' . $nodePathSegment, 301);
 
 		$this->registerNodeProcessing($node, $externalIdentifier);
 	}
