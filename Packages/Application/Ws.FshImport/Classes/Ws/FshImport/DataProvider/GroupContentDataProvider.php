@@ -50,6 +50,17 @@ class GroupContentDataProvider extends DataProvider {
 		return html_entity_decode(trim($tempDom->saveHTML()));
 	}
 
+	protected function domElementInnerHtml(\DOMElement $element) {
+		$innerHTML = "";
+		$children  = $element->childNodes;
+
+		foreach ($children as $child) {
+			$innerHTML .= $element->ownerDocument->saveHTML($child);
+		}
+
+		return $innerHTML;
+	}
+
 	protected function parseHtml($html) {
 		if (!$html) {
 			return null;
@@ -108,6 +119,13 @@ class GroupContentDataProvider extends DataProvider {
 		$items = $xpath->query("//h3/preceding-sibling::node()[position() < 10][self::br] | //h3/following-sibling::node()[position() < 10][self::br]");
 		foreach($items as $item) {
 			$item->parentNode->removeChild($item);
+		}
+
+		// Remove strong or span tags that contain links
+		while($item = $xpath->query("//a[parent::strong or parent::span]")[0]) {
+			$innerHtml = $this->domElementInnerHtml($item->parentNode);
+			$newNode = $dom->createTextNode($innerHtml);
+			$item->parentNode->parentNode->replaceChild($newNode, $item->parentNode);
 		}
 
 		// Iterate over all top-level nodes, and split them into Image nodes and Text nodes
