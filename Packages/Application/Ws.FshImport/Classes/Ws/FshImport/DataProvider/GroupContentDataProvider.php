@@ -121,9 +121,8 @@ class GroupContentDataProvider extends DataProvider {
 			$item->parentNode->removeChild($item);
 		}
 
-		// Remove strong tags that contain links
-		$items = $xpath->query("//strong/a");
-		foreach($items as $item) {
+		// Remove strong or span tags that contain links
+		while($item = $xpath->query("//a[parent::strong or parent::span]")[0]) {
 			$innerHtml = $this->domElementInnerHtml($item->parentNode);
 			$newNode = $dom->createTextNode($innerHtml);
 			$item->parentNode->parentNode->replaceChild($newNode, $item->parentNode);
