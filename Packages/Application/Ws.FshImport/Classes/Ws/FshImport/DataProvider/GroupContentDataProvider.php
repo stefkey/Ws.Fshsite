@@ -71,6 +71,9 @@ class GroupContentDataProvider extends DataProvider {
 		$html = str_replace('</b>', '</strong>', $html);
 		$html = str_replace('<i>', '<em>', $html);
 		$html = str_replace('</i>', '</em>', $html);
+                // Replace text
+                $html = str_replace('(ad)', '@', $html);
+                $html = str_replace('(at)', '@', $html);
 
 		$dom = new \DOMDocument;
 		// Ignore warnings
@@ -115,8 +118,16 @@ class GroupContentDataProvider extends DataProvider {
 			$item->removeAttribute("style");
 		}
 
+                // SJ span.fett -> strong
+                $headings = $xpath->query("//span[contains(@class, 'fett')]");
+                foreach($headings as $item) {
+                        $newNode = $dom->createElement('strong', $item->nodeValue);
+                        $item->parentNode->replaceChild($newNode, $item);
+                        $item->removeAttribute("style");
+                }
+
 		// SJ Remove br tags previous and following of h3
-		$items = $xpath->query("//h3/preceding-sibling::node()[position() < 10][self::br] | //h3/following-sibling::node()[position() < 10][self::br]");
+		$items = $xpath->query("//h3/preceding-sibling::node()[position() < 4][self::br] | //h3/following-sibling::node()[position() < 4][self::br]");
 		foreach($items as $item) {
 			$item->parentNode->removeChild($item);
 		}
@@ -150,6 +161,7 @@ class GroupContentDataProvider extends DataProvider {
 			$text = trim($this->domElementToHtml($element));
 
 			// Hardcoded regexp to remove empty tags, will do for now
+                        $text = preg_replace('/<a[^>]*>[\s\xC2\xA0]*<\/a>/i', '', $text);
 			$text = preg_replace('/<span[^>]*>[\s\xC2\xA0]*<\/span>/siu', '', $text);
 			$text = preg_replace('/<p[^>]*>[\s\xC2\xA0]*<\/p>/i', '', $text);
 			$text = preg_replace('/<h3[^>]*>[\s\xC2\xA0]*<\/h3>/i', '', $text);
