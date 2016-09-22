@@ -14,21 +14,21 @@ class User extends OriginalUser
 	 * @var string
 	 * @ORM\Column(nullable=TRUE)
 	 */
-	protected $group;
+	protected $groupId;
 
 	/**
 	 * @return string
 	 */
-	public function getGroup()
+	public function getGroupId()
 	{
-			return $this->group;
+		return $this->groupId;
 	}
 
 	/**
-	 * @param string $group
+	 * @param string $groupId
 	 */
-	public function setGroup($group)
+	public function setGroupId($groupId)
 	{
-			$this->group = $group;
+		$this->groupId = $groupId;
 	}
 }

@@ -51,13 +51,13 @@ class UserCreationService implements UserCreationServiceInterface
         $account->addRole(new Role('Flowpack.Neos.FrontendLogin:FSH_Mitglied'));
 
         $attributes = $registrationFlow->getAttributes();
-        $group = isset($attributes['group']) ? $attributes['group'] : '';
+        $groupId = isset($attributes['groupId']) ? $attributes['groupId'] : '';
         // Create the user
         $user = new User();
         $user->setFirstName($registrationFlow->getFirstName());
         $user->setLastName($registrationFlow->getLastName());
         $user->setEmail($registrationFlow->getEmail());
-        $user->setGroup($group);
+        $user->setGroupId($groupId);
         $user->setAccount($account);
 
         // Persist user
