@@ -40,11 +40,12 @@ class ImportCommandController extends CommandController {
 			$username =  html_entity_decode(urldecode($account['username']));
 			$name = html_entity_decode(urldecode($account['name']));
 			$groupId = html_entity_decode(urldecode($account['belong_to_group']));
-			$nameArray = explode(" ", $name, 2);
+			$nameArray = explode(' ', $name, 2);
 			$firstName = $nameArray[0];
 			$lastName = isset($nameArray[1]) ? $nameArray[1] : '-';
 			$attributes = [];
 			$attributes['groupId'] = $groupId;
+			$attributes['creationDateTime'] =  new \DateTime($account['confirmeddate']);
 
 			$password = $this->randomPassword();
 			$passwordDto = new PasswordDto();

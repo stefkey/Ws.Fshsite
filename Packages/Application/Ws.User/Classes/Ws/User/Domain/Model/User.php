@@ -17,6 +17,12 @@ class User extends OriginalUser
 	protected $groupId;
 
 	/**
+	 * @var \DateTime
+	 * @ORM\Column(nullable=true)
+	 */
+	protected $creationDateTime;
+
+	/**
 	 * @return string
 	 */
 	public function getGroupId()
@@ -30,5 +36,21 @@ class User extends OriginalUser
 	public function setGroupId($groupId)
 	{
 		$this->groupId = $groupId;
+	}
+
+	/**
+	 * @return \DateTime
+	 */
+	public function getCreationDateTime()
+	{
+		return $this->creationDateTime;
+	}
+
+	/**
+	 * @param \DateTime $creationDateTime
+	 */
+	public function setCreationDateTime($creationDateTime)
+	{
+		$this->creationDateTime = $creationDateTime;
 	}
 }

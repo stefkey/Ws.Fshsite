@@ -59,12 +59,14 @@ class UserCreationService implements UserCreationServiceInterface
 
         $attributes = $registrationFlow->getAttributes();
         $groupId = isset($attributes['groupId']) ? $attributes['groupId'] : '';
+        $creationDateTime = isset($attributes['creationDateTime']) ? $attributes['creationDateTime'] : null;
         // Create the user
         $user = new User();
         $user->setFirstName($registrationFlow->getFirstName());
         $user->setLastName($registrationFlow->getLastName());
         $user->setEmail($registrationFlow->getEmail());
         $user->setGroupId($groupId);
+        $user->setCreationDateTime($creationDateTime);
         $user->setAccount($account);
 
         // Persist user
