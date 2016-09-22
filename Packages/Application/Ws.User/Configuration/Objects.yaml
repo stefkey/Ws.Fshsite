@@ -1,0 +1,2 @@
+Sandstorm\UserManagement\Domain\Service\UserCreationServiceInterface:
+  className: 'Ws\User\Domain\Service\UserCreationService'

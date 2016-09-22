@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "ws/user",
+    "require": {
+        "typo3/flow": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Ws\\User": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Ws.User"
+        }
+    }
+}

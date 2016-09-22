@@ -3,6 +3,7 @@
 /Data/
 /Packages/Application/*
 !/Packages/Application/Ws.FshImport
+!/Packages/Application/Ws.User
 /Packages/Framework/
 /Packages/Inactive/
 /Packages/Neos/
