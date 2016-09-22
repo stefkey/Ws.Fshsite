@@ -37,7 +37,7 @@ class ImportCommandController extends CommandController {
 			$lastName = isset($nameArray[1]) ? $nameArray[1] : '-';
 			$additionalAttributes = 'group:' . $group;
 			try {
-				$this->userManagementController->createCommand($username, 'dontknowhowtosetittonull', $firstName, $lastName);
+				$this->userManagementController->createCommand($username, $this->randomPassword(), $firstName, $lastName);
 			} catch (\Exception $e) {
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
@@ -50,5 +50,9 @@ class ImportCommandController extends CommandController {
 		$statement = $this->entityManager->getConnection()->prepare($sql);
 		$statement->execute();
 		return $statement->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	protected function randomPassword() {
+		return md5(uniqid(mt_rand(), true));
 	}
 }
