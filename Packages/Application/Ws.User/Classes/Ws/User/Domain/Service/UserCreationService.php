@@ -28,7 +28,7 @@ class UserCreationService implements UserCreationServiceInterface
     protected $userRepository;
 
     /**
-     * @Flow\InjectConfiguration(path="rolesForNewUsers")
+     * @Flow\InjectConfiguration(package="Sandstorm.UserManagement", path="rolesForNewUsers")
      */
     protected $rolesForNewUsers;
 
@@ -48,7 +48,11 @@ class UserCreationService implements UserCreationServiceInterface
         $account->setAccountIdentifier($registrationFlow->getEmail());
         $account->setCredentialsSource($registrationFlow->getEncryptedPassword());
         $account->setAuthenticationProviderName('Sandstorm.UserManagement:Login');
-        $account->addRole(new Role('Flowpack.Neos.FrontendLogin:FSH_Mitglied'));
+
+        // Assign preconfigured roles
+        foreach ($this->rolesForNewUsers as $roleString){
+            $account->addRole(new Role($roleString));
+        }
 
         $attributes = $registrationFlow->getAttributes();
         $groupId = isset($attributes['groupId']) ? $attributes['groupId'] : '';
