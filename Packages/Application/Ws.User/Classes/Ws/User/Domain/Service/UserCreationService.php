@@ -43,6 +43,9 @@ class UserCreationService implements UserCreationServiceInterface
      */
     public function createUserAndAccount(RegistrationFlow $registrationFlow)
     {
+        if (count($this->userRepository->findByEmail($registrationFlow->getEmail())) > 0) {
+            throw new \Exception('User with such email already exists: ' . $registrationFlow->getEmail());
+        }
         // Create the account
         $account = new \TYPO3\Flow\Security\Account();
         $account->setAccountIdentifier($registrationFlow->getEmail());

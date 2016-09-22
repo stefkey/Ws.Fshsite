@@ -61,7 +61,7 @@ class ImportCommandController extends CommandController {
 				$this->userCreationService->createUserAndAccount($registrationFlow);
 				$this->outputLine('Added the User <b>"%s"</b> with groupId <b>"%s"</b>.', array($username, $groupId));
 			} catch (\Exception $e) {
-				$this->outputLine('Caught exception: "%s"\n', array($e->getMessage()));
+				$this->outputLine('Caught exception for user "%s": "%s"\n', array($username, $e->getMessage()));
 			}
 		}
 		return "Done!";
