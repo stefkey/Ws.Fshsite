@@ -108,7 +108,7 @@
               'sidebar':
                 label: 'mit Sidebar'
               'homepage':
-                label: 'Startseite'   
+                label: 'Startseite'
     'subpageLayout':
       ui:
         inspector:
@@ -1219,7 +1219,7 @@
         label: 'SJ Test'
         inspector:
           group: 'quicklinks3'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor' 
+          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
 
 ##
 # SJ Button
@@ -1326,7 +1326,7 @@
       ui:
         label: 'Link'
         inlineEditable: TRUE
-        inspector: 
+        inspector:
           group: 'menuBlock'
           editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
 
@@ -1426,7 +1426,18 @@
     'TYPO3.Neos.NodeTypes:Menu': TRUE
   ui:
     label: 'Gruppenseiten Menü'
-        
+
+##
+# A Zip-Menu NodeType
+#
+#
+'Ws.Fshsite:ZipMenu':
+  superTypes:
+    'TYPO3.Neos:Content': TRUE
+  ui:
+    label: 'Gruppenseiten Menü by Zip'
+    group: 'structure'
+
 # FIXME: these nodetypes are diabled in johannessteu/neos-nodetypes package, but are used on the site!
 'TYPO3.Neos.NodeTypes:Page':
   abstract: ~

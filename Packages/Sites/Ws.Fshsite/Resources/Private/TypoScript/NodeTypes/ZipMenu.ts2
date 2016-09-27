@@ -1,0 +1,27 @@
+prototype(Ws.Fshsite:ZipMenu)>
+prototype(Ws.Fshsite:ZipMenu) < prototype(TYPO3.TypoScript:Collection) {
+	@process.tmpl = ${'<ul class="zip-menu">' + value + '</ul>'}
+	collection = ${q(site).children('g').children('[instanceof Ws.Fshsite:Group][_hiddenInIndex != true]').sort('zip', 'ASC').get()}
+	itemName = 'node'
+	itemRenderer = TYPO3.TypoScript:Tag {
+		tagName = 'li'
+		content = TYPO3.TypoScript:Tag {
+			tagName = 'a'
+			attributes.class = 'zip-menu-item'
+			attributes.href = NodeUri {
+				node = ${node}
+			}
+			content = ${String.substring(node.properties.zip, 0, 3) + 'xx ' + node.properties.title}
+		}
+	}
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryTags {
+			nodeType = 'NodeType_Ws.Fshsite:Group'
+		}
+	}
+	@process.editable = ContentElementWrapping
+}
