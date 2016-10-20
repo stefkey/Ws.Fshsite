@@ -56,7 +56,7 @@
                                 <f:format.date  forceLocale="{true}" cldrFormat="dd. MMMM yyyy">{node.properties.lastModificationDate}</f:format.date>
 							</f:then>
 							<f:else>
-                                <f:format.date forceLocale="{true}" cldrFormat="dd. MMMM yyyy">{node.lastPublicationDateTime}</f:format.date>
+                                <f:format.date>{lastPubDate}</f:format.date>
 							</f:else>
 						</f:if>
                     </div>

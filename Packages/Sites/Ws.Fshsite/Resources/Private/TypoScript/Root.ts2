@@ -118,6 +118,11 @@ page = Page {
 }
 
 default < page
+default {
+	body {
+        lastPubDate = ${q(documentNode).children('main').find('[instanceof TYPO3.Neos:Content]').add(documentNode).sort('_lastPublicationDateTime').get(0).lastPublicationDateTime}
+	}
+}
 
 // Special page layout with less navigation components
 landingPage < page
@@ -280,6 +285,10 @@ prototype(TYPO3.Neos.NodeTypes:Menu) {
 prototype(TYPO3.Neos.NodeTypes:AssetList)  {
 	attributes.class = 'container sj-small-container'
 }
+prototype(DL.Gallery:Gallery) {
+	attributes.class = 'container sj-small-container'
+}
+
 
 ##
 # SJ FullWidth Area
