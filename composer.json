@@ -18,6 +18,10 @@
         },
         {
             "type": "git",
+            "url": "https://github.com/dimaip/UserManagement"
+        },
+        {
+            "type": "git",
             "url": "https://github.com/neos/form-builder.git"
         }
     ],
@@ -42,7 +46,7 @@
 	      "typo3/formbuilder": "dev-master",
         "simplyadmire/neos-form-builder-bundle": "^1.0",
         "ttree/contentrepositoryimporter": "*",
-        "sandstorm/usermanagement": "^1.1",
+        "sandstorm/usermanagement": "dev-confirmation",
         "dl/gallery": "^0.3.0",
         "dimaip/groupby": "@dev"
     },
