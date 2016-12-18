@@ -4,6 +4,13 @@
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
+    topslider:
+      type: 'TYPO3.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': FALSE
+          'Ws.Fshsite:Carousel': TRUE
+          'Ws.Fshsite:SJCarousel': TRUE
   ui:
     label: 'Gruppenseite'
     inspector:
