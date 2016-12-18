@@ -18,7 +18,7 @@ privilegeTargets:
       
     'Ws.Fshsite:MembersAreaLV':
       # e5871fb2-caa5-4ec8-8579-03d7504534c5 is the node identifier of the special child node, there show only for a special usergroup "FSH-LV", by default located at "/sites/Ws.Fshsite/member-area"
-      matcher: isDescendantNodeOf("e5871fb2-caa5-4ec8-8579-03d7504534c5") || isDescendantNodeOf("f4731e63-b45e-40ff-b052-27bf15f06c90")
+      matcher: isDescendantNodeOf("e5871fb2-caa5-4ec8-8579-03d7504534c5") || isDescendantNodeOf("100d3743-3d0e-43d5-9a29-03fe2c4dab7c")
 
 roles:
 
