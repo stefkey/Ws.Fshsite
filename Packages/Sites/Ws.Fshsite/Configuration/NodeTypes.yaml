@@ -183,7 +183,7 @@
         inspector:
           editorOptions:
             features:
-              resize: FALSE
+              resize: TRUE
     'floated':
       type: boolean
       ui:
