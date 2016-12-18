@@ -64,6 +64,30 @@ Networkteam:
           - Facebook
           - GooglePlus
 
+DL:
+  Gallery:
+    loadGalleryCSS: true
+    loadGalleryJS: true
+    themes:
+      bootstrapLightbox:
+        label: 'Bootstrap with Lightbox'
+        themeSettings:
+          columnClass: 'col-sm-1'
+          imageVariants:
+            thumb:
+              maximumWidth:
+              maximumHeight:
+              width: 500
+              height: 500
+              allowCropping: true
+              allowUpScaling:
+            large:
+              maximumWidth: 2000
+              maximumHeight: 1200
+              width:
+              height:
+              allowCropping:
+              allowUpScaling:
 
 Sandstorm:
   UserManagement:
@@ -91,18 +115,22 @@ Sandstorm:
       # <Package>/Resources/Private/EmailTemplates.
       templatePackage: 'Ws.Fshsite'
     # An array of roles which are assigned to users after they activate their account.
-    rolesForNewUsers: [Flowpack.Neos.FrontendLogin:FSH_Mitglied]
+    rolesForNewUsers: []
 
     # Redirect settings after logout/login
     redirect:
-      afterLogin: [/mitglieder/Mitgliederbereich/aktuelles.html]
-      afterLogout: [/mitglieder/mitgliederlogin.html]
-    # To activate redirection, make these settings:
-      afterLogin:
-        action: 'action'
-        controller: 'Controller'
-        package: 'Ws.Fshsite'
-      afterLogout:
-        action: 'action'
-        controller: 'Controller'
-        package: 'Ws.Fshsite'
+      afterLogin: []
+      afterLogout: []
+    # To activate redirection, make these settings. controllerArguments are optional.
+#      afterLogin:
+#        action: 'action'
+#        controller: 'Controller'
+#        package: 'Your.Package'
+#        controllerArguments:
+#          yourAdditionalArgument: 'test'
+#      afterLogout:
+#        action: 'action'
+#        controller: 'Controller'
+#        package: 'Your.Package'
+#        controllerArguments:
+#          yourAdditionalArgument: 'test1'
