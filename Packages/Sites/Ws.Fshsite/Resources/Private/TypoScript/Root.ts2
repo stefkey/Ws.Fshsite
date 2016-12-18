@@ -9,6 +9,7 @@ include: NodeTypes/*
 /**
  * Root TypoScript template for the Neos demo website
  */
+
 page = Page {
 	head {
 		stylesheets {
@@ -38,6 +39,7 @@ page = Page {
 			@if.image = ${q(node).property('image')}
 		}
 		imageTitleText = ${q(node).property('imageTitleText')}
+        lastPubDate = ${q(documentNode).children('main').find('[instanceof TYPO3.Neos:Content]').add(q(documentNode).children('Group').find('[instanceof TYPO3.Neos:Content]')).add(documentNode).sort('_lastPublicationDateTime', 'DESC').get(0).lastPublicationDateTime}
 
 		parts {
 			mainMenu = Menu {
@@ -118,11 +120,6 @@ page = Page {
 }
 
 default < page
-default {
-	body {
-        lastPubDate = ${q(documentNode).children('main').find('[instanceof TYPO3.Neos:Content]').add(documentNode).sort('_lastPublicationDateTime').get(0).lastPublicationDateTime}
-	}
-}
 
 // Special page layout with less navigation components
 landingPage < page
@@ -149,6 +146,17 @@ homepage {
 	bodyTag.attributes.class = 'homepage'
 	body {
 		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Homepage.html'
+		title = ${q(node).property('title')}
+		title.@process.convertUris = ConvertUris
+	}
+}
+
+// SJ With Sidebar FSH PlugIn
+dbrecherche < page
+dbrecherche {
+	bodyTag.attributes.class = 'sidebar'
+	body {
+		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/fshplugin.html'
 		title = ${q(node).property('title')}
 		title.@process.convertUris = ConvertUris
 	}
