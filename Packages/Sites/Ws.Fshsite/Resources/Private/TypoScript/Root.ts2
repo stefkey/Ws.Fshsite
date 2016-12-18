@@ -39,7 +39,7 @@ page = Page {
 			@if.image = ${q(node).property('image')}
 		}
 		imageTitleText = ${q(node).property('imageTitleText')}
-        lastPubDate = ${q(documentNode).children('main').find('[instanceof TYPO3.Neos:Content]').add(q(documentNode).children('Group').find('[instanceof TYPO3.Neos:Content]')).add(documentNode).sort('_lastPublicationDateTime', 'DESC').get(0).lastPublicationDateTime}
+		lastPubDate = ${q(documentNode).children('main').find('[instanceof TYPO3.Neos:Content]').add(q(documentNode).children('Group').find('[instanceof TYPO3.Neos:Content]')).add(documentNode).sort('_lastPublicationDateTime', 'DESC').get(0).lastPublicationDateTime}
 
 		parts {
 			mainMenu = Menu {
@@ -146,17 +146,6 @@ homepage {
 	bodyTag.attributes.class = 'homepage'
 	body {
 		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Homepage.html'
-		title = ${q(node).property('title')}
-		title.@process.convertUris = ConvertUris
-	}
-}
-
-// SJ With Sidebar FSH PlugIn
-dbrecherche < page
-dbrecherche {
-	bodyTag.attributes.class = 'sidebar'
-	body {
-		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/fshplugin.html'
 		title = ${q(node).property('title')}
 		title.@process.convertUris = ConvertUris
 	}
