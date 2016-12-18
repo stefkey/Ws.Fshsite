@@ -1,6 +1,7 @@
 'Ws.Fshsite:Legacy':
   superTypes:
     'TYPO3.Neos:Content': true
+    'TYPO3.Neos:ContentCollection': true
   ui:
     label: 'Legacy content'
     inspector:
