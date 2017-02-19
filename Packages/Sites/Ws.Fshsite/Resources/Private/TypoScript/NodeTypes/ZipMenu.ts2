@@ -1,7 +1,7 @@
 prototype(Ws.Fshsite:ZipMenu)>
 prototype(Ws.Fshsite:ZipMenu) < prototype(TYPO3.TypoScript:Collection) {
-	@process.tmpl = ${'<div class="zip-menu">' + value + '</div>'}
-	@context.nodes = ${q(site).children('g').children('[instanceof Ws.Fshsite:Group][_hiddenInIndex != true]')}
+	@process.tmpl = ${'<div class="container sj-container zip-menu">' + value + '</div>'}
+	@context.nodes = ${q(site).children('gruppen').children('[instanceof Ws.Fshsite:Group][_hiddenInIndex != true]')}
 	collection = ${nodes.groupBy('String.substring(node.properties.zip, 0, 1)')}
 	itemName = 'nodes'
 	itemKey = 'groupName'
