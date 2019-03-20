@@ -26,6 +26,7 @@
 /uploads
 /composer.phar
 /auth.json
+/assetsCache
 
 
 # Various temporary files
