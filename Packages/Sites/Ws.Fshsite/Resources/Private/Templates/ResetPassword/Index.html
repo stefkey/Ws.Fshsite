@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns="http://www.w3.org/1999/xhtml"
+      lang="en">
+
+<f:layout name="Default"/>
+
+<f:section name="Title">Passwort vergessen</f:section>
+
+<f:section name="Content">
+
+  <p>Bitte geben Sie ihre Email-Adresse ein. Wir schicken Ihnen dann einen Link, mit dem Sie ihr Passwort zurücksetzen können.</p>
+  <f:form action="requestToken" method="POST" objectName="resetPasswordFlow">
+    <f:form.textfield property="email" type="text" placeholder="Email-Adresse"/>
+    <f:form.validationResults for="{email}">
+      <f:if condition="{validationResults.flattenedErrors}">
+        <dl class="errors">
+          <f:for each="{validationResults.flattenedErrors}" key="propertyName" as="errors">
+            <dt>
+              {propertyName}:
+            </dt>
+            <dd>
+              <f:for each="{errors}" as="error">{error}</f:for>
+            </dd>
+          </f:for>
+        </dl>
+      </f:if>
+    </f:form.validationResults>
+
+    <f:form.submit class="button large primary" value="Passwortlink jetzt zusenden"/>
+  </f:form>
+</f:section>
+
+</html>

@@ -1,0 +1,5 @@
+# Use the Neos services
+Sandstorm\UserManagement\Domain\Service\RedirectTargetServiceInterface:
+  className: 'Sandstorm\UserManagement\Domain\Service\Neos\NeosRedirectTargetService'
+#Sandstorm\UserManagement\Domain\Service\UserCreationServiceInterface:
+#  className: 'Sandstorm\UserManagement\Domain\Service\Neos\NeosUserCreationService'

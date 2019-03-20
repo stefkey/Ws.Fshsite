@@ -2,5 +2,5 @@
 # "YouTube" element
 #
 prototype(Site:YouTube) < prototype(Content) {
-	attributes.class = 'responsive-video'
+	attributes.class = 'container sj-small-container responsive-video '
 }

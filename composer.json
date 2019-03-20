@@ -14,14 +14,6 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/johannessteu/JohannesSteu.Neos.NodeTypes.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/dimaip/UserManagement"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/neos/form-builder.git"
         }
     ],
@@ -36,19 +28,16 @@
         "neos/redirecthandler-databasestorage": "~1.0",
         "heise/shariff": "^1.5",
         "portachtzig/neos-piwik": "^1.0",
-        "flowpack/listable": "^0.4.1",
         "typo3/swiftmailer": "^5.4",
         "networkteam/neos-shariff": "^2.0",
         "networkteam/neos-mailobfuscator": "^1.0",
         "flowpack/elasticsearch-contentrepositoryadaptor": "^2.0",
         "flowpack/searchplugin": "^2.0",
-        "johannessteu/neos-nodetypes": "dev-master",
 	      "typo3/formbuilder": "dev-master",
         "simplyadmire/neos-form-builder-bundle": "^1.0",
         "ttree/contentrepositoryimporter": "*",
-        "sandstorm/usermanagement": "dev-confirmation",
-        "dl/gallery": "^0.3.0",
-        "dimaip/groupby": "@dev"
+        "sandstorm/usermanagement": "^3.0",
+        "dl/gallery": "^0.3.0"
     },
     "require-dev": {
         "typo3/buildessentials": "3.3.x-dev",

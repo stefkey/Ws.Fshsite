@@ -15,7 +15,7 @@
             </button>
 
             <a href="{neos:uri.node(node: '~')}">
-                <img src="{f:uri.resource(path: 'Images/2018_Logo-FSH_352x105_2xextern.png', package: 'Ws.Fshsite')}" alt="Logo der Frauenselbsthilfe nach Krebs"/>
+                <img src="{f:uri.resource(path: 'Images/Logo-FSH-40_352x105@2x.png', package: 'Ws.Fshsite')}" alt="Logo der Frauenselbsthilfe nach Krebs"/>
             </a>
         </div>
         <div class="collapse navbar-collapse navbar-main-collapse">
@@ -25,12 +25,16 @@
 
                         <f:if condition="{item.subItems}">
                             <f:then>
-                                <a href="#">{item.label}</a>
+                                <neos:link.node node="{item.node}">{item.label}</neos:link.node>
+                                
                                 <f:render section="subList" arguments="{items: item.subItems, node: item.node}"/>
                             </f:then>
                             <f:else>
                                 <neos:link.node node="{item.node}">{item.label}</neos:link.node>
                             </f:else>
+
+
+
                         </f:if>
                     </li>
                 </f:for>

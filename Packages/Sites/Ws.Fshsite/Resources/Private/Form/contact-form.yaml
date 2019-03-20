@@ -1,0 +1,81 @@
+type: 'TYPO3.Form:Form'
+identifier: contact-form
+label: 'Contact form'
+renderingOptions:
+    submitButtonLabel: 'Nachricht senden'
+finishers:
+    -
+        identifier: 'TYPO3.Form:Email'
+        options:
+            templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/ContactForm/Email.txt'
+            format: html
+            subject: 'Kontaktformular E-Mail'
+            recipientAddress: kontakt@frauenselbsthilfe.de
+            recipientName: 'GSt Bonn'
+            senderAddress: no-reply@frauenselbsthilfe.de
+            senderName: 'FSH Neos CMS'
+            replyToAddress: no-reply@frauenselbsthilfe.de
+    -
+        identifier: 'TYPO3.Form:Confirmation'
+        options:
+            message: "<h3>Vielen Dank für Ihre Nachricht!</h3> <p>Wir werden uns ggf. in Kürze bei Ihnen melden.</p>\n"
+renderables:
+    -
+        type: 'TYPO3.Form:Page'
+        renderables:
+            -
+                type: 'TYPO3.Form:SingleSelectRadiobuttons'
+                identifier: anrede
+                label: Anrede
+                properties:
+                    options:
+                        -
+                            _value: Frau
+                            _key: Frau
+                        -
+                            _value: Herr
+                            _key: Herr
+            -
+                type: 'TYPO3.Form:SingleLineText'
+                identifier: name
+                label: 'Ihr vollständiger Name'
+                validators:
+                    -
+                        identifier: 'TYPO3.Flow:NotEmpty'
+                properties:
+                    placeholder: ''
+                defaultValue: ''
+            -
+                type: 'TYPO3.Form:SingleLineText'
+                identifier: telnummer
+                label: 'Ihre Telefonnummer'
+                validators:
+                    -
+                        identifier: 'TYPO3.Flow:NotEmpty'
+                properties:
+                    placeholder: ''
+                defaultValue: ''
+            -
+                type: 'TYPO3.Form:SingleLineText'
+                identifier: email
+                label: E-mail
+                validators:
+                    -
+                        identifier: 'TYPO3.Flow:NotEmpty'
+                    -
+                        identifier: 'TYPO3.Flow:EmailAddress'
+                properties:
+                    placeholder: ''
+                defaultValue: ''
+            -
+                type: 'TYPO3.Form:MultiLineText'
+                identifier: nachricht
+                label: Nachricht
+                validators:
+                    -
+                        identifier: 'TYPO3.Flow:NotEmpty'
+                properties:
+                    placeholder: 'Schreiben Sie hier Ihre Mitteilung.'
+                defaultValue: ''
+        identifier: page-one
+        label: 'Persönliche Angaben:'

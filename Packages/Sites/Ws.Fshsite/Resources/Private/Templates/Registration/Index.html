@@ -1,1 +1,60 @@
-<f:link.action action="newAccount">Create Account</f:link.action>
+<!DOCTYPE html>
+<html xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:usermanagement="http://typo3.org/ns/Sandstorm/UserManagement/ViewHelpers"
+      xmlns="http://www.w3.org/1999/xhtml"
+      lang="en">
+
+<f:layout name="Default"/>
+
+<f:section name="Title">Registration</f:section>
+
+<f:section name="Content">
+  <usermanagement:ifAuthenticated authenticationProviderName="Sandstorm.UserManagement:Login">
+    <f:then>
+    </f:then>
+    <f:else>
+      <f:form class="sj-register" action="register" method="post" objectName="registrationFlow">
+        <fieldset>
+          <label>
+            <div>E-Mail-Adresse:</div>
+            <f:form.textfield property="email" placeholder="" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" type="email"/>
+            <f:render partial="FormErrors" section="ValidationResults" arguments="{for: 'registrationFlow.email'}"/>
+          </label>
+
+          <label>
+            <div>Passwort:</div>
+            <f:form.password placeholder="frei wählbares Passwort" property="passwordDto.password"/>
+            <f:render partial="FormErrors" section="ValidationResults" arguments="{for: 'registrationFlow.passwordDto.password'}"/>
+          </label>
+
+          <label>
+            <div>Passwortbestätigung:</div>
+            <f:form.password placeholder="Passwort wiederholen" property="passwordDto.passwordConfirmation"/>
+          </label>
+
+          <label>
+            <div>Anrede:</div>
+            <f:form.select options="{'f': 'Frau', 'm': 'Herr'}" property="attributes.salutation" />
+            <f:render partial="FormErrors" section="ValidationResults" arguments="{for: 'registrationFlow.attributes.salutation'}"/>
+          </label>
+
+          <label>
+            <div>Vorname:</div>
+            <f:form.textfield placeholder="Erika" property="attributes.firstName"/>
+            <f:render partial="FormErrors" section="ValidationResults" arguments="{for: 'registrationFlow.attributes.firstName'}"/>
+          </label>
+
+          <label>
+            <div>Nachname:</div>
+            <f:form.textfield placeholder="Musterfrau" property="attributes.lastName"/>
+            <f:render partial="FormErrors" section="ValidationResults" arguments="{for: 'registrationFlow.attributes.lastName'}"/>
+          </label>
+
+          <input type="submit" value="Registrierung absenden" class="button large primary"/>
+        </fieldset>
+      </f:form>
+    </f:else>
+  </usermanagement:ifAuthenticated>
+</f:section>
+
+</html>

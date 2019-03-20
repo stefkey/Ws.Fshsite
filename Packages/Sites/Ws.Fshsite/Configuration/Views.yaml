@@ -1,17 +1,40 @@
 -
+  requestFilter: 'mainRequest.isPackage("TYPO3.Neos") && isPackage("Sandstorm.UserManagement")'
+  options:
+    layoutRootPaths: ['resource://Ws.Fshsite/Private/Templates/SandstormUsermanagement/Layouts']
+
+-
   requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("Login") && isAction("login")'
   options:
     templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/Login/Login.html'
     partialRootPaths: ['resource://Ws.Fshsite/Private/Partials']
+
 -
-  requestFilter: 'mainRequest.isPackage("TYPO3.Neos") && isPackage("Sandstorm.UserManagement")'
+  requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("Registration")'
   options:
-    layoutRootPaths: ['resource://Ws.Fshsite/Private/Templates/SandstormUsermanagement/Layouts']
+    templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/Registration/Index.html'
+-
+  requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("Registration") && isAction("activateAccount")'
+  options:
+    templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/Registration/ActivateAccount.html'
+-
+  requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("Registration") && isAction("register")'
+  options:
+    templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/Registration/Register.html'
+
 -
   requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("ResetPassword")'
   options:
     templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/ResetPassword/Index.html'
 -
-  requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("Registration")'
+  requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("ResetPassword") && isAction("insertNewPassword")'
   options:
-    templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/Registration/Index.html'
+    templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/ResetPassword/InsertNewPassword.html'
+-
+  requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("ResetPassword") && isAction("requestToken")'
+  options:
+    templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/ResetPassword/RequestToken.html'
+-
+  requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("ResetPassword") && isAction("updatePassword")'
+  options:
+    templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/ResetPassword/UpdatePassword.html'

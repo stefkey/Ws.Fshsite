@@ -1,0 +1,8 @@
+Dear administrator,
+
+a user with name {registrationFlow.firstName} {registrationFlow.lastName},
+and email address {registrationFlow.email} has signed up for an account at {applicationName}.
+
+To confirm his account, please click the link below.
+
+{activationLink}

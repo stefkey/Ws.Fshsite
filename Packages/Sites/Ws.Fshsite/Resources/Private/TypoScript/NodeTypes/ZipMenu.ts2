@@ -1,24 +1,17 @@
 prototype(Ws.Fshsite:ZipMenu)>
 prototype(Ws.Fshsite:ZipMenu) < prototype(TYPO3.TypoScript:Collection) {
-	@process.tmpl = ${'<div class="container sj-container zip-menu">' + value + '</div>'}
-	@context.nodes = ${q(site).children('gruppen').children('[instanceof Ws.Fshsite:Group][_hiddenInIndex != true]')}
-	collection = ${nodes.groupBy('String.substring(node.properties.zip, 0, 1)')}
-	itemName = 'nodes'
-	itemKey = 'groupName'
-	itemRenderer = TYPO3.TypoScript:Collection {
-		@process.tmpl = ${'<div><h2>' + groupName + '0000–' + groupName + '9999</h2><ul>' + value + '</ul></div>'}
-		collection = ${q(nodes).sort('zip', 'ASC')}
-		itemName = 'node'
-		itemRenderer = TYPO3.TypoScript:Tag {
-			tagName = 'li'
-			content = TYPO3.TypoScript:Tag {
-				tagName = 'a'
-				attributes.class = 'zip-menu-item'
-				attributes.href = NodeUri {
-					node = ${node}
-				}
-				content = ${String.substring(node.properties.zip, 0, 2) + 'xxx ' + node.properties.title}
+	@process.tmpl = ${'<ul class="zip-menu container sj-small-container">' + value + '</ul>'}
+	collection = ${q(site).children('gruppen').children('[instanceof Ws.Fshsite:Group][_hiddenInIndex != true]').sort('zip', 'ASC').get()}
+	itemName = 'node'
+	itemRenderer = TYPO3.TypoScript:Tag {
+		tagName = 'li'
+		content = TYPO3.TypoScript:Tag {
+			tagName = 'a'
+			attributes.class = 'zip-menu-item'
+			attributes.href = NodeUri {
+				node = ${node}
 			}
+			content = ${String.substring(node.properties.zip, 0, 2) + '... ' + node.properties.title}
 		}
 	}
 	@cache {

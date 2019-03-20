@@ -1,0 +1,5 @@
+prototype(Frauenselbsthilfegruppe.Agindo:Frontend) < prototype(TYPO3.Phoenix.ContentTypes:Plugin)
+prototype(Frauenselbsthilfegruppe.Agindo:Frontend) {
+    package = 'Frauenselbsthilfegruppe.Agindo'
+    controller = 'Entry'
+}

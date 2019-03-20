@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:usermanagement="http://typo3.org/ns/Sandstorm/UserManagement/ViewHelpers"
+      xmlns="http://www.w3.org/1999/xhtml"
+      lang="en">
+
+<f:layout name="Default"/>
+
+<f:section name="Title">Login</f:section>
+
+<f:section name="Content">
+
+  <usermanagement:ifAuthenticated authenticationProviderName="Sandstorm.UserManagement:Login">
+    <f:then>
+      <f:render partial="LogoutForm" section="Logout" arguments="{_all}"/>
+    </f:then>
+    <f:else>
+      <f:form action="authenticate" method="post">
+        <fieldset>
+          <input style="width:33%; float:left; margin-right: 15px" class="form-control" placeholder="musterfrau@frauenselbsthilfe.de" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" type="email">
+          <input style="width:33%; float:left; margin-right: 15px" class="form-control" placeholder="Passwort" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" type="password" value="">
+          <input type="submit" value="Login" class="button large primary" />
+        </fieldset>
+      </f:form>
+      <f:link.action action="index" controller="ResetPassword">Passwort vergessen?</f:link.action>
+    </f:else>
+  </usermanagement:ifAuthenticated>
+</f:section>
+
+</html>
