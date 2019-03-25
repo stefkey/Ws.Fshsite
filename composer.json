@@ -3,56 +3,48 @@
     "description": "Website Distribution",
     "config": {
         "vendor-dir": "Packages/Libraries",
-        "bin-dir": "bin",
-	      "secure-http": false
+        "bin-dir": "bin"
     },
-    "minimum-stability": "stable",
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/networkteam/Networkteam.Neos.Shariff.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/johannessteu/TYPO3.FormBuilder.git"
-        }
-    ],
     "require": {
-        "typo3/neos": "~2.3.0",
-        "typo3/neos-nodetypes": "~2.3.0",
-        "typo3/neos-kickstarter": "~2.3.0",
-        "typo3/neos-seo": "^1.0",
-        "typo3/setup": "~2.0",
-        "flowpack/neos-frontendlogin": "~2.0",
-        "neos/redirecthandler-neosadapter": "~1.0",
-        "neos/redirecthandler-databasestorage": "~1.0",
-        "heise/shariff": "^1.5",
-        "portachtzig/neos-piwik": "^1.0",
-        "typo3/swiftmailer": "^5.4",
-        "networkteam/neos-shariff": "^2.0",
-        "networkteam/neos-mailobfuscator": "^1.0",
-        "flowpack/elasticsearch-contentrepositoryadaptor": "^2.0",
-        "flowpack/searchplugin": "^2.0",
-	      "typo3/formbuilder": "dev-master",
-        "simplyadmire/neos-form-builder-bundle": "^1.0",
-        "ttree/contentrepositoryimporter": "*",
-        "sandstorm/usermanagement": "^3.0",
-        "dl/gallery": "^0.3.0"
+        "neos/neos": "~3.1.0",
+        "neos/nodetypes": "~3.1.0",
+        "neos/site-kickstarter": "~3.1.0",
+        "neos/seo": "~2.0.0",
+        "neos/setup": "~4.0.0",
+
+        "flowpack/neos-frontendlogin": "~3.0",
+        "neos/redirecthandler-neosadapter": "~2.0",
+        "neos/redirecthandler-databasestorage": "~2.0",
+
+        "portachtzig/neos-piwik": "^2.0",
+        "neos/swiftmailer": "~6.0.0",
+        "networkteam/neos-shariff": "^3.0",
+        "networkteam/neos-mailobfuscator": "^2.0",
+        "flowpack/elasticsearch-contentrepositoryadaptor": "^4.0",
+        "flowpack/searchplugin": "^4.0",
+        "neos/formbuilder": "^1.1",
+        "ttree/contentrepositoryimporter": "^3.1",
+        "sandstorm/usermanagement": "^4.0",
+        "dl/gallery": "^1.0"
     },
     "require-dev": {
-        "typo3/buildessentials": "3.3.x-dev",
+        "neos/buildessentials": "~4.1.0",
         "mikey179/vfsstream": "~1.6",
-        "phpunit/phpunit": "~4.8 || ~5.2.0",
+        "phpunit/phpunit": "~6.0.0",
         "symfony/css-selector": "~2.0",
-        "flowpack/behat": "dev-master"
+        "neos/behat": "4.1.x-dev",
+        "doctrine/collections": "1.5",
+
+        "neos/neos-ui": "^1.0@beta",
+        "neos/neos-ui-compiled": "^1.0@beta"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
     },
     "scripts": {
-        "post-update-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
-        "post-install-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
-        "post-package-update": "TYPO3\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
-        "post-package-install": "TYPO3\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
+        "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
+        "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
+        "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
+        "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
     }
 }

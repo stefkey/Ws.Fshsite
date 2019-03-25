@@ -1,5 +1,5 @@
 # NOTE: this file is executed from the ROOT DIRECTORY of the project, i.e. "../"
-FROM php:7.0-cli
+FROM php:7.2-cli
 
 RUN apt-get update
 RUN docker-php-ext-install pdo pdo_mysql mysqli

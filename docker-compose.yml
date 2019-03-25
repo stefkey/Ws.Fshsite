@@ -24,11 +24,12 @@ services:
       DB_NEOS_DATABASE: 'neos'
 
     volumes:
-      - ./composer.json:/app/composer.json:ro,cached
+      - ./composer.json:/app/composer.json:cached
       - ./composer.lock:/app/composer.lock:cached
       - ./Packages/Sites/:/app/Packages/Sites:ro,cached
       - ./Configuration/:/app/Configuration/:cached
       - ./docker_cached:/composer_cache:cached
+      - ./DistributionUpgrader.phar:/app/DistributionUpgrader.phar
 
     ports:
       - 8081:8081
