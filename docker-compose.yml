@@ -16,6 +16,13 @@ services:
       dockerfile: ./docker/Dockerfile
     environment:
       FLOW_CONTEXT: 'Development'
+      # DB connection
+      DB_NEOS_HOST: 'maria-db'
+      DB_NEOS_PORT: 3306
+      DB_NEOS_PASSWORD: 'neos'
+      DB_NEOS_USER: 'neos'
+      DB_NEOS_DATABASE: 'neos'
+
     volumes:
       - ./composer.json:/app/composer.json:ro,cached
       - ./composer.lock:/app/composer.lock:cached
@@ -36,8 +43,10 @@ services:
     networks:
         - frauenselbsthilfe
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: neos
       MYSQL_DATABASE: neos
+      MYSQL_USER: neos
+      MYSQL_PASSWORD: neos
 
 networks:
   # we need to use a custom network here to ensure that all services see each other; and that during prerendering, we can connect to this network (to reach the service facade)
