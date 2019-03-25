@@ -1,0 +1,45 @@
+##################################################
+##### DEVELOPMENT ENVIRONMENT           ##########
+##################################################
+
+# Public ports:
+#  - 8081 -> Neos
+#  - 25432 -> postgres DB (used for Neos)
+
+version: '3.5'
+services:
+  #####
+  # Neos CMS
+  neos:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    environment:
+      FLOW_CONTEXT: 'Development'
+    volumes:
+      - ./composer.json:/app/composer.json:ro,cached
+      - ./composer.lock:/app/composer.lock:cached
+      - ./Packages/Sites/:/app/Packages/Sites:ro,cached
+      - ./Configuration/:/app/Configuration/:cached
+      - ./docker_cached:/composer_cache:cached
+
+    ports:
+      - 8081:8081
+    networks:
+      - frauenselbsthilfe
+
+  maria-db:
+    hostname: maria-db
+    image: mariadb
+    ports:
+        - 13306:3306
+    networks:
+        - frauenselbsthilfe
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: neos
+
+networks:
+  # we need to use a custom network here to ensure that all services see each other; and that during prerendering, we can connect to this network (to reach the service facade)
+  frauenselbsthilfe:
+    name: frauenselbsthilfe
