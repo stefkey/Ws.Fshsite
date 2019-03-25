@@ -1,14 +1,14 @@
 {
     "description": "Site package",
-    "type": "typo3-flow-site",
+    "type": "neos-site",
     "require": {
-        "typo3/neos": "*",
-        "typo3/neos-nodetypes": "*",
+        "neos/neos": "*",
+        "neos/nodetypes": "*",
         "johannessteu/neos-nodetypes": "*",
         "sandstorm/usermanagement": "*"
     },
     "suggest": {
-        "typo3/neos-seo": "*"
+        "neos/seo": "*"
     },
     "name": "ws/fshsite",
     "autoload": {
