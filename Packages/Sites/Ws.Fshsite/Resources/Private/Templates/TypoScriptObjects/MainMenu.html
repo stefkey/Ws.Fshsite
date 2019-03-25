@@ -1,6 +1,6 @@
-{namespace neos=TYPO3\Neos\ViewHelpers}
-{namespace media=TYPO3\Media\ViewHelpers}
-{namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace media=Neos\Media\ViewHelpers}
+{namespace ts=Neos\Fusion\ViewHelpers}
 <f:render section="itemList" arguments="{items: items, site: site}" />
 
 <f:section name="itemList">
@@ -47,7 +47,7 @@
                 <f:if condition="{item.subItems}">
                     <f:then>
 
-						<f:if condition='{item.node.nodeType.name} ==  "TYPO3.Neos.NodeTypes:Page"'>
+						<f:if condition='{item.node.nodeType.name} ==  "Neos.NodeTypes:Page"'>
 							<f:then>
 								<neos:link.node node="{item.node}">{item.label}</neos:link.node> 
 							</f:then>

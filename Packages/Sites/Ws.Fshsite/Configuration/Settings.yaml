@@ -1,60 +1,53 @@
-TYPO3:
-  Form:
-    yamlPersistenceManager:
-      savePath: 'resource://Ws.Fshsite/Private/Form/'
-    presets:
-      bootstrap:
-        title: 'Twitter bootstrap'
-        parentPreset: 'default'
-        formElementTypes:
-          'TYPO3.Form:Base':
-            renderingOptions:
-              layoutPathPattern: 'resource://Ws.Fshsite/Private/Templates/ContactForm/{@type}.html'
-          'TYPO3.Form:FormElement':
-            properties:
-              elementClassAttribute: 'form-control'
-          'TYPO3.Form:MultiLineText':
-            properties:
-              elementClassAttribute: 'form-control'
-  Neos:
-    userInterface:
-      editPreviewModes:
-        print:
-          isEditingMode: FALSE
-          isPreviewMode: TRUE
-          typoScriptRenderingPath: 'print'
-          title: 'Neos.Demo:Main:editPreviewModes.print'
-          position: 200
-      translation:
-        autoInclude:
-          'Ws.Fshsite': ['Main', 'NodeTypes/*']
-      inspector:
-        dataTypes:
-          'TYPO3\Media\Domain\Model\ImageInterface':
-            editorOptions:
-              features:
-                resize: TRUE
-      defaultLanguage: 'de'
-  Flow:
-    i18n:
-      defaultLocale: 'de'
-      fallbackRule:
-        order: [ 'de' ]
 
 Neos:
   Demo:
     flickr:
       tagStreamUriPattern: 'http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags=%s'
       userStreamUriPattern: 'http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&id=%s'
-
-
-TYPO3:
-  TYPO3CR:
-    contentTypes:
-      'Networkteam.Neos.Shariff:Shariff':
-        superTypes: ['TYPO3.Phoenix.ContentTypes:Plugin']
-        label: 'SocMed'
-        group: 'Plugins'
+  Flow:
+    i18n:
+      defaultLocale: de
+      fallbackRule:
+        order:
+          - de
+  Form:
+    yamlPersistenceManager:
+      savePath: 'resource://Ws.Fshsite/Private/Form/'
+    presets:
+      bootstrap:
+        title: 'Twitter bootstrap'
+        parentPreset: default
+        formElementTypes:
+          'Neos.Form:Base':
+            renderingOptions:
+              layoutPathPattern: 'resource://Ws.Fshsite/Private/Templates/ContactForm/{@type}.html'
+          'Neos.Form:FormElement':
+            properties:
+              elementClassAttribute: form-control
+          'Neos.Form:MultiLineText':
+            properties:
+              elementClassAttribute: form-control
+  Neos:
+    userInterface:
+      editPreviewModes:
+        print:
+          isEditingMode: false
+          isPreviewMode: true
+          typoScriptRenderingPath: print
+          title: 'Neos.Demo:Main:editPreviewModes.print'
+          position: 200
+      translation:
+        autoInclude:
+          Ws.Fshsite:
+            - Main
+            - 'NodeTypes/*'
+      inspector:
+        dataTypes:
+          Neos\Media\Domain\Model\ImageInterface:
+            editorOptions:
+              features:
+                resize: true
+      defaultLanguage: de
 Networkteam:
   Neos:
     Shariff:
@@ -63,7 +56,6 @@ Networkteam:
           - Twitter
           - Facebook
           - GooglePlus
-
 DL:
   Gallery:
     loadGalleryCSS: true
@@ -72,89 +64,40 @@ DL:
       bootstrapLightbox:
         label: 'Bootstrap with Lightbox'
         themeSettings:
-          columnClass: 'col-sm-4'
+          columnClass: col-sm-4
           imageVariants:
             thumb:
-              maximumWidth:
-              maximumHeight:
+              maximumWidth: null
+              maximumHeight: null
               width: 600
               height: 600
               allowCropping: true
-              allowUpScaling:
+              allowUpScaling: null
             large:
               maximumWidth: 2000
               maximumHeight: 1200
-              width:
-              height:
-              allowCropping:
-              allowUpScaling:
-
+              width: null
+              height: null
+              allowCropping: null
+              allowUpScaling: null
 Sandstorm:
   UserManagement:
-    # Validity timespan for the activation token for newly registered users.
     activationTokenTimeout: '2 days'
-    # Validity timespan for the confirmation token.
     confirmationTokenTimeout: '8 weeks'
-    # Validity timespan for the token used to reset passwords.
     resetPasswordTokenTimeout: '4 hours'
-    # The message that appears if a user could not be logged in.
     authFailedMessage:
       title: 'Login nicht möglich'
       body: 'Sie haben ungültige Zugangsdaten eingegeben. Bitte versuchen Sie es noch einmal.'
-    # Email settings
     email:
-      # Sender Address
-      senderAddress: 'keine-antwort@frauenselbsthilfe.de'
-      # Sender name - will be merged with senderAddress to something
-      # like "Sandstorm Usermanagement Package <test@example.com>"
+      senderAddress: keine-antwort@frauenselbsthilfe.de
       senderName: 'Webseiten Account'
-      confirmationAddress: 'stefan.johaenntgen@webservus.de'
-      confirmationName: 'Mitgliedsverwaltung'
+      confirmationAddress: stefan.johaenntgen@webservus.de
+      confirmationName: Mitgliedsverwaltung
       subjectConfirmation: 'Account prüfen'
-      # Subject line for the account confirmation email
       subjectActivation: 'Account bestätigen'
-      # Subject line for the password reset email
       subjectResetPassword: 'Passwort neu setzen'
-      # Template package to read the email templates from - this can be used to override
-      # e-mail templates. They are expected in the package given here, in the folder
-      # <Package>/Resources/Private/EmailTemplates.
-      templatePackage: 'Ws.Fshsite'
-    # An array of roles which are assigned to users after they activate their account.
-    rolesForNewUsers: []
-
-    # Redirect settings after logout/login
+      templatePackage: Ws.Fshsite
+    rolesForNewUsers: {  }
     redirect:
-      afterLogin: []
-      afterLogout: []
-    # To activate redirection, make these settings. controllerArguments are optional.
-#      afterLogin:
-#        action: 'action'
-#        controller: 'Controller'
-#        package: 'Your.Package'
-#        controllerArguments:
-#          yourAdditionalArgument: 'test'
-#      afterLogout:
-#        action: 'action'
-#        controller: 'Controller'
-#        package: 'Your.Package'
-#        controllerArguments:
-#          yourAdditionalArgument: 'test1'
-
-TYPO3:
-  Flow:
-    security:
-      authentication:
-        providers:
-          'Typo3BackendProvider':
-            requestPatterns:
-              Sandstorm.UserManagement:NeosBackend:
-                pattern: Sandstorm\UserManagement\Security\NeosRequestPattern
-                patternOptions:
-                  'area': 'backend'
-          'Sandstorm.UserManagement:Login':
-            provider: PersistedUsernamePasswordProvider
-            requestPatterns:
-              Sandstorm.UserManagement:NeosFrontend:
-                pattern: Sandstorm\UserManagement\Security\NeosRequestPattern
-                patternOptions:
-                  'area': 'frontend'
+      afterLogin: {  }
+      afterLogout: {  }

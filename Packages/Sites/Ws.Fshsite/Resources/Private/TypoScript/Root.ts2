@@ -13,33 +13,33 @@ include: NodeTypes/*
 page = Page {
 	head {
 		stylesheets {
-			site = TYPO3.TypoScript:Template {
+			site = Neos.Fusion:Template {
 				templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Default.html'
 				sectionName = 'stylesheets'
 				node = ${node}
 			}
 		}
 
-		metadata = TYPO3.TypoScript:Template {
+		metadata = Neos.Fusion:Template {
 			templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Default.html'
 			sectionName = 'metadata'
 		}
 	}
 
 	// This query checks if the second level menu has items and sets an additional class for the body
-	bodyTag.attributes.class = ${q(node).parents().count() >= 1 && q(node).children('[instanceof TYPO3.Neos:Document]').filter('[_hiddenInIndex=false]').count() > 0 ? 'has-subpages' : ''}
+	bodyTag.attributes.class = ${q(node).parents().count() >= 1 && q(node).children('[instanceof Neos.Neos:Document]').filter('[_hiddenInIndex=false]').count() > 0 ? 'has-subpages' : ''}
 
 	body {
 		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Default.html'
 		sectionName = 'body'
-		imageUri = TYPO3.Neos:ImageUri {
+		imageUri = Neos.Neos:ImageUri {
 			asset = ${q(node).property('image')}
 			maximumWidth = 2560
 			maximumHeight = 1280
 			@if.image = ${q(node).property('image')}
 		}
 		imageTitleText = ${q(node).property('imageTitleText')}
-		lastPubDate = ${q(documentNode).children('main').find('[instanceof TYPO3.Neos:Content]').add(q(documentNode).children('Group').find('[instanceof TYPO3.Neos:Content]')).add(documentNode).sort('_lastPublicationDateTime', 'DESC').get(0).lastPublicationDateTime}
+		lastPubDate = ${q(documentNode).children('main').find('[instanceof Neos.Neos:Content]').add(q(documentNode).children('Group').find('[instanceof Neos.Neos:Content]')).add(documentNode).sort('_lastPublicationDateTime', 'DESC').get(0).lastPublicationDateTime}
 
 		parts {
 			mainMenu = Menu {
@@ -112,7 +112,7 @@ page = Page {
 			nodePath = ${q(site).children('sharedContent').property('_path')}
 			collection = ${q(site).children('sharedContent').children()}
 		}
-		javascripts.site = TYPO3.TypoScript:Template {
+		javascripts.site = Neos.Fusion:Template {
 			templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Default.html'
 			sectionName = 'bodyScripts'
 		}
@@ -162,21 +162,21 @@ chapter {
 
 		// Get the previous chapter by traversing to the node which preceds the current one.
 		// We need to specify the nodetype because there could be other node types like content collections on the same level.
-		previousChapter = ${q(documentNode).prev('[instanceof TYPO3.Neos:Document]').get(0)}
-		nextChapter = ${q(documentNode).next('[instanceof TYPO3.Neos:Document]').get(0)}
+		previousChapter = ${q(documentNode).prev('[instanceof Neos.Neos:Document]').get(0)}
+		nextChapter = ${q(documentNode).next('[instanceof Neos.Neos:Document]').get(0)}
 	}
 }
 
 print < page
 print {
 	head {
-		stylesheets.printCss = TYPO3.TypoScript:Tag {
+		stylesheets.printCss = Neos.Fusion:Tag {
 			@position = 'end 10'
 			tagName = 'link'
 			attributes {
 				media = 'all'
 				rel = 'stylesheet'
-				href = TYPO3.TypoScript:ResourceUri {
+				href = Neos.Fusion:ResourceUri {
 					path = 'resource://Ws.Fshsite/Public/Styles/Print.css'
 				}
 			}
@@ -188,7 +188,7 @@ print {
 ##
 # SJ HomeGrid
 #
-prototype(Ws.Fshsite:HomeGrid) < prototype(TYPO3.Neos:Content) {
+prototype(Ws.Fshsite:HomeGrid) < prototype(Neos.Neos:Content) {
 	attributes.class = 'container sj-homegrid'
     templatePath = 'resource://Ws.Fshsite/Private/Templates/NodeTypes/HomeGrid.html'
 	columns.iterationName = 'multiColumnIteration'
@@ -216,7 +216,7 @@ prototype(Ws.Fshsite:HomeGrid) < prototype(TYPO3.Neos:Content) {
 ##
 # SJ Yellow Box
 #
-prototype(Ws.Fshsite:Quote) < prototype(TYPO3.Neos:Content) {
+prototype(Ws.Fshsite:Quote) < prototype(Neos.Neos:Content) {
         attributes.class = 'sj-quote'
         templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/Quote.html'
         quote = ${q(node).property('quote')}
@@ -226,7 +226,7 @@ prototype(Ws.Fshsite:Quote) < prototype(TYPO3.Neos:Content) {
 ##
 # SJ Adjust "MultiColumn" element to Zurb Foundation CSS classes
 #
-#prototype(TYPO3.Neos.NodeTypes:MultiColumn) {
+#prototype(Neos.NodeTypes:MultiColumn) {
 #	attributes.class = 'row'
 #	columns.iterationName = 'multiColumnIteration'
 #}
@@ -234,7 +234,7 @@ prototype(Ws.Fshsite:Quote) < prototype(TYPO3.Neos:Content) {
 ##
 # SJ Adjust "MultiColumnItem" element to Zurb Foundation CSS classes
 #
-#prototype(TYPO3.Neos.NodeTypes:MultiColumnItem) {
+#prototype(Neos.NodeTypes:MultiColumnItem) {
 #	attributes.class = ${'col-' + q(node).parent().property('screen') + '-' + #String.split(q(node).parent().property('layout'), '-')[multiColumnIteration.index] + ' #columns'}
 #
 #}
@@ -254,32 +254,32 @@ prototype(Networkteam.Neos.Shariff:Shariff) {
     }
 }
 
-prototype(TYPO3.Neos.NodeTypes:Text) {
+prototype(Neos.NodeTypes:Text) {
 	attributes.class = 'container sj-small-container'
 }
-prototype(TYPO3.Neos.NodeTypes:Headline) {
+prototype(Neos.NodeTypes:Headline) {
 	attributes.class = 'container sj-small-container'
 }
-prototype(TYPO3.Neos.NodeTypes:Image) {
+prototype(Neos.NodeTypes:Image) {
 	attributes.class = 'container sj-small-container'
 }
-prototype(TYPO3.Neos.NodeTypes:MultiColumn) {
+prototype(Neos.NodeTypes:MultiColumn) {
 	attributes.class = 'container sj-small-container'
 }
 prototype(Flowpack.SearchPlugin:Search) {
 	attributes.class = 'container sj-small-container'
 }
-prototype(TYPO3.Neos.NodeTypes:Form) {
+prototype(Neos.NodeTypes:Form) {
 	attributes.class = 'container'
 }
 prototype(Flowpack.Neos.FrontendLogin:LoginForm) {
 	attributes.class = 'container sj-small-container'
 }
-# Menu TS Object - extends TYPO3.Neos:Menu and is rendering menus inserted as content elements
-prototype(TYPO3.Neos.NodeTypes:Menu) {
+# Menu TS Object - extends Neos.Neos:Menu and is rendering menus inserted as content elements
+prototype(Neos.NodeTypes:Menu) {
 	attributes.class = 'container sj-small-container'
 }
-prototype(TYPO3.Neos.NodeTypes:AssetList)  {
+prototype(Neos.NodeTypes:AssetList)  {
 	attributes.class = 'container sj-small-container'
 }
 prototype(DL.Gallery:Gallery) {
@@ -290,7 +290,7 @@ prototype(DL.Gallery:Gallery) {
 ##
 # SJ FullWidth Area
 #
-prototype(Ws.Fshsite:FullWidth) < prototype(TYPO3.Neos:Content) {
+prototype(Ws.Fshsite:FullWidth) < prototype(Neos.Neos:Content) {
         templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/FullWidth.html'
 
         headline = ${q(node).property('headline')}
@@ -302,7 +302,7 @@ prototype(Ws.Fshsite:FullWidth) < prototype(TYPO3.Neos:Content) {
 ##
 # SJ LogoArea
 #
-prototype(Ws.Fshsite:LogoArea) < prototype(TYPO3.Neos:Content) {
+prototype(Ws.Fshsite:LogoArea) < prototype(Neos.Neos:Content) {
     templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/LogoArea.html'
 	columns.iterationName = 'multiColumnIteration'
     image1 = ${q(node).property('image1')}
@@ -319,7 +319,7 @@ prototype(Ws.Fshsite:LogoArea) < prototype(TYPO3.Neos:Content) {
 ##
 # SJ 3-Col Quicklinks
 #
-prototype(Ws.Fshsite:QuickLinks) < prototype(TYPO3.Neos:Content) {
+prototype(Ws.Fshsite:QuickLinks) < prototype(Neos.Neos:Content) {
     templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/QuickLinks.html'
 	columns.iterationName = 'multiColumnIteration'
     headline1 = ${q(node).property('headline1')}
@@ -339,7 +339,7 @@ prototype(Ws.Fshsite:QuickLinks) < prototype(TYPO3.Neos:Content) {
 ##
 # SJ ElasticSearch
 #
-#prototype(TYPO3.Neos:DocumentSearchResult)  {
+#prototype(Neos.Neos:DocumentSearchResult)  {
 #    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/CustomDocumentSearchResult.html'
 #}
 
@@ -350,7 +350,7 @@ prototype(JohannesSteu.Neos.NodeTypes:Accordeon) {
 ##
 # SJ Button
 #
-prototype(Ws.Fshsite:Button) < prototype(TYPO3.Neos:Content) {
+prototype(Ws.Fshsite:Button) < prototype(Neos.Neos:Content) {
     templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/Button.html'
     text = ${q(node).property('text')}
     link = ${q(node).property('link')}
@@ -360,7 +360,7 @@ prototype(Ws.Fshsite:Button) < prototype(TYPO3.Neos:Content) {
 ##
 # SJ MenuLink for Node menuContent
 #
-prototype(Ws.Fshsite:MenuLink) < prototype(TYPO3.Neos:Content) {
+prototype(Ws.Fshsite:MenuLink) < prototype(Neos.Neos:Content) {
         templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/MenuLink.html'
         text = ${q(node).property('text')}
         image = ${q(node).property('image')}
@@ -371,7 +371,7 @@ prototype(Ws.Fshsite:MenuLink) < prototype(TYPO3.Neos:Content) {
 ##
 # SJ ColorArea
 #
-prototype(Ws.Fshsite:ColorArea) < prototype(TYPO3.Neos:Content) {
+prototype(Ws.Fshsite:ColorArea) < prototype(Neos.Neos:Content) {
     @context.classname = 'colorarea'
 
     classname = ${classname}
@@ -380,7 +380,7 @@ prototype(Ws.Fshsite:ColorArea) < prototype(TYPO3.Neos:Content) {
     attributes.data-accordeon = ""
     attributes.class.@process.nodeType >
 
-    content = TYPO3.Neos:ContentCollection {
+    content = Neos.Neos:ContentCollection {
         attributes.class = ${classname + "__content-collection"}
         nodePath = ${q(node).children('content').property('_path')}
         collection = ${q(node).children('content').children()}
@@ -390,7 +390,7 @@ prototype(Ws.Fshsite:ColorArea) < prototype(TYPO3.Neos:Content) {
 ##
 # SJ VideoFrame
 #
-prototype(Ws.Fshsite:Video) < prototype(TYPO3.Neos:Content) {
+prototype(Ws.Fshsite:Video) < prototype(Neos.Neos:Content) {
     templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/VideoFrame.html'
     video = ${q(node).property('video')}
 }
@@ -398,7 +398,7 @@ prototype(Ws.Fshsite:Video) < prototype(TYPO3.Neos:Content) {
 ##
 # SJ Space
 #
-prototype(Ws.Fshsite:Space) < prototype(TYPO3.Neos:Content) {
+prototype(Ws.Fshsite:Space) < prototype(Neos.Neos:Content) {
     @context.classname = 'space'
 
     classname = ${classname}
@@ -407,7 +407,7 @@ prototype(Ws.Fshsite:Space) < prototype(TYPO3.Neos:Content) {
     attributes.data-accordeon = ""
     attributes.class.@process.nodeType >
 
-    content = TYPO3.Neos:ContentCollection {
+    content = Neos.Neos:ContentCollection {
         attributes.class = ${classname + "__content-collection"}
         nodePath = ${q(node).children('content').property('_path')}
         collection = ${q(node).children('content').children()}
@@ -417,15 +417,15 @@ prototype(Ws.Fshsite:Space) < prototype(TYPO3.Neos:Content) {
 ##
 # SJ Order
 #
-prototype(TYPO3.Neos.NodeTypes:Form) {
+prototype(Neos.NodeTypes:Form) {
     attributes.class = 'container sj-small-container'
 }
 
 ##
 # SJ JohannesSteu Accordeon
 #
-prototype(TYPO3.Neos:Page) {
-    head.stylesheets.accordeon = TYPO3.TypoScript:Tag {
+prototype(Neos.Neos:Page) {
+    head.stylesheets.accordeon = Neos.Fusion:Tag {
         @position = 'start'
     }
 }
@@ -440,7 +440,7 @@ prototype(Flowpack.SearchPlugin:Search) {
     prototype(Flowpack.SearchPlugin:SingleResult).@process.wrap >
 }
 
-prototype(TYPO3.Neos:DocumentSearchResult) < prototype(TYPO3.TypoScript:Template) {
+prototype(Neos.Neos:DocumentSearchResult) < prototype(Neos.Fusion:Template) {
     templatePath = 'resource://Ws.Fshsite/Private/Templates/NodeTypes/DocumentSearchResult.html'
     teaserImage = ${q(node).property('image')}
     title = ${q(node).property('title')}

@@ -9,10 +9,10 @@ prototype(Ws.Fshsite:SJCarousel) {
 	}
 	attributes.class = 'container sj-small-container'
 
-	carouselItemArray = ${q(node).children('carouselItems').children('[instanceof TYPO3.Neos.NodeTypes:Text]')}
+	carouselItemArray = ${q(node).children('carouselItems').children('[instanceof Neos.NodeTypes:Text]')}
 
 	// Enhance image prototype for the carousel
-	prototype(TYPO3.Neos.NodeTypes:Text) {
+	prototype(Neos.NodeTypes:Text) {
 		// Render images in the carousel with a special template.
 		templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/SJCarouselItem.html'
 

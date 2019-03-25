@@ -1,1447 +1,1270 @@
 ##
 # Allo Shortcut node to contain menu content, since they are also used at top level
 #
-'TYPO3.Neos:Shortcut':
+
+'Neos.Neos:Shortcut':
   childNodes:
-    'menu':
-      type: 'TYPO3.Neos:ContentCollection'
-    'topslider':
-      type: 'TYPO3.Neos:ContentCollection'
+    menu:
+      type: 'Neos.Neos:ContentCollection'
+    topslider:
+      type: 'Neos.Neos:ContentCollection'
       constraints:
         nodeTypes:
-          '*': TRUE
+          '*': true
   properties:
-    'subpageLayout':
+    subpageLayout:
       type: string
       ui:
         label: 'Layout für Unterseiten dieser Seite'
         inspector:
-          group: 'layout'
+          group: layout
           position: 110
-          editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             placeholder: 'Vom Elternelement erben'
             values:
-              'default':
-                label: 'Standard'
-              'sidebar':
+              default:
+                label: Standard
+              sidebar:
                 label: 'mit Sidebar'
   ui:
     inspector:
       groups:
         layout:
           label: Layout
-          icon: 'icon-paint-brush'
+          icon: icon-paint-brush
           position: 150
-
-##
-# Special homepage nodetype that declares a footer child node for usage as shared footer.
-# SJ: Add a shared content for logos and social-media-buttons
-#
 'Ws.Fshsite:Homepage':
   ui:
     label: i18n
-    icon: 'icon-image'
+    icon: icon-image
     help:
-     message: 'The homepage type is to be used only once and adds the shared footer.'
+      message: 'The homepage type is to be used only once and adds the shared footer.'
   superTypes:
-    'TYPO3.Neos.NodeTypes:Page': TRUE
+    'Neos.NodeTypes:Page': true
   childNodes:
-    'sharedContent':
-      type: 'TYPO3.Neos:ContentCollection'
+    sharedContent:
+      type: 'Neos.Neos:ContentCollection'
       constraints:
         nodeTypes:
-          '*': TRUE
-    'footer':
-      type: 'TYPO3.Neos:ContentCollection'
+          '*': true
+    footer:
+      type: 'Neos.Neos:ContentCollection'
       constraints:
         nodeTypes:
-          '*': FALSE
-          'TYPO3.Neos.NodeTypes:Headline': TRUE
-          'TYPO3.Neos.NodeTypes:Text': TRUE
-          'TYPO3.Neos.NodeTypes:Image': TRUE
-      position: 'end'
+          '*': false
+          'Neos.NodeTypes:Headline': true
+          'Neos.NodeTypes:Text': true
+          'Neos.NodeTypes:Image': true
+      position: end
   constraints:
     nodeTypes:
-      'Ws.Fshsite:Homepage': FALSE
-
-##
-# Adjust the "Page" node type:
-# Add two properties "layout" and "subpageLayout" to the default "Page" NodeType
-#
-'TYPO3.Neos.NodeTypes:Page':
+      'Ws.Fshsite:Homepage': false
+'Neos.NodeTypes:Page':
   childNodes:
-    'menu':
-      type: 'TYPO3.Neos:ContentCollection'
+    menu:
+      type: 'Neos.Neos:ContentCollection'
       constraints:
         nodeTypes:
-          '*': FALSE
-          'TYPO3.Neos.NodeTypes:ThreeColumn': TRUE
-          'Ws.Fshsite:MenuLink': TRUE
-    'topslider':
-      type: 'TYPO3.Neos:ContentCollection'
+          '*': false
+          'Neos.NodeTypes:ThreeColumn': true
+          'Ws.Fshsite:MenuLink': true
+    topslider:
+      type: 'Neos.Neos:ContentCollection'
       constraints:
         nodeTypes:
-          '*': FALSE
-          'Ws.Fshsite:Carousel': TRUE
-          'Ws.Fshsite:SJCarousel': TRUE
+          '*': false
+          'Ws.Fshsite:Carousel': true
+          'Ws.Fshsite:SJCarousel': true
   ui:
     inspector:
       groups:
         image:
           label: 'Ws.Fshsite:NodeTypes.Page:groups.image'
           position: 200
-          icon: 'icon-image'
+          icon: icon-image
         date:
           label: 'Artikeldatum anzeigen'
           position: 100
-          icon: 'icon-calendar'
+          icon: icon-calendar
   properties:
-    'layout':
+    layout:
       ui:
         inspector:
-          group: 'layout'
+          group: layout
           editorOptions:
             values:
-              'default':
-                label: 'Standard'
-              'sidebar':
+              default:
+                label: Standard
+              sidebar:
                 label: 'mit Sidebar'
-              'homepage':
-                label: 'Startseite'
-    'subpageLayout':
+              homepage:
+                label: Startseite
+    subpageLayout:
       ui:
         inspector:
-          group: 'layout'
+          group: layout
           editorOptions:
             values:
-              'default':
-                label: 'Standard'
-              'sidebar':
+              default:
+                label: Standard
+              sidebar:
                 label: 'mit Sidebar'
-    'image':
-      type: 'TYPO3\Media\Domain\Model\ImageInterface'
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Ws.Fshsite:NodeTypes.Page:Header Bild'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'image'
+          group: image
           position: 50
           editorOptions:
             features:
-              resize: FALSE
+              resize: false
             crop:
               aspectRatio:
                 locked:
                   width: 4
                   height: 1
-
-    'imageTitleText':
+    imageTitleText:
       type: string
       ui:
         label: 'Ws.Fshsite:NodeTypes.Page:Headerbild Titel'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'image'
+          group: image
           position: 100
-    'showLastModificationDate':
+    showLastModificationDate:
       type: boolean
       ui:
         label: 'Datum für letzte Änderung anzeigen?'
         inspector:
-          group: 'date'
-    'lastModificationDate':
+          group: date
+    lastModificationDate:
       type: DateTime
       ui:
         label: 'Datum überschreiben auf:'
         reloadIfChanged: true
         inspector:
-          group: 'date'
-
-##
-# Adjust the "Text" node type:
-# Enable 4th and 5th level and disable "p" in the aloha format selector of the "title" property
-#
-'TYPO3.Neos.NodeTypes:Text':
+          group: date
+'Neos.NodeTypes:Text':
   properties:
-    'text':
+    text:
       ui:
         aloha:
-          'format':
-            'h4': TRUE
-            'h5': TRUE
-            'code': TRUE
-
-##
-# Adjust the "Image" node type:
-# Disable resize property
-#
-'TYPO3.Neos.NodeTypes:Image':
+          format:
+            h4: true
+            h5: true
+            code: true
+'Neos.NodeTypes:Image':
   properties:
-    'image':
+    image:
       ui:
         inspector:
           editorOptions:
             features:
-              resize: TRUE
-    'floated':
+              resize: true
+    floated:
       type: boolean
       ui:
         label: 'Text rechts vom Bild?'
         inspector:
           group: image
-
-##
-# Adjust the "TwoColumn" node type:
-# Disable some of the layout options, override labels and set the default layout
-#
-'TYPO3.Neos.NodeTypes:TwoColumn':
+'Neos.NodeTypes:TwoColumn':
   properties:
-    'layout':
-      defaultValue: '4-8'
+    layout:
+      defaultValue: 4-8
       ui:
         inspector:
           editorOptions:
             values:
-              '50-50': ~
-              '66-33': ~
-              '33-66': ~
-              '6-6':
+              50-50: null
+              66-33: null
+              33-66: null
+              6-6:
                 label: '50% / 50%'
-              '8-4':
+              8-4:
                 label: '66% / 33%'
-              '4-8':
+              4-8:
                 label: '33% / 66%'
-    'screen':
-      defaultValue: 'medium'
+    screen:
+      defaultValue: medium
       type: string
       ui:
-        label: 'Screen'
+        label: Screen
         inspector:
-          group: 'column'
-          editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+          group: column
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
-              'sm':
-                label: 'Small'
-              'md':
-                label: 'Medium'
-              'lg':
-                label: 'Large'
-
-##
-# Adjust the "ThreeColumn" node type:
-# Disable some of the layout options, override labels and set the default layout
-#
-'TYPO3.Neos.NodeTypes:ThreeColumn':
+              sm:
+                label: Small
+              md:
+                label: Medium
+              lg:
+                label: Large
+'Neos.NodeTypes:ThreeColumn':
   properties:
-    'layout':
-      defaultValue: '4-4-4'
+    layout:
+      defaultValue: 4-4-4
       ui:
         inspector:
           editorOptions:
             values:
-              '33-33-33': ~
-              '50-25-25': ~
-              '25-50-25': ~
-              '25-25-50': ~
-              '4-4-4':
+              33-33-33: null
+              50-25-25: null
+              25-50-25: null
+              25-25-50: null
+              4-4-4:
                 label: '33% / 33% / 33%'
-              '6-3-3':
+              6-3-3:
                 label: '50% / 25% / 33%'
-              '3-6-3':
+              3-6-3:
                 label: '25% / 50% / 25%'
-              '3-3-6':
+              3-3-6:
                 label: '25% / 25% / 50%'
-
-##
-# Adjust the "FourColumn" node type:
-# Disable some of the layout options, override labels and set the default layout
-#
-'TYPO3.Neos.NodeTypes:FourColumn':
+'Neos.NodeTypes:FourColumn':
   properties:
-    'layout':
-      defaultValue: '3-3-3-3'
+    layout:
+      defaultValue: 3-3-3-3
       ui:
         inspector:
           editorOptions:
             values:
-              '25-25-25-25': ~
-              '3-3-3-3':
+              25-25-25-25: null
+              3-3-3-3:
                 label: '25% / 25% / 25% / 25%'
-
-##
-# Adjust the "Form" node type:
-# Remove the empty select option and register the "contact-form"-Form
-#
-'TYPO3.Neos.NodeTypes:Form':
+'Neos.NodeTypes:Form':
   properties:
-    'formIdentifier':
+    formIdentifier:
       ui:
         inspector:
           editorOptions:
             values:
-              '': ~
-              'contact-form':
+              '': null
+              contact-form:
                 label: 'Neos.Demo:NodeTypes.Form:properties.formIdentifier.selectBoxEditor.value.contact-form'
-
-##
-# A new Document NodeType "Chapter"
-#
-#
 'Ws.Fshsite:Chapter':
   superTypes:
-    'TYPO3.Neos:Document': TRUE
+    'Neos.Neos:Document': true
   childNodes:
-    'main':
-      type: 'TYPO3.Neos:ContentCollection'
+    main:
+      type: 'Neos.Neos:ContentCollection'
   ui:
     label: Kapitel
-    icon: 'icon-book'
+    icon: icon-book
     help:
       message: 'The Chapter node will work with all other chapter nodes on the same level to form a browsable book.'
     inspector:
       groups:
-        'document':
+        document:
           label: i18n
   properties:
-    'layout':
+    layout:
       type: string
-      defaultValue: 'chapter'
-    'chapterDescription':
+      defaultValue: chapter
+    chapterDescription:
       type: string
       ui:
         label: i18n
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'document'
-          editor: 'TYPO3.Neos/Inspector/Editors/TextAreaEditor'
+          group: document
+          editor: Neos.Neos/Inspector/Editors/TextAreaEditor
         help:
           message: 'The description will only be used in the chapter menu.'
-    'chapterImage':
-      type: 'TYPO3\Media\Domain\Model\ImageInterface'
+    chapterImage:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: i18n
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'document'
+          group: document
         help:
           message: 'This image will also appear in the chapter menu.'
-    'title':
-      validation: ~
+    title:
+      validation: null
       ui:
-        inlineEditable: TRUE
+        inlineEditable: true
         inspector:
-          group: ~
+          group: null
         aloha:
           placeholder: 'Enter title here'
-          'format':
-            'b': TRUE
-            'i': TRUE
-            'u': TRUE
-            'sub': TRUE
-            'sup': TRUE
-            'p': FALSE
-            'h1': FALSE
-            'h2': FALSE
-            'h3': FALSE
-            'pre': FALSE
-            'removeFormat': FALSE
-          'table': []
-          'list': []
-          'link':
-            'a': TRUE
-          'alignment': []
-          'formatlesspaste':
-            'button': FALSE
-            'formatlessPasteOption': TRUE
-
-##
-# A custom "Menu" NodeType for chapters
-#
-#
+          format:
+            b: true
+            i: true
+            u: true
+            sub: true
+            sup: true
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: true
+          alignment: {  }
+          formatlesspaste:
+            button: false
+            formatlessPasteOption: true
 'Ws.Fshsite:ChapterMenu':
   superTypes:
-    'TYPO3.Neos.NodeTypes:Menu': TRUE
+    'Neos.NodeTypes:Menu': true
   ui:
     label: 'Kapitel Menü'
     help:
-      message: |
-        The ChapterMenu renders an overview of all chapters below the current document.
-        It displays:
-        * title
-        * chapter description
-        * chapter image
-
-##
-# HomeGrid
-#
-#
+      message: "The ChapterMenu renders an overview of all chapters below the current document.\nIt displays:\n* title\n* chapter description\n* chapter image\n"
 'Ws.Fshsite:HomeGrid':
-  superTypes: ['TYPO3.Neos:Content']
+  superTypes:
+    'Neos.Neos:Content': true
   ui:
-    label: 'HomeGrid'
-    icon: 'icon-th'
-    group: 'structure'
+    label: HomeGrid
+    icon: icon-th
+    group: structure
     inspector:
       groups:
         homegrid:
-          label: 'Kacheln'
-          icon: 'icon-image'
+          label: Kacheln
+          icon: icon-image
           position: 2
   properties:
-    'headline1':
+    headline1:
       type: string
-      defaultValue: 'Überschrift'
+      defaultValue: Überschrift
       ui:
-        label: 'Headline'
-        inlineEditable: TRUE
+        label: Headline
+        inlineEditable: true
         aloha:
-          'format':
-            '*': FALSE
-            'h2': TRUE
-            'table': []
-            'link': []
-            'list': []
-            'alignment': []
-            'formatlesspaste': []
-    'headline2':
+          format:
+            '*': false
+            h2: true
+            table: {  }
+            link: {  }
+            list: {  }
+            alignment: {  }
+            formatlesspaste: {  }
+    headline2:
       type: string
-      defaultValue: 'Überschrift'
+      defaultValue: Überschrift
       ui:
-        label: 'Headline'
-        inlineEditable: TRUE
+        label: Headline
+        inlineEditable: true
         aloha:
-          'format':
-            '*': FALSE
-            'h2': TRUE
-            'table': []
-            'link': []
-            'list': []
-            'alignment': []
-            'formatlesspaste': []
-    'headline3':
+          format:
+            '*': false
+            h2: true
+            table: {  }
+            link: {  }
+            list: {  }
+            alignment: {  }
+            formatlesspaste: {  }
+    headline3:
       type: string
-      defaultValue: 'Überschrift'
+      defaultValue: Überschrift
       ui:
-        label: 'Headline'
-        inlineEditable: TRUE
+        label: Headline
+        inlineEditable: true
         aloha:
-          'format':
-            '*': FALSE
-            'h2': TRUE
-            'table': []
-            'link': []
-            'list': []
-            'alignment': []
-            'formatlesspaste': []
-    'headline4':
+          format:
+            '*': false
+            h2: true
+            table: {  }
+            link: {  }
+            list: {  }
+            alignment: {  }
+            formatlesspaste: {  }
+    headline4:
       type: string
-      defaultValue: 'Überschrift'
+      defaultValue: Überschrift
       ui:
-        label: 'Headline'
-        inlineEditable: TRUE
+        label: Headline
+        inlineEditable: true
         aloha:
-          'format':
-            '*': FALSE
-            'h2': TRUE
-            'table': []
-            'link': []
-            'list': []
-            'alignment': []
-            'formatlesspaste': []
-    'headline5':
+          format:
+            '*': false
+            h2: true
+            table: {  }
+            link: {  }
+            list: {  }
+            alignment: {  }
+            formatlesspaste: {  }
+    headline5:
       type: string
-      defaultValue: 'Überschrift'
+      defaultValue: Überschrift
       ui:
-        label: 'Headline'
-        inlineEditable: TRUE
+        label: Headline
+        inlineEditable: true
         aloha:
-          'format':
-            '*': FALSE
-            'h2': TRUE
-            'table': []
-            'link': []
-            'list': []
-            'alignment': []
-            'formatlesspaste': []
-    'headline6':
+          format:
+            '*': false
+            h2: true
+            table: {  }
+            link: {  }
+            list: {  }
+            alignment: {  }
+            formatlesspaste: {  }
+    headline6:
       type: string
-      defaultValue: 'Überschrift'
+      defaultValue: Überschrift
       ui:
-        label: 'Headline'
-        inlineEditable: TRUE
+        label: Headline
+        inlineEditable: true
         aloha:
-          'format':
-            '*': FALSE
-            'h2': TRUE
-            'table': []
-            'link': []
-            'list': []
-            'alignment': []
-            'formatlesspaste': []
-    'headline7':
+          format:
+            '*': false
+            h2: true
+            table: {  }
+            link: {  }
+            list: {  }
+            alignment: {  }
+            formatlesspaste: {  }
+    headline7:
       type: string
-      defaultValue: 'Überschrift'
+      defaultValue: Überschrift
       ui:
-        label: 'Headline'
-        inlineEditable: TRUE
+        label: Headline
+        inlineEditable: true
         aloha:
-          'format':
-            '*': FALSE
-            'h2': TRUE
-            'table': []
-            'link': []
-            'list': []
-            'alignment': []
-            'formatlesspaste': []
-    'headline8':
+          format:
+            '*': false
+            h2: true
+            table: {  }
+            link: {  }
+            list: {  }
+            alignment: {  }
+            formatlesspaste: {  }
+    headline8:
       type: string
-      defaultValue: 'Überschrift'
+      defaultValue: Überschrift
       ui:
-        label: 'Headline'
-        inlineEditable: TRUE
+        label: Headline
+        inlineEditable: true
         aloha:
-          'format':
-            '*': FALSE
-            'h2': TRUE
-            'table': []
-            'link': []
-            'list': []
-            'alignment': []
-            'formatlesspaste': []
-    'link':
+          format:
+            '*': false
+            h2: true
+            table: {  }
+            link: {  }
+            list: {  }
+            alignment: {  }
+            formatlesspaste: {  }
+    link:
       type: string
       ui:
         label: 'Link Wer wir sind'
-        inlineEditable: TRUE
+        inlineEditable: true
         inspector:
-          group: 'homegrid'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
-    'link2':
+          group: homegrid
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    link2:
       type: string
       ui:
         label: 'Link Aktuelles'
-        inlineEditable: TRUE
+        inlineEditable: true
         inspector:
-          group: 'homegrid'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
-    'link3':
+          group: homegrid
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    link3:
       type: string
       ui:
         label: 'Link Gruppen'
-        inlineEditable: TRUE
+        inlineEditable: true
         inspector:
-          group: 'homegrid'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
-    'link4':
+          group: homegrid
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    link4:
       type: string
       ui:
         label: 'Link Kontakt'
-        inlineEditable: TRUE
+        inlineEditable: true
         inspector:
-          group: 'homegrid'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
+          group: homegrid
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
     link5:
       type: string
       ui:
         label: 'Link Beratung'
-        inlineEditable: TRUE
+        inlineEditable: true
         inspector:
-          group: 'homegrid'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
+          group: homegrid
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
     link6:
       type: string
       ui:
         label: 'Link Infothek'
-        inlineEditable: TRUE
+        inlineEditable: true
         inspector:
-          group: 'homegrid'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
-    'link7':
+          group: homegrid
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    link7:
       type: string
       ui:
         label: 'Link Mitgliederbereich'
-        inlineEditable: TRUE
+        inlineEditable: true
         inspector:
-          group: 'homegrid'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
-    'text':
+          group: homegrid
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    text:
       type: string
-      defaultValue: 'Text'
+      defaultValue: Text
       ui:
-        label: 'Text1'
-        inlineEditable: TRUE
-    'text2':
+        label: Text1
+        inlineEditable: true
+    text2:
       type: string
-      defaultValue: 'Text'
+      defaultValue: Text
       ui:
-        label: 'Text'
-        inlineEditable: TRUE
+        label: Text
+        inlineEditable: true
     text3:
       type: string
-      defaultValue: 'Text'
+      defaultValue: Text
       ui:
-        label: 'Text'
-        inlineEditable: TRUE
-    'text4':
+        label: Text
+        inlineEditable: true
+    text4:
       type: string
-      defaultValue: 'Text'
+      defaultValue: Text
       ui:
-        label: 'Text'
-        inlineEditable: TRUE
-    'image1':
-      type: TYPO3\Media\Domain\Model\ImageInterface
+        label: Text
+        inlineEditable: true
+    image1:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Kachel Wir über uns'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'homegrid'
+          group: homegrid
           editorOptions:
             features:
-              resize: FALSE
+              resize: false
             crop:
               aspectRatio:
                 locked:
                   width: 3
                   height: 2
-    'image2':
-      type: TYPO3\Media\Domain\Model\ImageInterface
+    image2:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Kachel Forum'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'homegrid'
+          group: homegrid
           editorOptions:
             features:
-              resize: FALSE
+              resize: false
             crop:
               aspectRatio:
                 locked:
                   width: 4
                   height: 9
-    'image3':
-      type: TYPO3\Media\Domain\Model\ImageInterface
+    image3:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Kachel Aktuelles'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'homegrid'
+          group: homegrid
           editorOptions:
             features:
-              resize: FALSE
+              resize: false
             crop:
               aspectRatio:
                 locked:
                   width: 18
                   height: 13
-    'image4':
-      type: TYPO3\Media\Domain\Model\ImageInterface
+    image4:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Kachel Gruppen'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'homegrid'
+          group: homegrid
           editorOptions:
             features:
-              resize: FALSE
+              resize: false
             crop:
               aspectRatio:
                 locked:
                   width: 375
                   height: 260
-    'image5':
-      type: TYPO3\Media\Domain\Model\ImageInterface
+    image5:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Kachel Kontakt'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'homegrid'
+          group: homegrid
           editorOptions:
             features:
-              resize: FALSE
+              resize: false
             crop:
               aspectRatio:
                 locked:
                   width: 111
                   height: 76
-    'image6':
-      type: TYPO3\Media\Domain\Model\ImageInterface
+    image6:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Kachel Beratung'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'homegrid'
+          group: homegrid
           editorOptions:
             features:
-              resize: FALSE
+              resize: false
             crop:
               aspectRatio:
                 locked:
                   width: 111
                   height: 76
-    'image7':
-      type: TYPO3\Media\Domain\Model\ImageInterface
+    image7:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Kachel Infothek'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'homegrid'
+          group: homegrid
           editorOptions:
             features:
-              resize: FALSE
+              resize: false
             crop:
               aspectRatio:
                 locked:
                   width: 187
                   height: 65
-    'image8':
-      type: TYPO3\Media\Domain\Model\ImageInterface
+    image8:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Kachel Mitglieder'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'homegrid'
+          group: homegrid
           editorOptions:
             features:
-              resize: FALSE
+              resize: false
             crop:
               aspectRatio:
                 locked:
                   width: 18
                   height: 13
-
-##
-# A "Registration" plugin that allows creation of Neos user accounts through the Frontend
-# Warning: This is not to be used on productive Websites!
-#
 'Ws.Fshsite:Registration':
   superTypes:
-    'TYPO3.Neos:Plugin': TRUE
+    'Neos.Neos:Plugin': true
   ui:
     label: 'Registration Form'
-    icon: 'icon-user'
+    icon: icon-user
     help:
-      message: |
-        A very simple registration to allow quick access to the backend of the demo site.
-
-        **Note:** For security reasons you should disable this on live sites.
-
-##
-# A simple "Flickr" plugin that demonstrates the "PluginViews"-feature
-#
-#
+      message: "A very simple registration to allow quick access to the backend of the demo site.\n\n**Note:** For security reasons you should disable this on live sites.\n"
 'Ws.Fshsite:Flickr':
   superTypes:
-    'TYPO3.Neos:Plugin': TRUE
+    'Neos.Neos:Plugin': true
   ui:
     label: Galerie
-    icon: 'icon-flickr'
+    icon: icon-flickr
     inspector:
       groups:
-        'feed':
-          label: 'Feed'
-          icon: 'icon-rss'
+        feed:
+          label: Feed
+          icon: icon-rss
     help:
       message: 'Displays a gallery of images from a flickr stream based on tags.'
   options:
-    'pluginViews':
-      'UserFeed':
+    pluginViews:
+      UserFeed:
         label: i18n
         controllerActions:
-          'Neos\Demo\Controller\FlickrController': ['userStream']
+          Neos\Demo\Controller\FlickrController:
+            - userStream
   properties:
-    'tags':
+    tags:
       type: string
       defaultValue: ''
       ui:
         label: i18n
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'feed'
-
-##
-# A "Youtube" content element
-#
-#
+          group: feed
 'Ws.Fshsite:YouTube':
   superTypes:
-    'TYPO3.Neos:Content': TRUE
+    'Neos.Neos:Content': true
   ui:
     label: YouTube
-    icon: 'icon-youtube'
+    icon: icon-youtube
     inspector:
       groups:
-        'video':
+        video:
           label: i18n
-          icon: 'icon-film'
+          icon: icon-film
           position: 50
     help:
       message: 'Embeds a YouTube video as content defined by a video ID.'
   properties:
-    'video':
+    video:
       type: string
       defaultValue: ''
       ui:
         label: i18n
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'video'
+          group: video
         help:
-          message: |
-            The video identifier is visible in the URL to a youtube video
-
-            Eg. in the URL
-
-            `https://youtu.be/G6D1YI-41ao`
-
-            the video id is `G6D1YI-41ao`.
-    'width':
+          message: "The video identifier is visible in the URL to a youtube video\n\nEg. in the URL\n\n`https://youtu.be/G6D1YI-41ao`\n\nthe video id is `G6D1YI-41ao`.\n"
+    width:
       type: integer
       defaultValue: 400
       ui:
         label: i18n
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'video'
-    'height':
+          group: video
+    height:
       type: integer
       defaultValue: 300
       ui:
         label: i18n
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'video'
-
-##
-# A "Carousel" content element that renders "Image" child nodes into a JavaScript based slideshow
-#
-#
+          group: video
 'Ws.Fshsite:Carousel':
   superTypes:
-    'TYPO3.Neos:Content': TRUE
+    'Neos.Neos:Content': true
   childNodes:
-    'carouselItems':
-      type: 'TYPO3.Neos:ContentCollection'
+    carouselItems:
+      type: 'Neos.Neos:ContentCollection'
       constraints:
         nodeTypes:
-          '*': FALSE
-          'TYPO3.Neos.NodeTypes:Text': TRUE
-          'TYPO3.Neos.NodeTypes:Image': TRUE
-          'TYPO3.Neos.NodeTypes:TextWithImage': TRUE
+          '*': false
+          'Neos.NodeTypes:Text': true
+          'Neos.NodeTypes:Image': true
+          'Neos.NodeTypes:TextWithImage': true
   ui:
     label: Slider
-    group: 'plugins'
-    icon: 'icon-picture'
-    inlineEditable: TRUE
-
+    group: plugins
+    icon: icon-picture
+    inlineEditable: true
     help:
-      message: |
-        Bootstrap carousel which can display the following types of content:
-        * Headline
-        * Text
-        * TextWithImage
-        * Image
-        * HTML
-        * YouTube
-        * References
-
-##
-# A "Carousel" Test
-#
-#
+      message: "Bootstrap carousel which can display the following types of content:\n* Headline\n* Text\n* TextWithImage\n* Image\n* HTML\n* YouTube\n* References\n"
 'Ws.Fshsite:SJCarousel':
   superTypes:
-    'TYPO3.Neos:Content': TRUE
+    'Neos.Neos:Content': true
   childNodes:
-    'carouselItems':
-      type: 'TYPO3.Neos:ContentCollection'
+    carouselItems:
+      type: 'Neos.Neos:ContentCollection'
       constraints:
         nodeTypes:
-          '*': FALSE
-          'TYPO3.Neos.NodeTypes:Text': TRUE
-          'TYPO3.Neos.NodeTypes:Image': TRUE
-          'TYPO3.Neos.NodeTypes:TextWithImage': TRUE
+          '*': false
+          'Neos.NodeTypes:Text': true
+          'Neos.NodeTypes:Image': true
+          'Neos.NodeTypes:TextWithImage': true
   ui:
     label: Slider2
-    group: 'plugins'
-    icon: 'icon-picture'
-    inlineEditable: TRUE
-
+    group: plugins
+    icon: icon-picture
+    inlineEditable: true
     help:
-      message: |
-        Bootstrap carousel which can display the following types of content:
-        * Headline
-        * Text
-        * TextWithImage
-        * Image
-        * HTML
-        * YouTube
-        * References
-
-##
-# SJ: Quote Block
-#
-#
+      message: "Bootstrap carousel which can display the following types of content:\n* Headline\n* Text\n* TextWithImage\n* Image\n* HTML\n* YouTube\n* References\n"
 'Ws.Fshsite:Quote':
-  superTypes: ['TYPO3.Neos:Content']
+  superTypes:
+    'Neos.Neos:Content': true
   ui:
-    label: 'Quote'
-    icon: 'icon-quote-left'
-    group: 'general'
+    label: Quote
+    icon: icon-quote-left
+    group: general
   properties:
-    'quote':
+    quote:
       type: string
       defaultValue: 'Hier ein Zitat'
       ui:
-        label: 'Zitat'
-        inlineEditable: TRUE
+        label: Zitat
+        inlineEditable: true
         aloha:
-          'format':
-            'h1': TRUE
-    'author':
+          format:
+            h1: true
+    author:
       type: string
-      defaultValue: 'Autor'
+      defaultValue: Autor
       ui:
-        label: 'Autor'
-        inlineEditable: TRUE
+        label: Autor
+        inlineEditable: true
         aloha:
-          'format':
-            'p': TRUE
-
-##
-# SJ FullWidth Block
-#
-#
+          format:
+            p: true
 'Ws.Fshsite:FullWidth':
   superTypes:
-    'TYPO3.Neos:Content': TRUE
+    'Neos.Neos:Content': true
   ui:
     label: 'Volle Breite'
-    icon: 'icon-picture'
-    group: 'structure'
+    icon: icon-picture
+    group: structure
     inspector:
       groups:
         image:
-          label: 'Image'
-          icon: 'icon-picture'
+          label: Image
+          icon: icon-picture
           position: 1
   properties:
-    'headline':
+    headline:
       type: string
       defaultValue: 'Ihre Headline'
       ui:
-        label: 'Headline'
-        inlineEditable: TRUE
-    'text':
+        label: Headline
+        inlineEditable: true
+    text:
       type: string
       defaultValue: 'Ihr Text'
       ui:
-        label: 'Text'
-        reloadIfChanged: TRUE
-    'image':
-      type: TYPO3\Media\Domain\Model\ImageInterface
+        label: Text
+        reloadIfChanged: true
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Image'
-        reloadIfChanged: TRUE
+        label: Image
+        reloadIfChanged: true
         inspector:
-          group: 'image'
+          group: image
           editorOptions:
             features:
-              resize: FALSE
-              crop: FALSE
-
-##
-# SJ LogoArea
-#
-#
+              resize: false
+              crop: false
 'Ws.Fshsite:LogoArea':
-  superTypes: ['TYPO3.Neos:Content']
+  superTypes:
+    'Neos.Neos:Content': true
   ui:
-    label: 'LogoArea'
-    icon: 'icon-external-link'
-    group: 'structure'
+    label: LogoArea
+    icon: icon-external-link
+    group: structure
     inspector:
       groups:
         logoarea:
-          label: 'LogoArea'
-          icon: 'icon-external-link'
+          label: LogoArea
+          icon: icon-external-link
           position: 1
   properties:
-    'image1':
-      type: TYPO3\Media\Domain\Model\ImageInterface
+    image1:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'linkes Logo'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'logoarea'
+          group: logoarea
           editorOptions:
             features:
-              resize: FALSE
-            crop: TRUE
-    'alternativerText1':
+              resize: false
+            crop: true
+    alternativerText1:
       type: string
       ui:
-        label: 'Bildbeschreibung'
+        label: Bildbeschreibung
         inspector:
-          group: 'logoarea'
+          group: logoarea
           editorOptions:
             placeholder: 'erf. für Barrierefreiheit'
             maxlength: 100
-    'link1':
+    link1:
       type: string
       ui:
         label: 'Link 1'
-        inlineEditable: TRUE
+        inlineEditable: true
         inspector:
-          group: 'logoarea'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
-    'image2':
-      type: TYPO3\Media\Domain\Model\ImageInterface
+          group: logoarea
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    image2:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'mittleres Logo'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'logoarea'
+          group: logoarea
           editorOptions:
             features:
-              resize: FALSE
-            crop: TRUE
-    'alternativerText2':
+              resize: false
+            crop: true
+    alternativerText2:
       type: string
       ui:
-        label: 'Bildbeschreibung'
+        label: Bildbeschreibung
         inspector:
-          group: 'logoarea'
+          group: logoarea
           editorOptions:
             placeholder: 'erf. für Barrierefreiheit'
             maxlength: 100
-    'link2':
+    link2:
       type: string
       ui:
         label: 'Link 2'
-        inlineEditable: TRUE
+        inlineEditable: true
         inspector:
-          group: 'logoarea'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
-    'image3':
-      type: TYPO3\Media\Domain\Model\ImageInterface
+          group: logoarea
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    image3:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'rechtes Logo'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'logoarea'
+          group: logoarea
           editorOptions:
             features:
-              resize: FALSE
-            crop: TRUE
-    'alternativerText3':
+              resize: false
+            crop: true
+    alternativerText3:
       type: string
       ui:
-        label: 'Bildbeschreibung'
+        label: Bildbeschreibung
         inspector:
-          group: 'logoarea'
+          group: logoarea
           editorOptions:
             placeholder: 'erf. für Barrierefreiheit'
             maxlength: 100
-    'link3':
+    link3:
       type: string
       ui:
         label: 'Link 3'
-        inlineEditable: TRUE
+        inlineEditable: true
         inspector:
-          group: 'logoarea'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
-
-##
-# SJ 3-Col QuickLinks
-#
-#
+          group: logoarea
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
 'Ws.Fshsite:QuickLinks':
-  superTypes: ['TYPO3.Neos:Content']
+  superTypes:
+    'Neos.Neos:Content': true
   ui:
-    label: 'QuickLinks'
-    icon: 'icon-external-link'
-    group: 'structure'
+    label: QuickLinks
+    icon: icon-external-link
+    group: structure
     inspector:
       groups:
         quicklinks1:
           label: 'Linke Spalte'
-          icon: 'icon-image'
+          icon: icon-image
           position: 2
         quicklinks2:
           label: 'Mittlere Spalte'
-          icon: 'icon-image'
+          icon: icon-image
           position: 3
         quicklinks3:
           label: 'Rechte Spalte'
-          icon: 'icon-image'
+          icon: icon-image
           position: 4
   properties:
-    'headline':
+    headline:
       type: string
       defaultValue: 'Das könnte Sie noch interessieren'
       ui:
-        label: 'Headline'
-        inlineEditable: TRUE
-    'image1':
-      type: TYPO3\Media\Domain\Model\ImageInterface
+        label: Headline
+        inlineEditable: true
+    image1:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'linkes Bild'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'quicklinks1'
+          group: quicklinks1
           editorOptions:
             features:
-              resize: FALSE
+              resize: false
             crop:
               aspectRatio:
                 locked:
                   width: 3
                   height: 2
-    'alternativerText1':
+    alternativerText1:
       type: string
       ui:
-        label: 'Bildbeschreibung'
+        label: Bildbeschreibung
         inspector:
-          group: 'quicklinks1'
+          group: quicklinks1
           editorOptions:
             placeholder: 'erf. für Barrierefreiheit'
             maxlength: 100
-    'title1':
+    title1:
       type: string
       defaultValue: 'Headline 1 hier eingeben'
       ui:
-        label: 'Überschrift'
-    'link1':
+        label: Überschrift
+    link1:
       type: string
       ui:
         label: 'Link 1'
-        inlineEditable: TRUE
+        inlineEditable: true
         inspector:
-          group: 'quicklinks1'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
-    'text1':
+          group: quicklinks1
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    text1:
       type: string
       defaultValue: 'Teaser 1 hier eingeben'
       ui:
         label: 'Text 1'
-        inlineEditable: TRUE
-    'image2':
-      type: TYPO3\Media\Domain\Model\ImageInterface
+        inlineEditable: true
+    image2:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'mittleres Bild'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'quicklinks2'
+          group: quicklinks2
           editorOptions:
             features:
-              resize: FALSE
+              resize: false
             crop:
               aspectRatio:
                 locked:
                   width: 3
                   height: 2
-    'alternativerText2':
+    alternativerText2:
       type: string
       ui:
-        label: 'Bildbeschreibung'
+        label: Bildbeschreibung
         inspector:
-          group: 'quicklinks2'
+          group: quicklinks2
           editorOptions:
             placeholder: 'erf. für Barrierefreiheit'
             maxlength: 100
-    'title2':
+    title2:
       type: string
       defaultValue: 'Headline 2 hier eingeben'
       ui:
         label: 'Headline 2'
-    'link2':
+    link2:
       type: string
       ui:
         label: 'Link 2'
-        inlineEditable: TRUE
+        inlineEditable: true
         inspector:
-          group: 'quicklinks2'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
-    'text2':
+          group: quicklinks2
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    text2:
       type: string
       defaultValue: 'Teaser 2 hier eingeben'
       ui:
         label: 'Text 2'
-        inlineEditable: TRUE
-    'image3':
-      type: 'TYPO3\Media\Domain\Model\ImageInterface'
+        inlineEditable: true
+    image3:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'rechtes Bild'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'quicklinks3'
+          group: quicklinks3
           editorOptions:
             features:
-              resize: FALSE
+              resize: false
             crop:
               aspectRatio:
                 locked:
                   width: 3
                   height: 2
-    'alternativerText3':
+    alternativerText3:
       type: string
       ui:
-        label: 'Bildbeschreibung'
+        label: Bildbeschreibung
         inspector:
-          group: 'quicklinks3'
+          group: quicklinks3
           editorOptions:
             placeholder: 'erf. für Barrierefreiheit'
             maxlength: 100
-    'title3':
+    title3:
       type: string
       defaultValue: 'Headline 3 hier eingeben'
       ui:
         label: 'Headline 3'
-    'link3':
+    link3:
       type: string
       ui:
         label: 'Link 3'
-        inlineEditable: TRUE
+        inlineEditable: true
         inspector:
-          group: 'quicklinks3'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
-    'text3':
+          group: quicklinks3
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    text3:
       type: string
       defaultValue: 'Teaser 3 eingeben'
       ui:
         label: 'Text 3'
-        inlineEditable: TRUE
-    'link4':
+        inlineEditable: true
+    link4:
       type: string
       ui:
         label: 'SJ Test'
         inspector:
-          group: 'quicklinks3'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
-
-##
-# SJ Button
-#
-#
+          group: quicklinks3
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
 'Ws.Fshsite:Button':
-  superTypes: ['TYPO3.Neos:Content']
+  superTypes:
+    'Neos.Neos:Content': true
   ui:
-    label: 'Button'
-    group: 'general'
+    label: Button
+    group: general
     inspector:
       groups:
         button:
-          label: 'Button'
-          icon: 'icon-image'
+          label: Button
+          icon: icon-image
           position: 1
   properties:
-    'text':
+    text:
       type: string
-      defaultValue: 'Bestellformular'
+      defaultValue: Bestellformular
       ui:
-        label: 'Text'
+        label: Text
         inspector:
-          group: 'button'
-    'link':
+          group: button
+    link:
       type: string
       ui:
-        label: 'Link'
-        inlineEditable: TRUE
+        label: Link
+        inlineEditable: true
         inspector:
-          group: 'button'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
-    'alignment':
+          group: button
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    alignment:
       type: boolean
       ui:
         label: 'Button rechts ausrichten?'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'button'
-
-##
-# SJ MenuLink for the node menuContent
-#
-#
+          group: button
 'Ws.Fshsite:MenuLink':
-  superTypes: ['TYPO3.Neos:Content']
+  superTypes:
+    'Neos.Neos:Content': true
   ui:
     label: 'Menü Kachel'
-    group: 'structure'
+    group: structure
     inspector:
       groups:
         menuBlock:
           label: 'Menü Kachel'
-          icon: 'icon-image'
+          icon: icon-image
           position: 1
   properties:
-    'title':
+    title:
       type: string
-      defaultValue: 'Linkname'
+      defaultValue: Linkname
       ui:
-        label: 'Headline'
+        label: Headline
         inspector:
-          group: 'menuBlock'
+          group: menuBlock
           editorOptions:
-            placeholder: 'Überschrift'
+            placeholder: Überschrift
             maxlength: 30
-
-    'text':
+    text:
       type: string
       defaultValue: 'Kurzer Text'
       ui:
-        label: 'Text'
+        label: Text
         inspector:
-          group: 'menuBlock'
-          editor: 'TYPO3.Neos/Inspector/Editors/TextAreaEditor'
+          group: menuBlock
+          editor: Neos.Neos/Inspector/Editors/TextAreaEditor
           editorOptions:
             rows: 7
-    'image':
-      type: TYPO3\Media\Domain\Model\ImageInterface
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Bild'
-        reloadIfChanged: TRUE
+        label: Bild
+        reloadIfChanged: true
         inspector:
-          group: 'menuBlock'
+          group: menuBlock
           editorOptions:
             features:
-              resize: FALSE
+              resize: false
             crop:
               aspectRatio:
                 locked:
                   width: 19
                   height: 8
-    'beschreibung':
+    beschreibung:
       type: string
       ui:
-        label: 'Bildbeschreibung'
+        label: Bildbeschreibung
         inspector:
-          group: 'menuBlock'
+          group: menuBlock
           editorOptions:
             placeholder: 'erf. für Barrierefreiheit'
             maxlength: 100
-    'link':
+    link:
       type: string
       ui:
-        label: 'Link'
-        inlineEditable: TRUE
+        label: Link
+        inlineEditable: true
         inspector:
-          group: 'menuBlock'
-          editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
-
-##
-# SJ ColorBlock
-#
-#
+          group: menuBlock
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
 'Ws.Fshsite:ColorArea':
   superTypes:
-    'TYPO3.Neos:Content': TRUE
+    'Neos.Neos:Content': true
   ui:
     label: 'Farbiger Hintergrund'
-    inlineEditable: TRUE
-    icon: 'icon-tint'
+    inlineEditable: true
+    icon: icon-tint
     inspector:
       groups:
         colorblock:
-          label: 'i18n'
+          label: i18n
   childNodes:
-    'content':
-      type: 'TYPO3.Neos:ContentCollection'
-
-##
-# SJ VideoFrame
-#
-#
+    content:
+      type: 'Neos.Neos:ContentCollection'
 'Ws.Fshsite:Video':
   superTypes:
-    'TYPO3.Neos:Content': TRUE
+    'Neos.Neos:Content': true
   ui:
-    label: 'Film'
-    icon: 'icon-youtube'
+    label: Film
+    icon: icon-youtube
     inspector:
       groups:
         video:
-          label: 'Video'
+          label: Video
   properties:
-    'video':
+    video:
       type: string
       defaultValue: ''
       ui:
         label: URL
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'video'
+          group: video
         help:
-          message: |
-            The video identifier is visible in the URL to a youtube video
-
-            Eg. in the URL
-
-            `https://youtu.be/G6D1YI-41ao`
-
-            the video id is `G6D1YI-41ao`.
-    'width':
+          message: "The video identifier is visible in the URL to a youtube video\n\nEg. in the URL\n\n`https://youtu.be/G6D1YI-41ao`\n\nthe video id is `G6D1YI-41ao`.\n"
+    width:
       type: integer
       defaultValue: 400
       ui:
-        label: 'Breite'
-        reloadIfChanged: TRUE
+        label: Breite
+        reloadIfChanged: true
         inspector:
-          group: 'video'
-    'height':
+          group: video
+    height:
       type: integer
       defaultValue: 300
       ui:
-        label: 'Höhe'
-        reloadIfChanged: TRUE
+        label: Höhe
+        reloadIfChanged: true
         inspector:
-          group: 'video'
-
-##
-# SJ Space
-#
-#
+          group: video
 'Ws.Fshsite:Space':
   superTypes:
-    'TYPO3.Neos:Content': TRUE
+    'Neos.Neos:Content': true
   ui:
-    label: 'Abstand'
-    inlineEditable: TRUE
-    icon: 'icon-resize-vertical'
+    label: Abstand
+    inlineEditable: true
+    icon: icon-resize-vertical
     inspector:
       groups:
         colorblock:
-          label: 'i18n'
+          label: i18n
   childNodes:
-    'content':
-      type: 'TYPO3.Neos:ContentCollection'
-
-##
-# A One-Level-Menu" NodeType
-#
-#
+    content:
+      type: 'Neos.Neos:ContentCollection'
 'Ws.Fshsite:OneLevelMenu':
   superTypes:
-    'TYPO3.Neos.NodeTypes:Menu': TRUE
+    'Neos.NodeTypes:Menu': true
   ui:
     label: 'Gruppenseiten Menü'
-
-##
-# A Zip-Menu NodeType
-#
-#
 'Ws.Fshsite:ZipMenu':
   superTypes:
-    'TYPO3.Neos:Content': TRUE
+    'Neos.Neos:Content': true
   ui:
     label: 'Gruppenseiten Menü by Zip'
-    group: 'structure'
-
-# FIXME: these nodetypes are diabled in johannessteu/neos-nodetypes package, but are used on the site!
-'TYPO3.Neos.NodeTypes:Page':
-  abstract: ~
-'TYPO3.Neos.NodeTypes:Form':
-  abstract: ~
-'TYPO3.Neos.NodeTypes:TwoColumn':
-  abstract: ~
+    group: structure
