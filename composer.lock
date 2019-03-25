@@ -3110,7 +3110,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/neos/form-builder.git",
+                "url": "https://github.com/johannessteu/TYPO3.FormBuilder.git",
                 "reference": "7b7ea57227749af6d24a875172067884804d54e8"
             },
             "require": {
