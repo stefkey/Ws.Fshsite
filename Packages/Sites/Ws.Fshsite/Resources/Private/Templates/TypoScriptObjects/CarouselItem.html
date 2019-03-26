@@ -4,12 +4,12 @@
 	<f:if condition="{image}">
     <f:then>
 	<div class="carousel-caption container">
-        
+
 		<f:if condition="{hasCaption}">
 			{neos:contentElement.editable(property: 'caption')}
 		</f:if>
 	</div>
-			<media:image asset="{image}" alt="{alternativeText}" maximumWidth="{maximumWidth}" maximumHeight="{maximumHeight}" />
+			<media:image image="{image}" alt="{alternativeText}" maximumWidth="{maximumWidth}" maximumHeight="{maximumHeight}" />
 		</f:then>
 		<f:else>
 			<img src="{f:uri.resource(package: 'Neos.Neos', path: 'Images/dummy-image.png')}" title="Dummy image" alt="Dummy image" />

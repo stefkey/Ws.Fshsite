@@ -9,7 +9,7 @@
                 <a href="{link1}" class="circle"></a>
             </f:if>
             <f:if condition="{image1}">
-                <f:then><media:image asset="{image1}" alt="{alternativerText1}" title="{title}" /></f:then>
+                <f:then><media:image image="{image1}" alt="{alternativerText1}" title="{title}" /></f:then>
                 <f:else><img src="{f:uri.resource(path: 'Images/fsh_kachel-platzhalter_360x240.png', package: 'Ws.Fshsite')}" width="360" height="240" alt="Platzhalter" /></f:else>
             </f:if>
 			{neos:contentElement.editable(property: 'title1', tag: 'h3')}
@@ -25,7 +25,7 @@
                 <a href="{link2}" class="circle"></a>
             </f:if>
             <f:if condition="{image2}">
-                <f:then><media:image asset="{image2}" alt="{alternativerText2}" title="{title}" /></f:then>
+                <f:then><media:image image="{image2}" alt="{alternativerText2}" title="{title}" /></f:then>
                 <f:else><img src="{f:uri.resource(path: 'Images/fsh_kachel-platzhalter_360x240.png', package: 'Ws.Fshsite')}" width="360" height="240" alt="Platzhalter" /></f:else>
             </f:if>
 			{neos:contentElement.editable(property: 'title2', tag: 'h3')}
@@ -39,9 +39,9 @@
 		<div class="col-sm-4 sj-col3">
 			<f:if condition="{link3}">
                 <a href="{link3}" class="circle"></a>
-  			</f:if>              
+  			</f:if>
             <f:if condition="{image3}">
-                <f:then><media:image asset="{image3}" alt="{alternative3Text3}" title="{title}" /></f:then>
+                <f:then><media:image image="{image3}" alt="{alternative3Text3}" title="{title}" /></f:then>
                 <f:else><img src="{f:uri.resource(path: 'Images/fsh_kachel-platzhalter_360x240.png', package: 'Ws.Fshsite')}" width="360" height="240" alt="Platzhalter" /></f:else>
             </f:if>
             {neos:contentElement.editable(property: 'title3', tag: 'h3')}
