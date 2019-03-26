@@ -2,7 +2,6 @@
 # Create shorthand namespace for our site package name.
 # It is available in all included typoscript files.
 #
-namespace: Site=Ws.Fshsite
 
 include: NodeTypes/*
 
@@ -10,7 +9,7 @@ include: NodeTypes/*
  * Root TypoScript template for the Neos demo website
  */
 
-page = Page {
+page = Neos.Neos:Page {
 	head {
 		stylesheets {
 			site = Neos.Fusion:Template {
@@ -42,73 +41,73 @@ page = Page {
 		lastPubDate = ${q(documentNode).children('main').find('[instanceof Neos.Neos:Content]').add(q(documentNode).children('Group').find('[instanceof Neos.Neos:Content]')).add(documentNode).sort('_lastPublicationDateTime', 'DESC').get(0).lastPublicationDateTime}
 
 		parts {
-			mainMenu = Menu {
+			mainMenu = Neos.Neos:Menu {
 				entryLevel = 1
 				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/MainMenu.html'
 				maximumLevels = 4
-				menuContent = ContentCollection {
+				menuContent = Neos.Neos:ContentCollection {
 					@context.node = ${q(node).children('menu').get(0)}
 				}
 			}
 
-			footerMenu = Menu {
+			footerMenu = Neos.Neos:Menu {
 				entryLevel = 1
 				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/FooterMenu.html'
 				maximumLevels = 3
 			}
 
-			fourthLevelMenu = Menu {
+			fourthLevelMenu = Neos.Neos:Menu {
 				entryLevel = 4
 				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/FourthLevelMenu.html'
 				maximumLevels = 2
 			}
-			thirdLevelMenu = Menu {
+			thirdLevelMenu = Neos.Neos:Menu {
 				entryLevel = 3
 				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/ThirdLevelMenu.html'
 				maximumLevels = 3
 			}
-			headerMenu = Menu {
+			headerMenu = Neos.Neos:Menu {
 				entryLevel = 2
 				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/HeaderMenu.html'
 				maximumLevels = 1
 				startingPoint = ${q(site).children('node-5738cfbe10051').get(0)}
 			}
 
-			secondLevelMenu = Menu {
+			secondLevelMenu = Neos.Neos:Menu {
 				entryLevel = 2
 				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/SecondLevelMenu.html'
 				maximumLevels = 1
 			}
 
-			metaMenu = Menu {
+			metaMenu = Neos.Neos:Menu {
 				entryLevel = 2
 				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/MetaMenu.html'
 				maximumLevels = 1
 				startingPoint = ${q(site).children('[uriPathSegment="metamenu"]').get(0)}
 			}
-			breadcrumb = BreadcrumbMenu
+			breadcrumb = Neos.Neos:BreadcrumbMenu
 
 		}
 
 		content {
-			topslider = ContentCollection {
+			topslider = Neos.Neos:ContentCollection {
 				nodePath = 'topslider'
 			}
 
 
 			// Default content section
-			main = PrimaryContent {
+			main = Neos.Neos:PrimaryContent {
 				nodePath = 'main'
 			}
 		}
 
 		// A shared footer which can be edited from all pages
-		footer = ContentCollection {
+		footer = Neos.Neos:ContentCollection {
 			nodePath = ${q(site).children('footer').property('_path')}
 			collection = ${q(site).children('footer').children()}
 		}
 		// A sharedContent
-		sharedContent = ContentCollection {
+		sharedContent = Neos.Neos:ContentCollection {
 			nodePath = ${q(site).children('sharedContent').property('_path')}
 			collection = ${q(site).children('sharedContent').children()}
 		}
@@ -136,7 +135,7 @@ sidebar {
 	body {
 		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Sidebar.html'
 		title = ${q(node).property('title')}
-		title.@process.convertUris = ConvertUris
+		title.@process.convertUris = Neos.Neos:ConvertUris
 	}
 }
 
@@ -147,7 +146,7 @@ homepage {
 	body {
 		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Homepage.html'
 		title = ${q(node).property('title')}
-		title.@process.convertUris = ConvertUris
+		title.@process.convertUris = Neos.Neos:ConvertUris
 	}
 }
 
@@ -158,7 +157,7 @@ chapter {
 	body {
 		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Chapter.html'
 		title = ${q(node).property('title')}
-		title.@process.convertUris = ConvertUris
+		title.@process.convertUris = Neos.Neos:ConvertUris
 
 		// Get the previous chapter by traversing to the node which preceds the current one.
 		// We need to specify the nodetype because there could be other node types like content collections on the same level.

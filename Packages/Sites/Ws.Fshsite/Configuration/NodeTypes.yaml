@@ -151,11 +151,12 @@
   properties:
     text:
       ui:
-        aloha:
-          format:
-            h4: true
-            h5: true
-            code: true
+        inline:
+          editorOptions:
+            formatting:
+              h4: true
+              h5: true
+              code: true
 'Neos.NodeTypes:Image':
   properties:
     image:
@@ -288,28 +289,22 @@
         inlineEditable: true
         inspector:
           group: null
-        aloha:
-          placeholder: 'Enter title here'
-          format:
-            b: true
-            i: true
-            u: true
-            sub: true
-            sup: true
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: true
-          alignment: {  }
-          formatlesspaste:
-            button: false
-            formatlessPasteOption: true
+        inline:
+          editorOptions:
+            formatting:
+              u: true
+              sub: true
+              sup: true
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: true
+              strong: true
+              em: true
+            placeholder: 'Enter title here'
 'Ws.Fshsite:ChapterMenu':
   superTypes:
     'Neos.NodeTypes:Menu': true
@@ -337,120 +332,128 @@
       ui:
         label: Headline
         inlineEditable: true
-        aloha:
-          format:
-            '*': false
-            h2: true
-            table: {  }
-            link: {  }
-            list: {  }
-            alignment: {  }
-            formatlesspaste: {  }
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
     headline2:
       type: string
       defaultValue: Überschrift
       ui:
         label: Headline
         inlineEditable: true
-        aloha:
-          format:
-            '*': false
-            h2: true
-            table: {  }
-            link: {  }
-            list: {  }
-            alignment: {  }
-            formatlesspaste: {  }
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
     headline3:
       type: string
       defaultValue: Überschrift
       ui:
         label: Headline
         inlineEditable: true
-        aloha:
-          format:
-            '*': false
-            h2: true
-            table: {  }
-            link: {  }
-            list: {  }
-            alignment: {  }
-            formatlesspaste: {  }
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
     headline4:
       type: string
       defaultValue: Überschrift
       ui:
         label: Headline
         inlineEditable: true
-        aloha:
-          format:
-            '*': false
-            h2: true
-            table: {  }
-            link: {  }
-            list: {  }
-            alignment: {  }
-            formatlesspaste: {  }
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
     headline5:
       type: string
       defaultValue: Überschrift
       ui:
         label: Headline
         inlineEditable: true
-        aloha:
-          format:
-            '*': false
-            h2: true
-            table: {  }
-            link: {  }
-            list: {  }
-            alignment: {  }
-            formatlesspaste: {  }
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
     headline6:
       type: string
       defaultValue: Überschrift
       ui:
         label: Headline
         inlineEditable: true
-        aloha:
-          format:
-            '*': false
-            h2: true
-            table: {  }
-            link: {  }
-            list: {  }
-            alignment: {  }
-            formatlesspaste: {  }
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
     headline7:
       type: string
       defaultValue: Überschrift
       ui:
         label: Headline
         inlineEditable: true
-        aloha:
-          format:
-            '*': false
-            h2: true
-            table: {  }
-            link: {  }
-            list: {  }
-            alignment: {  }
-            formatlesspaste: {  }
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
     headline8:
       type: string
       defaultValue: Überschrift
       ui:
         label: Headline
         inlineEditable: true
-        aloha:
-          format:
-            '*': false
-            h2: true
-            table: {  }
-            link: {  }
-            list: {  }
-            alignment: {  }
-            formatlesspaste: {  }
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
     link:
       type: string
       ui:
@@ -781,18 +784,20 @@
       ui:
         label: Zitat
         inlineEditable: true
-        aloha:
-          format:
-            h1: true
+        inline:
+          editorOptions:
+            formatting:
+              h1: true
     author:
       type: string
       defaultValue: Autor
       ui:
         label: Autor
         inlineEditable: true
-        aloha:
-          format:
-            p: true
+        inline:
+          editorOptions:
+            formatting:
+              p: true
 'Ws.Fshsite:FullWidth':
   superTypes:
     'Neos.Neos:Content': true

@@ -1,7 +1,7 @@
 prototype(Ws.Fshsite:Legacy) < prototype(Neos.Fusion:Tag) {
 	attributes.class = 'container sj-small-container legacy'
-	content = ContentCollectionRenderer {
-		@process.contentElementWrapping = ContentElementWrapping
+	content = Neos.Neos:ContentCollectionRenderer {
+		@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 	}
 
 	prototype(Neos.NodeTypes:Text).attributes.class>

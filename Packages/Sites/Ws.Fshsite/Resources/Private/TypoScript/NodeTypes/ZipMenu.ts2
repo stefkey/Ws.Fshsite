@@ -8,7 +8,7 @@ prototype(Ws.Fshsite:ZipMenu) < prototype(Neos.Fusion:Collection) {
 		content = Neos.Fusion:Tag {
 			tagName = 'a'
 			attributes.class = 'zip-menu-item'
-			attributes.href = NodeUri {
+			attributes.href = Neos.Neos:NodeUri {
 				node = ${node}
 			}
 			content = ${String.substring(node.properties.zip, 0, 2) + '... ' + node.properties.title}
@@ -23,5 +23,5 @@ prototype(Ws.Fshsite:ZipMenu) < prototype(Neos.Fusion:Collection) {
 			nodeType = 'NodeType_Ws.Fshsite:Group'
 		}
 	}
-	@process.editable = ContentElementWrapping
+	@process.editable = Neos.Neos:ContentElementWrapping
 }

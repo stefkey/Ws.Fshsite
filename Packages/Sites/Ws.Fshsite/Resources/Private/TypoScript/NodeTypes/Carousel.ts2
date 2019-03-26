@@ -2,7 +2,7 @@
 # "Carousel" element
 #
 prototype(Ws.Fshsite:Carousel) {
-	carouselItems = ContentCollection {
+	carouselItems = Neos.Neos:ContentCollection {
 		nodePath = 'carouselItems'
 		content.iterationName = 'carouselItemsIteration'
 		attributes.class = 'carousel-inner'

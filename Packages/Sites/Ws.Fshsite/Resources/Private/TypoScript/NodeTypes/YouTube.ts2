@@ -1,6 +1,6 @@
 ##
 # "YouTube" element
 #
-prototype(Site:YouTube) < prototype(Content) {
+prototype(Ws.Fshsite:YouTube) < prototype(Neos.Neos:Content) {
 	attributes.class = 'container sj-small-container responsive-video '
 }
