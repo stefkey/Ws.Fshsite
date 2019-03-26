@@ -26,7 +26,7 @@ services:
     volumes:
       - ./composer.json:/app/composer.json:cached
       - ./composer.lock:/app/composer.lock:cached
-      - ./Packages/Sites/:/app/Packages/Sites:ro,cached
+      - ./Packages/Sites/:/app/Packages/Sites:cached
       - ./Configuration/:/app/Configuration/:cached
       - ./docker_cached:/composer_cache:cached
       - ./DistributionUpgrader.phar:/app/DistributionUpgrader.phar
