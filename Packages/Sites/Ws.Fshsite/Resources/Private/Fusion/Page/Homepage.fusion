@@ -1,0 +1,8 @@
+prototype(Ws.Fshsite:Homepage) < prototype(Ws.Fshsite:AbstractPage) {
+    bodyTag.attributes.class = 'homepage'
+    body {
+        templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Homepage.html'
+        title = ${q(node).property('title')}
+        title.@process.convertUris = Neos.Neos:ConvertUris
+    }
+}

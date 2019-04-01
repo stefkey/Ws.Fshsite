@@ -1,0 +1,87 @@
+'Neos.NodeTypes:Page':
+  childNodes:
+    menu:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': false
+          'Neos.NodeTypes:ThreeColumn': true
+          'Ws.Fshsite:MenuLink': true
+    topslider:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': false
+          'Ws.Fshsite:Carousel': true
+          'Ws.Fshsite:SJCarousel': true
+  ui:
+    inspector:
+      groups:
+        image:
+          label: 'Ws.Fshsite:NodeTypes.Page:groups.image'
+          position: 200
+          icon: icon-image
+        date:
+          label: 'Artikeldatum anzeigen'
+          position: 100
+          icon: icon-calendar
+  properties:
+    layout:
+      ui:
+        inspector:
+          group: layout
+          editorOptions:
+            values:
+              default:
+                label: Standard
+              sidebar:
+                label: 'mit Sidebar'
+              homepage:
+                label: Startseite
+    subpageLayout:
+      ui:
+        inspector:
+          group: layout
+          editorOptions:
+            values:
+              default:
+                label: Standard
+              sidebar:
+                label: 'mit Sidebar'
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Ws.Fshsite:NodeTypes.Page:Header Bild'
+        reloadIfChanged: true
+        inspector:
+          group: image
+          position: 50
+          editorOptions:
+            features:
+              resize: false
+            crop:
+              aspectRatio:
+                locked:
+                  width: 4
+                  height: 1
+    imageTitleText:
+      type: string
+      ui:
+        label: 'Ws.Fshsite:NodeTypes.Page:Headerbild Titel'
+        reloadIfChanged: true
+        inspector:
+          group: image
+          position: 100
+    showLastModificationDate:
+      type: boolean
+      ui:
+        label: 'Datum für letzte Änderung anzeigen?'
+        inspector:
+          group: date
+    lastModificationDate:
+      type: DateTime
+      ui:
+        label: 'Datum überschreiben auf:'
+        reloadIfChanged: true
+        inspector:
+          group: date

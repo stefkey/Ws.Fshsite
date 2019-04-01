@@ -1,0 +1,26 @@
+'Ws.Fshsite:Homepage':
+  ui:
+    label: i18n
+    icon: icon-image
+    help:
+      message: 'The homepage type is to be used only once and adds the shared footer.'
+  superTypes:
+    'Neos.NodeTypes:Page': true
+  childNodes:
+    sharedContent:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': true
+    footer:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': false
+          'Neos.NodeTypes:Headline': true
+          'Neos.NodeTypes:Text': true
+          'Neos.NodeTypes:Image': true
+      position: end
+  constraints:
+    nodeTypes:
+      'Ws.Fshsite:Homepage': false

@@ -1,0 +1,32 @@
+'Neos.Neos:Shortcut':
+  childNodes:
+    menu:
+      type: 'Neos.Neos:ContentCollection'
+    topslider:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': true
+  properties:
+    subpageLayout:
+      type: string
+      ui:
+        label: 'Layout für Unterseiten dieser Seite'
+        inspector:
+          group: layout
+          position: 110
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            placeholder: 'Vom Elternelement erben'
+            values:
+              default:
+                label: Standard
+              sidebar:
+                label: 'mit Sidebar'
+  ui:
+    inspector:
+      groups:
+        layout:
+          label: Layout
+          icon: icon-paint-brush
+          position: 150

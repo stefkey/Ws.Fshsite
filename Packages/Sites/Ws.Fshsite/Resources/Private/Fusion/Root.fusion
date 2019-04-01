@@ -3,122 +3,14 @@
 # It is available in all included typoscript files.
 #
 
-include: NodeTypes/*
+include: ./**/*.fusion
 
 /**
  * Root TypoScript template for the Neos demo website
  */
 
-page = Neos.Neos:Page {
-	head {
-		stylesheets {
-			site = Neos.Fusion:Template {
-				templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Default.html'
-				sectionName = 'stylesheets'
-				node = ${node}
-			}
-		}
 
-		metadata = Neos.Fusion:Template {
-			templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Default.html'
-			sectionName = 'metadata'
-		}
-	}
-
-	// This query checks if the second level menu has items and sets an additional class for the body
-	bodyTag.attributes.class = ${q(node).parents().count() >= 1 && q(node).children('[instanceof Neos.Neos:Document]').filter('[_hiddenInIndex=false]').count() > 0 ? 'has-subpages' : ''}
-
-	body {
-		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Default.html'
-		sectionName = 'body'
-		imageUri = Neos.Neos:ImageUri {
-			asset = ${q(node).property('image')}
-			maximumWidth = 2560
-			maximumHeight = 1280
-			@if.image = ${q(node).property('image')}
-		}
-		imageTitleText = ${q(node).property('imageTitleText')}
-		lastPubDate = ${q(documentNode).children('main').find('[instanceof Neos.Neos:Content]').add(q(documentNode).children('Group').find('[instanceof Neos.Neos:Content]')).add(documentNode).sort('_lastPublicationDateTime', 'DESC').get(0).lastPublicationDateTime}
-
-		parts {
-			mainMenu = Neos.Neos:Menu {
-				entryLevel = 1
-				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/MainMenu.html'
-				maximumLevels = 4
-				menuContent = Neos.Neos:ContentCollection {
-					@context.node = ${q(node).children('menu').get(0)}
-				}
-			}
-
-			footerMenu = Neos.Neos:Menu {
-				entryLevel = 1
-				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/FooterMenu.html'
-				maximumLevels = 3
-			}
-
-			fourthLevelMenu = Neos.Neos:Menu {
-				entryLevel = 4
-				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/FourthLevelMenu.html'
-				maximumLevels = 2
-			}
-			thirdLevelMenu = Neos.Neos:Menu {
-				entryLevel = 3
-				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/ThirdLevelMenu.html'
-				maximumLevels = 3
-			}
-			headerMenu = Neos.Neos:Menu {
-				entryLevel = 2
-				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/HeaderMenu.html'
-				maximumLevels = 1
-				startingPoint = ${q(site).children('node-5738cfbe10051').get(0)}
-			}
-
-			secondLevelMenu = Neos.Neos:Menu {
-				entryLevel = 2
-				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/SecondLevelMenu.html'
-				maximumLevels = 1
-			}
-
-			metaMenu = Neos.Neos:Menu {
-				entryLevel = 2
-				templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/MetaMenu.html'
-				maximumLevels = 1
-				startingPoint = ${q(site).children('[uriPathSegment="metamenu"]').get(0)}
-			}
-			breadcrumb = Neos.Neos:BreadcrumbMenu
-
-		}
-
-		content {
-			topslider = Neos.Neos:ContentCollection {
-				nodePath = 'topslider'
-			}
-
-
-			// Default content section
-			main = Neos.Neos:PrimaryContent {
-				nodePath = 'main'
-			}
-		}
-
-		// A shared footer which can be edited from all pages
-		footer = Neos.Neos:ContentCollection {
-			nodePath = ${q(site).children('footer').property('_path')}
-			collection = ${q(site).children('footer').children()}
-		}
-		// A sharedContent
-		sharedContent = Neos.Neos:ContentCollection {
-			nodePath = ${q(site).children('sharedContent').property('_path')}
-			collection = ${q(site).children('sharedContent').children()}
-		}
-		javascripts.site = Neos.Fusion:Template {
-			templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Default.html'
-			sectionName = 'bodyScripts'
-		}
-	}
-}
-
-default < page
+// default < Ws.Fshsite:AbstractPage
 
 // Special page layout with less navigation components
 landingPage < page
@@ -140,15 +32,15 @@ sidebar {
 }
 
 // SJ Homepage
-homepage < page
-homepage {
+// homepage < "Hello"
+/*homepage {
 	bodyTag.attributes.class = 'homepage'
 	body {
 		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Homepage.html'
 		title = ${q(node).property('title')}
 		title.@process.convertUris = Neos.Neos:ConvertUris
 	}
-}
+}*/
 
 // Special layout for chapter nodes
 chapter < page
