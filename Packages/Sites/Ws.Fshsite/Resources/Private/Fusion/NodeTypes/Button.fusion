@@ -1,0 +1,9 @@
+##
+# SJ Button
+#
+prototype(Ws.Fshsite:Button) < prototype(Neos.Neos:Content) {
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/Button.html'
+    text = ${q(node).property('text')}
+    link = ${q(node).property('link')}
+    buttonClassName = ${q(node).property('alignment') ? ('sj-button-' + q(node).property('alignment')) : ''}
+}

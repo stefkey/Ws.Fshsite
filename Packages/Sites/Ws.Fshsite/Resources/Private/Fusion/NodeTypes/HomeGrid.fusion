@@ -1,0 +1,24 @@
+prototype(Ws.Fshsite:HomeGrid) < prototype(Neos.Neos:Content) {
+    attributes.class = 'container sj-homegrid'
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/NodeTypes/HomeGrid.html'
+    columns.iterationName = 'multiColumnIteration'
+    headline1 = ${q(node).property('headline1')}
+    headline2 = ${q(node).property('headline2')}
+    headline3 = ${q(node).property('headline3')}
+    headline4 = ${q(node).property('headline4')}
+    headline5 = ${q(node).property('headline5')}
+    headline6 = ${q(node).property('headline6')}
+    headline7 = ${q(node).property('headline7')}
+    headline8 = ${q(node).property('headline8')}
+    link = ${q(node).property('link')}
+    link2 = ${q(node).property('link2')}
+    link3 = ${q(node).property('link3')}
+    link4 = ${q(node).property('link4')}
+    link5 = ${q(node).property('link5')}
+    link6 = ${q(node).property('link6')}
+    link7 = ${q(node).property('link7')}
+    text = ${q(node).property('text')}
+    text2 = ${q(node).property('text2')}
+    text3 = ${q(node).property('text3')}
+    text4 = ${q(node).property('text4')}
+}

@@ -1,0 +1,12 @@
+##
+# SJ FullWidth Area
+#
+
+prototype(Ws.Fshsite:FullWidth) < prototype(Neos.Neos:Content) {
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/FullWidth.html'
+
+    headline = ${q(node).property('headline')}
+    subheadline = ${q(node).property('subheadline')}
+    text = ${q(node).property('text')}
+    image = ${q(node).property('image')}
+}

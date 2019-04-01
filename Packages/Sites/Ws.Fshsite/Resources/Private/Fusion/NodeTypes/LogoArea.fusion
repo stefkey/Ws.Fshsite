@@ -1,0 +1,16 @@
+##
+# SJ LogoArea
+#
+prototype(Ws.Fshsite:LogoArea) < prototype(Neos.Neos:Content) {
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/LogoArea.html'
+    columns.iterationName = 'multiColumnIteration'
+    image1 = ${q(node).property('image1')}
+    image2 = ${q(node).property('image2')}
+    image3 = ${q(node).property('image3')}
+    beschreibung1 = ${q(node).property('beschreibung1')}
+    beschreibung2 = ${q(node).property('beschreibung2')}
+    beschreibung3 = ${q(node).property('beschreibung3')}
+    link1 = ${q(node).property('link1')}
+    link2 = ${q(node).property('link2')}
+    link3 = ${q(node).property('link3')}
+}

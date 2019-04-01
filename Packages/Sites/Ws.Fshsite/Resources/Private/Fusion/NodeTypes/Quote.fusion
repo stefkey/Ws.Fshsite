@@ -1,0 +1,9 @@
+##
+# SJ Yellow Box
+#
+prototype(Ws.Fshsite:Quote) < prototype(Neos.Neos:Content) {
+    attributes.class = 'sj-quote'
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/Quote.html'
+    quote = ${q(node).property('quote')}
+    author = ${q(node).property('author')}
+}

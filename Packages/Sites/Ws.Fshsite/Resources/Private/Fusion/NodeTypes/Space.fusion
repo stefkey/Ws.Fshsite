@@ -1,0 +1,18 @@
+##
+# SJ Space
+#
+prototype(Ws.Fshsite:Space) < prototype(Neos.Neos:Content) {
+    @context.classname = 'space'
+
+    classname = ${classname}
+
+    attributes.class = 'space container sj-small-container'
+    attributes.data-accordeon = ""
+    attributes.class.@process.nodeType >
+
+    content = Neos.Neos:ContentCollection {
+        attributes.class = ${classname + "__content-collection"}
+        nodePath = ${q(node).children('content').property('_path')}
+        collection = ${q(node).children('content').children()}
+    }
+}

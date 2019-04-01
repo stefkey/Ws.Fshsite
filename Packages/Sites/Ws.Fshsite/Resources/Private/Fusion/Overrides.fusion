@@ -1,0 +1,82 @@
+prototype(Neos.NodeTypes:Text) {
+    attributes.class = 'container sj-small-container'
+}
+
+prototype(Neos.NodeTypes:Headline) {
+    attributes.class = 'container sj-small-container'
+}
+
+prototype(Neos.NodeTypes:Image) {
+    attributes.class = 'container sj-small-container'
+}
+
+prototype(Neos.NodeTypes:MultiColumn) {
+    attributes.class = 'container sj-small-container'
+}
+
+prototype(Flowpack.SearchPlugin:Search) {
+    attributes.class = 'container sj-small-container'
+}
+
+prototype(Neos.NodeTypes:Form) {
+    attributes.class = 'container'
+}
+
+prototype(Flowpack.Neos.FrontendLogin:LoginForm) {
+    attributes.class = 'container sj-small-container'
+}
+
+# Menu TS Object - extends Neos.Neos:Menu and is rendering menus inserted as content elements
+prototype(Neos.NodeTypes:Menu) {
+    attributes.class = 'container sj-small-container'
+}
+
+prototype(Neos.NodeTypes:AssetList)  {
+    attributes.class = 'container sj-small-container'
+}
+
+prototype(DL.Gallery:Gallery) {
+    attributes.class = 'container sj-small-container'
+}
+
+prototype(Neos.NodeTypes:Form) {
+    attributes.class = 'container sj-small-container'
+}
+
+##
+# SJ JohannesSteu Accordeon
+#
+prototype(Neos.Neos:Page) {
+    head.stylesheets.accordeon = Neos.Fusion:Tag {
+        @position = 'start'
+    }
+}
+
+##
+# SJ JohannesSteu Code for search page
+#
+prototype(Flowpack.SearchPlugin:Search) {
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/Search.html'
+
+    searchResultRenderer.@process.wrap >
+    prototype(Flowpack.SearchPlugin:SingleResult).@process.wrap >
+}
+
+prototype(Neos.Neos:DocumentSearchResult) < prototype(Neos.Fusion:Template) {
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/NodeTypes/DocumentSearchResult.html'
+    teaserImage = ${q(node).property('image')}
+    title = ${q(node).property('title')}
+    headline = ${q(node).property('headline')}
+}
+
+prototype(JohannesSteu.Neos.NodeTypes:Accordeon) {
+    attributes.class = 'container sj-accordeon accordeon sj-small-container'
+}
+
+prototype(Networkteam.Neos.Shariff:Shariff) {
+    attributes {
+        // Put additional attributes here, see https://github.com/heiseonline/shariff#options-data-attributes
+         data-theme = 'white'
+        data-backend-url = 'null'
+    }
+}

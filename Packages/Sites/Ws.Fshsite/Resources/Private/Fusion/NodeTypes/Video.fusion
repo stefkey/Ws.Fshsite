@@ -1,0 +1,7 @@
+##
+# SJ VideoFrame
+#
+prototype(Ws.Fshsite:Video) < prototype(Neos.Neos:Content) {
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/VideoFrame.html'
+    video = ${q(node).property('video')}
+}

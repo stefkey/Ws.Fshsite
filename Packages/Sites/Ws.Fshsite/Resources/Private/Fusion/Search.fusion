@@ -1,0 +1,4 @@
+// TODO check if was uncommented in original files
+prototype(Neos.Neos:DocumentSearchResult)  {
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/CustomDocumentSearchResult.html'
+}
