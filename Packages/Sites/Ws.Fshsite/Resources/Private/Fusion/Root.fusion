@@ -1,78 +1,64 @@
-##
-# Create shorthand namespace for our site package name.
-# It is available in all included typoscript files.
-#
+root.homepageLayout {
+    @position = 'before documentType'
+    condition = ${q(node).is('[instanceof Ws.Fshsite:Homepage]')}
 
-include: ./**/*.fusion
+    renderer = Ws.Fshsite:Homepage
+}
 
-/**
- * Root TypoScript template for the Neos demo website
- */
+root.chapterLayout {
+    @position = 'before documentType'
+    condition = ${q(node).is('[instanceof Ws.Fshsite:Chapter]')}
 
+    renderer = Ws.Fshsite:ChapterPage
+}
 
-// default < Ws.Fshsite:AbstractPage
+root.sidebarLayout {
+    @position = 'before documentType'
+    sidebarByParentSettings = ${q(node).parent().closest("[instanceof Neos.NodeTypes:Page][subpageLayout = 'sidebar']").count()}
+    sidebarByOwnSettings = ${q(node).property('layout') == 'sidebar'}
+    isPage = ${q(node).is('[instanceof Neos.NodeTypes:Page]')}
 
-// Special page layout with less navigation components
-landingPage < page
+    condition =  ${this.isPage && (this.sidebarByOwnSettings || (!this.sidebarByOwnSettings && this.sidebarByParentSettings))}
+
+    renderer = Ws.Fshsite:SidebarPage
+}
+
+root.groupLayout {
+    @position = 'before documentType'
+    condition =  ${q(node).is('[instanceof Ws.Fshsite:Group]')}
+    renderer = Ws.Fshsite:AbstractPage
+}
+
+// used for all other pages with superType `Neos.Neos:Document
+root.renderDefaultLayout {
+    @position = 'before documentType'
+    condition = ${q(node).is('[instanceof Neos.Neos:Document]')}
+    renderer = Ws.Fshsite:AbstractPage
+}
+
+// TODO: ask
+/*landingPage < page
 landingPage.body {
 	// Hide breadcrumb on landing pages
 	parts.breadcrumb >
 	landingPage = ${true}
-}
-
-// SJ With Sidebar
-sidebar < page
-sidebar {
-	bodyTag.attributes.class = 'sidebar'
-	body {
-		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Sidebar.html'
-		title = ${q(node).property('title')}
-		title.@process.convertUris = Neos.Neos:ConvertUris
-	}
-}
-
-// SJ Homepage
-// homepage < "Hello"
-/*homepage {
-	bodyTag.attributes.class = 'homepage'
-	body {
-		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Homepage.html'
-		title = ${q(node).property('title')}
-		title.@process.convertUris = Neos.Neos:ConvertUris
-	}
 }*/
 
-// Special layout for chapter nodes
-chapter < page
-chapter {
-	bodyTag.attributes.class = 'chapter'
-	body {
-		templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Chapter.html'
-		title = ${q(node).property('title')}
-		title.@process.convertUris = Neos.Neos:ConvertUris
-
-		// Get the previous chapter by traversing to the node which preceds the current one.
-		// We need to specify the nodetype because there could be other node types like content collections on the same level.
-		previousChapter = ${q(documentNode).prev('[instanceof Neos.Neos:Document]').get(0)}
-		nextChapter = ${q(documentNode).next('[instanceof Neos.Neos:Document]').get(0)}
-	}
-}
-
-print < page
-print {
-	head {
-		stylesheets.printCss = Neos.Fusion:Tag {
-			@position = 'end 10'
-			tagName = 'link'
-			attributes {
-				media = 'all'
-				rel = 'stylesheet'
-				href = Neos.Fusion:ResourceUri {
-					path = 'resource://Ws.Fshsite/Public/Styles/Print.css'
-				}
-			}
-		}
-	}
+// TODO: check if working
+print = Ws.Fshsite:AbstractPage {
+    head {
+        stylesheets.printCss = Neos.Fusion:Tag {
+            @position = 'end 10'
+            tagName = 'link'
+            attributes {
+                media = 'all'
+                rel = 'stylesheet'
+                href = Neos.Fusion:ResourceUri {
+                    path = 'resource://Ws.Fshsite/Public/Styles/Print.css'
+                }
+            }
+        }
+    }
 }
 
 
@@ -339,3 +325,4 @@ prototype(Neos.Neos:DocumentSearchResult) < prototype(Neos.Fusion:Template) {
 }
 
 
+include: ./**/*.fusion

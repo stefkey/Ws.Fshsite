@@ -50,7 +50,7 @@ Neos:
           isEditingMode: false
           isPreviewMode: true
           typoScriptRenderingPath: print
-          title: 'Neos.Demo:Main:editPreviewModes.print'
+          title: 'Print'
           position: 200
       translation:
         autoInclude:

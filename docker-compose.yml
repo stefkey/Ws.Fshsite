@@ -49,6 +49,14 @@ services:
       MYSQL_USER: neos
       MYSQL_PASSWORD: neos
 
+  elastic:
+    hostname: elastic
+    image: elasticsearch:5-alpine
+    ports:
+      - 9200:9200
+    networks:
+      - frauenselbsthilfe
+
 networks:
   # we need to use a custom network here to ensure that all services see each other; and that during prerendering, we can connect to this network (to reach the service facade)
   frauenselbsthilfe:

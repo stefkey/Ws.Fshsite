@@ -1,0 +1,8 @@
+prototype(Ws.Fshsite:SidebarPage) < prototype(Ws.Fshsite:AbstractPage) {
+    bodyTag.attributes.class = 'sidebar'
+    body {
+        templatePath = 'resource://Ws.Fshsite/Private/Templates/Page/Sidebar.html'
+        title = ${q(node).property('title')}
+        title.@process.convertUris = Neos.Neos:ConvertUris
+    }
+}
