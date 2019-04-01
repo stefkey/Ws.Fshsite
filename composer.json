@@ -26,7 +26,7 @@
         "ttree/contentrepositoryimporter": "^3.1",
         "sandstorm/usermanagement": "dev-master",
         "dl/gallery": "~3.1.0",
-        "neos/neos-ui-compiled": "~3.1.0"
+        "neos/neos-ui": "~3.2.1"
     },
     "require-dev": {
         "neos/buildessentials": "5.2.x-dev",

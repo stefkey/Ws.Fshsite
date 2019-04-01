@@ -10,6 +10,22 @@ Neos:
       fallbackRule:
         order:
           - de
+    security:
+      authentication:
+        providers:
+          'Neos.Neos:Backend':
+            requestPatterns:
+              Sandstorm.UserManagement:NeosBackend:
+                pattern: Sandstorm\UserManagement\Security\NeosRequestPattern
+                patternOptions:
+                  'area': 'backend'
+          'Sandstorm.UserManagement:Login':
+            provider: PersistedUsernamePasswordProvider
+            requestPatterns:
+              Sandstorm.UserManagement:NeosFrontend:
+                pattern: Sandstorm\UserManagement\Security\NeosRequestPattern
+                patternOptions:
+                  'area': 'frontend'
   Form:
     yamlPersistenceManager:
       savePath: 'resource://Ws.Fshsite/Private/Form/'
@@ -80,24 +96,41 @@ DL:
               height: null
               allowCropping: null
               allowUpScaling: null
+
 Sandstorm:
   UserManagement:
+    # Validity timespan for the activation token for newly registered users.
     activationTokenTimeout: '2 days'
+    # Validity timespan for the confirmation token.
     confirmationTokenTimeout: '8 weeks'
+    # Validity timespan for the token used to reset passwords.
     resetPasswordTokenTimeout: '4 hours'
+    # The message that appears if a user could not be logged in.
     authFailedMessage:
       title: 'Login nicht möglich'
       body: 'Sie haben ungültige Zugangsdaten eingegeben. Bitte versuchen Sie es noch einmal.'
+    # Email settings
     email:
-      senderAddress: keine-antwort@frauenselbsthilfe.de
+      # Sender Address
+      senderAddress: 'keine-antwort@frauenselbsthilfe.de'
+      # Sender name - will be merged with senderAddress to something
+      # like "Sandstorm Usermanagement Package <test@example.com>"
       senderName: 'Webseiten Account'
-      confirmationAddress: stefan.johaenntgen@webservus.de
-      confirmationName: Mitgliedsverwaltung
+      confirmationAddress: 'stefan.johaenntgen@webservus.de'
+      confirmationName: 'Mitgliedsverwaltung'
       subjectConfirmation: 'Account prüfen'
+      # Subject line for the account confirmation email
       subjectActivation: 'Account bestätigen'
+      # Subject line for the password reset email
       subjectResetPassword: 'Passwort neu setzen'
-      templatePackage: Ws.Fshsite
-    rolesForNewUsers: {  }
+      # Template package to read the email templates from - this can be used to override
+      # e-mail templates. They are expected in the package given here, in the folder
+      # <Package>/Resources/Private/EmailTemplates.
+      templatePackage: 'Ws.Fshsite'
+    # An array of roles which are assigned to users after they activate their account.
+    rolesForNewUsers: []
+
+    # Redirect settings after logout/login
     redirect:
-      afterLogin: {  }
-      afterLogout: {  }
+      afterLogin: []
+      afterLogout: []
