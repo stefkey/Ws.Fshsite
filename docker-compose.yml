@@ -52,7 +52,7 @@ services:
 
   elastic:
     hostname: elastic
-    image: elasticsearch:5-alpine
+    image: elasticsearch:1.4.4
     ports:
       - 9200:9200
     networks:

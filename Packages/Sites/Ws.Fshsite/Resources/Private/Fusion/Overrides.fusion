@@ -52,23 +52,6 @@ prototype(Neos.Neos:Page) {
     }
 }
 
-##
-# SJ JohannesSteu Code for search page
-#
-prototype(Flowpack.SearchPlugin:Search) {
-    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/Search.html'
-
-    searchResultRenderer.@process.wrap >
-    prototype(Flowpack.SearchPlugin:SingleResult).@process.wrap >
-}
-
-prototype(Neos.Neos:DocumentSearchResult) < prototype(Neos.Fusion:Template) {
-    templatePath = 'resource://Ws.Fshsite/Private/Templates/NodeTypes/DocumentSearchResult.html'
-    teaserImage = ${q(node).property('image')}
-    title = ${q(node).property('title')}
-    headline = ${q(node).property('headline')}
-}
-
 prototype(JohannesSteu.Neos.NodeTypes:Accordeon) {
     attributes.class = 'container sj-accordeon accordeon sj-small-container'
 }
