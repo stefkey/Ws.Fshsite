@@ -1,0 +1,19 @@
+'Ws.Fshsite:Carousel':
+  superTypes:
+    'Neos.Neos:Content': true
+  childNodes:
+    carouselItems:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': false
+          'Neos.NodeTypes:Text': true
+          'Neos.NodeTypes:Image': true
+          'Neos.NodeTypes:TextWithImage': true
+  ui:
+    label: Slider
+    group: plugins
+    icon: icon-picture
+    inlineEditable: true
+    help:
+      message: "Bootstrap carousel which can display the following types of content:\n* Headline\n* Text\n* TextWithImage\n* Image\n* HTML\n* YouTube\n* References\n"

@@ -1,0 +1,8 @@
+'Ws.Fshsite:Registration':
+  superTypes:
+    'Neos.Neos:Plugin': true
+  ui:
+    label: 'Registration Form'
+    icon: icon-user
+    help:
+      message: "A very simple registration to allow quick access to the backend of the demo site.\n\n**Note:** For security reasons you should disable this on live sites.\n"

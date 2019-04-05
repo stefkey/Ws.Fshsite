@@ -1,0 +1,28 @@
+'Ws.Fshsite:Quote':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: Quote
+    icon: icon-quote-left
+    group: general
+  properties:
+    quote:
+      type: string
+      defaultValue: 'Hier ein Zitat'
+      ui:
+        label: Zitat
+        inlineEditable: true
+        inline:
+          editorOptions:
+            formatting:
+              h1: true
+    author:
+      type: string
+      defaultValue: Autor
+      ui:
+        label: Autor
+        inlineEditable: true
+        inline:
+          editorOptions:
+            formatting:
+              p: true

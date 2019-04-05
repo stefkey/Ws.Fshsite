@@ -1,0 +1,14 @@
+'Ws.Fshsite:ColorArea':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Farbiger Hintergrund'
+    inlineEditable: true
+    icon: icon-tint
+    inspector:
+      groups:
+        colorblock:
+          label: i18n
+  childNodes:
+    content:
+      type: 'Neos.Neos:ContentCollection'

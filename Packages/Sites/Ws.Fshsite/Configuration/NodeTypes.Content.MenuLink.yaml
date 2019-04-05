@@ -1,0 +1,65 @@
+'Ws.Fshsite:MenuLink':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Menü Kachel'
+    group: structure
+    inspector:
+      groups:
+        menuBlock:
+          label: 'Menü Kachel'
+          icon: icon-image
+          position: 1
+  properties:
+    title:
+      type: string
+      defaultValue: Linkname
+      ui:
+        label: Headline
+        inspector:
+          group: menuBlock
+          editorOptions:
+            placeholder: Überschrift
+            maxlength: 30
+    text:
+      type: string
+      defaultValue: 'Kurzer Text'
+      ui:
+        label: Text
+        inspector:
+          group: menuBlock
+          editor: Neos.Neos/Inspector/Editors/TextAreaEditor
+          editorOptions:
+            rows: 7
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Bild
+        reloadIfChanged: true
+        inspector:
+          group: menuBlock
+          editorOptions:
+            features:
+              resize: false
+            crop:
+              aspectRatio:
+                locked:
+                  width: 19
+                  height: 8
+    beschreibung:
+      type: string
+      ui:
+        label: Bildbeschreibung
+        inspector:
+          group: menuBlock
+          editorOptions:
+            placeholder: 'erf. für Barrierefreiheit'
+            maxlength: 100
+    link:
+      type: string
+      ui:
+        label: Link
+        inlineEditable: true
+        inspector:
+          group: menuBlock
+          editor: Neos.Neos/Inspector/Editors/LinkEditor

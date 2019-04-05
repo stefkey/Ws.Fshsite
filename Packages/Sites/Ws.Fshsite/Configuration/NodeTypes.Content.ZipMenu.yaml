@@ -1,0 +1,6 @@
+'Ws.Fshsite:ZipMenu':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Gruppenseiten Menü by Zip'
+    group: structure

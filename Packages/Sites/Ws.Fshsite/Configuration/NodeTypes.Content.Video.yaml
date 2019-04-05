@@ -1,0 +1,37 @@
+'Ws.Fshsite:Video':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: Film
+    icon: icon-youtube
+    inspector:
+      groups:
+        video:
+          label: Video
+  properties:
+    video:
+      type: string
+      defaultValue: ''
+      ui:
+        label: URL
+        reloadIfChanged: true
+        inspector:
+          group: video
+        help:
+          message: "The video identifier is visible in the URL to a youtube video\n\nEg. in the URL\n\n`https://youtu.be/G6D1YI-41ao`\n\nthe video id is `G6D1YI-41ao`.\n"
+    width:
+      type: integer
+      defaultValue: 400
+      ui:
+        label: Breite
+        reloadIfChanged: true
+        inspector:
+          group: video
+    height:
+      type: integer
+      defaultValue: 300
+      ui:
+        label: Höhe
+        reloadIfChanged: true
+        inspector:
+          group: video

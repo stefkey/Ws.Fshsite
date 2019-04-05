@@ -1,0 +1,35 @@
+'Ws.Fshsite:Button':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: Button
+    group: general
+    inspector:
+      groups:
+        button:
+          label: Button
+          icon: icon-image
+          position: 1
+  properties:
+    text:
+      type: string
+      defaultValue: Bestellformular
+      ui:
+        label: Text
+        inspector:
+          group: button
+    link:
+      type: string
+      ui:
+        label: Link
+        inlineEditable: true
+        inspector:
+          group: button
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    alignment:
+      type: boolean
+      ui:
+        label: 'Button rechts ausrichten?'
+        reloadIfChanged: true
+        inspector:
+          group: button

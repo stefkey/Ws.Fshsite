@@ -1,0 +1,14 @@
+'Neos.NodeTypes:Image':
+  properties:
+    image:
+      ui:
+        inspector:
+          editorOptions:
+            features:
+              resize: true
+    floated:
+      type: boolean
+      ui:
+        label: 'Text rechts vom Bild?'
+        inspector:
+          group: image

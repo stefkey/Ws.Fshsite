@@ -1,0 +1,342 @@
+'Ws.Fshsite:HomeGrid':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: HomeGrid
+    icon: icon-th
+    group: structure
+    inspector:
+      groups:
+        homegrid:
+          label: Kacheln
+          icon: icon-image
+          position: 2
+  properties:
+    headline1:
+      type: string
+      defaultValue: Überschrift
+      ui:
+        label: Headline
+        inlineEditable: true
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
+    headline2:
+      type: string
+      defaultValue: Überschrift
+      ui:
+        label: Headline
+        inlineEditable: true
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
+    headline3:
+      type: string
+      defaultValue: Überschrift
+      ui:
+        label: Headline
+        inlineEditable: true
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
+    headline4:
+      type: string
+      defaultValue: Überschrift
+      ui:
+        label: Headline
+        inlineEditable: true
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
+    headline5:
+      type: string
+      defaultValue: Überschrift
+      ui:
+        label: Headline
+        inlineEditable: true
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
+    headline6:
+      type: string
+      defaultValue: Überschrift
+      ui:
+        label: Headline
+        inlineEditable: true
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
+    headline7:
+      type: string
+      defaultValue: Überschrift
+      ui:
+        label: Headline
+        inlineEditable: true
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
+    headline8:
+      type: string
+      defaultValue: Überschrift
+      ui:
+        label: Headline
+        inlineEditable: true
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
+              table: {  }
+              link: {  }
+              list: {  }
+              alignment: {  }
+              formatlesspaste: {  }
+    link:
+      type: string
+      ui:
+        label: 'Link Wer wir sind'
+        inlineEditable: true
+        inspector:
+          group: homegrid
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    link2:
+      type: string
+      ui:
+        label: 'Link Aktuelles'
+        inlineEditable: true
+        inspector:
+          group: homegrid
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    link3:
+      type: string
+      ui:
+        label: 'Link Gruppen'
+        inlineEditable: true
+        inspector:
+          group: homegrid
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    link4:
+      type: string
+      ui:
+        label: 'Link Kontakt'
+        inlineEditable: true
+        inspector:
+          group: homegrid
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    link5:
+      type: string
+      ui:
+        label: 'Link Beratung'
+        inlineEditable: true
+        inspector:
+          group: homegrid
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    link6:
+      type: string
+      ui:
+        label: 'Link Infothek'
+        inlineEditable: true
+        inspector:
+          group: homegrid
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    link7:
+      type: string
+      ui:
+        label: 'Link Mitgliederbereich'
+        inlineEditable: true
+        inspector:
+          group: homegrid
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    text:
+      type: string
+      defaultValue: Text
+      ui:
+        label: Text1
+        inlineEditable: true
+    text2:
+      type: string
+      defaultValue: Text
+      ui:
+        label: Text
+        inlineEditable: true
+    text3:
+      type: string
+      defaultValue: Text
+      ui:
+        label: Text
+        inlineEditable: true
+    text4:
+      type: string
+      defaultValue: Text
+      ui:
+        label: Text
+        inlineEditable: true
+    image1:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Kachel Wir über uns'
+        reloadIfChanged: true
+        inspector:
+          group: homegrid
+          editorOptions:
+            features:
+              resize: false
+            crop:
+              aspectRatio:
+                locked:
+                  width: 3
+                  height: 2
+    image2:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Kachel Forum'
+        reloadIfChanged: true
+        inspector:
+          group: homegrid
+          editorOptions:
+            features:
+              resize: false
+            crop:
+              aspectRatio:
+                locked:
+                  width: 4
+                  height: 9
+    image3:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Kachel Aktuelles'
+        reloadIfChanged: true
+        inspector:
+          group: homegrid
+          editorOptions:
+            features:
+              resize: false
+            crop:
+              aspectRatio:
+                locked:
+                  width: 18
+                  height: 13
+    image4:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Kachel Gruppen'
+        reloadIfChanged: true
+        inspector:
+          group: homegrid
+          editorOptions:
+            features:
+              resize: false
+            crop:
+              aspectRatio:
+                locked:
+                  width: 375
+                  height: 260
+    image5:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Kachel Kontakt'
+        reloadIfChanged: true
+        inspector:
+          group: homegrid
+          editorOptions:
+            features:
+              resize: false
+            crop:
+              aspectRatio:
+                locked:
+                  width: 111
+                  height: 76
+    image6:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Kachel Beratung'
+        reloadIfChanged: true
+        inspector:
+          group: homegrid
+          editorOptions:
+            features:
+              resize: false
+            crop:
+              aspectRatio:
+                locked:
+                  width: 111
+                  height: 76
+    image7:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Kachel Infothek'
+        reloadIfChanged: true
+        inspector:
+          group: homegrid
+          editorOptions:
+            features:
+              resize: false
+            crop:
+              aspectRatio:
+                locked:
+                  width: 187
+                  height: 65
+    image8:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Kachel Mitglieder'
+        reloadIfChanged: true
+        inspector:
+          group: homegrid
+          editorOptions:
+            features:
+              resize: false
+            crop:
+              aspectRatio:
+                locked:
+                  width: 18
+                  height: 13

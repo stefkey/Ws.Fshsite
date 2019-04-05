@@ -1,0 +1,98 @@
+'Ws.Fshsite:LogoArea':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: LogoArea
+    icon: icon-external-link
+    group: structure
+    inspector:
+      groups:
+        logoarea:
+          label: LogoArea
+          icon: icon-external-link
+          position: 1
+  properties:
+    image1:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'linkes Logo'
+        reloadIfChanged: true
+        inspector:
+          group: logoarea
+          editorOptions:
+            features:
+              resize: false
+            crop: true
+    alternativerText1:
+      type: string
+      ui:
+        label: Bildbeschreibung
+        inspector:
+          group: logoarea
+          editorOptions:
+            placeholder: 'erf. für Barrierefreiheit'
+            maxlength: 100
+    link1:
+      type: string
+      ui:
+        label: 'Link 1'
+        inlineEditable: true
+        inspector:
+          group: logoarea
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    image2:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'mittleres Logo'
+        reloadIfChanged: true
+        inspector:
+          group: logoarea
+          editorOptions:
+            features:
+              resize: false
+            crop: true
+    alternativerText2:
+      type: string
+      ui:
+        label: Bildbeschreibung
+        inspector:
+          group: logoarea
+          editorOptions:
+            placeholder: 'erf. für Barrierefreiheit'
+            maxlength: 100
+    link2:
+      type: string
+      ui:
+        label: 'Link 2'
+        inlineEditable: true
+        inspector:
+          group: logoarea
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    image3:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'rechtes Logo'
+        reloadIfChanged: true
+        inspector:
+          group: logoarea
+          editorOptions:
+            features:
+              resize: false
+            crop: true
+    alternativerText3:
+      type: string
+      ui:
+        label: Bildbeschreibung
+        inspector:
+          group: logoarea
+          editorOptions:
+            placeholder: 'erf. für Barrierefreiheit'
+            maxlength: 100
+    link3:
+      type: string
+      ui:
+        label: 'Link 3'
+        inlineEditable: true
+        inspector:
+          group: logoarea
+          editor: Neos.Neos/Inspector/Editors/LinkEditor

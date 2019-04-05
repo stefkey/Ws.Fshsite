@@ -1,0 +1,14 @@
+'Ws.Fshsite:Space':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: Abstand
+    inlineEditable: true
+    icon: icon-resize-vertical
+    inspector:
+      groups:
+        colorblock:
+          label: i18n
+  childNodes:
+    content:
+      type: 'Neos.Neos:ContentCollection'

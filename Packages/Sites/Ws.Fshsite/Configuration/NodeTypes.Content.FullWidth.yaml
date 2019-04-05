@@ -1,0 +1,37 @@
+'Ws.Fshsite:FullWidth':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Volle Breite'
+    icon: icon-picture
+    group: structure
+    inspector:
+      groups:
+        image:
+          label: Image
+          icon: icon-picture
+          position: 1
+  properties:
+    headline:
+      type: string
+      defaultValue: 'Ihre Headline'
+      ui:
+        label: Headline
+        inlineEditable: true
+    text:
+      type: string
+      defaultValue: 'Ihr Text'
+      ui:
+        label: Text
+        reloadIfChanged: true
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Image
+        reloadIfChanged: true
+        inspector:
+          group: image
+          editorOptions:
+            features:
+              resize: false
+              crop: false

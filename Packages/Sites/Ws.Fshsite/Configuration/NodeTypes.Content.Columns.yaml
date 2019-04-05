@@ -1,0 +1,64 @@
+'Neos.NodeTypes:TwoColumn':
+  properties:
+    layout:
+      defaultValue: 4-8
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              50-50: null
+              66-33: null
+              33-66: null
+              6-6:
+                label: '50% / 50%'
+              8-4:
+                label: '66% / 33%'
+              4-8:
+                label: '33% / 66%'
+    screen:
+      defaultValue: medium
+      type: string
+      ui:
+        label: Screen
+        inspector:
+          group: column
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              sm:
+                label: Small
+              md:
+                label: Medium
+              lg:
+                label: Large
+'Neos.NodeTypes:ThreeColumn':
+  properties:
+    layout:
+      defaultValue: 4-4-4
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              33-33-33: null
+              50-25-25: null
+              25-50-25: null
+              25-25-50: null
+              4-4-4:
+                label: '33% / 33% / 33%'
+              6-3-3:
+                label: '50% / 25% / 33%'
+              3-6-3:
+                label: '25% / 50% / 25%'
+              3-3-6:
+                label: '25% / 25% / 50%'
+'Neos.NodeTypes:FourColumn':
+  properties:
+    layout:
+      defaultValue: 3-3-3-3
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              25-25-25-25: null
+              3-3-3-3:
+                label: '25% / 25% / 25% / 25%'

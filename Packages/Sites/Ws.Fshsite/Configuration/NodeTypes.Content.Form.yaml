@@ -1,0 +1,10 @@
+'Neos.NodeTypes:Form':
+  properties:
+    formIdentifier:
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '': null
+              contact-form:
+                label: 'Neos.Demo:NodeTypes.Form:properties.formIdentifier.selectBoxEditor.value.contact-form'

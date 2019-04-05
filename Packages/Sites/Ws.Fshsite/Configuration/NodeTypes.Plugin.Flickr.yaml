@@ -1,0 +1,29 @@
+'Ws.Fshsite:Flickr':
+  superTypes:
+    'Neos.Neos:Plugin': true
+  ui:
+    label: Galerie
+    icon: icon-flickr
+    inspector:
+      groups:
+        feed:
+          label: Feed
+          icon: icon-rss
+    help:
+      message: 'Displays a gallery of images from a flickr stream based on tags.'
+  options:
+    pluginViews:
+      UserFeed:
+        label: i18n
+        controllerActions:
+          Neos\Demo\Controller\FlickrController:
+            - userStream
+  properties:
+    tags:
+      type: string
+      defaultValue: ''
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: feed

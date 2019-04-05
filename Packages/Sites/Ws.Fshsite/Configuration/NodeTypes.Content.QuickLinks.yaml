@@ -1,0 +1,164 @@
+'Ws.Fshsite:QuickLinks':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: QuickLinks
+    icon: icon-external-link
+    group: structure
+    inspector:
+      groups:
+        quicklinks1:
+          label: 'Linke Spalte'
+          icon: icon-image
+          position: 2
+        quicklinks2:
+          label: 'Mittlere Spalte'
+          icon: icon-image
+          position: 3
+        quicklinks3:
+          label: 'Rechte Spalte'
+          icon: icon-image
+          position: 4
+  properties:
+    headline:
+      type: string
+      defaultValue: 'Das könnte Sie noch interessieren'
+      ui:
+        label: Headline
+        inlineEditable: true
+    image1:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'linkes Bild'
+        reloadIfChanged: true
+        inspector:
+          group: quicklinks1
+          editorOptions:
+            features:
+              resize: false
+            crop:
+              aspectRatio:
+                locked:
+                  width: 3
+                  height: 2
+    alternativerText1:
+      type: string
+      ui:
+        label: Bildbeschreibung
+        inspector:
+          group: quicklinks1
+          editorOptions:
+            placeholder: 'erf. für Barrierefreiheit'
+            maxlength: 100
+    title1:
+      type: string
+      defaultValue: 'Headline 1 hier eingeben'
+      ui:
+        label: Überschrift
+    link1:
+      type: string
+      ui:
+        label: 'Link 1'
+        inlineEditable: true
+        inspector:
+          group: quicklinks1
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    text1:
+      type: string
+      defaultValue: 'Teaser 1 hier eingeben'
+      ui:
+        label: 'Text 1'
+        inlineEditable: true
+    image2:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'mittleres Bild'
+        reloadIfChanged: true
+        inspector:
+          group: quicklinks2
+          editorOptions:
+            features:
+              resize: false
+            crop:
+              aspectRatio:
+                locked:
+                  width: 3
+                  height: 2
+    alternativerText2:
+      type: string
+      ui:
+        label: Bildbeschreibung
+        inspector:
+          group: quicklinks2
+          editorOptions:
+            placeholder: 'erf. für Barrierefreiheit'
+            maxlength: 100
+    title2:
+      type: string
+      defaultValue: 'Headline 2 hier eingeben'
+      ui:
+        label: 'Headline 2'
+    link2:
+      type: string
+      ui:
+        label: 'Link 2'
+        inlineEditable: true
+        inspector:
+          group: quicklinks2
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    text2:
+      type: string
+      defaultValue: 'Teaser 2 hier eingeben'
+      ui:
+        label: 'Text 2'
+        inlineEditable: true
+    image3:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'rechtes Bild'
+        reloadIfChanged: true
+        inspector:
+          group: quicklinks3
+          editorOptions:
+            features:
+              resize: false
+            crop:
+              aspectRatio:
+                locked:
+                  width: 3
+                  height: 2
+    alternativerText3:
+      type: string
+      ui:
+        label: Bildbeschreibung
+        inspector:
+          group: quicklinks3
+          editorOptions:
+            placeholder: 'erf. für Barrierefreiheit'
+            maxlength: 100
+    title3:
+      type: string
+      defaultValue: 'Headline 3 hier eingeben'
+      ui:
+        label: 'Headline 3'
+    link3:
+      type: string
+      ui:
+        label: 'Link 3'
+        inlineEditable: true
+        inspector:
+          group: quicklinks3
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    text3:
+      type: string
+      defaultValue: 'Teaser 3 eingeben'
+      ui:
+        label: 'Text 3'
+        inlineEditable: true
+    link4:
+      type: string
+      ui:
+        label: 'SJ Test'
+        inspector:
+          group: quicklinks3
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
