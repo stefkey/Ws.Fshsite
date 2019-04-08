@@ -57,7 +57,8 @@ services:
             - 9200:9200
         networks:
             - frauenselbsthilfe
-
+        volumes:
+          - ./docker/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,cached
     mailhog:
         hostname: mailhog
         image: mailhog/mailhog
