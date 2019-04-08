@@ -8,7 +8,7 @@ prototype(Flowpack.SearchPlugin:Search) {
     prototype(Flowpack.SearchPlugin:SingleResult).@process.wrap >
 }
 
-prototype(Neos.Neos:DocumentSearchResult) < prototype(Neos.Fusion:Template) {
+prototype(Neos.Neos:DocumentSearchResult) {
     templatePath = 'resource://Ws.Fshsite/Private/Templates/NodeTypes/DocumentSearchResult.html'
     teaserImage = ${q(node).property('image')}
     title = ${q(node).property('title')}

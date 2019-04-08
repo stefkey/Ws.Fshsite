@@ -8,57 +8,66 @@
 
 version: '3.5'
 services:
-  #####
-  # Neos CMS
-  neos:
-    build:
-      context: .
-      dockerfile: ./docker/Dockerfile
-    environment:
-      FLOW_CONTEXT: 'Development'
-      # DB connection
-      DB_NEOS_HOST: 'maria-db'
-      DB_NEOS_PORT: 3306
-      DB_NEOS_PASSWORD: 'neos'
-      DB_NEOS_USER: 'neos'
-      DB_NEOS_DATABASE: 'neos'
+    #####
+    # Neos CMS
+    neos:
+        build:
+            context: .
+            dockerfile: ./docker/Dockerfile
+        environment:
+            FLOW_CONTEXT: 'Development'
+            # DB connection
+            DB_NEOS_HOST: 'maria-db'
+            DB_NEOS_PORT: 3306
+            DB_NEOS_PASSWORD: 'neos'
+            DB_NEOS_USER: 'neos'
+            DB_NEOS_DATABASE: 'neos'
 
-    volumes:
-      - ./composer.json:/app/composer.json:cached
-      - ./composer.lock:/app/composer.lock:cached
-      - ./Packages/Sites/:/app/Packages/Sites:cached
-      - ./Data/Persistent:/app/Data/Persistent:cached
-      - ./Configuration/:/app/Configuration/:cached
-      - ./docker_cached:/composer_cache:cached
-      - ./DistributionUpgrader.phar:/app/DistributionUpgrader.phar
+        volumes:
+            - ./composer.json:/app/composer.json:cached
+            - ./composer.lock:/app/composer.lock:cached
+            - ./Packages/Sites/:/app/Packages/Sites:cached
+            - ./Data/Persistent:/app/Data/Persistent:cached
+            - ./Configuration/:/app/Configuration/:cached
+            - ./docker_cached:/composer_cache:cached
+            - ./DistributionUpgrader.phar:/app/DistributionUpgrader.phar
 
-    ports:
-      - 8081:8081
-    networks:
-      - frauenselbsthilfe
+        ports:
+            - 8081:8081
+        networks:
+            - frauenselbsthilfe
 
-  maria-db:
-    hostname: maria-db
-    image: mariadb
-    ports:
-        - 13306:3306
-    networks:
-        - frauenselbsthilfe
-    environment:
-      MYSQL_ROOT_PASSWORD: neos
-      MYSQL_DATABASE: neos
-      MYSQL_USER: neos
-      MYSQL_PASSWORD: neos
+    maria-db:
+        hostname: maria-db
+        image: mariadb
+        ports:
+            - 13306:3306
+        networks:
+            - frauenselbsthilfe
+        environment:
+            MYSQL_ROOT_PASSWORD: neos
+            MYSQL_DATABASE: neos
+            MYSQL_USER: neos
+            MYSQL_PASSWORD: neos
 
-  elastic:
-    hostname: elastic
-    image: elasticsearch:1.4.4
-    ports:
-      - 9200:9200
-    networks:
-      - frauenselbsthilfe
+    elastic:
+        hostname: elastic
+        image: elasticsearch:1.7.3
+        ports:
+            - 9200:9200
+        networks:
+            - frauenselbsthilfe
+
+    mailhog:
+        hostname: mailhog
+        image: mailhog/mailhog
+        ports:
+            - 8025:8025
+        networks:
+            - frauenselbsthilfe
+
 
 networks:
-  # we need to use a custom network here to ensure that all services see each other; and that during prerendering, we can connect to this network (to reach the service facade)
-  frauenselbsthilfe:
-    name: frauenselbsthilfe
+    # we need to use a custom network here to ensure that all services see each other; and that during prerendering, we can connect to this network (to reach the service facade)
+    frauenselbsthilfe:
+        name: frauenselbsthilfe
