@@ -19,6 +19,10 @@ RUN docker-php-ext-install bcmath
 RUN apt-get install -y \
         --no-install-recommends git unzip
 
+RUN pecl install -o -f redis \
+    &&  rm -rf /tmp/pear \
+    &&  docker-php-ext-enable redis
+
 RUN curl --silent --show-error https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 RUN composer config --global cache-dir /composer_cache

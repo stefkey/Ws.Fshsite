@@ -66,6 +66,11 @@ services:
         networks:
             - frauenselbsthilfe
 
+    redis:
+        hostname: redis
+        image: redis:5.0.4
+        networks:
+            - frauenselbsthilfe
 
 networks:
     # we need to use a custom network here to ensure that all services see each other; and that during prerendering, we can connect to this network (to reach the service facade)
