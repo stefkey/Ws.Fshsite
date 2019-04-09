@@ -47,12 +47,5 @@ landingPage.body {
 // TODO: check if working
 print = Ws.Fshsite:PrintPage
 
-##
-# SJ Shariff Buttons von Networkteam
-#
-# TODO: ???????????????????
-prototype(Ws.Fshsite:socialButtons) {
-    socialButtons = Networkteam.Neos.Shariff:Shariff
-}
 
 include: ./**/*.fusion

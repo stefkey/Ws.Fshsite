@@ -18,7 +18,9 @@
 			<f:if condition="{node.context.workspace.name} != 'live'">
 				<link rel="stylesheet" href="{f:uri.resource(path: 'Styles/Backend.css', package: 'Ws.Fshsite')}" media="all" />
 			</f:if>
-		</f:section>
+
+            <script src="{f:uri.resource(path: 'Libraries/jQuery/jquery-1.10.1.min.js', package: 'Neos.Twitter.Bootstrap')}"></script>
+        </f:section>
 	</head>
 
 	<body>
@@ -88,7 +90,6 @@
 			</footer>
 		</f:section>
 		<f:section name="bodyScripts">
-			<script src="{f:uri.resource(path: 'Libraries/jQuery/jquery-1.10.1.min.js', package: 'Neos.Twitter.Bootstrap')}"></script>
 			<script src="{f:uri.resource(path: '3/js/bootstrap.min.js', package: 'Neos.Twitter.Bootstrap')}"></script>
 			<script src="{f:uri.resource(path: 'JavaScript/main.min.js', package: 'Ws.Fshsite')}"></script>
 					<script src="{f:uri.resource(path: 'JavaScript/site.js', package: 'Ws.Fshsite')}"></script>

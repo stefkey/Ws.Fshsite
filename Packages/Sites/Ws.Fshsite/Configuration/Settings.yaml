@@ -64,14 +64,7 @@ Neos:
               features:
                 resize: true
       defaultLanguage: de
-Networkteam:
-  Neos:
-    Shariff:
-      options:
-        services:
-          - Twitter
-          - Facebook
-          - GooglePlus
+
 DL:
   Gallery:
     loadGalleryCSS: true
@@ -96,6 +89,15 @@ DL:
               height: null
               allowCropping: null
               allowUpScaling: null
+
+Networkteam:
+  Neos:
+    Shariff:
+      options:
+        services:
+          - Twitter
+          - Facebook
+          - GooglePlus
 
 Sandstorm:
   UserManagement:

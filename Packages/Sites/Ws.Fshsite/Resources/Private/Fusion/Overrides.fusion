@@ -55,11 +55,3 @@ prototype(Neos.Neos:Page) {
 prototype(JohannesSteu.Neos.NodeTypes:Accordeon) {
     attributes.class = 'container sj-accordeon accordeon sj-small-container'
 }
-
-prototype(Networkteam.Neos.Shariff:Shariff) {
-    attributes {
-        // Put additional attributes here, see https://github.com/heiseonline/shariff#options-data-attributes
-         data-theme = 'white'
-        data-backend-url = 'null'
-    }
-}
