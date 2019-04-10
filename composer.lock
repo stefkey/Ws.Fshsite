@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "31e204c9e018e17262de15ae6a50f68c",
+    "content-hash": "fcd29dd30e18dc57c0ce7a232b183110",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -3293,16 +3293,16 @@
         },
         {
             "name": "neos/neos-ui",
-            "version": "3.1.0",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos-ui.git",
-                "reference": "0f0424bdcf2b409970dc7383d2fce00caea3f9f0"
+                "reference": "be5fa471ce078d47209e8645e2b79d924f18c612"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos-ui/zipball/0f0424bdcf2b409970dc7383d2fce00caea3f9f0",
-                "reference": "0f0424bdcf2b409970dc7383d2fce00caea3f9f0",
+                "url": "https://api.github.com/repos/neos/neos-ui/zipball/be5fa471ce078d47209e8645e2b79d924f18c612",
+                "reference": "be5fa471ce078d47209e8645e2b79d924f18c612",
                 "shasum": ""
             },
             "require": {
@@ -3398,20 +3398,20 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Neos CMS UI written in React",
-            "time": "2019-02-12T09:40:03+00:00"
+            "time": "2019-04-01T12:05:28+00:00"
         },
         {
             "name": "neos/neos-ui-compiled",
-            "version": "3.1.0",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos-ui-compiled.git",
-                "reference": "aacd4d89bfa12f81d7817d68d5fa4d20d9da106d"
+                "reference": "ef0e912cc1702a4ff51adb95cab260880d0643a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos-ui-compiled/zipball/aacd4d89bfa12f81d7817d68d5fa4d20d9da106d",
-                "reference": "aacd4d89bfa12f81d7817d68d5fa4d20d9da106d",
+                "url": "https://api.github.com/repos/neos/neos-ui-compiled/zipball/ef0e912cc1702a4ff51adb95cab260880d0643a9",
+                "reference": "ef0e912cc1702a4ff51adb95cab260880d0643a9",
                 "shasum": ""
             },
             "require": {
@@ -3429,7 +3429,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2019-02-12T09:45:41+00:00"
+            "time": "2019-04-01T12:11:20+00:00"
         },
         {
             "name": "neos/nodetypes",
@@ -4495,20 +4495,19 @@
         },
         {
             "name": "neos/redirecthandler-databasestorage",
-            "version": "3.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/redirecthandler-databasestorage.git",
-                "reference": "89afaf857bb79286127544e659fa00d5124e5499"
+                "reference": "463efeb2f8c825b0c62500e365aec423ea152560"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/redirecthandler-databasestorage/zipball/89afaf857bb79286127544e659fa00d5124e5499",
-                "reference": "89afaf857bb79286127544e659fa00d5124e5499",
+                "url": "https://api.github.com/repos/neos/redirecthandler-databasestorage/zipball/463efeb2f8c825b0c62500e365aec423ea152560",
+                "reference": "463efeb2f8c825b0c62500e365aec423ea152560",
                 "shasum": ""
             },
             "require": {
-                "neos/flow": "^5.0",
                 "neos/redirecthandler": "~2.0 || dev-master"
             },
             "provide": {
@@ -4517,7 +4516,7 @@
             "type": "neos-package",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 },
                 "applied-flow-migrations": [
                     "TYPO3.FLOW3-201209201112",
@@ -4555,20 +4554,20 @@
                 "MIT"
             ],
             "description": "A plugin for neos/redirecthandler to store redirects in the database",
-            "time": "2018-05-18T15:26:47+00:00"
+            "time": "2017-12-20T07:29:35+00:00"
         },
         {
             "name": "neos/redirecthandler-neosadapter",
-            "version": "3.0.0",
+            "version": "2.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/redirecthandler-neosadapter.git",
-                "reference": "c09268928758a05b83dd82a7a38545c84509d031"
+                "reference": "1137fb3e701bbe3ea2decf740270ed1c69f9ccf3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/redirecthandler-neosadapter/zipball/c09268928758a05b83dd82a7a38545c84509d031",
-                "reference": "c09268928758a05b83dd82a7a38545c84509d031",
+                "url": "https://api.github.com/repos/neos/redirecthandler-neosadapter/zipball/1137fb3e701bbe3ea2decf740270ed1c69f9ccf3",
+                "reference": "1137fb3e701bbe3ea2decf740270ed1c69f9ccf3",
                 "shasum": ""
             },
             "require": {
@@ -4578,7 +4577,7 @@
             "type": "neos-package",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 },
                 "applied-flow-migrations": [
                     "TYPO3.FLOW3-201209201112",
@@ -4648,7 +4647,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Neos Redirect Handler",
-            "time": "2019-01-22T13:11:15+00:00"
+            "time": "2018-12-04T15:56:20+00:00"
         },
         {
             "name": "neos/seo",
