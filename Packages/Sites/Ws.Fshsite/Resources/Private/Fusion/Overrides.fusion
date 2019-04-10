@@ -46,11 +46,11 @@ prototype(Neos.NodeTypes:Form) {
 ##
 # SJ JohannesSteu Accordeon
 #
-prototype(Neos.Neos:Page) {
-    head.stylesheets.accordeon = Neos.Fusion:Tag {
-        @position = 'start'
-    }
-}
+#prototype(Neos.Neos:Page) {
+#    head.stylesheets.accordeon = Neos.Fusion:Tag {
+#        @position = 'start'
+#    }
+#}
 
 prototype(JohannesSteu.Neos.NodeTypes:Accordeon) {
     attributes.class = 'container sj-accordeon accordeon sj-small-container'
