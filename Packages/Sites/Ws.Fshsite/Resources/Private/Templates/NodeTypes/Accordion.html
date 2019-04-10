@@ -1,0 +1,11 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+
+<div {attributes -> f:format.raw()}>
+    <div data-control class="{classname}__header">
+        <a class="{classname}__title">{title}</a>
+    </div>
+
+    <div data-content class="{classname}__content">
+        {content -> f:format.raw()}
+    </div>
+</div>
