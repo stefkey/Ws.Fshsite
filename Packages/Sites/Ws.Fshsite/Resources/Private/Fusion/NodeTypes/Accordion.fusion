@@ -1,11 +1,11 @@
 prototype(Ws.Fshsite:Accordion) {
-    @context.classname = 'accordeon'
+    @context.classname = 'accordion'
 
     classname = ${classname}
 
-    attributes.class = 'container sj-accordeon accordeon sj-small-container'
+    attributes.class = 'container sj-accordion accordion sj-small-container'
     attributes.class.@process.addInitialState = ${q(node).property('initialState') == 'opened' ? value + " " + classname + "--open" : value}
-    attributes.data-accordeon = ""
+    attributes.data-accordion = ""
     attributes.class.@process.nodeType >
 
     content = Neos.Neos:ContentCollection {

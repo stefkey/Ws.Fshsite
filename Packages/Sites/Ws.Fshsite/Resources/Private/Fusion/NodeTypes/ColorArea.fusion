@@ -7,7 +7,7 @@ prototype(Ws.Fshsite:ColorArea) < prototype(Neos.Neos:Content) {
     classname = ${classname}
 
     attributes.class = ${classname}
-    attributes.data-accordeon = ""
+    attributes.data-accordion = ""
     attributes.class.@process.nodeType >
 
     content = Neos.Neos:ContentCollection {

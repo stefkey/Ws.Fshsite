@@ -7,7 +7,7 @@
     icon: 'icon-chevron-down'
     inspector:
       groups:
-        accordeon:
+        accordion:
           label: 'i18n'
   childNodes:
     content:
@@ -20,7 +20,7 @@
         label: 'i18n'
         reloadIfChanged: FALSE
         inspector:
-          group: 'accordeon'
+          group: 'accordion'
           editor: 'Content/Inspector/Editors/SelectBoxEditor'
           editorOptions:
             values:
@@ -36,4 +36,4 @@
         inlineEditable: TRUE
         reloadIfChanged: TRUE
         inspector:
-          group: 'accordeon'
+          group: 'accordion'

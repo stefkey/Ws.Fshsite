@@ -43,6 +43,6 @@ prototype(Neos.NodeTypes:Form) {
     attributes.class = 'container sj-small-container'
 }
 
-prototype(JohannesSteu.Neos.NodeTypes:Accordeon) {
-    attributes.class = 'container sj-accordeon accordeon sj-small-container'
+prototype(JohannesSteu.Neos.NodeTypes:accordion) {
+    attributes.class = 'container sj-accordion accordion sj-small-container'
 }

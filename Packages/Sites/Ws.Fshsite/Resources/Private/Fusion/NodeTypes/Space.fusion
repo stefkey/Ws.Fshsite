@@ -7,7 +7,7 @@ prototype(Ws.Fshsite:Space) < prototype(Neos.Neos:Content) {
     classname = ${classname}
 
     attributes.class = 'space container sj-small-container'
-    attributes.data-accordeon = ""
+    attributes.data-accordion = ""
     attributes.class.@process.nodeType >
 
     content = Neos.Neos:ContentCollection {
