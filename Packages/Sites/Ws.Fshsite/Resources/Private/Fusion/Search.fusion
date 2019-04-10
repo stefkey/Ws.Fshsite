@@ -1,6 +1,3 @@
-##
-# SJ JohannesSteu Code for search page
-#
 prototype(Flowpack.SearchPlugin:Search) {
     templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/Search.html'
 

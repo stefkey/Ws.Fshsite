@@ -5,13 +5,6 @@ root.homepageLayout {
     renderer = Ws.Fshsite:Homepage
 }
 
-root.chapterLayout {
-    @position = 'before documentType'
-    condition = ${q(node).is('[instanceof Ws.Fshsite:Chapter]')}
-
-    renderer = Ws.Fshsite:ChapterPage
-}
-
 root.sidebarLayout {
     @position = 'before documentType'
     sidebarByParentSettings = ${q(node).parent().closest("[instanceof Neos.NodeTypes:Page][subpageLayout = 'sidebar']").count()}
