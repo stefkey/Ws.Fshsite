@@ -44,8 +44,4 @@ landingPage.body {
 	landingPage = ${true}
 }*/
 
-// TODO: check if working
-print = Ws.Fshsite:PrintPage
-
-
 include: ./**/*.fusion
