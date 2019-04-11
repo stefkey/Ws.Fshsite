@@ -30,8 +30,10 @@
         "networkteam/neos-mailobfuscator": "^2.0",
         "neos/form-yamlbuilder": "dev-master",
 
+        
         "flowpack/neos-matomo": "~3.0",
-        "ttree/contentrepositoryimporter": "^3.1"
+        "ttree/contentrepositoryimporter": "^3.1",
+        "lelesys/news": "^4.0"
     },
     "require-dev": {
         "neos/buildessentials": "5.2.x-dev",

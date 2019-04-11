@@ -46,3 +46,11 @@ prototype(Neos.NodeTypes:Form) {
 prototype(JohannesSteu.Neos.NodeTypes:accordion) {
     attributes.class = 'container sj-accordion accordion sj-small-container'
 }
+
+prototype(Lelesys.News:List) {
+    templatePath = 'resource://Ws.Fshsite/Private/Templates/Overrides/LelesysNewsListOverride.html'
+
+    newsItem {
+        templatePath = 'resource://Ws.Fshsite/Private/Templates/Overrides/LelesysNewsListItemOverride.html'
+    }
+}

@@ -3133,6 +3133,10 @@ div .sj-accordion:first-child {   /* hidden Link to Orderform */
 /* Lelesys News?
 ********************************/
 
+.articlelist__item {
+    clear: both;
+}
+
 .articlelist figure {
     width: 180px;
     height: 100%;

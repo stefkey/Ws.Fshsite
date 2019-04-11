@@ -4,7 +4,6 @@
     "require": {
         "neos/neos": "*",
         "neos/nodetypes": "*",
-        "johannessteu/neos-nodetypes": "*",
         "sandstorm/usermanagement": "*"
     },
     "suggest": {

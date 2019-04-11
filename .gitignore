@@ -38,3 +38,7 @@ Build/Resources/Java/selenium-server-standalone*
 
 node_modules/
 .sass-cache/
+Configuration/Development/Caches.yaml.example
+Configuration/Development/Settings.yaml.example
+Configuration/README
+Configuration/Settings.yaml.example

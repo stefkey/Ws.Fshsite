@@ -134,3 +134,10 @@ DL:
               height: null
               allowCropping: null
               allowUpScaling: null
+
+Lelesys:
+  News:
+    view:
+      list:
+        thumbnailMaxWidth: 160
+        thumbnailMaxHeight: 160
