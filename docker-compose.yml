@@ -19,11 +19,10 @@ services:
         volumes:
             - ./composer.json:/app/composer.json:cached
             - ./composer.lock:/app/composer.lock:cached
-            - ./Packages/Sites/:/app/Packages/Sites:cached
+            - ./DistributionPackages/:/app/DistributionPackages:cached
             - ./Data/Persistent:/app/Data/Persistent:cached
             - ./Configuration/:/app/Configuration/:cached
             - ./docker_cached:/composer_cache:cached
-            - ./DistributionUpgrader.phar:/app/DistributionUpgrader.phar
         ports:
             - 8081:8081
         networks:

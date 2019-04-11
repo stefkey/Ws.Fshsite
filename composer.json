@@ -33,7 +33,9 @@
         
         "flowpack/neos-matomo": "~3.0",
         "ttree/contentrepositoryimporter": "^3.1",
-        "lelesys/news": "^4.0"
+        "lelesys/news": "^4.0",
+
+        "ws/fshsite": "@dev"
     },
     "require-dev": {
         "neos/buildessentials": "5.2.x-dev",
@@ -41,6 +43,12 @@
         "phpunit/phpunit": "~6.0.0",
         "symfony/css-selector": "~2.0",
         "neos/behat": "5.2.x-dev"
+    },
+    "repositories": {
+        "distributionPackages": {
+            "type": "path",
+            "url": "./DistributionPackages/*"
+        }
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"

@@ -6,10 +6,7 @@
 *.yaml.example
 
 /Data/
-/Packages/Application/
-/Packages/Framework/
-/Packages/Libraries/
-/Packages/Plugins/
+/Packages/
 /Web/
 /flow
 /flow.bat
