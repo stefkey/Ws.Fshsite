@@ -1,9 +1,4 @@
-
 Neos:
-  Demo:
-    flickr:
-      tagStreamUriPattern: 'http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags=%s'
-      userStreamUriPattern: 'http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&id=%s'
   Flow:
     i18n:
       defaultLocale: de
@@ -43,6 +38,13 @@ Neos:
           'Neos.Form:MultiLineText':
             properties:
               elementClassAttribute: form-control
+  ContentRepository:
+    Search:
+      # API. If set to FALSE, only index the "live" workspace and not user workspaces.
+      # If you only index the live workspace, Search will not work for your editors in the user workspaces.
+      # Furthermore, if you heavily rely on Search for collecting content, this might be strange for editors to
+      # work with -- as unpublished changes are not indexed right away.
+      indexAllWorkspaces: false
   Neos:
     userInterface:
       editPreviewModes:
@@ -64,40 +66,6 @@ Neos:
               features:
                 resize: true
       defaultLanguage: de
-
-DL:
-  Gallery:
-    loadGalleryCSS: true
-    loadGalleryJS: true
-    themes:
-      bootstrapLightbox:
-        label: 'Bootstrap with Lightbox'
-        themeSettings:
-          columnClass: col-sm-4
-          imageVariants:
-            thumb:
-              maximumWidth: null
-              maximumHeight: null
-              width: 600
-              height: 600
-              allowCropping: true
-              allowUpScaling: null
-            large:
-              maximumWidth: 2000
-              maximumHeight: 1200
-              width: null
-              height: null
-              allowCropping: null
-              allowUpScaling: null
-
-Networkteam:
-  Neos:
-    Shariff:
-      options:
-        services:
-          - Twitter
-          - Facebook
-          - GooglePlus
 
 Sandstorm:
   UserManagement:
@@ -124,3 +92,45 @@ Sandstorm:
       sandstorm_usermanagement_sender_email: # You need to use this exact key to override the UserManagement defaults
         name: 'Webseiten Account'
         address: 'keine-antwort@frauenselbsthilfe.de'
+
+
+
+Flowpack:
+  ElasticSearch:
+    ContentRepositoryAdaptor:
+      driver:
+        version: 1.x
+
+Networkteam:
+  Neos:
+    Shariff:
+      options:
+        services:
+          - Twitter
+          - Facebook
+          - GooglePlus
+
+DL:
+  Gallery:
+    loadGalleryCSS: true
+    loadGalleryJS: true
+    themes:
+      bootstrapLightbox:
+        label: 'Bootstrap with Lightbox'
+        themeSettings:
+          columnClass: col-sm-4
+          imageVariants:
+            thumb:
+              maximumWidth: null
+              maximumHeight: null
+              width: 600
+              height: 600
+              allowCropping: true
+              allowUpScaling: null
+            large:
+              maximumWidth: 2000
+              maximumHeight: 1200
+              width: null
+              height: null
+              allowCropping: null
+              allowUpScaling: null

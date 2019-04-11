@@ -2,27 +2,20 @@
 ##### DEVELOPMENT ENVIRONMENT           ##########
 ##################################################
 
-# Public ports:
-#  - 8081 -> Neos
-#  - 25432 -> postgres DB (used for Neos)
-
 version: '3.5'
 services:
-    #####
-    # Neos CMS
     neos:
         build:
             context: .
             dockerfile: ./docker/Dockerfile
         environment:
-            FLOW_CONTEXT: 'Development'
+            FLOW_CONTEXT: 'Development/Docker'
             # DB connection
             DB_NEOS_HOST: 'maria-db'
             DB_NEOS_PORT: 3306
             DB_NEOS_PASSWORD: 'neos'
             DB_NEOS_USER: 'neos'
             DB_NEOS_DATABASE: 'neos'
-
         volumes:
             - ./composer.json:/app/composer.json:cached
             - ./composer.lock:/app/composer.lock:cached
@@ -31,7 +24,6 @@ services:
             - ./Configuration/:/app/Configuration/:cached
             - ./docker_cached:/composer_cache:cached
             - ./DistributionUpgrader.phar:/app/DistributionUpgrader.phar
-
         ports:
             - 8081:8081
         networks:
@@ -59,6 +51,7 @@ services:
             - frauenselbsthilfe
         volumes:
           - ./docker/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,cached
+
     mailhog:
         hostname: mailhog
         image: mailhog/mailhog

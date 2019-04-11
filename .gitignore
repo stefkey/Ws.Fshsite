@@ -1,5 +1,5 @@
 /Build/
-/Configuration/
+/Configuration/Settings.yaml
 /Data/
 /Packages/Application/*
 !/Packages/Application/Ws.FshImport

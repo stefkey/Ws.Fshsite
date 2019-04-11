@@ -1,0 +1,21 @@
+#
+# SJ: wegen Elaticsearch, siehe Anleitung https://github.com/Flowpack/Flowpack.ElasticSearch.ContentRepositoryAdaptor
+-
+  name: 'Flowpack.SearchPlugin'
+  uriPattern: '<SearchSubroutes>'
+  subRoutes:
+    'SearchSubroutes':
+      package: 'Flowpack.SearchPlugin'
+
+##
+# Neos Neos subroutes
+-
+  name: 'Neos Neos'
+  uriPattern: '<NeosNeosSubroutes>'
+  subRoutes:
+    'NeosNeosSubroutes':
+      package: 'Neos.Neos'
+      variables:
+        'defaultUriSuffix': '.html'
+
+

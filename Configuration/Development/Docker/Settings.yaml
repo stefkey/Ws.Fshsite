@@ -1,0 +1,25 @@
+Neos:
+  Imagine:
+    driver: Gd
+  Flow:
+    persistence:
+      backendOptions:
+        driver: 'pdo_mysql'
+        charset: 'utf8'
+        host: '%env:DB_NEOS_HOST%'
+        port: '%env:DB_NEOS_PORT%'
+        password: '%env:DB_NEOS_PASSWORD%'
+        user: '%env:DB_NEOS_USER%'
+        dbname: '%env:DB_NEOS_DATABASE%'
+  SwiftMailer:
+    transport:
+      type: 'Swift_SmtpTransport'
+      options:
+        host: 'mailhog'
+        port: '1025'
+Flowpack:
+  ElasticSearch:
+    clients:
+      default:
+        - host: elastic
+          port: 9200

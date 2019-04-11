@@ -2,13 +2,11 @@
   requestFilter: 'mainRequest.isPackage("Neos.Neos") && isPackage("Sandstorm.UserManagement")'
   options:
     layoutRootPaths: ['resource://Ws.Fshsite/Private/Templates/SandstormUsermanagement/Layouts']
-
 -
   requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("Login") && isAction("login")'
   options:
     templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/Login/Login.html'
     partialRootPaths: ['resource://Ws.Fshsite/Private/Partials']
-
 -
   requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("Registration")'
   options:
@@ -21,7 +19,6 @@
   requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("Registration") && isAction("register")'
   options:
     templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/Registration/Register.html'
-
 -
   requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("ResetPassword")'
   options:
