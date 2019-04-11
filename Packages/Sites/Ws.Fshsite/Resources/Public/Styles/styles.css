@@ -1154,12 +1154,12 @@ figure a img:hover
 }
 
 .shariff .twitter .fa-twitter { font-size: 27px; color: #017d41; width: 100%; padding-left:1px; padding-top:6px }
-.shariff .facebook .fa-facebook { font-size: 24px; color: #017d41; width: 100%; padding-top:6px }
-.shariff .googleplus .fa-google-plus { font-size: 22px; color: #017d41; width: 100%; padding-left:1px; padding-top:6px }
+.shariff .facebook .fa-facebook-f { font-size: 24px; color: #017d41; width: 100%; padding-top:6px }
+.shariff .googleplus .fa-google-plus-g { font-size: 22px; color: #017d41; width: 100%; padding-left:1px; padding-top:6px }
 
 .shariff .twitter .fa-twitter:hover { color: #55acee }
-.shariff .facebook .fa-facebook:hover { color: #3b5998 }
-.shariff .googleplus .fa-google-plus:hover { color: #d34836 }
+.shariff .facebook .fa-facebook-f:hover { color: #3b5998 }
+.shariff .googleplus .fa-google-plus-g:hover { color: #d34836 }
 
 .shariff .orientation-horizontal li {
     margin-bottom: 0;
