@@ -1,0 +1,12 @@
+/bin/
+/Build/
+
+/Configuration/Settings.yaml
+/Configuration/README
+*.yaml.example
+
+/Data/
+/Packages/
+/Web/
+/flow
+/flow.bat

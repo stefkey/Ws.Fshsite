@@ -17,11 +17,11 @@ services:
             DB_NEOS_USER: 'neos'
             DB_NEOS_DATABASE: 'neos'
         volumes:
-            - ./composer.json:/app/composer.json:cached
-            - ./composer.lock:/app/composer.lock:cached
-            - ./DistributionPackages/:/app/DistributionPackages:cached
-            - ./Data/Persistent:/app/Data/Persistent:cached
-            - ./Configuration/:/app/Configuration/:cached
+            - ./app/composer.json:/app/composer.json:cached
+            - ./app/composer.lock:/app/composer.lock:cached
+            - ./app/DistributionPackages/:/app/DistributionPackages:cached
+            - ./app/Data/Persistent:/app/Data/Persistent:cached
+            - ./app/Configuration/:/app/Configuration/:cached
             - ./docker_cached:/composer_cache:cached
         ports:
             - 8081:8081

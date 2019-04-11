@@ -1,17 +1,3 @@
-/bin/
-/Build/
-
-/Configuration/Settings.yaml
-/Configuration/README
-*.yaml.example
-
-/Data/
-/Packages/
-/Web/
-/flow
-/flow.bat
 /docker_cached/
-
-# Various temporary files
 
 *.DS_Store

@@ -1,9 +1,3 @@
 **/.git
-/Web
-/Data
-/Packages
-/Build
-/Configuration
-/bin
+/app
 /docker_cached
-.composer-cache
