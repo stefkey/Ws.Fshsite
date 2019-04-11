@@ -12,21 +12,26 @@
         "neos/seo": "~2.1",
         "neos/setup": "~4.0",
 
-        "flowpack/neos-frontendlogin": "~3.0",
+        "neos/neos-ui": "~3.3.0",
+
         "neos/redirecthandler-neosadapter": "~2.0",
         "neos/redirecthandler-databasestorage": "~2.0",
 
-        "flowpack/neos-matomo": "~3.0",
-        "neos/swiftmailer": "~6.0.0",
-        "networkteam/neos-shariff": "~4.0",
-        "networkteam/neos-mailobfuscator": "^2.0",
         "flowpack/elasticsearch-contentrepositoryadaptor": "^4.0",
         "flowpack/searchplugin": "^4.0",
-        "neos/form-yamlbuilder": "dev-master",
-        "ttree/contentrepositoryimporter": "^3.1",
-        "sandstorm/usermanagement": "dev-master",
+
+        "flowpack/neos-frontendlogin": "~3.0",
+
+        "neos/swiftmailer": "~6.0.0",
+        "sandstorm/usermanagement": "~6.1.0",
+
         "dl/gallery": "~3.1.0",
-        "neos/neos-ui": "~3.3.0"
+        "networkteam/neos-shariff": "~4.0",
+        "networkteam/neos-mailobfuscator": "^2.0",
+        "neos/form-yamlbuilder": "dev-master",
+
+        "flowpack/neos-matomo": "~3.0",
+        "ttree/contentrepositoryimporter": "^3.1"
     },
     "require-dev": {
         "neos/buildessentials": "5.2.x-dev",
