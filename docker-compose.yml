@@ -27,6 +27,11 @@ services:
             - 8081:8081
         networks:
             - frauenselbsthilfe
+        depends_on:
+          - maria-db
+          - mailhog
+          - elastic
+          - redis
 
     maria-db:
         hostname: maria-db
