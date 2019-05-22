@@ -7,11 +7,12 @@ root.homepageLayout {
 
 root.sidebarLayout {
     @position = 'before documentType'
-    sidebarByParentSettings = ${q(node).parent().closest("[instanceof Neos.NodeTypes:Page][subpageLayout = 'sidebar']").count()}
+    parentPageHasSidebarSetting = ${q(node).parent().closest("[instanceof Neos.NodeTypes:Page][subpageLayout = 'sidebar']").count()}
+    parentShortcutHasSidebarSetting = ${q(node).parent().closest("[instanceof Neos.Neos:Shortcut][subpageLayout = 'sidebar']").count()}
     sidebarByOwnSettings = ${q(node).property('layout') == 'sidebar'}
     isPage = ${q(node).is('[instanceof Neos.NodeTypes:Page]')}
 
-    condition =  ${this.isPage && (this.sidebarByOwnSettings || (!this.sidebarByOwnSettings && this.sidebarByParentSettings))}
+    condition =  ${this.isPage && (this.sidebarByOwnSettings || parentPageHasSidebarSetting || parentShortcutHasSidebarSetting)}
 
     renderer = Ws.Fshsite:SidebarPage
 }
