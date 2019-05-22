@@ -51,7 +51,7 @@
     image:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Ws.Fshsite:NodeTypes.Page:Header Bild'
+        label: 'Header Bild'
         reloadIfChanged: true
         inspector:
           group: image
@@ -67,7 +67,7 @@
     imageTitleText:
       type: string
       ui:
-        label: 'Ws.Fshsite:NodeTypes.Page:Headerbild Titel'
+        label: 'Headerbild Titel'
         reloadIfChanged: true
         inspector:
           group: image
