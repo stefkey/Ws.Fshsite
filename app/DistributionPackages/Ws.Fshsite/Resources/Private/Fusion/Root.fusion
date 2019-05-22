@@ -11,8 +11,8 @@ root.sidebarLayout {
     parentShortcutHasSidebarSetting = ${q(node).parent().closest("[instanceof Neos.Neos:Shortcut][subpageLayout = 'sidebar']").count()}
     sidebarByOwnSettings = ${q(node).property('layout') == 'sidebar'}
     isPage = ${q(node).is('[instanceof Neos.NodeTypes:Page]')}
-
-    condition =  ${this.isPage && (this.sidebarByOwnSettings || parentPageHasSidebarSetting || parentShortcutHasSidebarSetting)}
+ 
+    condition =  ${this.isPage && (this.sidebarByOwnSettings || (!this.sidebarByOwnSettings && this.parentPageHasSidebarSetting) || (!this.sidebarByOwnSettings && this.parentShortcutHasSidebarSetting))}
 
     renderer = Ws.Fshsite:SidebarPage
 }
