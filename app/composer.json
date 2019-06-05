@@ -35,7 +35,8 @@
         "ttree/contentrepositoryimporter": "^3.1",
         "lelesys/news": "^4.0",
 
-        "ws/fshsite": "@dev"
+        "ws/fshsite": "@dev",
+        "neos/form-builder": "^1.1"
     },
     "require-dev": {
         "neos/buildessentials": "5.2.x-dev",

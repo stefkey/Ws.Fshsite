@@ -1,0 +1,11 @@
+'Neos.Form.Builder:IntegerField':
+  superTypes:
+    'Neos.Form.Builder:SingleLineText': TRUE
+  ui:
+    label: 'Integer-Field'
+    icon: 'icon-pencil-square-o'
+    inspector:
+      groups:
+        'formElement':
+          icon: 'icon-pencil-square-o'
+    position: 10

@@ -25,19 +25,24 @@ Neos:
     yamlPersistenceManager:
       savePath: 'resource://Ws.Fshsite/Private/Form/'
     presets:
-      bootstrap:
-        title: 'Twitter bootstrap'
-        parentPreset: default
+      default:
         formElementTypes:
           'Neos.Form:Base':
             renderingOptions:
               layoutPathPattern: 'resource://Ws.Fshsite/Private/Templates/ContactForm/{@type}.html'
+          'Neos.Form:Form':
+            renderingOptions:
+              templatePathPattern: 'resource://Ws.Fshsite/Private/Form/{@type}.html'
           'Neos.Form:FormElement':
             properties:
               elementClassAttribute: form-control
           'Neos.Form:MultiLineText':
             properties:
               elementClassAttribute: form-control
+          'Neos.Form:IntegerField':
+            superTypes:
+              'Neos.Form:SingleLineText': true
+
   ContentRepository:
     Search:
       # API. If set to FALSE, only index the "live" workspace and not user workspaces.
@@ -92,8 +97,6 @@ Sandstorm:
       sandstorm_usermanagement_sender_email: # You need to use this exact key to override the UserManagement defaults
         name: 'Webseiten Account'
         address: 'keine-antwort@frauenselbsthilfe.de'
-
-
 
 Flowpack:
   ElasticSearch:

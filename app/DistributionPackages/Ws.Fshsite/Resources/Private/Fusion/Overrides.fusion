@@ -14,10 +14,6 @@ prototype(Flowpack.SearchPlugin:Search) {
     attributes.class = 'container sj-small-container'
 }
 
-prototype(Neos.NodeTypes:Form) {
-    attributes.class = 'container'
-}
-
 prototype(Flowpack.Neos.FrontendLogin:LoginForm) {
     attributes.class = 'container sj-small-container'
 }
@@ -32,10 +28,6 @@ prototype(Neos.NodeTypes:AssetList)  {
 }
 
 prototype(DL.Gallery:Gallery) {
-    attributes.class = 'container sj-small-container'
-}
-
-prototype(Neos.NodeTypes:Form) {
     attributes.class = 'container sj-small-container'
 }
 
