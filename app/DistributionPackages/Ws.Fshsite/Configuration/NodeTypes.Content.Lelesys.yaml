@@ -1,49 +1,55 @@
 'Lelesys.News:Common':
-  abstract: true
   ui:
     inspector:
       groups:
         newsConfiguration:
           label: 'News Konfiguration'
-          position: 1
   properties:
     newsFolder:
       ui:
         label: 'News Ordner'
     dateFormat:
-      ui:
+      ui: ~
     sortProperty:
-      ui:
+      ui: ~
     sortOrder:
-      ui:
+      ui: ~
     thumbnailMaxWidth:
-      ui:
+      ui: ~
     thumbnailMaxHeight:
-      ui:
+      ui: ~
     filterByCategories:
-      ui:
+      ui: ~
     mainTemplate:
-      ui:
+      ui: ~
     itemTemplate:
-      ui:
+      ui: ~
 
 'Lelesys.News:Paginated':
   properties:
     itemsPerPage:
-      ui:
+      ui: ~
     maximumNumberOfLinks:
-      ui:
+      ui: ~
 
 'Lelesys.News:News':
+  childNodes:
+    topslider:
+      type: 'TYPO3.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': TRUE
   properties:
     isAuthorBeUser:
-      ui:
+      ui: ~
     authorName:
       ui:
         label: 'Autor des Meldung'
+        defaultValue: 'Internet Redaktion'
     authorEmail:
       ui:
         label: 'Autor E-mail Adresse'
+        defaultValue: 'redaktion@frauenselbsthilfe.de'
       validation:
         'Neos.Neos/Validation/EmailAddressValidator': []
     place:
