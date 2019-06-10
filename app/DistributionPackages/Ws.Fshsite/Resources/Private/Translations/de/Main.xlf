@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" product-name="Lelesys.News" source-language="en" datatype="plaintext">
+		<body>
+			<trans-unit id="readMore" xml:space="preserve">
+				<source>Read more</source>
+			<target state="translated">weiterlesen</target></trans-unit>
+			<trans-unit id="noNewsToDisplay" xml:space="preserve">
+				<source>No news to display</source>
+			<target state="translated">Keine News vorhanden</target></trans-unit>
+			<trans-unit id="relatedNews" xml:space="preserve">
+				<source>Related News</source>
+			<target state="translated">Verwandte News</target></trans-unit>
+			<trans-unit id="categories" xml:space="preserve">
+				<source>Categories</source>
+			<target state="translated">Kategorieen</target></trans-unit>
+			<trans-unit id="tags" xml:space="preserve">
+				<source>Tags</source>
+			<target state="translated">Tags</target></trans-unit>
+			<trans-unit id="by" xml:space="preserve">
+				<source>by</source>
+			<target state="translated">von</target></trans-unit>
+			<trans-unit id="noCategoriesToDisplay" xml:space="preserve">
+				<source>No categories to display</source>
+			<target state="translated">Keine Kategorieen vorhanden</target></trans-unit>
+		</body>
+	</file>
+</xliff>

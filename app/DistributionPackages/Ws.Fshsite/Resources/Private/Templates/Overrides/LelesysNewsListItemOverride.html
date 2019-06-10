@@ -10,12 +10,7 @@
 	</f:if>
 	<h3><neos:link.node node="{node}">{title}</neos:link.node></h3>
 	<p>
-		<f:if condition="{dateTime}">
-			<span><i><f:format.date format="{configuration.dateFormat}">{dateTime}</f:format.date></i></span>
-		</f:if>
-		<span>{f:if(condition: '{authorName}', then: ', {f:translate(id: \'by\', package: \'Lelesys.News\')}: {authorName}', else: '')}</span>
-		<br />
-		<f:if condition="{teaserText}">{teaserText -> f:format.stripTags() -> f:format.crop(maxCharacters: 100, append: '...')}</f:if>
+		<f:if condition="{teaserText}">{teaserText -> f:format.stripTags() -> f:format.crop(maxCharacters: 300, append: '...')}</f:if>
 		<neos:link.node node="{node}">
 			<f:translate id="readMore" package="Lelesys.News">Read more</f:translate>
 		</neos:link.node>

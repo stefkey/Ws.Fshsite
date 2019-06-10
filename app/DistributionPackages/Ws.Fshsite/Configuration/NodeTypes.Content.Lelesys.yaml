@@ -1,0 +1,60 @@
+'Lelesys.News:Common':
+  abstract: true
+  ui:
+    inspector:
+      groups:
+        newsConfiguration:
+          label: 'News Konfiguration'
+          position: 1
+  properties:
+    newsFolder:
+      ui:
+        label: 'News Ordner'
+    dateFormat:
+      ui:
+    sortProperty:
+      ui:
+    sortOrder:
+      ui:
+    thumbnailMaxWidth:
+      ui:
+    thumbnailMaxHeight:
+      ui:
+    filterByCategories:
+      ui:
+    mainTemplate:
+      ui:
+    itemTemplate:
+      ui:
+
+'Lelesys.News:Paginated':
+  properties:
+    itemsPerPage:
+      ui:
+    maximumNumberOfLinks:
+      ui:
+
+'Lelesys.News:News':
+  properties:
+    isAuthorBeUser:
+      ui:
+    authorName:
+      ui:
+        label: 'Autor des Meldung'
+    authorEmail:
+      ui:
+        label: 'Autor E-mail Adresse'
+      validation:
+        'Neos.Neos/Validation/EmailAddressValidator': []
+    place:
+      ui:
+        label: 'Ort'
+    dateTime:
+      ui:
+        label: 'Datum der Meldung'
+    relatedNews:
+      ui:
+        label: 'Verwandte Meldung'
+    categories:
+      ui:
+        label: 'Kategorie der Meldung'
