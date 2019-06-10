@@ -35,6 +35,24 @@ html,body
     -webkit-hyphens: auto;
     hyphens: auto;
 }
+input[type="checkbox"], input[type="radio"]
+{
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0px 12px 0px 0px;
+}
+
+.float-left {
+    float: left;
+    width: 70px;
+    margin-right: 20px;
+}
+.float-right {
+    float: right;
+    width: 70px;
+margin-left: 20px;
+}
+
 
 .main {
     padding-top: 30px;
@@ -1682,7 +1700,12 @@ fieldset.form-control { /* notwendig da im bootsrap einen heigh von 34px definie
     font-size: inherit;
 }
 
-#bestellformular-medienliste .form-control, #mitgliederBestellformular-medienliste .form-control {
+#contact-form-privacynotice label {
+    font-size: .7em;
+    line-height: 20px;
+}
+
+#contact-form-privacynotice .form-control, #bestellformular-medienliste .form-control, #mitgliederBestellformular-medienliste .form-control {
     width: 50px;
     margin-right: 20px;
 }
@@ -1696,7 +1719,7 @@ label[for$="anrede"] {
     position: absolute;
 }
 
-#bestellformular-medienliste div.input, #mitgliederBestellformular-medienliste div.input  {
+#contact-form-privacynotice div.input, #bestellformular-medienliste div.input, #mitgliederBestellformular-medienliste div.input  {
     float:left;
 }
 
@@ -1789,6 +1812,10 @@ fieldset h2 {
 }
 .form-control p {
     font-style: italic;
+}
+
+span.help-inline {
+    color: red;
 }
 
 
@@ -2996,20 +3023,20 @@ m611ab969-705d-43da-8b25-e5fa97a3bdbb
 ********************************/
 
 .firstLevel.normal.m87ea6bed-254c-43b8-bf11-b79e20f76c8e ul.second-level-sub-navigation {
-    -webkit-column-count: 1;
+    -webkit-column-count: 2;
     /* Chrome, Safari, Opera */
-    -webkit-column-rule: 1px solid #ccc;
+    -webkit-column-rule: 1px solid #fff;
     /*	-webkit-column-gap: 0px; */
-    -moz-column-count: 1;
+    -moz-column-count: 2;
     /* Firefox */
-    -moz-column-rule: 1px solid #ccc;
+    -moz-column-rule: 1px solid #fff;
     /*	-moz-column-gap: 0px; */
-    column-count: 1;
-    -column-rule: 1px solid #ccc;
+    column-count: 2;
+    -column-rule: 1px solid #fff;
     /*	-column-gap: 0px; */
     margin-bottom: 1em;
-    float: right;
-    width: 51%;
+    float: left;
+    width: 66%;
 }
 .firstLevel.normal.m87ea6bed-254c-43b8-bf11-b79e20f76c8e .sj-additionalContent .neos-nodetypes-textwithimage{
     margin-top: 1.4em;
@@ -3127,6 +3154,10 @@ div .sj-accordion:first-child {   /* hidden Link to Orderform */
 
 .callout.alert, .callout.success {
     color: red;
+}
+
+.newsMetaDate, .newsMetaAuthor {
+    font-style: italic;
 }
 
 
