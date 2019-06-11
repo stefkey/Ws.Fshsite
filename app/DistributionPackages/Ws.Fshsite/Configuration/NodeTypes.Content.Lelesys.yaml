@@ -35,7 +35,7 @@
 'Lelesys.News:News':
   childNodes:
     topslider:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
       constraints:
         nodeTypes:
           '*': TRUE
