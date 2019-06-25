@@ -3160,6 +3160,9 @@ div .sj-accordion:first-child {   /* hidden Link to Orderform */
     font-style: italic;
 }
 
+.sj-sandstormusermanagement ul li {
+    color: red;
+}
 
 /* Lelesys News?
 ********************************/

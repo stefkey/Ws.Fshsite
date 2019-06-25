@@ -3,35 +3,43 @@
   options:
     layoutRootPaths: ['resource://Ws.Fshsite/Private/Templates/SandstormUsermanagement/Layouts']
 -
-  requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("Login") && isAction("login")'
+  requestFilter: 'mainRequest.isPackage("Neos.Neos") && isPackage("Sandstorm.UserManagement") && isController("Login") && isAction("login")'
   options:
     templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/Login/Login.html'
     partialRootPaths: ['resource://Ws.Fshsite/Private/Partials']
+    layoutRootPaths: ['resource://Ws.Fshsite/Private/Templates/SandstormUsermanagement/Layouts']
 -
-  requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("Registration")'
+  requestFilter: 'mainRequest.isPackage("Neos.Neos") && isPackage("Sandstorm.UserManagement") && isController("Registration")'
   options:
     templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/Registration/Index.html'
+    layoutRootPaths: ['resource://Ws.Fshsite/Private/Templates/SandstormUsermanagement/Layouts']
 -
-  requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("Registration") && isAction("activateAccount")'
+  requestFilter: 'mainRequest.isPackage("Neos.Neos") && isPackage("Sandstorm.UserManagement") && isController("Registration") && isAction("activateAccount")'
   options:
     templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/Registration/ActivateAccount.html'
+    layoutRootPaths: ['resource://Ws.Fshsite/Private/Templates/SandstormUsermanagement/Layouts']
 -
-  requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("Registration") && isAction("register")'
+  requestFilter: 'mainRequest.isPackage("Neos.Neos") && isPackage("Sandstorm.UserManagement") && isController("Registration") && isAction("register")'
   options:
     templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/Registration/Register.html'
+    layoutRootPaths: ['resource://Ws.Fshsite/Private/Templates/SandstormUsermanagement/Layouts']
 -
-  requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("ResetPassword")'
+  requestFilter: 'mainRequest.isPackage("Neos.Neos") && isPackage("Sandstorm.UserManagement") && isController("ResetPassword")'
   options:
     templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/ResetPassword/Index.html'
+    layoutRootPaths: ['resource://Ws.Fshsite/Private/Templates/SandstormUsermanagement/Layouts']
 -
-  requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("ResetPassword") && isAction("insertNewPassword")'
+  requestFilter: 'mainRequest.isPackage("Neos.Neos") && isPackage("Sandstorm.UserManagement") && isController("ResetPassword") && isAction("insertNewPassword")'
   options:
     templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/ResetPassword/InsertNewPassword.html'
+    layoutRootPaths: ['resource://Ws.Fshsite/Private/Templates/SandstormUsermanagement/Layouts']
 -
-  requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("ResetPassword") && isAction("requestToken")'
+  requestFilter: 'mainRequest.isPackage("Neos.Neos") && isPackage("Sandstorm.UserManagement") && isController("ResetPassword") && isAction("requestToken")'
   options:
     templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/ResetPassword/RequestToken.html'
+    layoutRootPaths: ['resource://Ws.Fshsite/Private/Templates/SandstormUsermanagement/Layouts']
 -
-  requestFilter: 'isPackage("Sandstorm.UserManagement") && isController("ResetPassword") && isAction("updatePassword")'
+  requestFilter: 'mainRequest.isPackage("Neos.Neos") && isPackage("Sandstorm.UserManagement") && isController("ResetPassword") && isAction("updatePassword")'
   options:
     templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/ResetPassword/UpdatePassword.html'
+    layoutRootPaths: ['resource://Ws.Fshsite/Private/Templates/SandstormUsermanagement/Layouts']
