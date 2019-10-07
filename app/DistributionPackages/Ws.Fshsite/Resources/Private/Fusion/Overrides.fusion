@@ -42,3 +42,8 @@ prototype(Lelesys.News:List) {
         templatePath = 'resource://Ws.Fshsite/Private/Templates/Overrides/LelesysNewsListItemOverride.html'
     }
 }
+
+prototype(Sandstorm.UserManagement:LoginForm) {
+    attributes.class = 'container sj-accordion accordion sj-small-container'
+    layoutRootPaths = 'resource://Ws.Fshsite/Private/Templates/SandstormUsermanagement/Layouts'
+}
