@@ -47,3 +47,7 @@ prototype(Sandstorm.UserManagement:LoginForm) {
     attributes.class = 'container sj-accordion accordion sj-small-container'
     layoutRootPaths = 'resource://Ws.Fshsite/Private/Templates/SandstormUsermanagement/Layouts'
 }
+
+prototype(Neos.NodeTypes:Form) {
+    attributes.class = 'container sj-small-container'
+}

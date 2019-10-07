@@ -7,13 +7,13 @@ finishers:
     -
         identifier: 'Neos.Form:Email'
         options:
-            templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/ContactForm/Email.txt'
+            templatePathAndFilename: 'resource://Ws.Fshsite/Private/Templates/ContactForm/Email.html'
             format: html
             subject: 'Kontaktformular E-Mail'
-            recipientAddress: kontakt@frauenselbsthilfe.de
+            recipientAddress: contact-form@frauenselbsthilfe.de
             recipientName: 'GSt Bonn'
             senderAddress: no-reply@frauenselbsthilfe.de
-            senderName: 'FSH Neos CMS'
+            senderName: 'FSH Website'
             replyToAddress: no-reply@frauenselbsthilfe.de
     -
         identifier: 'Neos.Form:Confirmation'
@@ -22,60 +22,94 @@ finishers:
 renderables:
     -
         type: 'Neos.Form:Page'
+        identifier: page-one
+        label: Kontaktformular
         renderables:
             -
-                type: 'Neos.Form:SingleSelectRadiobuttons'
-                identifier: anrede
-                label: Anrede
-                properties:
-                    options:
-                        -
-                            _value: Frau
-                            _key: Frau
-                        -
-                            _value: Herr
-                            _key: Herr
+                type: 'Neos.Form:Section'
+                identifier: formfields
+                label: Formularfelder
+                renderables:
+                    -
+                        type: 'Neos.Form:SingleSelectRadiobuttons'
+                        identifier: anrede
+                        label: Anrede
+                        properties:
+                            options:
+                                -
+                                    _value: Frau
+                                    _key: Frau
+                                -
+                                   _value: Herr
+                                   _key: Herr
+                    -
+                        type: 'Neos.Form:SingleLineText'
+                        identifier: name
+                        label: 'Ihr vollständiger Name'
+                        validators:
+                            -
+                                identifier: 'Neos.Flow:NotEmpty'
+                        properties:
+                            placeholder: ''
+                        defaultValue: ''
+                    -
+                        type: 'Neos.Form:SingleLineText'
+                        identifier: telnummer
+                        label: 'Ihre Telefonnummer'
+                        validators:
+                            -
+                                identifier: 'Neos.Flow:NotEmpty'
+                        properties:
+                            placeholder: ''
+                        defaultValue: ''
+                    -
+                        type: 'Neos.Form:SingleLineText'
+                        identifier: email
+                        label: E-mail
+                        validators:
+                            -
+                                identifier: 'Neos.Flow:NotEmpty'
+                            -
+                                identifier: 'Neos.Flow:EmailAddress'
+                        properties:
+                            placeholder: ''
+                        defaultValue: ''
+                    -
+                        type: 'Neos.Form:MultiLineText'
+                        identifier: nachricht
+                        label: Nachricht
+                        validators:
+                            -
+                                identifier: 'Neos.Flow:NotEmpty'
+                        properties:
+                            placeholder: 'Schreiben Sie hier Ihre Mitteilung.'
+                        defaultValue: ''
+                    -
+                        type: 'Neos.Form:SingleLineText'
+                        identifier: spamschutz
+                        label: 'Bitte ergänzen Sie das Wort am Ende des folgenden Satzes. Es dienst als Spamschutz: Am Morgen geht die Sonne auf, am Abend geht sie ... '
+                        validators:
+                            -
+                                identifier: 'Neos.Flow:NotEmpty'
+                            -
+                                identifier: 'Neos.Flow:RegularExpression'
+                                options:
+                                    regularExpression: /(unter)|(nieder)/
+                        properties:
+                            placeholder: ''
+                        defaultValue: ''
             -
-                type: 'Neos.Form:SingleLineText'
-                identifier: name
-                label: 'Ihr vollständiger Name'
-                validators:
+                type: 'Neos.Form:Section'
+                identifier: privacynotice
+                label: Datenschutzerklärung
+                renderables:
                     -
-                        identifier: 'Neos.Flow:NotEmpty'
-                properties:
-                    placeholder: ''
-                defaultValue: ''
-            -
-                type: 'Neos.Form:SingleLineText'
-                identifier: telnummer
-                label: 'Ihre Telefonnummer'
-                validators:
-                    -
-                        identifier: 'Neos.Flow:NotEmpty'
-                properties:
-                    placeholder: ''
-                defaultValue: ''
-            -
-                type: 'Neos.Form:SingleLineText'
-                identifier: email
-                label: E-mail
-                validators:
-                    -
-                        identifier: 'Neos.Flow:NotEmpty'
-                    -
-                        identifier: 'Neos.Flow:EmailAddress'
-                properties:
-                    placeholder: ''
-                defaultValue: ''
-            -
-                type: 'Neos.Form:MultiLineText'
-                identifier: nachricht
-                label: Nachricht
-                validators:
-                    -
-                        identifier: 'Neos.Flow:NotEmpty'
-                properties:
-                    placeholder: 'Schreiben Sie hier Ihre Mitteilung.'
-                defaultValue: ''
-        identifier: page-one
-        label: 'Persönliche Angaben:'
+                        type: 'Neos.Form:Checkbox'
+                        identifier: datenschutz
+                        label: 'Mit Ihrer Nachricht teilen Sie uns personenbezogene Daten mit. Diese personenbezogenen Daten werden von uns gemäß den Bestimmungen des Datenschutzrechts und nur in dem Umfang erhoben, verarbeitet und gespeichert, die zur Bearbeitung Ihrer Anfrage erforderlich ist. Eine Weitergabe dieser Daten an Dritte erfolgt nicht. Nach dem Bundesdatenschutzgesetz haben Sie ein Recht auf unentgeltliche Auskunft über Ihre gespeicherten Daten sowie ggf. ein Recht auf deren Berichtigung, Sperrung oder Löschung, wenn diesem Anspruch keine gesetzliche Aufbewahrungspflicht entgegensteht. Sie können eine uns erteilte Einwilligung zur Nutzung Ihrer personenbezogenen Daten jederzeit widerrufen. Sollten Sie den Wunsch nach Auskunft, Löschung, Berichtigung oder Widerruf der Einwilligung zur Nutzung Ihrer Daten haben, teilen Sie uns diesen bitte per E-Mail, Brief, Telefon oder Fax mit. Wenn Sie sonstige Fragen oder Hinweise zur Verarbeitung Ihrer personenbezogenen Daten haben, stehen wir Ihnen gerne zur Verfügung.'
+                        validators:
+                            -
+                                identifier: 'Neos.Flow:NotEmpty'
+                        properties:
+                            placeholder: ''
+                        defaultValue: ''
