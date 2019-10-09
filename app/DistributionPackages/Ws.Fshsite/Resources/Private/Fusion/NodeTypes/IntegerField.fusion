@@ -1,7 +1,7 @@
 prototype(Neos.Form.Builder:IntegerField.Definition) < prototype(Neos.Form.Builder:FormElement.Definition) {
     formElementType = 'Neos.Form:SingleLineText'
     properties {
-        placeholder = 'Stück'
+        placeholder = ''
         containerClassAttribute = 'input float-left'
         elementClassAttribute = 'form-control'
     }

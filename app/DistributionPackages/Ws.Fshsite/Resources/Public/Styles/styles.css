@@ -1700,7 +1700,7 @@ fieldset.form-control { /* notwendig da im bootsrap einen heigh von 34px definie
     font-size: inherit;
 }
 
-#contact-form-privacynotice label, #bestellformular-privacynotice label {
+#contact-form-privacynotice label, #bestellformular-privacynotice label, #mitgliederBestellformular-privacynotice label {
     font-size: .7em;
     line-height: 20px;
 }
@@ -1719,7 +1719,7 @@ label[for$="anrede"] {
     position: absolute;
 }
 
-#contact-form-privacynotice div.input, #bestellformular-privacynotice div.input, #bestellformular-medienliste div.input, #mitgliederBestellformular-medienliste div.input  {
+#contact-form-privacynotice div.input, #bestellformular-privacynotice div.input, #mitgliederBestellformular-privacynotice div.input, #bestellformular-medienliste div.input, #mitgliederBestellformular-medienliste div.input  {
     float:left;
 }
 
