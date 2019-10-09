@@ -30,7 +30,6 @@ Neos:
           'Neos.Form:Base':
             renderingOptions:
               layoutPathPattern: 'resource://Ws.Fshsite/Private/Templates/ContactForm/{@type}.html'
-              translationPackage: 'Neos.Flow'
           'Neos.Form:Form':
             renderingOptions:
               templatePathPattern: 'resource://Ws.Fshsite/Private/Form/{@type}.html'
