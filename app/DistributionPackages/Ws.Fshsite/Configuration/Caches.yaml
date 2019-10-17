@@ -1,4 +1,0 @@
-Neos_Fusion_Content:
-  backend: Neos\Cache\Backend\RedisBackend
-  backendOptions:
-    hostname: 'redis'
