@@ -7,226 +7,74 @@
     group: structure
     inspector:
       groups:
-        homegrid:
-          label: Kacheln
+        kachel1:
+          label: Kachel 1
           icon: icon-image
           position: 2
+          collapsed: true
+        kachel2:
+          label: Kachel 2
+          icon: icon-image
+          position: 3
+          collapsed: true
+        kachel3:
+          label: Kachel 3
+          icon: icon-image
+          position: 4
+          collapsed: true
+        kachel4:
+          label: Kachel 4
+          icon: icon-image
+          position: 5
+          collapsed: true
+        kachel5:
+          label: Kachel 5
+          icon: icon-image
+          position: 6
+          collapsed: true
+        kachel6:
+          label: Kachel 6
+          icon: icon-image
+          position: 7
+          collapsed: true
+        kachel7:
+          label: Kachel 7
+          icon: icon-image
+          position: 8
+          collapsed: true
+        kachel8:
+          label: Kachel 8
+          icon: icon-image
+          position: 9
+          collapsed: true
   properties:
     headline1:
       type: string
-      defaultValue: Überschrift
       ui:
-        label: Headline
+        label: Überschrift
+        reloadIfChanged: true
         inlineEditable: true
-        inline:
-          editorOptions:
-            formatting:
-              '*': false
-              h2: true
-              table: {  }
-              link: {  }
-              list: {  }
-              alignment: {  }
-              formatlesspaste: {  }
-    headline2:
+    text1:
       type: string
-      defaultValue: Überschrift
-      ui:
-        label: Headline
-        inlineEditable: true
-        inline:
-          editorOptions:
-            formatting:
-              '*': false
-              h2: true
-              table: {  }
-              link: {  }
-              list: {  }
-              alignment: {  }
-              formatlesspaste: {  }
-    headline3:
-      type: string
-      defaultValue: Überschrift
-      ui:
-        label: Headline
-        inlineEditable: true
-        inline:
-          editorOptions:
-            formatting:
-              '*': false
-              h2: true
-              table: {  }
-              link: {  }
-              list: {  }
-              alignment: {  }
-              formatlesspaste: {  }
-    headline4:
-      type: string
-      defaultValue: Überschrift
-      ui:
-        label: Headline
-        inlineEditable: true
-        inline:
-          editorOptions:
-            formatting:
-              '*': false
-              h2: true
-              table: {  }
-              link: {  }
-              list: {  }
-              alignment: {  }
-              formatlesspaste: {  }
-    headline5:
-      type: string
-      defaultValue: Überschrift
-      ui:
-        label: Headline
-        inlineEditable: true
-        inline:
-          editorOptions:
-            formatting:
-              '*': false
-              h2: true
-              table: {  }
-              link: {  }
-              list: {  }
-              alignment: {  }
-              formatlesspaste: {  }
-    headline6:
-      type: string
-      defaultValue: Überschrift
-      ui:
-        label: Headline
-        inlineEditable: true
-        inline:
-          editorOptions:
-            formatting:
-              '*': false
-              h2: true
-              table: {  }
-              link: {  }
-              list: {  }
-              alignment: {  }
-              formatlesspaste: {  }
-    headline7:
-      type: string
-      defaultValue: Überschrift
-      ui:
-        label: Headline
-        inlineEditable: true
-        inline:
-          editorOptions:
-            formatting:
-              '*': false
-              h2: true
-              table: {  }
-              link: {  }
-              list: {  }
-              alignment: {  }
-              formatlesspaste: {  }
-    headline8:
-      type: string
-      defaultValue: Überschrift
-      ui:
-        label: Headline
-        inlineEditable: true
-        inline:
-          editorOptions:
-            formatting:
-              '*': false
-              h2: true
-              table: {  }
-              link: {  }
-              list: {  }
-              alignment: {  }
-              formatlesspaste: {  }
-    link:
-      type: string
-      ui:
-        label: 'Link Wer wir sind'
-        inlineEditable: true
-        inspector:
-          group: homegrid
-          editor: Neos.Neos/Inspector/Editors/LinkEditor
-    link2:
-      type: string
-      ui:
-        label: 'Link Aktuelles'
-        inlineEditable: true
-        inspector:
-          group: homegrid
-          editor: Neos.Neos/Inspector/Editors/LinkEditor
-    link3:
-      type: string
-      ui:
-        label: 'Link Gruppen'
-        inlineEditable: true
-        inspector:
-          group: homegrid
-          editor: Neos.Neos/Inspector/Editors/LinkEditor
-    link4:
-      type: string
-      ui:
-        label: 'Link Kontakt'
-        inlineEditable: true
-        inspector:
-          group: homegrid
-          editor: Neos.Neos/Inspector/Editors/LinkEditor
-    link5:
-      type: string
-      ui:
-        label: 'Link Beratung'
-        inlineEditable: true
-        inspector:
-          group: homegrid
-          editor: Neos.Neos/Inspector/Editors/LinkEditor
-    link6:
-      type: string
-      ui:
-        label: 'Link Infothek'
-        inlineEditable: true
-        inspector:
-          group: homegrid
-          editor: Neos.Neos/Inspector/Editors/LinkEditor
-    link7:
-      type: string
-      ui:
-        label: 'Link Mitgliederbereich'
-        inlineEditable: true
-        inspector:
-          group: homegrid
-          editor: Neos.Neos/Inspector/Editors/LinkEditor
-    text:
-      type: string
-      defaultValue: Text
-      ui:
-        label: Text1
-        inlineEditable: true
-    text2:
-      type: string
-      defaultValue: Text
       ui:
         label: Text
-        inlineEditable: true
-    text3:
+        reloadIfChanged: true
+        inlineEditable: true    
+    link1:
       type: string
-      defaultValue: Text
       ui:
-        label: Text
-        inlineEditable: true
-    text4:
-      type: string
-      defaultValue: Text
-      ui:
-        label: Text
-        inlineEditable: true
+        label: Link
+        reloadIfChanged: true
+        inspector:
+          group: kachel1
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
     image1:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Kachel Wir über uns'
+        label: Bild (ersetzt das Default Bild)
         reloadIfChanged: true
         inspector:
-          group: homegrid
+          group: kachel1
           editorOptions:
             features:
               resize: false
@@ -235,13 +83,39 @@
                 locked:
                   width: 3
                   height: 2
+    headline2:
+      type: string
+      ui:
+        label: Überschrift
+        reloadIfChanged: true
+        inlineEditable: true
+    text2:
+      type: string
+      ui:
+        label: Text (als HTML-Code)
+        reloadIfChanged: true
+        inlineEditable: false
+        inspector:
+          group: kachel2
+          editor: Neos.Neos/Inspector/Editors/CodeEditor
+          editorOptions:
+            buttonLabel: Edit Markdown
+            highlightingMode: text/html
+    link2:
+      type: string
+      ui:
+        label: Link
+        reloadIfChanged: true
+        inspector:
+          group: kachel2
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
     image2:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Kachel Forum'
+        label: Bild (ersetzt das Default Bild)
         reloadIfChanged: true
         inspector:
-          group: homegrid
+          group: kachel2
           editorOptions:
             features:
               resize: false
@@ -250,13 +124,33 @@
                 locked:
                   width: 4
                   height: 9
+    headline3:
+      type: string
+      ui:
+        label: Überschrift
+        reloadIfChanged: true
+        inlineEditable: true
+    text3:
+      type: string
+      ui:
+        label: Text
+        reloadIfChanged: true
+        inlineEditable: true
+    link3:
+      type: string
+      ui:
+        label: Link
+        reloadIfChanged: true
+        inspector:
+          group: kachel3
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
     image3:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Kachel Aktuelles'
+        label: Bild (ersetzt das Default Bild)
         reloadIfChanged: true
         inspector:
-          group: homegrid
+          group: kachel3
           editorOptions:
             features:
               resize: false
@@ -265,13 +159,33 @@
                 locked:
                   width: 18
                   height: 13
+    headline4:
+      type: string
+      ui:
+        label: Überschrift
+        reloadIfChanged: true
+        inlineEditable: true
+    text4:
+      type: string
+      ui:
+        label: Text
+        reloadIfChanged: true
+        inlineEditable: true
+    link4:
+      type: string
+      ui:
+        label: Link
+        reloadIfChanged: true
+        inspector:
+          group: kachel4
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
     image4:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Kachel Gruppen'
+        label: Bild (ersetzt das Default Bild)
         reloadIfChanged: true
         inspector:
-          group: homegrid
+          group: kachel4
           editorOptions:
             features:
               resize: false
@@ -280,13 +194,33 @@
                 locked:
                   width: 375
                   height: 260
+    headline5:
+      type: string
+      ui:
+        label: Überschrift
+        reloadIfChanged: true
+        inlineEditable: true
+    text5:
+      type: string
+      ui:
+        label: Text
+        reloadIfChanged: true
+        inlineEditable: true
+    link5:
+      type: string
+      ui:
+        label: Link
+        reloadIfChanged: true
+        inspector:
+          group: kachel5
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
     image5:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Kachel Kontakt'
+        label: Bild (ersetzt das Default Bild)
         reloadIfChanged: true
         inspector:
-          group: homegrid
+          group: kachel5
           editorOptions:
             features:
               resize: false
@@ -295,13 +229,33 @@
                 locked:
                   width: 111
                   height: 76
+    headline6:
+      type: string
+      ui:
+        label: Überschrift
+        reloadIfChanged: true
+        inlineEditable: true
+    text6:
+      type: string
+      ui:
+        label: Text
+        reloadIfChanged: true
+        inlineEditable: true
+    link6:
+      type: string
+      ui:
+        label: Link
+        reloadIfChanged: true
+        inspector:
+          group: kachel6
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
     image6:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Kachel Beratung'
+        label: Bild (ersetzt das Default Bild)
         reloadIfChanged: true
         inspector:
-          group: homegrid
+          group: kachel6
           editorOptions:
             features:
               resize: false
@@ -310,13 +264,33 @@
                 locked:
                   width: 111
                   height: 76
+    headline7:
+      type: string
+      ui:
+        label: Überschrift
+        reloadIfChanged: true
+        inlineEditable: true
+    text7:
+      type: string
+      ui:
+        label: Text
+        reloadIfChanged: true
+        inlineEditable: true
+    link7:
+      type: string
+      ui:
+        label: Link
+        reloadIfChanged: true
+        inspector:
+          group: kachel7
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
     image7:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Kachel Infothek'
+        label: Bild (ersetzt das Default Bild)
         reloadIfChanged: true
         inspector:
-          group: homegrid
+          group: kachel7
           editorOptions:
             features:
               resize: false
@@ -325,13 +299,33 @@
                 locked:
                   width: 187
                   height: 65
+    headline8:
+      type: string
+      ui:
+        label: Überschrift
+        reloadIfChanged: true
+        inlineEditable: true
+    text8:
+      type: string
+      ui:
+        label: Text
+        reloadIfChanged: true
+        inlineEditable: true
+    link8:
+      type: string
+      ui:
+        label: Link
+        reloadIfChanged: true
+        inspector:
+          group: kachel8
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
     image8:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Kachel Mitglieder'
+        label: Bild (ersetzt das Default Bild)
         reloadIfChanged: true
         inspector:
-          group: homegrid
+          group: kachel8
           editorOptions:
             features:
               resize: false

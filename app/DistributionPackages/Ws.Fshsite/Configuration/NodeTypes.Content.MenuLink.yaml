@@ -11,26 +11,18 @@
           icon: icon-image
           position: 1
   properties:
-    title:
+    menuename:
       type: string
-      defaultValue: Linkname
       ui:
-        label: Headline
-        inspector:
-          group: menuBlock
-          editorOptions:
-            placeholder: Überschrift
-            maxlength: 30
+        label: Menüname
+        reloadIfChanged: true
+        inlineEditable: true
     text:
       type: string
-      defaultValue: 'Kurzer Text'
       ui:
-        label: Text
-        inspector:
-          group: menuBlock
-          editor: Neos.Neos/Inspector/Editors/TextAreaEditor
-          editorOptions:
-            rows: 7
+        label: Untertext
+        reloadIfChanged: true
+        inlineEditable: true
     image:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
@@ -46,20 +38,20 @@
                 locked:
                   width: 19
                   height: 8
-    beschreibung:
+    description:
       type: string
       ui:
         label: Bildbeschreibung
         inspector:
           group: menuBlock
           editorOptions:
-            placeholder: 'erf. für Barrierefreiheit'
+            placeholder: 'erforderlich für Barrierefreiheit'
             maxlength: 100
     link:
       type: string
       ui:
-        label: Link
-        inlineEditable: true
+        label: Menülink
+        reloadIfChanged: true
         inspector:
           group: menuBlock
           editor: Neos.Neos/Inspector/Editors/LinkEditor

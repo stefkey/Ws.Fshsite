@@ -2,9 +2,7 @@
 # SJ MenuLink for Node menuContent
 #
 prototype(Ws.Fshsite:MenuLink) < prototype(Neos.Neos:Content) {
-    templatePath = 'resource://Ws.Fshsite/Private/Templates/TypoScriptObjects/MenuLink.html'
-    text = ${q(node).property('text')}
-    image = ${q(node).property('image')}
-    beschreibung = ${q(node).property('beschreibung')}
-    link = ${q(node).property('link')}
+    link.@process.convertUris = Neos.Neos:ConvertUris {
+        forceConversion = true
+    }
 }

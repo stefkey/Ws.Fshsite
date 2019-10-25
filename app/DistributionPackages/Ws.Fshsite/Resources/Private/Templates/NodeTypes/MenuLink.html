@@ -1,14 +1,19 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 {namespace media=Neos\Media\ViewHelpers}
 {namespace ts=Neos\Fusion\ViewHelpers}
+
+
 <div class="sj-menuLink <f:if condition="{link}">sj-menuLink-hover</f:if>">
-    <f:if condition="{link}">
+    <f:if condition="{link} && {neos:rendering.live()}">
         <a href="{link}">
     </f:if>
-    {neos:contentElement.editable(property: 'title')}
+    {neos:contentElement.editable(property: 'menuename')}
     {neos:contentElement.editable(property: 'text', tag: 'h6')}
+    <f:if condition="{link} && {neos:rendering.inBackend()}">
+        <a href="{link}">
+    </f:if>
     <f:if condition="{image}">
-        <media:image image="{image}" alt="{beschreibung}" />
+        <media:image image="{image}" alt="{description}" />
     </f:if>
     <f:if condition="{link}">
         </a>
