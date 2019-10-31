@@ -51,3 +51,9 @@ prototype(Sandstorm.UserManagement:LoginForm) {
 prototype(Neos.NodeTypes:Form) {
     attributes.class = 'container sj-small-container'
 }
+
+prototype(Flowpack.Neos.Matomo:TrackingOptOut) {
+    renderer = Neos.Fusion:Tag {
+        attributes.class = 'container sj-small-container flowpack-neos-matomo-tracking-opt-out'
+        }
+}
