@@ -61,8 +61,7 @@ margin-left: 20px;
 .breadcrumb, .topNav a, .panel-footer div, .panel-footer .nav li a {
 	font-size: 15px;
 }
-
-.breadcrumb>li+li:before {
+.breadcrumb li+li:before {
     content: '»';
     color:#555;
 }
@@ -114,7 +113,7 @@ ul li {
 	list-style: none; /* if you’re not already using a reset */
 }
 
-.neos-contentcollection ul li:before{
+.main ul li:before{
     color: #017d41; /* set color to red */
     content: "\2022"; /* /2022 is the numerical unicode for &bull; */
     font-size: 1.5em; /* set the font-size of the bullet if necessary. Make sure to use em or %*/
@@ -122,18 +121,13 @@ ul li {
     position: relative;
     top: .1em; /* set the vertical position of the bullet if necessary. Make sure to use em or % */
 }
-.neos-contentcollection ul li:before a {
-    color: #017d41; /* set color to red */
-    content: "\2022"; /* /2022 is the numerical unicode for &bull; */
-    font-size: 3.5em; /* set the font-size of the bullet if necessary. Make sure to use em or %*/
-    padding-right: 15px; /* give the bullet some padding from the text Make sure to use em*/
-    position: relative;
-    top: .1em; /* set the vertical position of the bullet if necessary. Make sure to use em or % */
+
+.sj-sidebar ul li:before {
+    display: none;
 }
 
-.neos-contentcollection ul li {
-    text-indent: -25px;
-    padding-left: 25px
+form ul li:before {
+    display: none;
 }
 
 
@@ -1802,14 +1796,12 @@ fieldset h2 {
     float: left;
     width: 70px;
 }
-.neos-contentcollection ul li::before {
-    content: "";
-    padding-right: 0px;
-}
+
 .neos-nodetypes-form ul li {
     text-indent: 0px;
     padding-left: 0px
 }
+
 .form-control p {
     font-style: italic;
 }
