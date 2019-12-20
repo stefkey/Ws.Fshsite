@@ -30,3 +30,11 @@ Flowpack:
       default:
         - host: elastic
           port: 9200
+Ws:
+  Fshsite:
+    memberDatabase:
+      driver: 'pdo_mysql'
+      host: 'host.docker.internal'
+      user: '%env:MEMBER_DB_USER%'
+      password: '%env:MEMBER_DB_PASSWORD%'
+      dbname: '%env:MEMBER_DB_DATABASE%'

@@ -75,7 +75,7 @@ Neos:
 Sandstorm:
   UserManagement:
     # Validity timespan for the activation token for newly registered users.
-    activationTokenTimeout: '2 days'
+    activationTokenTimeout: '14 days'
     # Validity timespan for the token used to reset passwords.
     resetPasswordTokenTimeout: '4 hours'
     # The message that appears if a user could not be logged in.
@@ -89,7 +89,7 @@ Sandstorm:
       # Subject line for the password reset email
       subjectResetPassword: 'Passwort neu setzen'
     # An array of roles which are assigned to users after they activate their account.
-    rolesForNewUsers: []
+    rolesForNewUsers: ['FSH_Mitglied']
   TemplateMailer:
     templatePackages:
       10: 'Ws.Fshsite'
