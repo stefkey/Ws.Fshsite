@@ -11,8 +11,8 @@
     },
     "name": "ws/fshsite",
     "autoload": {
-        "psr-0": {
-            "Ws\\Fshsite": "Classes/"
+        "psr-4": {
+            "Ws\\Fshsite\\": "Classes"
         }
     },
     "extra": {
