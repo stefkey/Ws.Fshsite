@@ -1,1 +1,3 @@
-Person ist in Datenbank, Mail an Person selbst
+Registration ist erfolgt, Mail an neues Mitglied
+
+{activationNotice}

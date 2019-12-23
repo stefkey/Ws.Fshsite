@@ -16,6 +16,10 @@ services:
             DB_NEOS_PASSWORD: 'neos'
             DB_NEOS_USER: 'neos'
             DB_NEOS_DATABASE: 'neos'
+            DB_MEMBER_USER: 'root'
+            DB_MEMBER_PASSWORD: ''
+            DB_MEMBER_DATABASE: 'fsh_members'
+            FSH_REGISTRATION_MAIL_RECIPIENT: 'recipient@test.test'
         volumes:
             - ./app/composer.json:/app/composer.json:cached
             - ./app/composer.lock:/app/composer.lock:cached

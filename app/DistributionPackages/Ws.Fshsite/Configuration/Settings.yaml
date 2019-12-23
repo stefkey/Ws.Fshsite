@@ -89,7 +89,7 @@ Sandstorm:
       # Subject line for the password reset email
       subjectResetPassword: 'Passwort neu setzen'
     # An array of roles which are assigned to users after they activate their account.
-    rolesForNewUsers: ['FSH_Mitglied']
+    rolesForNewUsers: ['Flowpack.Neos.FrontendLogin:FSH_Mitglied']
   TemplateMailer:
     templatePackages:
       10: 'Ws.Fshsite'
