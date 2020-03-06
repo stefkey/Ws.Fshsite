@@ -1,0 +1,5 @@
+Name: {userName}
+E-Mail: {userMail}
+Mitglieds-Status: {memberStatus}
+
+ActivationLink: {activationLink}

@@ -92,15 +92,9 @@
     text2:
       type: string
       ui:
-        label: Text (als HTML-Code)
+        label: Text
         reloadIfChanged: true
-        inlineEditable: false
-        inspector:
-          group: kachel2
-          editor: Neos.Neos/Inspector/Editors/CodeEditor
-          editorOptions:
-            buttonLabel: Edit Markdown
-            highlightingMode: text/html
+        inlineEditable: true
     link2:
       type: string
       ui:

@@ -113,7 +113,7 @@ ul li {
 	list-style: none; /* if you’re not already using a reset */
 }
 
-.main ul li:before{
+.main ul li:before {
     color: #017d41; /* set color to red */
     content: "\2022"; /* /2022 is the numerical unicode for &bull; */
     font-size: 1.5em; /* set the font-size of the bullet if necessary. Make sure to use em or %*/
@@ -125,7 +125,6 @@ ul li {
 .sj-sidebar ul li:before {
     display: none;
 }
-
 form ul li:before {
     display: none;
 }

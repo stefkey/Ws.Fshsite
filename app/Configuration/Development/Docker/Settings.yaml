@@ -30,3 +30,12 @@ Flowpack:
       default:
         - host: elastic
           port: 9200
+Ws:
+  Fshsite:
+    fshRegistrationMailRecipient: '%env:FSH_REGISTRATION_MAIL_RECIPIENT%'
+    memberDatabase:
+      driver: 'pdo_mysql'
+      host: 'host.docker.internal'
+      user: '%env:DB_MEMBER_USER%'
+      password: '%env:DB_MEMBER_PASSWORD%'
+      dbname: '%env:DB_MEMBER_DATABASE%'
