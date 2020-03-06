@@ -877,13 +877,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 */
 
 
-@media only screen and (min-width: 768px) {
-    .contentOrange90 {
-        overflow-y: scroll;
-    }
-}
-
-
 
     
 /* SJ Homegrid spaces
