@@ -5,30 +5,38 @@
 		<div class="col-sm-4 sj-col1">
 
 			<f:if condition="{link1}">
-                <a href="{link1}" class="circle"></a>
+                <a href="{link1}">
             </f:if>
             <f:if condition="{image1}">
                 <f:then><media:image image="{image1}" alt="{alternativerText1}" title="{title1}" maximumWidth="{maximumWidth}" maximumHeight="{maximumHeight}" /></f:then>
                 <f:else><img src="{f:uri.resource(path: 'Images/fsh_kachel-platzhalter_360x240.png', package: 'Ws.Fshsite')}" width="360" height="240" alt="Platzhalter" /></f:else>
             </f:if>
-
+			<f:if condition="{link1}">
+                </a>
+            </f:if>
 		</div>
 		<div class="col-sm-4 sj-col2">
 			<f:if condition="{link2}">
-                <a href="{link2}" class="circle"></a>
+                <a href="{link2}">
             </f:if>
             <f:if condition="{image2}">
                 <f:then><media:image image="{image2}" alt="{alternativerText2}" title="{title2}" maximumWidth="{maximumWidth}" maximumHeight="{maximumHeight}" /></f:then>
                 <f:else><img src="{f:uri.resource(path: 'Images/fsh_kachel-platzhalter_360x240.png', package: 'Ws.Fshsite')}" width="360" height="240" alt="Platzhalter" /></f:else>
             </f:if>
+            <f:if condition="{link1}">
+                </a>
+            </f:if>
 		</div>
 		<div class="col-sm-4 sj-col3">
 			<f:if condition="{link3}">
-                <a href="{link3}" class="circle"></a>
+                <a href="{link3}">
             </f:if>
             <f:if condition="{image3}">
                 <f:then><media:image image="{image3}" alt="{alternativerText3}" title="{title3}" maximumWidth="{maximumWidth}" maximumHeight="{maximumHeight}" /></f:then>
                 <f:else><img src="{f:uri.resource(path: 'Images/fsh_kachel-platzhalter_360x240.png', package: 'Ws.Fshsite')}" width="360" height="240" alt="Platzhalter" /></f:else>
+            </f:if>
+            <f:if condition="{link1}">
+                </a>
             </f:if>
 		</div>
 	</div>
