@@ -32,7 +32,18 @@
     </div>
   </f:if>
 
-  <f:if condition="{success}">
+  <f:comment>
+      WHY: We are using AOP to change the behavior of the Sandstorm.UserManagement->RegistrationController->activationAction.
+      The success variable will never be used because we run the code in the RegistrationAspect instead.
+      So checking if the to error cases are not true gives us enough reason to believe that everything worked as expected.
+
+      ALTERNATIVE: Would be to add a flashMessage to the "$registrationController" in the RegistrationAspect. This would give us
+      more options to customize the Message in different cases like:
+        - registration successful -> user in member db -> user is automatically activated
+        - registration successful -> user NOT in member db -> user has to be activated manually by FSH
+
+  </f:comment>
+  <f:if condition="{!tokenNotFound && !tokenTimeout}">
     <div class="callout success">
       <p>Wir prüfen nun innerhalb von 7 Tagen ob Sie in unserer Mitgliederdatenbank stehen und schalten Ihren Zugang zum Mitgliederbereich frei. Nach der Freischaltung erfolgt keine weitere Nachricht von unserer Seite. Sie können sich nach Ablauf dieser ca. 7 Werktage (häufig klappt es auch schon früher) einfach mit dem von Ihnen selbst gewählten Passwort im Mitgliederbereich einloggen. Sollte es Probleme geben, melden Sie sich bitte unter: Stefan.Johaenntgen@webServus.de .
       </p>
