@@ -38,7 +38,7 @@ renderables:
                     -
                         type: 'Neos.Form:SingleLineText'
                         identifier: imagebroschuere_fsh
-                        label: 'DIN-A4-Imagebroschüre der Frauenselbsthilfe nach Krebs (Stand: Januar 2017)'
+                        label: 'DIN-A4-Imagebroschüre der Frauenselbsthilfe Krebs (Stand: Januar 2017)'
                         properties:
                             placeholder: ''
                         defaultValue: ''

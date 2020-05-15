@@ -38,14 +38,14 @@ renderables:
                     -
                         type: 'Neos.Form:SingleLineText'
                         identifier: imagebroschuere_fsh
-                        label: 'DIN-A4-Imagebroschüre der Frauenselbsthilfe nach Krebs: Auffangen - Informieren - Begleiten (Stand: April 2018)'
+                        label: 'DIN-A4-Imagebroschüre der Frauenselbsthilfe Krebs: Auffangen - Informieren - Begleiten (Stand: April 2018)'
                         properties:
                             placeholder: ''
                         defaultValue: ''
                     -
                         type: 'Neos.Form:SingleLineText'
                         identifier: imageflyer_fsh
-                        label: 'Image-Flyer der Frauenselbsthilfe nach Krebs: Auffangen - Informieren - Begleiten (Stand: November 2017)'
+                        label: 'Image-Flyer der Frauenselbsthilfe Krebs: Auffangen - Informieren - Begleiten (Stand: November 2017)'
                         properties:
                             placeholder: ''
                         defaultValue: ''
@@ -284,14 +284,14 @@ renderables:
                     -
                         type: 'Neos.Form:SingleLineText'
                         identifier: forderungskatalog
-                        label: 'Forderungskatalog der Frauenselbsthilfe nach Krebs zu notwendigen Maßnahmen im Gesundheitswesen (Stand: September 2014)'
+                        label: 'Forderungskatalog der Frauenselbsthilfe Krebs zu notwendigen Maßnahmen im Gesundheitswesen (Stand: September 2014)'
                         properties:
                             placeholder: ''
                         defaultValue: ''
                     -
                         type: 'Neos.Form:SingleLineText'
                         identifier: beratungsverstaendnis
-                        label: 'Unser Beratungsverständnis - Ein Leitfaden für Beraterinnen in der Frauenselbsthilfe nach Krebs (Stand: Dezember 2013)'
+                        label: 'Unser Beratungsverständnis - Ein Leitfaden für Beraterinnen in der Frauenselbsthilfe Krebs (Stand: Dezember 2013)'
                         properties:
                             placeholder: ''
                         defaultValue: ''
