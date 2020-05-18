@@ -1,1 +1,5 @@
-Registrierungsanfrage versendet, Mail an Person
+Liebe(r) {userName},
+
+Ihre Anmeldung wird nun in der FSH Geschäftsstelle geprüft. 
+
+Falls Sie Mitglied der Frauenselbsthilfe Krebs sind und die Mitgliedschaft in der Geschäftsstelle in Bonn bekannt ist, werden Sie freigeschaltet. Sie erhalten danach eine Benachrichtigung. Die Freischaltung erfolgt in der Regel innerhalb 1-3 Tagen.

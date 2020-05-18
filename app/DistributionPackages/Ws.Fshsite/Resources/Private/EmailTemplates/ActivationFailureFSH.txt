@@ -1,5 +1,10 @@
-Name: {userName}
-E-Mail: {userMail}
-Mitglieds-Status: {memberStatus}
+Neue Registrierung Mitgliederbereich:
 
+{userName}
+{userMail}
+{memberStatus}
+
+Automatische Freischaltung: Nicht erfolgt
+
+Mit folgendem Link können Sie die Person jetzt von Hand freischalten. Eine Benachrichtigung über dei Freischaltung wird dann automatisch an das Mitglied gesendet:
 ActivationLink: {activationLink}

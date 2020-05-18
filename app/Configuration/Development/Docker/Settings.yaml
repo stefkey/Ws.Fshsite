@@ -35,7 +35,7 @@ Ws:
     fshRegistrationMailRecipient: '%env:FSH_REGISTRATION_MAIL_RECIPIENT%'
     memberDatabase:
       driver: 'pdo_mysql'
-      host: 'host.docker.internal'
+      host: '%env:DB_NEOS_HOST%'
       user: '%env:DB_MEMBER_USER%'
       password: '%env:DB_MEMBER_PASSWORD%'
       dbname: '%env:DB_MEMBER_DATABASE%'

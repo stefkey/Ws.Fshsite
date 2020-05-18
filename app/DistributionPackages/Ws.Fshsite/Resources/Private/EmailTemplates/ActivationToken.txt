@@ -1,8 +1,6 @@
-Dear {registrationFlow.firstName} {registrationFlow.lastName},
+Hallo,
 
-you signed up for an account at {applicationName}. To confirm your account,
-please click the link below or copy it into your browser:
-
+bestätigen Sie bitte Ihre E-Mail-Adresse durch klicken des folgenden Links:
 {activationLink}
 
-Thank you for your interest in {applicationName}!
+Falls Sie keine Registrierung vorgenommen haben, können Sie diese E-Mail löschen.

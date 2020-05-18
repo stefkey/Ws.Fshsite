@@ -1,1 +1,8 @@
-Registration ist erfolgt, Mail an Koordinierungsstelle FSH
+{userName}
+{userMail}
+{memberStatus}
+
+Automatische Freischaltung: Erfolgreich. 
+
+Eine Benachrichtigung über die Freischaltung wurde bereits automatisch an das Mitglied gesendet. 
+Bitte in Ihrer Datenbank entsprechend markieren.

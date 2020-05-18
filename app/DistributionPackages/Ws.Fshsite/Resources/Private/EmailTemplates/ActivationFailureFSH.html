@@ -1,9 +1,12 @@
 <html>
 <body>
-<p>Name: <strong>{userName}</strong></p>
-<p>E-Mail: <strong>{userMail}</strong></p>
-<p>Mitglieds-Status: <strong>{memberStatus}</strong></p>
+    <p>{userName}<br />
+        {userMail}<br />
+        {memberStatus}</p>
 
-<a href="{activationLink}" target="_blank">ActivationLink</a>
+    <p>Automatische Freischaltung: <strong>Nicht</strong> erfolgt<p>
+
+    <p>Mit folgendem Link können Sie die Person jetzt von Hand freischalten. Eine Benachrichtigung über die Freischaltung wird dann automatisch an das Mitglied gesendet:<br />
+        <a href="{activationLink}" target="_blank">Jetzt freischalten</a></p>
 </body>
 </html>

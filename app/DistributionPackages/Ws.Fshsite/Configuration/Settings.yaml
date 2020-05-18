@@ -85,7 +85,7 @@ Sandstorm:
     # Email settings
     email:
       # Subject line for the account confirmation email
-      subjectActivation: 'Account bestätigen'
+      subjectActivation: 'E-Mail-Adresse bestätigen'
       # Subject line for the password reset email
       subjectResetPassword: 'Passwort neu setzen'
     # An array of roles which are assigned to users after they activate their account.
@@ -94,8 +94,12 @@ Sandstorm:
     templatePackages:
       10: 'Ws.Fshsite'
     senderAddresses:
-      sandstorm_usermanagement_sender_email: # You need to use this exact key to override the UserManagement defaults
-        name: 'Webseiten Account'
+      'sandstorm_usermanagement_sender_email': # You need to use this exact key to override the UserManagement defaults
+        name: 'FSH Mitglieder Registrierung'
+        address: 'keine-antwort@frauenselbsthilfe.de'
+    replyToAddresses:
+      'sandstorm_usermanagement_replyTo_email':
+        name: 'FSH Mitglieder Registrierung'
         address: 'keine-antwort@frauenselbsthilfe.de'
 
 Flowpack:

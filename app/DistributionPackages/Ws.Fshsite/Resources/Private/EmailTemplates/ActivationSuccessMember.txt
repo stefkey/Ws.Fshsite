@@ -1,3 +1,4 @@
-Registration ist erfolgt, Mail an neues Mitglied
+Liebe(r) {userName},
 
+Sie können sich ab jetzt im Mitgliederbereich der Frauenselbsthilfe Krebs einloggen.
 {activationNotice}

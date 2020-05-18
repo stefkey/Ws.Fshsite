@@ -104,22 +104,23 @@ class RegistrationAspect
 
             $this->sendMail(
                 'ActivationSuccessFSH',
-                'FSH Website Registrierung von Mitglied erfolgt: ' . $userName,
+                $userName . ': Freischaltung erfolgt',
                 [$this->fshRegistrationMailRecipient],
                 [
                     'userName' => $userName,
-                    'userMail' => $userMail
+                    'userMail' => $userMail,
+                    'memberStatus' => $this->membershipStatusToHumanReadableMsg($membershipStatus)
                 ]
             );
 
             $this->sendMail(
                 'ActivationSuccessMember',
-                'Ihre Registrierung bei Frauenselbsthilfe',
+                'Ihre Registrierung bei der Frauenselbsthilfe Krebs',
                 [$userMail],
                 [
                     'userName' => $userName,
                     'userMail' => $userMail,
-                    'activationNotice' => $isRegistrationForced ? 'Ihre Registrierung wurde freigeschaltet!' : 'Ihre Registrierung war erfolgreich!'
+                    'activationNotice' => $isRegistrationForced ? 'Ihre Registrierung wurde freigeschaltet.' : 'Ihre Registrierung war erfolgreich.'
                 ]
             );
         } else {
@@ -156,7 +157,7 @@ class RegistrationAspect
 
             $this->sendMail(
                 'ActivationFailureFSH',
-                'FSH Website Registrierungsanfrage: ' . $userName,
+                 $userName . ': Registrierungsanfrage',
                 [$this->fshRegistrationMailRecipient],
                 [
                     'userName' => $userName,
@@ -168,7 +169,7 @@ class RegistrationAspect
 
             $this->sendMail(
                 'ActivationFailureMember',
-                'Ihre Registrierung bei Frauenselbsthilfe',
+                'Ihre Registrierung bei der Frauenselbsthilfe Krebs',
                 [$userMail],
                 [
                     'userName' => $userName,
@@ -237,11 +238,11 @@ class RegistrationAspect
     {
         switch ($status) {
             case self::UNKNOWN:
-                return 'Person ist unbekannt.';
+                return 'Person ist unbekannt oder mit einer anderen E-Mail-Adresse in der FSH DB eingetragen';
             case self::IS_MEMBER:
-                return 'Person ist Mitglied.';
+                return 'Person ist Mitglied';
             case self::NOT_MEMBER:
-                return 'Person ist in Mitglieder DB, aber kein Mitglied.';
+                return 'Person ist in Mitglieder DB, aber kein Mitglied';
             default:
                 throw new \Exception(
                     'Unknown MembershipStatus: "' . $status .
