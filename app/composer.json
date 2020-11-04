@@ -36,7 +36,8 @@
         "lelesys/news": "^4.0",
 
         "ws/fshsite": "@dev",
-        "neos/form-builder": "^1.1"
+        "neos/form-builder": "^1.1",
+        "kaufmanndigital/cookieconsent": "^1.5"
     },
     "require-dev": {
         "neos/buildessentials": "5.2.x-dev",
