@@ -26,6 +26,7 @@ RUN pecl install -o -f redis \
 RUN curl --silent --show-error https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 RUN composer config --global cache-dir /composer_cache
+RUN composer self-update --1
 
 ADD docker/entrypoint.sh /
 ADD docker/memory-limit-php.ini /usr/local/etc/php/conf.d/memory-limit-php.ini
