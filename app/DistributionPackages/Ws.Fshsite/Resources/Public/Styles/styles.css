@@ -3332,17 +3332,18 @@ ul.typo3-widget-paginator li:after {
 
 /* Matomo Tracking-opt-out
 ********************************/
-.flowpack-neos-matomo-tracking-opt-out iframe {
+.matomo iframe {
     height: 200px !important;
+    width: 100%;
     margin-bottom: 19px;
 }
 @media (max-width: 640px) {
-    .flowpack-neos-matomo-tracking-opt-out iframe {
+    .matomo iframe {
         height: 320px !important;
     }
 }
 @media (max-width: 400px) {
-    .flowpack-neos-matomo-tracking-opt-out iframe {
+    .matomo iframe {
         height: 400px !important;
     }
 }
