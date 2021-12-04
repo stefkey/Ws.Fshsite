@@ -56,9 +56,6 @@ renderables:
                         type: 'Neos.Form:SingleLineText'
                         identifier: telnummer
                         label: 'Ihre Telefonnummer'
-                        validators:
-                            -
-                                identifier: 'Neos.Flow:NotEmpty'
                         properties:
                             placeholder: ''
                         defaultValue: ''

@@ -35,11 +35,18 @@ html,body
     -webkit-hyphens: auto;
     hyphens: auto;
 }
+
 input[type="checkbox"], input[type="radio"]
 {
-    width: 1.5em;
-    height: 1.5em;
-    margin: 0px 12px 0px 0px;
+    width: 2em;
+    margin: 0px 10px 0px 0px;
+
+    -ms-transform: scale(1.5); /* IE */
+    -moz-transform: scale(1.5); /* FF */
+    -webkit-transform: scale(1.5); /* Safari and Chrome */
+    -o-transform: scale(1.5); /* Opera */
+    transform: scale(1.5);
+    padding: 10px;
 }
 
 .float-left {
@@ -1677,15 +1684,27 @@ fieldset.form-control { /* notwendig da im bootsrap einen heigh von 34px definie
     font-size: inherit;
 }
 
-#contact-form-privacynotice label, #bestellformular-privacynotice label, #mitgliederBestellformular-privacynotice label {
+#contact-form-privacynotice label, #bestellformular-privacynotice label, #mitgliederBestellformular-privacynotice label, /* Kontakt BundesGSt Formular */
+#form-a911dde4-6c53-471c-a7e8-13768adc4fbe-31b634a7-cd71-40bb-89da-405f5e57ce37 label,  /* Bestellformular */
+#form-11b0044c-7a55-425c-ac28-bf4adc71e417-3d059c0a-b666-4176-818f-471c15270492 label,  /* 0.0.0.0 Bestellformular */
+#form-c6297de0-e0d1-4798-86b1-539993892436-e137fe78-3e85-4db7-9a4c-4621d2bc819b label,  /* Bestellformular Mitgliederbereich */
+#form-e002795a-2763-4580-ab81-2f716c994ed0-d6961cfe-fa78-45f4-b62d-8336a4098104 label,  /* Metas Anmelde Formular */
+#form-291144c9-f169-4d55-a298-a9792bf3c6c4-573bb38d-335a-439f-8751-c1d46d9eaf6e label   /* Feedback Formular */
+{
     font-size: .7em;
     line-height: 20px;
 }
 
-#contact-form-privacynotice .form-control, #bestellformular-medienliste .form-control, #mitgliederBestellformular-medienliste .form-control {
-    width: 50px;
-    margin-right: 20px;
+/*
+#contact-form-privacynotice div.input, #bestellformular-privacynotice div.input, #mitgliederBestellformular-privacynotice div.input, #bestellformular-medienliste div.input, #mitgliederBestellformular-medienliste div.input, 
+#form-a911dde4-6c53-471c-a7e8-13768adc4fbe-31b634a7-cd71-40bb-89da-405f5e57ce37 div.input,
+#form-11b0044c-7a55-425c-ac28-bf4adc71e417-3d059c0a-b666-4176-818f-471c15270492 div.input,
+#form-c6297de0-e0d1-4798-86b1-539993892436-e137fe78-3e85-4db7-9a4c-4621d2bc819b div.input  
+{
+     width: 50px;
+     margin-right: 20px;
 }
+*/
 
 label {
     line-height: 36px;
@@ -1696,7 +1715,15 @@ label[for$="anrede"] {
     position: absolute;
 }
 
-#contact-form-privacynotice div.input, #bestellformular-privacynotice div.input, #mitgliederBestellformular-privacynotice div.input, #bestellformular-medienliste div.input, #mitgliederBestellformular-medienliste div.input  {
+#contact-form-privacynotice div.input, #bestellformular-privacynotice div.input, #mitgliederBestellformular-privacynotice div.input, bestellformular-medienliste div.input, #mitgliederBestellformular-medienliste div.input,
+#form-a911dde4-6c53-471c-a7e8-13768adc4fbe-31b634a7-cd71-40bb-89da-405f5e57ce37 div.input, /* Bestellformular */
+#form-11b0044c-7a55-425c-ac28-bf4adc71e417-3d059c0a-b666-4176-818f-471c15270492 div.input, /* 0.0.0.0 Bestellformular */
+#form-c6297de0-e0d1-4798-86b1-539993892436-e137fe78-3e85-4db7-9a4c-4621d2bc819b div.input, /* Bestellformular Mitgliederbereich */
+#form-e002795a-2763-4580-ab81-2f716c994ed0-d6961cfe-fa78-45f4-b62d-8336a4098104 div.input, /* Metas Anmelde Formular */
+#form-291144c9-f169-4d55-a298-a9792bf3c6c4-573bb38d-335a-439f-8751-c1d46d9eaf6e div.input, /* Feedback Formular */
+#form-1e78d736-4362-4559-a720-bfb96b8404d8-3d44ef5e-22ef-4ad0-96d0-a3355c2b3911 div.input  /* Metas Termine Formular */
+{
+
     float:left;
 }
 
@@ -3332,17 +3359,18 @@ ul.typo3-widget-paginator li:after {
 
 /* Matomo Tracking-opt-out
 ********************************/
-.flowpack-neos-matomo-tracking-opt-out iframe {
+.matomo iframe {
     height: 200px !important;
+    width: 100%;
     margin-bottom: 19px;
 }
 @media (max-width: 640px) {
-    .flowpack-neos-matomo-tracking-opt-out iframe {
+    .matomo iframe {
         height: 320px !important;
     }
 }
 @media (max-width: 400px) {
-    .flowpack-neos-matomo-tracking-opt-out iframe {
+    .matomo iframe {
         height: 400px !important;
     }
 }
