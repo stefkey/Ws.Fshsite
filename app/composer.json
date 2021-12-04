@@ -6,9 +6,9 @@
         "bin-dir": "bin"
     },
     "require": {
-        "neos/neos": "~4.2.0",
-        "neos/nodetypes": "~4.2.0",
-        "neos/site-kickstarter": "~4.2.0",
+        "neos/neos": "~4.3.0",
+        "neos/nodetypes": "~4.3.0",
+        "neos/site-kickstarter": "~4.3.0",
         "neos/seo": "~2.1",
         "neos/setup": "~4.0",
 
@@ -25,7 +25,7 @@
         "neos/swiftmailer": "~6.0.0",
         "sandstorm/usermanagement": "~6.1.0",
 
-        "dl/gallery": "~3.1.0",
+        "dl/gallery": "~3.2.0",
         "networkteam/neos-shariff": "~4.0",
         "networkteam/neos-mailobfuscator": "^2.0",
         "neos/form-yamlbuilder": "dev-master",
@@ -40,7 +40,7 @@
         "kaufmanndigital/cookieconsent": "^1.5"
     },
     "require-dev": {
-        "neos/buildessentials": "5.2.x-dev",
+        "neos/buildessentials": "5.3.x-dev",
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~6.0.0",
         "symfony/css-selector": "~2.0",

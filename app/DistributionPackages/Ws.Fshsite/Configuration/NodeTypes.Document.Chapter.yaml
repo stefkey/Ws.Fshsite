@@ -1,3 +1,4 @@
+
 'Ws.Fshsite:Chapter':
   superTypes:
     'Neos.Neos:Document': true
@@ -45,7 +46,6 @@
         inline:
           editorOptions:
             formatting:
-              u: true
               sub: true
               sup: true
               p: false
@@ -57,4 +57,5 @@
               a: true
               strong: true
               em: true
+              underline: true
             placeholder: 'Enter title here'
