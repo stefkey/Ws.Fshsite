@@ -1,0 +1,14 @@
+langcode: de
+status: true
+dependencies: {  }
+id: node.adressliste.field_email
+field_name: field_email
+entity_type: node
+bundle: adressliste
+label: 'E-Mail'
+description: ''
+required: false
+translatable: false
+default_value: [ ]
+settings: { }
+field_type: email

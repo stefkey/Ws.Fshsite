@@ -1,0 +1,14 @@
+langcode: de
+status: true
+dependencies: {  }
+id: node.adressliste.field_anschrift
+field_name: field_anschrift
+entity_type: node
+bundle: adressliste
+label: 'Anschrift'
+description: ''
+required: false
+translatable: false
+default_value: [ ]
+settings: { }
+field_type: text_long

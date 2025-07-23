@@ -1,0 +1,17 @@
+langcode: de
+status: true
+dependencies: {  }
+id: node.field_plz
+field_name: field_plz
+entity_type: node
+type: string
+settings:
+  max_length: 10
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: false
+persist_with_no_fields: false
+custom_storage: false

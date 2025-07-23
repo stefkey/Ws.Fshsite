@@ -1,0 +1,14 @@
+langcode: de
+status: true
+dependencies: {  }
+id: node.adressliste.field_bundesland
+field_name: field_bundesland
+entity_type: node
+bundle: adressliste
+label: 'Bundesland'
+description: ''
+required: false
+translatable: false
+default_value: [ ]
+settings: { }
+field_type: string

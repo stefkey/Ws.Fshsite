@@ -1,0 +1,14 @@
+langcode: de
+status: true
+dependencies: {  }
+id: node.adressliste.field_name
+field_name: field_name
+entity_type: node
+bundle: adressliste
+label: 'Name'
+description: ''
+required: true
+translatable: false
+default_value: [ ]
+settings: { }
+field_type: string

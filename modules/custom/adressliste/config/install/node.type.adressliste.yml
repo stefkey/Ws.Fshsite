@@ -1,0 +1,11 @@
+langcode: de
+status: true
+dependencies: {  }
+third_party_settings: {  }
+name: 'Adressliste'
+type: 'adressliste'
+description: 'Eintrag für Beratungsstellen'
+help: ''
+new_revision: false
+display_submitted: true
+preview_mode: 1
